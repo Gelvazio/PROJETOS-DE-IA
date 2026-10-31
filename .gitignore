@@ -49,3 +49,6 @@ dist/
 
 # Backup do Git removido dos projetos (etapa 001-18aa4eac)
 /_backup-git/
+
+# rules-ai tem Git próprio (Gelvazio/rules-ai); a raiz não o rastreia
+/rules-ai/
