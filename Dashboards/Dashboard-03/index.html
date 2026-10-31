@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard 03 — Estoque</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Dashboard de Estoque</h1>
+    <p class="cabecalho__data" id="dataReferencia"></p>
+  </header>
+
+  <main class="conteudo">
+    <section class="grade-kpis" aria-label="Indicadores">
+      <article class="kpi"><h2 class="kpi__titulo">Total de itens</h2><p class="kpi__valor" id="kpiTotalItens"></p></article>
+      <article class="kpi kpi--alerta"><h2 class="kpi__titulo">Valor parado em estoque</h2><p class="kpi__valor" id="kpiValorParado"></p></article>
+      <article class="kpi kpi--urgente"><h2 class="kpi__titulo">Produtos em falta</h2><p class="kpi__valor" id="kpiEmFalta"></p></article>
+      <article class="kpi"><h2 class="kpi__titulo">Giro médio</h2><p class="kpi__valor" id="kpiGiroMedio"></p></article>
+    </section>
+
+    <section class="grade-paineis">
+      <article class="painel">
+        <h2 class="painel__titulo">Repor agora</h2>
+        <div class="tabela-rolagem">
+          <table class="tabela">
+            <thead><tr><th>Produto</th><th>Atual</th><th>Mínimo</th><th>Falta</th><th>Alerta</th></tr></thead>
+            <tbody id="tabelaRepor"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="painel">
+        <h2 class="painel__titulo">Parados há mais de 60 dias</h2>
+        <div class="tabela-rolagem">
+          <table class="tabela">
+            <thead><tr><th>Produto</th><th>Dias sem vender</th><th>Valor imobilizado</th></tr></thead>
+            <tbody id="tabelaParados"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="painel">
+        <h2 class="painel__titulo">Entradas x saídas por mês</h2>
+        <div class="grafico"><canvas id="graficoMovimentacao"></canvas></div>
+      </article>
+
+      <article class="painel">
+        <h2 class="painel__titulo">Estoque por categoria (R$)</h2>
+        <div class="grafico"><canvas id="graficoCategorias"></canvas></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

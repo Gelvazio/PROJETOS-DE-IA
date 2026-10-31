@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# .githooks/pre-merge-commit
+#
+# Fecha o buraco da regra "nunca merge" (.claude/rules/git-quick.md).
+# O `pre-push` e o `post-checkout` cuidam do fetch; este recusa o COMMIT de
+# merge que um `git pull` sem --rebase (ou um `git merge` solto) criaria.
+#
+# ATENÇÃO — comportamento verificado em teste: quando este hook recusa, o Git
+# JÁ preparou o merge (o índice está com as mudanças e existe MERGE_HEAD). O
+# commit de merge não é criado, mas o repositório fica no meio do merge, então
+# a recuperação é `git merge --abort` (está na mensagem abaixo).
+#
+# Prevenção melhor que correção: `git config pull.rebase true` (uma vez por
+# clone) faz o `git pull` simples já usar rebase e nunca chegar aqui.
+#
+# Não atrapalha o que é legítimo:
+#   - `git pull --rebase`  -> não gera commit de merge, não passa por aqui
+#   - `git merge --ff-only`/fast-forward -> não gera commit de merge
+#   - `git merge --squash` -> não gera commit de merge
+#
+# Escape hatch, só com motivo registrado na seção da subtarefa:
+#   git merge --no-verify <ref>
+
+echo "" >&2
+echo "==========================================================" >&2
+echo " MERGE BLOQUEADO — git-quick.md (proibido merge)" >&2
+echo "----------------------------------------------------------" >&2
+echo " O protocolo proíbe merge nesta linha de trabalho." >&2
+echo "" >&2
+echo " O commit de merge NÃO foi criado, mas o Git já tinha" >&2
+echo " preparado o merge (MERGE_HEAD existe). Desfaça e refaça" >&2
+echo " com rebase, nesta ordem:" >&2
+echo "" >&2
+echo "   git merge --abort" >&2
+echo "   git fetch --all --prune" >&2
+echo "   git pull --rebase origin main" >&2
+echo "" >&2
+echo " Para não passar por isto de novo (uma vez por clone):" >&2
+echo "   git config pull.rebase true" >&2
+echo "" >&2
+echo " Para um merge consciente e autorizado pelo usuário:" >&2
+echo "   git merge --no-verify <ref>" >&2
+echo "==========================================================" >&2
+
+exit 1

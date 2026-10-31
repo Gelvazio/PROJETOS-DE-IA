@@ -1,0 +1,11 @@
+# Hooks do Git (.claude/rules/git-quick.md).
+# OBRIGATÓRIO: estes arquivos precisam de LF no disco. Com core.autocrlf=true
+# (padrão no Windows) eles seriam materializados em CRLF e o shebang
+# "#!/bin/sh" quebraria no Git Bash de outros clones.
+.githooks/* text eol=lf
+# O próprio .gitattributes em LF: com CRLF a última regra poderia ser lida errado.
+.gitattributes text eol=lf
+# Hooks do Claude Code: mesmo motivo dos hooks do Git — script bash precisa de LF.
+.claude/hooks/* text eol=lf
+# Hooks do Codex: cópias dos do Claude Code, com o mesmo motivo.
+.codex/hooks/* text eol=lf

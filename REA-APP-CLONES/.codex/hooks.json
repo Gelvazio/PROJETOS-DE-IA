@@ -1,0 +1,47 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node 'C:\\fontes\\REA-APP-CLONES\\.codex\\hooks\\exigir-reserva.mjs'",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash 'C:\\fontes\\REA-APP-CLONES\\.codex\\hooks\\sincronizar-main.sh'",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node 'C:\\fontes\\REA-APP-CLONES\\.codex\\hooks\\lembrar-task.mjs'",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node rules-local/jev/ganchos/codex-prompt.mjs"
+          }
+        ]
+      }
+    ]
+  }
+}

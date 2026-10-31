@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block titulo %}Chaos Code{% endblock %}</title>
+    <link rel="stylesheet" href="/estaticos/estilo.css">
+  </head>
+  <body>
+    <header class="cabecalho">
+      <h1 class="cabecalho__nome">Chaos Code</h1>
+    </header>
+
+    <main class="conteudo">
+      {% if mensagem %}
+        <p class="mensagem mensagem--{{ tipo_mensagem or 'erro' }}" role="alert">{{ mensagem }}</p>
+      {% endif %}
+
+      {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer class="rodape"></footer>
+  </body>
+</html>

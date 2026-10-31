@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ textos.MSG_ERRO_TITULO }}{% endblock %}
+
+{% block conteudo %}
+  <section class="cartao">
+    <h2 class="cartao__titulo">{{ textos.MSG_ERRO_TITULO }}</h2>
+
+    {% if descricao_erro %}
+      <p class="cartao__texto">{{ descricao_erro }}</p>
+    {% endif %}
+
+    <p class="cartao__rodape">
+      <a href="{{ endereco_inicio }}">{{ textos.MSG_ERRO_VOLTAR }}</a>
+    </p>
+  </section>
+{% endblock %}

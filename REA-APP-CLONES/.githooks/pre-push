@@ -1,0 +1,76 @@
+#!/bin/sh
+#
+# .githooks/pre-push
+#
+# Obrigatório pelo .claude/rules/git-quick.md: o `git fetch` tem de vir ANTES de
+# publicar. Este hook roda o fetch e RECUSA o push quando o remoto tem commits
+# que você ainda não tem — exatamente o caso em que o push seria rejeitado
+# depois, com o risco de alguém sobrescrever trabalho de outro agente.
+#
+# Escape hatch (usar só com motivo registrado na seção da subtarefa):
+#   git push --no-verify
+# Desativar de vez:
+#   git config --unset core.hooksPath
+
+remote="$1"
+zero="0000000000000000000000000000000000000000"
+
+# 1) Atualiza as referências do remoto — é o motivo de existir deste hook.
+if ! git fetch --all --prune --quiet; then
+  echo "[pre-push] AVISO: 'git fetch --all --prune' falhou (rede?). Seguindo com as referências locais." >&2
+fi
+
+erro=0
+
+# 2) Confere, ref a ref, se o push seria fast-forward.
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # Deleção de branch remota: não é o caso deste protocolo.
+  [ "$local_sha" = "$zero" ] && continue
+  # Branch nova no remoto (nasce do zero): nada com que comparar.
+  [ "$remote_sha" = "$zero" ] && continue
+
+  branch=${remote_ref#refs/heads/}
+  tip=$(git rev-parse --verify --quiet "refs/remotes/$remote/$branch")
+  [ -n "$tip" ] || tip="$remote_sha"
+
+  # Já está igual ao remoto (nada novo a enviar).
+  [ "$tip" = "$local_sha" ] && continue
+
+  # Fast-forward possível: o remoto é ancestral do que eu vou enviar.
+  git merge-base --is-ancestor "$tip" "$local_sha" 2>/dev/null && continue
+
+  # Chegou aqui: o remoto andou e o push seria recusado (ou exigiria --force).
+  echo "" >&2
+  echo "==========================================================" >&2
+  echo " PRE-PUSH BLOQUEADO — git-quick.md" >&2
+  echo "----------------------------------------------------------" >&2
+  echo " O remoto '$remote' tem commit(s) que você não tem." >&2
+  echo "   branch ................ $branch" >&2
+  echo "   commit do remoto ...... $(git rev-parse --short "$tip" 2>/dev/null)" >&2
+  echo "   seu commit ............ $(git rev-parse --short "$local_sha" 2>/dev/null)" >&2
+  echo "" >&2
+  echo " Faça, nesta ordem:" >&2
+  echo "   git fetch --all --prune" >&2
+  echo "   git pull --rebase origin main" >&2
+  echo "   (releia o quadro e só então publique de novo)" >&2
+  echo "" >&2
+  echo " ⛔ Não use --force: é proibido pelo protocolo." >&2
+  echo "==========================================================" >&2
+  erro=1
+done
+
+# 3) Cópias das skills para as outras IAs: fonte em .agents/, cópias em
+#    .claude/, .grok/ e .gemini/. Confere a pasta de trabalho; sem Node, só avisa.
+if command -v node >/dev/null 2>&1; then
+  if ! node scripts/sincronizar-agentes.mjs --checar >/dev/null 2>&1; then
+    echo "" >&2
+    echo "[pre-push] BLOQUEADO: cópias das skills desatualizadas em relação a .agents/." >&2
+    echo "  Rode: npm run sync:agentes   e commite as cópias (veja: npm run check:agentes)." >&2
+    erro=1
+  fi
+else
+  echo "[pre-push] AVISO: node não encontrado; cópias das skills não conferidas." >&2
+fi
+
+[ "$erro" -eq 1 ] && exit 1
+exit 0

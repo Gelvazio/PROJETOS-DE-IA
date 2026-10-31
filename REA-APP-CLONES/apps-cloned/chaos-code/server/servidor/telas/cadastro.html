@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ textos.MSG_CADASTRO_TITULO }}{% endblock %}
+
+{% block conteudo %}
+  <section class="cartao">
+    <h2 class="cartao__titulo">{{ textos.MSG_CADASTRO_TITULO }}</h2>
+
+    <form class="formulario" method="post" action="{{ endereco_cadastro }}">
+      <input type="hidden" name="csrf_token" value="{{ token_csrf }}">
+
+      <label class="formulario__campo">
+        <span>{{ textos.MSG_CADASTRO_NOME }}</span>
+        <input type="text" name="nome" autocomplete="name" required>
+      </label>
+
+      <label class="formulario__campo">
+        <span>{{ textos.MSG_LOGIN_EMAIL }}</span>
+        <input type="email" name="email" autocomplete="username" required>
+      </label>
+
+      <label class="formulario__campo">
+        <span>{{ textos.MSG_LOGIN_SENHA }}</span>
+        <input type="password" name="senha" autocomplete="new-password" required>
+      </label>
+
+      <label class="formulario__campo">
+        <span>Confirmar senha</span>
+        <input type="password" name="confirmacao_senha" autocomplete="new-password" required>
+      </label>
+
+      <button class="botao botao--primario" type="submit">{{ textos.MSG_CADASTRO_BOTAO }}</button>
+    </form>
+
+    <p class="cartao__rodape">
+      <a href="{{ endereco_login }}">{{ textos.MSG_CADASTRO_LINK_LOGIN }}</a>
+    </p>
+  </section>
+{% endblock %}

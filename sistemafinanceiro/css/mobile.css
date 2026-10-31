@@ -1,0 +1,314 @@
+/* ============================================================================
+   mobile.css — camada celular / PWA
+   Carregado POR ÚLTIMO em index.html e login.html: sobrescreve (mesma
+   especificidade, ordem decide) as regras responsivas antigas do styles.css e
+   do <style> do index.html.
+   ========================================================================== */
+
+:root {
+  --navbar-h: 56px;
+  --action-bar-h: 68px;
+  --sat: env(safe-area-inset-top, 0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px);
+  --sar: env(safe-area-inset-right, 0px);
+}
+
+[hidden] { display: none !important; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: #0d0b1f; /* evita flash branco no overscroll / abertura do app */
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Sem o atraso de 300 ms e sem zoom por duplo toque nos controles */
+button, a, select, label, input, summary, [role="button"] {
+  touch-action: manipulation;
+}
+
+/* Instalado: sem "puxar para recarregar" acidental (há botão de atualizar) */
+@media (display-mode: standalone) {
+  body { overscroll-behavior-y: none; }
+}
+
+/* ── Safe areas (notch, barra de gestos) ───────────────────────────────── */
+.navbar {
+  padding-top: var(--sat);
+  padding-left: max(24px, var(--sal));
+  padding-right: max(24px, var(--sar));
+  height: calc(var(--navbar-h) + var(--sat));
+}
+
+.page-wrap {
+  padding-top: calc(var(--navbar-h) + var(--sat) + 20px);
+  padding-left: max(24px, var(--sal));
+  padding-right: max(24px, var(--sar));
+}
+
+body.splash {
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-top: calc(24px + var(--sat));
+  padding-bottom: calc(24px + var(--sab));
+  padding-left: max(16px, var(--sal));
+  padding-right: max(16px, var(--sar));
+}
+
+/* ── Navbar: botão de atualizar ────────────────────────────────────────── */
+.btn-icon {
+  width: 44px;
+  min-width: 44px;
+  padding: 0;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+.btn-icon.spinning { animation: spin 0.8s linear infinite; }
+.btn-icon:disabled { opacity: 0.6; cursor: progress; }
+
+.only-mobile { display: none; }
+
+/* ── Banners (offline / atualização) — criados por src/pwa.js ──────────── */
+.pwa-banners {
+  position: fixed;
+  top: var(--sat);
+  left: 0;
+  right: 0;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px max(12px, var(--sar)) 0 max(12px, var(--sal));
+  pointer-events: none;
+}
+.pwa-banners.below-navbar { top: calc(var(--navbar-h) + var(--sat)); }
+
+.pwa-banner {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--txt);
+  background: rgba(26, 22, 64, 0.97);
+  border: 1px solid rgba(255, 184, 77, 0.45);
+  box-shadow: var(--shadow-soft);
+}
+.pwa-banner--update { border-color: rgba(52, 224, 215, 0.45); }
+
+/* Offline: empurra o conteúdo para o banner não cobrir o seletor de mês */
+html.is-offline .page-wrap { margin-top: 52px; }
+.pwa-banner button {
+  flex-shrink: 0;
+  min-height: 36px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(52, 224, 215, 0.45);
+  background: rgba(52, 224, 215, 0.14);
+  color: var(--h2);
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ── Instalar app (modal de configurações) ─────────────────────────────── */
+.cfg-install {
+  margin-top: 16px;
+  padding: 14px;
+  border-radius: 12px;
+  text-align: center;
+  background: rgba(52, 224, 215, 0.07);
+  border: 1px solid rgba(52, 224, 215, 0.25);
+}
+.cfg-install .btn { min-height: 44px; justify-content: center; }
+.cfg-install p {
+  margin: 8px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--txt-dim);
+}
+
+/* ── Feedback de toque (só em telas touch) ─────────────────────────────── */
+@media (hover: none) {
+  .btn-action:active,
+  .btn-nova:active,
+  .filter-btn:active,
+  .month-nav-btn:active,
+  .btn:active,
+  .scope-btn:active {
+    transform: scale(0.97);
+    filter: brightness(1.15);
+  }
+}
+
+/* ============================================================================
+   Celular
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  .only-mobile { display: flex; }
+  .hide-sm { display: none !important; }
+
+  /* Navbar de uma linha só (antes quebrava em duas e cobria o conteúdo) */
+  .navbar {
+    flex-wrap: nowrap;
+    gap: 8px;
+    min-height: 0;
+    padding-top: var(--sat);
+    padding-bottom: 0;
+    padding-left: max(12px, var(--sal));
+    padding-right: max(12px, var(--sar));
+    height: calc(var(--navbar-h) + var(--sat));
+  }
+  .navbar h1 { font-size: 17px; white-space: nowrap; flex-shrink: 0; }
+  .header-right {
+    width: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    gap: 6px;
+    margin-left: auto;
+  }
+  #nav-user, #month-label, #btn-logout, .btn-label { display: none; }
+  #btn-config {
+    background: rgba(255, 255, 255, 0.05);
+    -webkit-text-fill-color: currentColor;
+    color: var(--txt-dim);
+    width: 44px;
+    min-width: 44px;
+    padding: 0;
+    justify-content: center;
+    font-size: 18px;
+    margin-left: 0 !important;
+  }
+  #btn-refresh { margin-left: 0 !important; }
+
+  /* Conteúdo: libera espaço para a barra de ações fixa embaixo */
+  .page-wrap {
+    padding-top: calc(var(--navbar-h) + var(--sat) + 14px);
+    padding-bottom: calc(var(--action-bar-h) + var(--sab) + 20px);
+    padding-left: max(12px, var(--sal));
+    padding-right: max(12px, var(--sar));
+  }
+
+  /* Resumo: 2 × 2 compacto (antes virava 4 cards empilhados) */
+  .summary-cards { grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+  .summary-card { padding: 10px 12px; gap: 2px; border-radius: 12px; }
+  .summary-card-icon { display: none; }
+  .summary-card-label { font-size: 10px; }
+  .summary-card-value { font-size: clamp(14px, 4.6vw, 18px); }
+  .summary-card-sub { font-size: 10px; }
+
+  /* Filtros: uma linha rolável por grupo, em vez de blocos empilhados */
+  .filter-bar { gap: 6px; padding: 10px 12px; margin-bottom: 12px; flex-wrap: nowrap; }
+  .filter-group {
+    min-width: 0;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 2px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-group::-webkit-scrollbar { display: none; }
+  .filter-label { width: auto; flex: 0 0 auto; margin: 0 4px 0 0; }
+  .filter-btn { flex: 1 0 auto; min-height: 40px; padding: 8px 14px; }
+
+  /* Barra de ações fixa no rodapé, ao alcance do polegar */
+  .action-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 0;
+    padding: 10px max(12px, var(--sar)) calc(10px + var(--sab)) max(12px, var(--sal));
+    background: rgba(13, 11, 31, 0.92);
+    border-top: 1px solid rgba(180, 110, 255, 0.18);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .btn-nova { min-height: 48px; padding: 10px 8px; font-size: 14px; }
+
+  .page-wrap ~ #toast {
+    left: max(12px, var(--sal));
+    right: max(12px, var(--sar));
+    bottom: calc(var(--action-bar-h) + var(--sab) + 12px);
+  }
+
+  /* Cards da lista: ação principal larga + secundárias lado a lado */
+  .lanc-card-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .lanc-card-actions .btn-action { flex: 1 1 0; min-width: 0; min-height: 44px; order: 1; }
+  .lanc-card-actions .btn-pagar,
+  .lanc-card-actions .btn-receber { flex: 1 1 100%; order: 0; }
+  .lanc-card-actions .btn-cancelar { order: 2; }
+  .lanc-card-actions .btn-action[data-action="encerrar-fixa"] { flex: 1 1 auto; padding: 10px; }
+  .lanc-card-actions .btn-excluir  { order: 3; }
+  .lanc-card-actions .btn-action:disabled { display: none; } /* pago/cancelado: sem botões mortos */
+
+  .load-error { padding: 28px 12px; }
+  .load-error code { display: block; margin: 8px 0 14px; font-size: 12px; color: var(--h3); }
+
+  /* Modais viram "bottom sheet" */
+  .modal-back { align-items: flex-end; padding: 0; }
+  .modal,
+  .modal-wide,
+  #modal-confirm .modal,
+  #modal-scope .modal {
+    max-width: none !important;
+    width: 100%;
+    max-height: 92vh;
+    max-height: 92dvh;
+    padding: 20px max(16px, var(--sar)) calc(16px + var(--sab)) max(16px, var(--sal));
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+    animation: sheet-up 0.22s ease-out;
+  }
+  .modal::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin: -8px auto 14px;
+    border-radius: 2px;
+    background: rgba(180, 110, 255, 0.35);
+  }
+  /* Formulários longos: Gravar/Cancelar sempre visíveis */
+  .fin-modal .modal { padding-bottom: 0; }
+  .fin-modal .modal-actions-pair {
+    position: sticky;
+    bottom: 0;
+    margin-top: 14px;
+    padding: 12px 0 calc(12px + var(--sab));
+    background: linear-gradient(180deg, rgba(20, 17, 46, 0), var(--bg-1) 16px);
+  }
+  .modal-actions-pair .btn { flex: 1 1 0; }
+}
+
+@keyframes sheet-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@media (max-width: 430px) {
+  .summary-cards { grid-template-columns: 1fr 1fr; }
+  .page-wrap { padding-top: calc(var(--navbar-h) + var(--sat) + 12px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal, .btn-icon.spinning { animation: none !important; }
+}

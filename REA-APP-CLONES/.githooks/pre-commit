@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# .githooks/pre-commit
+#
+# Quando o commit tem arquivo de .agents/ (fonte única das skills e agents), roda o
+# sincronizador e acrescenta ao MESMO commit só as cópias que ele gravou em .claude/,
+# .grok/ e .gemini/commands/ (caminho a caminho; nunca `git add .`). Assim ninguém
+# precisa lembrar do `npm run sync:agentes`. Nunca bloqueia o commit: erro ou falta de
+# Node só avisam, e o .githooks/pre-push continua conferindo as cópias.
+#
+# Antes disso, se o commit tem o tasks/STATUS.md, confere o nível das reservas novas e
+# RECUSA a reserva fora do nível do modelo da frente (ETAPA-010;
+# .githooks/conferir-nivel-reserva.mjs). Só essa parte bloqueia.
+#
+# Escape (usar só com motivo registrado na seção da subtarefa): git commit --no-verify
+
+PREFIXO="[pre-commit]"
+PASTA_FONTE=".agents/"
+SCRIPT_SINCRONIA="scripts/sincronizar-agentes.mjs"
+QUADRO="tasks/STATUS.md"
+SCRIPT_NIVEL=".githooks/conferir-nivel-reserva.mjs"
+
+if git diff --cached --name-only | grep -qx "$QUADRO" && command -v node >/dev/null 2>&1; then
+  node "$SCRIPT_NIVEL" || exit 1
+fi
+
+# Sem mudança de .agents/ neste commit: nada a fazer.
+git diff --cached --name-only | grep -q "^$PASTA_FONTE" || exit 0
+
+if ! command -v node >/dev/null 2>&1; then
+  echo "$PREFIXO AVISO: node não encontrado; rode npm run sync:agentes antes do push." >&2
+  exit 0
+fi
+
+# A cópia é feita da pasta de trabalho: mudança em .agents/ fora do commit iria junto.
+if ! git diff --quiet -- "$PASTA_FONTE" \
+  || [ -n "$(git ls-files --others --exclude-standard -- "$PASTA_FONTE")" ]; then
+  echo "$PREFIXO AVISO: .agents/ tem mudança fora deste commit; as cópias vão incluí-la." >&2
+fi
+
+if ! saida=$(node "$SCRIPT_SINCRONIA" 2>&1); then
+  echo "$PREFIXO AVISO: o sincronizador falhou; rode npm run sync:agentes à mão." >&2
+  echo "$saida" >&2
+  exit 0
+fi
+
+# Linhas "copiado: <caminho>" e "gerado: <caminho>" são os arquivos gravados agora.
+echo "$saida" | sed -n -e 's/^copiado: //p' -e 's/^gerado: //p' | while IFS= read -r arquivo; do
+  [ -n "$arquivo" ] || continue
+  git add -- "$arquivo" && echo "$PREFIXO cópia incluída no commit: $arquivo" >&2
+done
+
+exit 0

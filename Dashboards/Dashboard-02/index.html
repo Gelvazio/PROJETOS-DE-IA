@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Financeiro</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Dashboard Financeiro</h1>
+    <p id="periodo" class="topo__periodo"></p>
+  </header>
+
+  <main class="conteudo">
+    <section id="kpis" class="grade grade--kpis" aria-label="Indicadores principais"></section>
+
+    <section id="alertas" class="alertas" aria-label="Alertas de gastos"></section>
+
+    <section class="grade grade--graficos">
+      <article class="cartao">
+        <h2>Receita x despesas por mês</h2>
+        <div class="grafico"><canvas id="graficoBarras"></canvas></div>
+      </article>
+      <article class="cartao">
+        <h2>Fluxo de caixa acumulado</h2>
+        <div class="grafico"><canvas id="graficoCaixa"></canvas></div>
+      </article>
+    </section>
+
+    <section class="cartao" aria-label="Contas a pagar">
+      <h2>Contas a pagar nos próximos 30 dias</h2>
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <thead>
+            <tr><th>Vencimento</th><th>Descrição</th><th>Valor</th><th>Status</th></tr>
+          </thead>
+          <tbody id="tabelaPagar"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

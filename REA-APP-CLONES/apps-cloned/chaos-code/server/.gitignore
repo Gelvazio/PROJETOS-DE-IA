@@ -1,0 +1,5 @@
+.venv/
+dados/*.sqlite3
+dados/*.sqlite3-*
+dados/imagens/
+__pycache__/

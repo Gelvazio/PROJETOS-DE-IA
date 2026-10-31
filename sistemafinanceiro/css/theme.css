@@ -1,0 +1,25 @@
+/* Variáveis globais do tema dark (referenciado por index.html / login.html) */
+:root {
+  --bg-0: #0d0b1f;
+  --bg-1: #14112e;
+  --bg-2: #1a1640;
+  --bg-3: #221c52;
+  --txt: #e6e3ff;
+  --txt-dim: #a09bc7;
+  --txt-soft: #7e7aa3;
+  --h1: #ff4fa3;
+  --h2: #34e0d7;
+  --h3: #ffb84d;
+  --link: #5ab8ff;
+  --link-hov: #a3d6ff;
+  --warn-red: #ff5b6e;
+  --warn-green: #5dd45d;
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.55);
+}
+
+.btn-activate {
+  background: rgba(93, 212, 93, 0.18);
+  color: var(--warn-green);
+  border: 1px solid rgba(93, 212, 93, 0.35);
+}

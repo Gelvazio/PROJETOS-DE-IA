@@ -1,0 +1,78 @@
+/* Loading global: barra no topo, spinner central e spinner nos botões de ação */
+.app-loading-barra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 99999;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.app-loading-barra.visivel { opacity: 1; }
+.app-loading-barra::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(90deg, var(--h1), var(--h3), var(--h2));
+  animation: app-loading-barra 1.1s ease-in-out infinite;
+}
+
+.app-loading-fundo {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 6, 22, 0.72);
+  backdrop-filter: blur(2px);
+  cursor: progress;
+}
+.app-loading-fundo.visivel { display: flex; }
+
+.app-loading-caixa {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 28px;
+  border-radius: 14px;
+  background: var(--bg-1);
+  border: 1px solid rgba(180, 110, 255, 0.28);
+  color: var(--txt);
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.app-loading-spinner,
+body.app-carregando .btn-activate:disabled::after,
+body.app-carregando .btn-primary:disabled::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: -3px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-top-color: var(--h2);
+  border-radius: 50%;
+  animation: app-loading-giro 0.7s linear infinite;
+}
+.app-loading-caixa .app-loading-spinner { margin-left: 0; width: 20px; height: 20px; }
+
+@keyframes app-loading-giro { to { transform: rotate(360deg); } }
+@keyframes app-loading-barra {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(260%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-loading-barra::before { animation-duration: 2.4s; }
+  .app-loading-spinner,
+  body.app-carregando .btn-activate:disabled::after,
+  body.app-carregando .btn-primary:disabled::after { animation-duration: 1.8s; }
+}

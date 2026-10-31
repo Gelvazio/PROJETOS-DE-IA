@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelos gratuitos do OpenRouter</title>
+  <link rel="stylesheet" href="assets/css/models-openrouter.css">
+</head>
+<body>
+  <div class="container">
+    <header class="cabecalho">
+      <div>
+        <h1>🆓 Modelos gratuitos do OpenRouter</h1>
+        <p class="cabecalho__subtitulo">
+          Modelos com preço zero de entrada e saída, extraídos em
+          <span id="dataExtracao"></span>
+        </p>
+      </div>
+      <nav class="menu-principal" aria-label="Menu principal">
+        <a class="menu-principal__link" href="index.html">📊 Dashboard</a>
+        <a class="menu-principal__link menu-principal__link--ativo" href="models-openrouter-ai.html">🆓 Modelos OpenRouter</a>
+      </nav>
+      <button class="botao-tema" id="botaoTema" type="button" title="Alternar tema">🌙</button>
+    </header>
+
+    <main>
+      <section class="filtros" aria-label="Filtros">
+        <input class="filtros__campo" id="campoBusca" type="text" placeholder="🔍 Buscar por nome ou ID...">
+        <select class="filtros__campo filtros__campo--curto" id="filtroFabricante" aria-label="Fabricante">
+          <option value="todos">Todos os fabricantes</option>
+        </select>
+        <select class="filtros__campo filtros__campo--curto" id="filtroContexto" aria-label="Contexto mínimo">
+          <option value="todos">Qualquer contexto</option>
+          <option value="64k">Contexto ≥ 64K</option>
+          <option value="256k">Contexto ≥ 256K</option>
+          <option value="1m">Contexto ≥ 1M</option>
+        </select>
+        <select class="filtros__campo filtros__campo--curto" id="ordenacao" aria-label="Ordenação">
+          <option value="contexto">Maior contexto primeiro</option>
+          <option value="nome">Nome (A-Z)</option>
+        </select>
+        <label class="filtros__opcao">
+          <input type="checkbox" id="filtroFerramentas"> Somente com tool calling
+        </label>
+        <label class="filtros__opcao">
+          <input type="checkbox" id="filtroTexto"> Somente saída em texto
+        </label>
+        <button class="botao botao--primario" id="botaoLimpar" type="button">Limpar filtros</button>
+      </section>
+
+      <p class="contador" id="contador"></p>
+      <section class="grade" id="gradeModelos" aria-label="Modelos"></section>
+    </main>
+
+    <footer class="rodape">
+      "Gratuito" vem do preço informado no OpenRouter (entrada e saída iguais a zero). Modelos gratuitos
+      podem ter limites de uso e a lista muda com o tempo. Tool calling indica que o modelo aceita o
+      parâmetro, sem garantir a qualidade no uso de ferramentas.
+    </footer>
+  </div>
+
+  <div class="aviso-copia" id="avisoCopia" role="status"></div>
+
+  <script src="assets/js/models-openrouter-constantes.js"></script>
+  <script src="assets/js/models-openrouter-dados.js"></script>
+  <script src="assets/js/models-openrouter-filtros.js"></script>
+  <script src="assets/js/models-openrouter-pagina.js"></script>
+</body>
+</html>

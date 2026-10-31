@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block titulo %}{{ textos.MSG_CONSENTIMENTO_TITULO }}{% endblock %}
+
+{% block conteudo %}
+  <section class="cartao">
+    <h2 class="cartao__titulo">{{ textos.MSG_CONSENTIMENTO_TITULO }}</h2>
+
+    <p class="cartao__texto">
+      <strong>{{ nome_aplicativo }}</strong>
+    </p>
+    <p class="cartao__texto">{{ textos.MSG_CONSENTIMENTO_PERGUNTA }}</p>
+
+    <form class="formulario formulario--linha" method="post" action="{{ endereco_consentimento }}">
+      <input type="hidden" name="csrf_token" value="{{ token_csrf }}">
+      <input type="hidden" name="client_id" value="{{ id_cliente }}">
+      <input type="hidden" name="redirect_uri" value="{{ uri_redirecionamento }}">
+      <input type="hidden" name="state" value="{{ estado }}">
+      <input type="hidden" name="code_challenge" value="{{ desafio_pkce }}">
+      <input type="hidden" name="code_challenge_method" value="S256">
+
+      <button class="botao botao--primario" name="decisao" value="permitir" type="submit">
+        {{ textos.MSG_CONSENTIMENTO_PERMITIR }}
+      </button>
+      <button class="botao" name="decisao" value="negar" type="submit">
+        {{ textos.MSG_CONSENTIMENTO_NEGAR }}
+      </button>
+    </form>
+  </section>
+{% endblock %}

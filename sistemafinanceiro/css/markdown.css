@@ -1,0 +1,207 @@
+/* Visualização de Markdown (modal Storage) */
+.md-view {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--txt);
+  word-wrap: break-word;
+}
+
+.md-view > *:first-child {
+  margin-top: 0;
+}
+
+.md-view > *:last-child {
+  margin-bottom: 0;
+}
+
+.md-view h1 {
+  margin: 1.4em 0 0.6em;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--h1);
+  text-shadow: 0 0 24px rgba(255, 79, 163, 0.25);
+}
+
+.md-view h2 {
+  margin: 1.25em 0 0.5em;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--h2);
+}
+
+.md-view h3 {
+  margin: 1em 0 0.45em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--h3);
+}
+
+.md-view h4,
+.md-view h5,
+.md-view h6 {
+  margin: 0.9em 0 0.4em;
+  font-size: 1rem;
+  color: var(--txt);
+}
+
+.md-view p {
+  margin: 0 0 0.85em;
+}
+
+.md-view a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.md-view a:hover {
+  color: var(--link-hov);
+}
+
+.md-view strong {
+  font-weight: 600;
+  color: #fff;
+}
+
+.md-view em {
+  color: var(--txt-dim);
+}
+
+.md-view ul,
+.md-view ol {
+  margin: 0 0 0.85em;
+  padding-left: 1.5em;
+}
+
+.md-view li {
+  margin: 0.25em 0;
+}
+
+.md-view li > ul,
+.md-view li > ol {
+  margin-bottom: 0.25em;
+}
+
+.md-view blockquote {
+  margin: 0 0 1em;
+  padding: 10px 14px;
+  border-left: 3px solid var(--h2);
+  background: rgba(52, 224, 215, 0.06);
+  border-radius: 0 10px 10px 0;
+  color: var(--txt-dim);
+}
+
+.md-view blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.md-view hr {
+  border: none;
+  height: 1px;
+  margin: 1.5em 0;
+  background: linear-gradient(90deg, transparent, rgba(180, 110, 255, 0.35), transparent);
+}
+
+.md-view code {
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 0.88em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--inline-bg);
+  color: var(--inline-txt);
+}
+
+.md-view pre {
+  margin: 0 0 1em;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(180, 110, 255, 0.2);
+  overflow-x: auto;
+}
+
+.md-view pre code {
+  padding: 0;
+  background: none;
+  color: var(--txt);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.md-view table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1em;
+  font-size: 13px;
+}
+
+.md-view th,
+.md-view td {
+  padding: 8px 12px;
+  border: 1px solid rgba(180, 110, 255, 0.2);
+  text-align: left;
+}
+
+.md-view th {
+  background: rgba(52, 224, 215, 0.08);
+  color: var(--h2);
+  font-weight: 600;
+}
+
+.md-view tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.md-view img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.modal.modal-md-view {
+  max-width: 820px;
+}
+
+.modal.modal-md-edit {
+  max-width: 900px;
+}
+
+.md-edit-body {
+  width: 100%;
+  min-height: 360px;
+  font-family: 'JetBrains Mono', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  tab-size: 2;
+}
+
+.md-view-wrap {
+  max-height: min(70vh, 640px);
+  overflow: auto;
+  padding: 4px 2px;
+  border-radius: 10px;
+  border: 1px solid rgba(180, 110, 255, 0.12);
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.md-view-wrap .md-view {
+  padding: 16px 18px;
+}
+
+.btn-view {
+  background: rgba(90, 184, 255, 0.12);
+  color: var(--link);
+  border: 1px solid rgba(90, 184, 255, 0.35);
+}
+
+.btn-view:hover {
+  background: rgba(90, 184, 255, 0.22);
+}
+
+.st-actions .btn {
+  margin-left: 4px;
+}
+
+.st-actions .btn:first-child {
+  margin-left: 0;
+}

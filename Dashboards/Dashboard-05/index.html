@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Metas</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Dashboard de Metas</h1>
+    <p id="subtitulo" class="cabecalho__subtitulo"></p>
+  </header>
+
+  <main class="conteudo">
+    <section aria-labelledby="titulo-kpis">
+      <h2 id="titulo-kpis">Atingimento da meta por área</h2>
+      <div id="kpis" class="grade-kpis"></div>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-barras">
+      <h2 id="titulo-barras">Realizado x meta por mês</h2>
+      <div class="area-grafico"><canvas id="grafico-barras"></canvas></div>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-projecao">
+      <h2 id="titulo-projecao">Projeção de fechamento do ano</h2>
+      <div id="resumo-projecao" class="resumo-projecao"></div>
+      <div class="area-grafico"><canvas id="grafico-projecao"></canvas></div>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-tabela">
+      <h2 id="titulo-tabela">Detalhamento por área</h2>
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Área</th><th>Meta</th><th>Realizado</th><th>%</th>
+              <th>Status</th><th>Projeção do ano</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-tabela"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

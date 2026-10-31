@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Robô de Luz</title>
+    <link rel="stylesheet" href="css/estilo.css" />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <h1 class="cabecalho__titulo">Robô de Luz</h1>
+      <p class="cabecalho__subtitulo">
+        Programe o robô para acender todos os ladrilhos azuis.
+      </p>
+    </header>
+
+    <main class="jogo">
+      <section class="palco-area" aria-labelledby="nome-fase">
+        <h2 id="nome-fase" class="palco-area__fase">Fase</h2>
+        <p id="dica" class="palco-area__dica"></p>
+        <div class="palco-area__moldura">
+          <canvas id="palco" class="palco" aria-label="Tabuleiro do jogo"></canvas>
+          <p id="aviso" class="aviso" role="status" hidden></p>
+        </div>
+        <div class="controles">
+          <button id="botao-executar" type="button" class="botao botao--principal">
+            ▶ Executar
+          </button>
+          <button id="botao-reiniciar" type="button" class="botao">⟲ Reiniciar</button>
+          <button id="botao-limpar" type="button" class="botao">🗑 Limpar</button>
+          <label class="controles__opcao">
+            <input id="opcao-rapido" type="checkbox" /> Rápido
+          </label>
+        </div>
+      </section>
+
+      <section class="programacao" aria-label="Programa do robô">
+        <h2 class="programacao__titulo">Comandos</h2>
+        <p class="programacao__ajuda">
+          Clique num comando para pôr na lista destacada. Clique no nome de uma lista para
+          escolhê-la e numa casa cheia para tirar o comando.
+        </p>
+        <div id="paleta" class="paleta"></div>
+        <div id="listas" class="listas"></div>
+      </section>
+
+      <nav class="fases" aria-label="Fases">
+        <h2 class="fases__titulo">Fases</h2>
+        <div id="lista-fases" class="fases__lista"></div>
+      </nav>
+    </main>
+
+    <footer class="rodape">
+      Clone de estudo inspirado na mecânica do Light-Bot; fases e arte próprias.
+    </footer>
+
+    <script src="js/constantes.js"></script>
+    <script src="js/fases.js"></script>
+    <script src="js/mundo.js"></script>
+    <script src="js/interpretador.js"></script>
+    <script src="js/renderizador.js"></script>
+    <script src="js/executor.js"></script>
+    <script src="js/editor.js"></script>
+    <script src="js/progresso.js"></script>
+    <script src="js/jogo.js"></script>
+  </body>
+</html>

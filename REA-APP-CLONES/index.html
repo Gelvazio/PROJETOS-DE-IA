@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Estrutura inicial de projetos de IA</title>
+  <meta name="description"
+    content="Como funciona o template: regras únicas para todas as IAs e quadro de tarefas.">
+  <link rel="stylesheet" href="guia/estilo.css">
+</head>
+<body>
+  <header class="capa">
+    <div class="capa__conteudo">
+      <p class="capa__selo">template-inicial-tasks-ia</p>
+      <h1 class="capa__titulo">Estrutura inicial de projetos com IA</h1>
+      <p class="capa__resumo">
+        Um esqueleto pronto para qualquer projeto em que <strong>várias IAs</strong> (Claude
+        Code, Gemini, Grok, Codex, Cursor, Copilot…) trabalham no mesmo repositório. Elas só se
+        falam pelos arquivos: <strong>regras</strong> num lugar só e um <strong>quadro de
+        tarefas</strong> em Markdown. Se a sessão cair, ou outra IA assumir, o trabalho continua
+        exatamente de onde parou.
+      </p>
+      <nav class="sumario" aria-label="Sumário">
+        <a class="sumario__link" href="#ideia">A ideia</a>
+        <a class="sumario__link" href="#pastas">Pastas</a>
+        <a class="sumario__link" href="#quadro">Quadro</a>
+        <a class="sumario__link" href="#ciclo">Ciclo da tarefa</a>
+        <a class="sumario__link" href="#varias-ias">Várias IAs</a>
+        <a class="sumario__link" href="#niveis">Níveis e equipe</a>
+        <a class="sumario__link" href="#automacoes">Automações</a>
+        <a class="sumario__link" href="#skills">Skills</a>
+        <a class="sumario__link" href="#comecar">Começar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+    <section class="secao" id="ideia">
+      <h2 class="secao__titulo">1. A ideia em três frases</h2>
+      <div class="grade grade--tres">
+        <article class="cartao">
+          <p class="cartao__icone" aria-hidden="true">📜</p>
+          <h3 class="cartao__titulo">Cada regra em um lugar só</h3>
+          <p>
+            O <code>AGENTS.md</code> é a porta de entrada de todas as IAs, mas não guarda regras:
+            só aponta para <code>.claude/rules/</code>, onde cada assunto tem o seu arquivo.
+          </p>
+        </article>
+        <article class="cartao">
+          <p class="cartao__icone" aria-hidden="true">🗂️</p>
+          <h3 class="cartao__titulo">O que não está no quadro não aconteceu</h3>
+          <p>
+            Todo pedido que muda algo vira tarefa em <code>tasks/STATUS.md</code> antes de
+            começar. O plano, o próximo passo e a entrega ficam registrados na etapa.
+          </p>
+        </article>
+        <article class="cartao">
+          <p class="cartao__icone" aria-hidden="true">🤝</p>
+          <h3 class="cartao__titulo">Várias IAs sem atropelo</h3>
+          <p>
+            Quem vai trabalhar <strong>reserva</strong> a subtarefa com o próprio nome e publica a
+            reserva antes de mexer em qualquer arquivo. Ninguém pega o que já tem dono.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="secao" id="pastas">
+      <h2 class="secao__titulo">2. Mapa das pastas</h2>
+      <p class="secao__texto">
+        A regra de ouro das skills e agentes: a <strong>fonte única</strong> fica em
+        <code>.agents/</code>; as pastas de cada IA recebem <strong>cópias geradas</strong>
+        (nunca editadas à mão).
+      </p>
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <thead>
+            <tr><th scope="col">Caminho</th><th scope="col">Para que serve</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>AGENTS.md</code></td>
+              <td>Porta de entrada de todas as IAs: a ordem de leitura das regras</td>
+            </tr>
+            <tr>
+              <td><code>CLAUDE.md</code> · <code>GEMINI.md</code></td>
+              <td>Só importam o <code>AGENTS.md</code> (não recebem regras)</td>
+            </tr>
+            <tr>
+              <td><code>.claude/rules/</code></td>
+              <td>Uma regra por arquivo, com índice em <code>INDEX.md</code></td>
+            </tr>
+            <tr>
+              <td><code>.claude/rules/tasks/</code></td>
+              <td>Regras do quadro, reutilizáveis em qualquer projeto</td>
+            </tr>
+            <tr>
+              <td><code>.claude/rules/index.html</code></td>
+              <td>Visualizador: mostra regras e tarefas lendo os <code>.md</code></td>
+            </tr>
+            <tr>
+              <td><code>.claude/hooks/</code> · <code>settings.json</code></td>
+              <td>Automações do Claude Code e permissões</td>
+            </tr>
+            <tr>
+              <td><code>.agents/skills/</code> · <code>.agents/agents/</code></td>
+              <td><strong>Fonte única</strong> das skills e dos agentes</td>
+            </tr>
+            <tr>
+              <td><code>.claude/</code> · <code>.grok/</code> · <code>.gemini/</code> ·
+                <code>.codex/</code></td>
+              <td>Cópias geradas por <code>npm run sync:agentes</code></td>
+            </tr>
+            <tr>
+              <td><code>.githooks/</code></td>
+              <td>Travas do Git: sem merge, sem push desatualizado, cópias em dia</td>
+            </tr>
+            <tr>
+              <td><code>tasks/</code></td>
+              <td>O quadro de tarefas (detalhado abaixo)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="secao" id="quadro">
+      <h2 class="secao__titulo">3. O quadro de tarefas</h2>
+      <div class="grade grade--duas">
+        <article class="cartao">
+          <h3 class="cartao__titulo"><code>tasks/STATUS.md</code></h3>
+          <p>
+            O índice: <strong>só tarefas abertas ou em andamento</strong>. Uma linha por
+            subtarefa, com prioridade, dependências, status e a coluna
+            <strong>“Em uso por”</strong> (a reserva). Também guarda riscos, decisões,
+            pendências e lições aprendidas.
+          </p>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo"><code>tasks/etapas/</code></h3>
+          <p>
+            Uma etapa por tarefa-mãe (<code>ETAPA-NNN-uuid8-ASSUNTO.md</code>): o pedido com as
+            palavras de quem pediu, o plano, e uma seção por subtarefa com o
+            <strong>próximo passo</strong>, a entrega e a verificação.
+          </p>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo"><code>tasks/task_complete.md</code></h3>
+          <p>
+            As linhas que viram ✅ são <strong>recortadas</strong> do <code>STATUS.md</code> e
+            coladas aqui, no mesmo commit da entrega. Assim o quadro ativo fica curto.
+          </p>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo"><code>tasks/RECADOS.md</code></h3>
+          <p>
+            Recados entre sessões e IAs. Só se acrescentam linhas, e todo mundo lê ao começar.
+          </p>
+        </article>
+      </div>
+
+      <h3 class="secao__subtitulo">Tarefa-mãe e subtarefas</h3>
+      <div class="tabela-rolagem">
+        <table class="tabela tabela--exemplo">
+          <thead>
+            <tr>
+              <th scope="col">Tarefa</th><th scope="col">Título</th>
+              <th scope="col">Prioridade</th><th scope="col">Status</th>
+              <th scope="col">Em uso por</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>LOGIN</td><td><strong>Tela de login</strong></td><td>🟠 Alta</td>
+              <td>🔄 Em execução</td><td>— (não reservável)</td>
+            </tr>
+            <tr>
+              <td>LOGIN.1</td><td>Formulário</td><td>🟠 Alta</td><td>🔄 Em execução</td>
+              <td>Claude Code (Opus 5.5) (local · main)</td>
+            </tr>
+            <tr>
+              <td>LOGIN.2</td><td>Mensagens de erro</td><td>🟠 Alta</td><td>⬜ Pendente</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="secao__texto">
+        A linha em negrito é a <strong>tarefa-mãe</strong>: ninguém a reserva, e ela fecha quando
+        todas as subtarefas estiverem ✅. Toda mãe tem pelo menos uma subtarefa.
+      </p>
+      <ul class="legenda">
+        <li>⬜ Pendente</li><li>🔄 Em progresso</li><li>✅ Concluído</li>
+        <li>⛔ Bloqueado</li><li>👀 Aguardando o usuário</li>
+        <li>🔴 Máxima · 🟠 Alta · 🟡 Média · 🟢 Baixa</li>
+      </ul>
+    </section>
+
+    <section class="secao" id="ciclo">
+      <h2 class="secao__titulo">4. O ciclo de uma tarefa</h2>
+      <ol class="passos">
+        <li class="passos__item">
+          <h3 class="passos__titulo">Sincronizar e ler</h3>
+          <p><code>git pull --rebase</code>, depois o <code>STATUS.md</code>, a etapa e os
+            recados. Sem sincronizar, o quadro mente.</p>
+        </li>
+        <li class="passos__item">
+          <h3 class="passos__titulo">Abrir a tarefa</h3>
+          <p>Criar a etapa, a linha da mãe e as subtarefas. Pergunta que não muda nada não vira
+            tarefa: só se responde.</p>
+        </li>
+        <li class="passos__item">
+          <h3 class="passos__titulo">Pequena ou grande?</h3>
+          <p><strong>Pequena</strong> (até ~3 arquivos) segue direto. <strong>Grande</strong>
+            (banco, segurança, várias partes, mudança em massa) tem o plano escrito na etapa e
+            só começa com o <strong>“sim”</strong> do usuário.</p>
+        </li>
+        <li class="passos__item">
+          <h3 class="passos__titulo">Reservar</h3>
+          <p>Nome da frente em “Em uso por”, status 🔄, commit <code>lock:</code> e push
+            <strong>antes</strong> de editar qualquer arquivo.</p>
+        </li>
+        <li class="passos__item">
+          <h3 class="passos__titulo">Executar e registrar na hora</h3>
+          <p>Uma subtarefa por vez. O <strong>próximo passo</strong> é sempre atualizado: é a
+            última coisa escrita ao parar e a primeira lida ao voltar.</p>
+        </li>
+        <li class="passos__item">
+          <h3 class="passos__titulo">Entregar</h3>
+          <p>Entrega e verificação na etapa, linha ✅ movida para o
+            <code>task_complete.md</code> e <strong>um commit por subtarefa</strong>.</p>
+        </li>
+      </ol>
+      <aside class="destaque">
+        <p class="destaque__titulo">A sessão caiu?</p>
+        <p>
+          Procure o nome da sua frente em “Em uso por”, leia o <strong>Próximo passo</strong> da
+          subtarefa, confira o que já foi feito (arquivos e commits) e continue dali. Sem refazer
+          o que está ✅ e sem pular etapas.
+        </p>
+      </aside>
+    </section>
+
+    <section class="secao" id="varias-ias">
+      <h2 class="secao__titulo">5. Várias IAs no mesmo repositório</h2>
+      <div class="grade grade--duas">
+        <article class="cartao">
+          <h3 class="cartao__titulo">Frente</h3>
+          <p>
+            Cada sessão é uma frente, identificada por ferramenta, modelo, ambiente e branch:
+            <code>Claude Code (Opus 5.5) (local · main)</code>. O nome aparece na reserva e nos
+            commits.
+          </p>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo">Qual subtarefa pegar</h3>
+          <p>
+            Livre (“Em uso por” = <code>—</code>), dependências ✅, maior prioridade primeiro.
+            Uma por frente. Push da reserva recusado? Sincronize e releia: se outra frente pegou,
+            escolha outra.
+          </p>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo">Tudo na <code>main</code></h3>
+          <p>
+            Sem branches paralelas, sem merge, sem <code>--force</code>. A reserva só vale para
+            as outras IAs quando está publicada na <code>main</code>.
+          </p>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo">🔒 Trava especial</h3>
+          <p>
+            Tarefa marcada com trava especial não é pega por nenhuma IA. Só o usuário cria ou
+            remove a trava.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="secao" id="niveis">
+      <h2 class="secao__titulo">6. Níveis e equipe de agentes</h2>
+      <p class="secao__texto">
+        Toda subtarefa recebe um nível. Cada IA só pega até o nível que a matriz da skill
+        <code>classificar-tarefa</code> permite para ela. Na dúvida, o nível sobe.
+      </p>
+      <div class="grade grade--tres">
+        <article class="cartao cartao--leve">
+          <h3 class="cartao__titulo">LEVE</h3>
+          <p>Só Markdown, textos, formatação, configuração simples.</p>
+          <p class="cartao__rodape">Executor: <code>executor-leve</code> (Haiku)</p>
+        </article>
+        <article class="cartao cartao--medio">
+          <h3 class="cartao__titulo">MEDIO</h3>
+          <p>Código com lógica em 1 a 3 arquivos, sem banco nem segredo.</p>
+          <p class="cartao__rodape">Executor: <code>executor-medio</code> (Sonnet)</p>
+        </article>
+        <article class="cartao cartao--pesado">
+          <h3 class="cartao__titulo">PESADO</h3>
+          <p>Banco, SQL, segurança, chaves, migração, arquitetura, 4+ arquivos.</p>
+          <p class="cartao__rodape">Executor: <code>executor-pesado</code> (Opus)</p>
+        </article>
+      </div>
+      <p class="secao__texto">
+        Com a skill <code>liderar-equipe</code>, uma sessão do Claude Code vira
+        <strong>líder</strong>: classifica, reserva <strong>uma</strong> subtarefa por vez,
+        delega ao executor do nível, confere o diff, valida e faz o commit. Os executores nunca
+        usam Git nem editam o quadro.
+      </p>
+    </section>
+
+    <section class="secao" id="automacoes">
+      <h2 class="secao__titulo">7. Automações que seguram as regras</h2>
+      <div class="grade grade--duas">
+        <article class="cartao">
+          <h3 class="cartao__titulo">Hooks do Claude Code</h3>
+          <ul class="lista">
+            <li><strong>Ao abrir:</strong> traz a <code>main</code> quando é seguro.</li>
+            <li><strong>A cada pedido:</strong> lembra que mudança vira tarefa.</li>
+            <li><strong>Antes de editar:</strong> barra a edição fora de <code>tasks/</code> se
+              não houver subtarefa 🔄 reservada pelo Claude Code.</li>
+          </ul>
+        </article>
+        <article class="cartao">
+          <h3 class="cartao__titulo">Hooks do Git (<code>.githooks/</code>)</h3>
+          <ul class="lista">
+            <li><strong>pre-push:</strong> recusa push se o remoto andou ou se as cópias das
+              skills estão desatualizadas.</li>
+            <li><strong>pre-commit:</strong> gera as cópias quando o commit mexe em
+              <code>.agents/</code>.</li>
+            <li><strong>pre-merge-commit:</strong> recusa commit de merge.</li>
+            <li><strong>post-checkout:</strong> avisa quando a branch está atrás.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="secao" id="skills">
+      <h2 class="secao__titulo">8. Skills (comandos) em cada IA</h2>
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th scope="col">Ferramenta</th><th scope="col">Onde lê</th>
+              <th scope="col">Como chamar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Claude Code</td><td><code>.claude/skills/</code> (cópia)</td>
+              <td><code>/proxima-task</code></td></tr>
+            <tr><td>Codex</td><td><code>.agents/skills/</code> (fonte)</td>
+              <td><code>$proxima-task</code></td></tr>
+            <tr><td>Cursor · Copilot · Antigravity</td><td><code>.agents/skills/</code> (fonte)</td>
+              <td><code>/proxima-task</code></td></tr>
+            <tr><td>Grok Build</td><td><code>.grok/skills/</code> (cópia)</td>
+              <td><code>/proxima-task</code></td></tr>
+            <tr><td>Gemini CLI</td><td><code>.gemini/commands/</code> (gerado)</td>
+              <td><code>/proxima-task</code></td></tr>
+            <tr><td>Outras</td><td>sem formato de comando</td>
+              <td>“siga a skill <code>proxima-task</code>”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="lista">
+        <li><code>proxima-task</code> — mostra frentes ativas, subtarefas livres e o que espera
+          por você.</li>
+        <li><code>classificar-tarefa</code> — define o nível e quem pode pegar.</li>
+        <li><code>liderar-equipe</code> — o fluxo do líder da equipe de agentes.</li>
+      </ul>
+    </section>
+
+    <section class="secao" id="comecar">
+      <h2 class="secao__titulo">9. Começar um projeto novo</h2>
+      <ol class="lista lista--numerada">
+        <li>Copie este repositório (ou use-o como <em>template</em> no GitHub).</li>
+        <li>Instale os hooks do Git, uma vez por clone: <code>npm run hooks:instalar</code>.</li>
+        <li>Em <code>tasks/STATUS.md</code>, troque título, objetivo e escopo pelos do projeto.</li>
+        <li>Em <code>.claude/rules/visualizador/fonte.js</code>, ajuste o repositório.</li>
+        <li>Ajuste a matriz de modelos da skill <code>classificar-tarefa</code> e os comandos de
+          validação em <code>testes-validacao.md</code>.</li>
+        <li>Peça a primeira tarefa à IA: ela abre a etapa, reserva e começa.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>
+      Regras completas: <a href="AGENTS.md">AGENTS.md</a> ·
+      <a href=".claude/rules/INDEX.md">índice das regras</a> ·
+      <a href=".claude/rules/index.html">visualizador de regras e tarefas</a> ·
+      <a href="tasks/STATUS.md">quadro</a>
+    </p>
+  </footer>
+</body>
+</html>

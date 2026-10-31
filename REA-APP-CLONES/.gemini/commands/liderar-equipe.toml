@@ -1,0 +1,9 @@
+# Gerado por scripts/sincronizar-agentes.mjs. Fonte: .agents/skills/liderar-equipe/SKILL.md.
+description = "Fluxo do líder da equipe de agentes do Claude Code - sincroniza, classifica o nível das subtarefas livres, reserva UMA por vez, delega ao executor do nível (executor-leve, executor-medio ou executor-pesado), confere e valida a entrega, commita e segue para a próxima. Use quando o usuário pedir \"rode a equipe\", \"lidere a equipe\", \"faça as tarefas com os agentes\" ou \"/liderar-equipe\". Só para o Claude Code com Opus 5.5 ou superior, ou Fable, como líder. Também cobre o modo sargento (líder só gerencia, agentes em paralelo, VIGIA e FINANCEIRO)."
+prompt = """
+Siga a skill `liderar-equipe` do projeto (fonte única: .agents/skills/liderar-equipe/SKILL.md), cujo texto vem abaixo.
+
+@{.agents/skills/liderar-equipe/SKILL.md}
+
+Pedido do usuário: {{args}}
+"""

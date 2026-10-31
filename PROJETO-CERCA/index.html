@@ -1,0 +1,1581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cerca em Terreno Úmido — Guia Passo a Passo</title>
+  <meta name="description" content="Guia visual em 8 etapas para construir uma cerca com mourões de concreto em terreno úmido e mole.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Share+Tech+Mono&display=swap">
+  <style>
+:root {
+  --cor-fundo: #05030d;
+  --cor-painel: rgba(18, 10, 40, 0.72);
+  --cor-ciano: #00f0ff;
+  --cor-magenta: #ff2bd6;
+  --cor-violeta: #7a3cff;
+  --cor-texto: #e6e9ff;
+  --cor-texto-suave: #9aa3d6;
+  --cor-borda: rgba(0, 240, 255, 0.35);
+  --brilho-ciano: 0 0 12px rgba(0, 240, 255, 0.45);
+  --brilho-magenta: 0 0 12px rgba(255, 43, 214, 0.5);
+  --raio-pequeno: 6px;
+  --raio-medio: 12px;
+  --raio-grande: 18px;
+  --espaco-1: 4px;
+  --espaco-2: 8px;
+  --espaco-3: 16px;
+  --espaco-4: 24px;
+  --espaco-5: 40px;
+  --espaco-6: 72px;
+  --fonte-titulo: "Orbitron", "Segoe UI", sans-serif;
+  --fonte-mono: "Share Tech Mono", "Consolas", monospace;
+  --altura-trilha: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cor-texto);
+  font-family: var(--fonte-mono);
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: var(--cor-fundo);
+  background-image:
+    radial-gradient(ellipse at 15% 0%, rgba(122, 60, 255, 0.35), transparent 55%),
+    radial-gradient(ellipse at 90% 30%, rgba(255, 43, 214, 0.22), transparent 50%),
+    radial-gradient(ellipse at 40% 100%, rgba(0, 240, 255, 0.14), transparent 55%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(122, 60, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 60, 255, 0.12) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cor-magenta);
+  outline-offset: 3px;
+}
+
+.oculto {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.barra-progresso {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--cor-ciano), var(--cor-violeta), var(--cor-magenta));
+  box-shadow: var(--brilho-ciano);
+  transform: scaleX(var(--progresso, 0));
+  transform-origin: left;
+}
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Topo */
+.topo {
+  padding: var(--espaco-6) 16px var(--espaco-5);
+  text-align: center;
+}
+
+.topo h1 {
+  margin: 0 0 var(--espaco-3);
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.8rem, 6vw, 3.6rem);
+  font-weight: 900;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 8px var(--cor-ciano), 0 0 24px var(--cor-violeta), 0 0 44px var(--cor-magenta);
+}
+
+.topo__subtitulo {
+  max-width: 720px;
+  margin: 0 auto var(--espaco-4);
+  color: var(--cor-texto-suave);
+  font-size: 1.1rem;
+}
+
+.topo__selo {
+  display: inline-block;
+  padding: var(--espaco-2) var(--espaco-3);
+  border: 1px solid var(--cor-magenta);
+  border-radius: var(--raio-pequeno);
+  color: var(--cor-magenta);
+  font-family: var(--fonte-titulo);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  box-shadow: var(--brilho-magenta);
+}
+
+/* Trilha */
+.trilha {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: var(--espaco-2) 16px;
+  background: rgba(5, 3, 13, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.trilha ol {
+  display: flex;
+  justify-content: center;
+  gap: var(--espaco-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.trilha__link {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  color: var(--cor-texto);
+  font-family: var(--fonte-titulo);
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.25s, box-shadow 0.25s, color 0.25s;
+}
+
+.trilha__link:hover {
+  border-color: var(--cor-ciano);
+  box-shadow: var(--brilho-ciano);
+}
+
+.trilha__link--ativo {
+  color: var(--cor-fundo);
+  background: var(--cor-ciano);
+  border-color: var(--cor-ciano);
+  box-shadow: 0 0 16px var(--cor-ciano);
+}
+
+/* Resumo */
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--espaco-3);
+  margin: var(--espaco-5) 0;
+}
+
+.resumo__item {
+  padding: var(--espaco-3);
+  text-align: center;
+  background: var(--cor-painel);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
+  box-shadow: var(--brilho-ciano);
+  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
+}
+
+.resumo__item strong {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 2rem;
+  color: var(--cor-ciano);
+  text-shadow: var(--brilho-ciano);
+}
+
+/* Painel */
+.painel {
+  padding: var(--espaco-4);
+  background: var(--cor-painel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
+  box-shadow: 0 0 22px rgba(122, 60, 255, 0.3), inset 0 0 18px rgba(0, 240, 255, 0.05);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+}
+
+.painel__titulo {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-2);
+  margin: 0 0 var(--espaco-3);
+  color: var(--cor-ciano);
+  font-family: var(--fonte-titulo);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.painel__titulo::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--cor-magenta);
+  box-shadow: var(--brilho-magenta);
+  transform: rotate(45deg);
+}
+
+/* Etapas */
+.etapa {
+  margin: var(--espaco-6) 0;
+  scroll-margin-top: calc(var(--altura-trilha) + var(--espaco-3));
+  opacity: 0.35;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.etapa--visivel {
+  opacity: 1;
+  transform: none;
+}
+
+.etapa__cabecalho {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--espaco-3) var(--espaco-4);
+  margin-bottom: var(--espaco-4);
+}
+
+.etapa__numero {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(3.5rem, 10vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--cor-ciano);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+}
+
+.etapa__titulo {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 0 12px var(--cor-violeta);
+}
+
+.etapa__resumo {
+  flex-basis: 100%;
+  margin: 0;
+  color: var(--cor-texto-suave);
+}
+
+.etapa__corpo {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--espaco-4);
+  align-items: start;
+}
+
+.etapa__desenho {
+  margin: 0;
+  padding: var(--espaco-3);
+  background: rgba(10, 5, 25, 0.8);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
+  box-shadow: 0 0 22px rgba(122, 60, 255, 0.3);
+}
+
+.etapa__desenho svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.etapa__desenho figcaption {
+  margin-top: var(--espaco-2);
+  text-align: center;
+  color: var(--cor-texto-suave);
+  font-size: 0.8rem;
+}
+
+.etapa__texto {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  min-width: 0;
+}
+
+/* Etapa 9: layout final */
+.etapa__corpo--dupla {
+  grid-template-columns: 1fr 1fr;
+}
+
+.etapa__rodape {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-4);
+}
+
+.tabela-rolagem {
+  overflow-x: auto;
+}
+
+.tabela-camadas {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.tabela-camadas th,
+.tabela-camadas td {
+  padding: var(--espaco-2) var(--espaco-3);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela-camadas th {
+  font-family: var(--fonte-titulo);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cor-ciano);
+}
+
+.tabela-camadas__destaque {
+  font-family: var(--fonte-titulo);
+  color: var(--cor-magenta);
+  white-space: nowrap;
+}
+
+/* Listas */
+.lista-materiais {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: var(--espaco-2);
+}
+
+.lista-materiais label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espaco-3);
+  cursor: pointer;
+}
+
+.lista-materiais input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  background: transparent;
+  border: 2px solid var(--cor-ciano);
+  border-radius: 3px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.lista-materiais input[type="checkbox"]::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--cor-magenta);
+  box-shadow: var(--brilho-magenta);
+  transform: scale(0);
+  transition: transform 0.15s;
+}
+
+.lista-materiais input[type="checkbox"]:checked::after {
+  transform: scale(1);
+}
+
+.lista-materiais input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.lista-materiais small {
+  display: block;
+  color: var(--cor-texto-suave);
+  font-size: 0.82rem;
+}
+
+.lista-passos {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: passo;
+  display: grid;
+  gap: var(--espaco-3);
+}
+
+.lista-passos li {
+  position: relative;
+  min-height: 32px;
+  padding-left: 48px;
+  counter-increment: passo;
+}
+
+.lista-passos li::before {
+  content: counter(passo);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--cor-magenta);
+  border-radius: 50%;
+  color: var(--cor-magenta);
+  font-family: var(--fonte-titulo);
+  font-size: 0.8rem;
+  box-shadow: var(--brilho-magenta);
+}
+
+.alerta {
+  padding: var(--espaco-3);
+  background: rgba(255, 43, 214, 0.08);
+  border: 1px solid rgba(255, 43, 214, 0.3);
+  border-left: 4px solid var(--cor-magenta);
+  border-radius: var(--raio-pequeno);
+}
+
+.alerta::before {
+  content: "\26A0";
+  margin-right: var(--espaco-2);
+  color: var(--cor-magenta);
+  font-size: 1.2rem;
+}
+
+/* Calculadora */
+.calc {
+  padding: var(--espaco-5) var(--espaco-4);
+}
+
+.calc__campos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--espaco-4);
+  margin-bottom: var(--espaco-4);
+}
+
+.calc__campo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco-2);
+  color: var(--cor-texto-suave);
+}
+
+.calc__campo input {
+  width: 100%;
+  padding: var(--espaco-3);
+  color: var(--cor-ciano);
+  font-family: var(--fonte-titulo);
+  font-size: 1.4rem;
+  background: rgba(5, 3, 13, 0.85);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.08);
+}
+
+.calc__campo input:focus-visible {
+  border-color: var(--cor-magenta);
+  box-shadow: var(--brilho-magenta);
+}
+
+.calc__resultados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: var(--espaco-3);
+}
+
+.calc__resultado {
+  padding: var(--espaco-3);
+  text-align: center;
+  background: rgba(10, 5, 25, 0.8);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-medio);
+}
+
+.calc__valor {
+  display: block;
+  font-family: var(--fonte-titulo);
+  font-size: 1.5rem;
+  color: var(--cor-ciano);
+  text-shadow: var(--brilho-ciano);
+  overflow-wrap: anywhere;
+}
+
+.calc__resultado:nth-child(even) .calc__valor {
+  color: var(--cor-magenta);
+  text-shadow: var(--brilho-magenta);
+}
+
+.calc__rotulo {
+  display: block;
+  margin-top: var(--espaco-1);
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+.calc__nota {
+  margin: var(--espaco-4) 0 0;
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+/* Rodapé */
+.rodape {
+  margin-top: var(--espaco-6);
+  padding: var(--espaco-4) 16px;
+  text-align: center;
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--cor-borda);
+}
+
+/* Desenhos SVG */
+.svg-solo {
+  fill: #1b1030;
+  stroke: rgba(122, 60, 255, 0.55);
+}
+
+.svg-linha {
+  fill: none;
+  stroke: var(--cor-violeta);
+  stroke-width: 2;
+  filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.6));
+}
+
+.svg-buraco {
+  fill: #05030d;
+}
+
+.svg-brita {
+  fill: #6b5b95;
+  stroke: rgba(230, 233, 255, 0.35);
+  stroke-width: 0.6;
+}
+
+.svg-concreto {
+  fill: #4a3b78;
+}
+
+.svg-mourao {
+  fill: rgba(143, 160, 255, 0.55);
+  stroke: var(--cor-ciano);
+  stroke-width: 1.5;
+}
+
+.svg-neon-c,
+.svg-neon-m,
+.svg-neon-v {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.svg-neon-c {
+  stroke: var(--cor-ciano);
+  filter: drop-shadow(0 0 4px var(--cor-ciano));
+}
+
+.svg-neon-m {
+  stroke: var(--cor-magenta);
+  filter: drop-shadow(0 0 4px var(--cor-magenta));
+}
+
+.svg-neon-v {
+  stroke: var(--cor-violeta);
+  filter: drop-shadow(0 0 4px var(--cor-violeta));
+}
+
+.svg-fill-c {
+  fill: rgba(0, 240, 255, 0.25);
+}
+
+.svg-fill-m {
+  fill: rgba(255, 43, 214, 0.25);
+}
+
+.svg-tracejado {
+  stroke-dasharray: 6 5;
+  animation: tracejado-fluxo 3s linear infinite;
+}
+
+.svg-texto {
+  fill: #b8c0ff;
+  font-family: var(--fonte-mono);
+  font-size: 11px;
+}
+
+.svg-texto-forte {
+  fill: #fff;
+  font-family: var(--fonte-titulo);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.svg-cota {
+  fill: none;
+  stroke: var(--cor-magenta);
+  stroke-width: 1.2;
+}
+
+.svg-gota {
+  fill: rgba(0, 240, 255, 0.5);
+  animation: gota-pulso 2.4s ease-in-out infinite;
+}
+
+.marcador {
+  fill: var(--cor-magenta);
+}
+
+@keyframes tracejado-fluxo {
+  to {
+    stroke-dashoffset: -33;
+  }
+}
+
+@keyframes gota-pulso {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .etapa__corpo,
+  .calc__campos {
+    grid-template-columns: 1fr;
+  }
+
+  .topo {
+    padding-top: var(--espaco-5);
+  }
+
+  .trilha__link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .calc {
+    padding: var(--espaco-4) var(--espaco-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none;
+    transition: none;
+  }
+
+  .etapa {
+    opacity: 1;
+    transform: none;
+  }
+}
+  </style>
+</head>
+<body>
+  <svg class="oculto" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <marker id="seta-inicio" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M10 0 L0 5 L10 10 z" fill="#ff2bd6"/>
+      </marker>
+      <marker id="seta-fim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+        <path d="M0 0 L10 5 L0 10 z" fill="#ff2bd6"/>
+      </marker>
+      <pattern id="padrao-concreto" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <rect width="8" height="8" fill="#4a3b78"/>
+        <line x1="0" y1="0" x2="0" y2="8" stroke="#8a6cff" stroke-opacity="0.6" stroke-width="1.5"/>
+      </pattern>
+    </defs>
+  </svg>
+
+  <div id="barra-progresso" class="barra-progresso" aria-hidden="true"></div>
+
+  <header class="topo">
+    <div class="container">
+      <p class="topo__selo">// PROTOCOLO DE CONSTRUÇÃO · TERRENO ÚMIDO E MOLE</p>
+      <h1>Cerca com Mourões de Concreto</h1>
+      <p class="topo__subtitulo">Guia visual em 8 etapas: materiais, ferramentas e passos para fixar a cerca
+        mesmo em solo encharcado.</p>
+    </div>
+  </header>
+
+  <nav class="trilha" aria-label="Etapas do guia">
+    <ol>
+      <li><a class="trilha__link" href="#etapa-1" data-alvo="etapa-1" aria-label="Etapa 1">1</a></li>
+      <li><a class="trilha__link" href="#etapa-2" data-alvo="etapa-2" aria-label="Etapa 2">2</a></li>
+      <li><a class="trilha__link" href="#etapa-3" data-alvo="etapa-3" aria-label="Etapa 3">3</a></li>
+      <li><a class="trilha__link" href="#etapa-4" data-alvo="etapa-4" aria-label="Etapa 4">4</a></li>
+      <li><a class="trilha__link" href="#etapa-5" data-alvo="etapa-5" aria-label="Etapa 5">5</a></li>
+      <li><a class="trilha__link" href="#etapa-6" data-alvo="etapa-6" aria-label="Etapa 6">6</a></li>
+      <li><a class="trilha__link" href="#etapa-7" data-alvo="etapa-7" aria-label="Etapa 7">7</a></li>
+      <li><a class="trilha__link" href="#etapa-8" data-alvo="etapa-8" aria-label="Etapa 8">8</a></li>
+      <li><a class="trilha__link" href="#etapa-9" data-alvo="etapa-9" aria-label="Etapa 9">9</a></li>
+      <li><a class="trilha__link" href="#calculadora" data-alvo="calculadora" aria-label="Calculadora de materiais">Σ</a></li>
+    </ol>
+  </nav>
+
+  <main class="container">
+    <section class="resumo" aria-label="Resumo rápido">
+      <div class="resumo__item"><strong>9</strong><span>etapas</span></div>
+      <div class="resumo__item"><strong>80 cm</strong><span>de profundidade</span></div>
+      <div class="resumo__item"><strong>1:2:3</strong><span>cimento · areia · brita</span></div>
+      <div class="resumo__item"><strong>48–72 h</strong><span>de cura antes do arame</span></div>
+    </section>
+
+<section class="etapa" id="etapa-1" data-etapa="1">
+  <header class="etapa__cabecalho"><span class="etapa__numero">01</span><h2 class="etapa__titulo">Planejar e marcar</h2><p class="etapa__resumo">Defina o traçado da cerca e a posição exata de cada mourão antes de cavar.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Duas estacas nas pontas com linha esticada e marcas dos mourões a cada 2 a 3 metros">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <rect class="svg-mourao svg-neon-v" x="36" y="62" width="10" height="58"/>
+        <rect class="svg-mourao svg-neon-v" x="354" y="62" width="10" height="58"/>
+        <line class="svg-neon-c svg-tracejado" x1="46" y1="76" x2="354" y2="76"/>
+        <text class="svg-texto" x="200" y="68" text-anchor="middle">linha esticada</text>
+        <line class="svg-neon-m" x1="120" y1="92" x2="120" y2="116"/>
+        <line class="svg-neon-m" x1="200" y1="92" x2="200" y2="116"/>
+        <line class="svg-neon-m" x1="280" y1="92" x2="280" y2="116"/>
+        <circle class="svg-fill-m" cx="120" cy="100" r="4"/>
+        <circle class="svg-fill-m" cx="200" cy="100" r="4"/>
+        <circle class="svg-fill-m" cx="280" cy="100" r="4"/>
+        <line class="svg-cota" x1="120" y1="140" x2="200" y2="140" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="160" y="158" text-anchor="middle">2 a 3 m</text>
+        <text class="svg-texto" x="120" y="180" text-anchor="middle">mourão</text>
+        <text class="svg-texto" x="41" y="140" text-anchor="middle">estaca</text>
+        <text class="svg-texto" x="359" y="140" text-anchor="middle">estaca</text>
+      </svg>
+      <figcaption>Traçado marcado com linha esticada e pontos dos mourões</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Trena <small>20 a 30 m</small></span></label></li>
+          <li><label><input type="checkbox"><span>Linha de nylon ou barbante <small>comprimento do trecho + folga</small></span></label></li>
+          <li><label><input type="checkbox"><span>Estacas de madeira <small>mínimo de 2</small></span></label></li>
+          <li><label><input type="checkbox"><span>Marreta <small>para cravar as estacas</small></span></label></li>
+          <li><label><input type="checkbox"><span>Cal ou spray de marcação <small>duas cores, se possível</small></span></label></li>
+          <li><label><input type="checkbox"><span>EPI <small>luvas, botas e óculos de proteção</small></span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Verifique se há tubulações, fios ou cabos enterrados na faixa da cerca antes de cavar.</li>
+          <li>Crave uma estaca em cada ponta e estique a linha entre elas, bem rente e nivelada.</li>
+          <li>Marque a posição dos mourões a cada 2 m em terreno mole, ou até 3 m em solo mais firme.</li>
+          <li>Use uma cor diferente para marcar pontas, esquinas e o vão do portão.</li>
+          <li>Confira o alinhamento e o esquadro das esquinas com a trena antes de seguir.</li>
+        </ol></div>
+      <p class="alerta">Em terreno úmido e mole, prefira vãos de 2 m: quanto mais próximos os mourões, mais firme fica a cerca.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-2" data-etapa="2">
+  <header class="etapa__cabecalho"><span class="etapa__numero">02</span><h2 class="etapa__titulo">Cavar os buracos</h2><p class="etapa__resumo">Abra buracos fundos, com a base alargada em forma de sino, em cada ponto marcado.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Corte lateral de um buraco em sino com 80 centímetros de profundidade e 45 centímetros de boca, ao lado de uma cavadeira">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <path class="svg-buraco svg-neon-c" d="M160 100 L160 150 L135 175 L135 205 L265 205 L265 175 L240 150 L240 100"/>
+        <line class="svg-cota" x1="160" y1="82" x2="240" y2="82" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="200" y="74" text-anchor="middle">45 cm</text>
+        <line class="svg-cota" x1="300" y1="100" x2="300" y2="205" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="310" y="158" text-anchor="start">80 cm</text>
+        <text class="svg-texto" x="200" y="228" text-anchor="middle">base alargada (sino)</text>
+        <line class="svg-neon-m svg-tracejado" x1="135" y1="215" x2="265" y2="215"/>
+        <line class="svg-neon-v" x1="60" y1="20" x2="60" y2="112"/>
+        <line class="svg-neon-v" x1="48" y1="20" x2="72" y2="20"/>
+        <path class="svg-neon-v svg-fill-c" d="M50 112 L70 112 L60 138 Z"/>
+        <text class="svg-texto" x="60" y="160" text-anchor="middle">cavadeira</text>
+      </svg>
+      <figcaption>Buraco em sino: boca estreita, base larga e fundo</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Cavadeira articulada <small>a principal ferramenta</small></span></label></li>
+          <li><label><input type="checkbox"><span>Pá e enxada <small>para soltar e retirar a terra</small></span></label></li>
+          <li><label><input type="checkbox"><span>Trena <small>conferir largura e profundidade</small></span></label></li>
+          <li><label><input type="checkbox"><span>Tubo de PVC ou forma <small>se o solo desmoronar</small></span></label></li>
+          <li><label><input type="checkbox"><span>Balde <small>retirar água e lama</small></span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Mourões de linha: buraco de 45 cm de largura por 80 cm de fundo.</li>
+          <li>Pontas e esquinas: 60 a 80 cm de largura por 1 m de fundo.</li>
+          <li>Vão do portão: buracos de até 1 m de largura, para suportar o peso e o movimento.</li>
+          <li>Alargue a base do buraco em formato de sino, para o mourão não ser arrancado.</li>
+          <li>Retire a água acumulada com o balde conforme for cavando.</li>
+          <li>Se as paredes caírem, assente o tubo de PVC ou a forma dentro do buraco.</li>
+        </ol></div>
+      <p class="alerta">Em terreno mole, a profundidade importa mais que a largura: cave fundo até achar solo firme.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-3" data-etapa="3">
+  <header class="etapa__cabecalho"><span class="etapa__numero">03</span><h2 class="etapa__titulo">Compactar e drenar</h2><p class="etapa__resumo">Firme o fundo e coloque brita para a água sair de baixo do mourão.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Buraco com camada de 20 centímetros de brita no fundo, pilão descendo para compactar e gotas de água">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <path class="svg-buraco svg-neon-c" d="M160 100 L160 150 L135 175 L135 205 L265 205 L265 175 L240 150 L240 100"/>
+        <rect class="svg-neon-v" x="135" y="185" width="130" height="20"/>
+        <circle class="svg-brita" cx="145" cy="195" r="4"/>
+        <circle class="svg-brita" cx="160" cy="191" r="4"/>
+        <circle class="svg-brita" cx="175" cy="197" r="4"/>
+        <circle class="svg-brita" cx="192" cy="192" r="4"/>
+        <circle class="svg-brita" cx="208" cy="198" r="4"/>
+        <circle class="svg-brita" cx="224" cy="192" r="4"/>
+        <circle class="svg-brita" cx="240" cy="197" r="4"/>
+        <circle class="svg-brita" cx="255" cy="193" r="4"/>
+        <rect class="svg-mourao" x="190" y="30" width="20" height="90"/>
+        <line class="svg-cota" x1="200" y1="124" x2="200" y2="176" marker-end="url(#seta-fim)"/>
+        <line class="svg-cota" x1="115" y1="185" x2="115" y2="205" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="108" y="198" text-anchor="end">20 cm</text>
+        <path class="svg-gota" d="M165 120 Q171 130 165 134 Q159 130 165 120 Z"/>
+        <path class="svg-gota" d="M232 140 Q238 150 232 154 Q226 150 232 140 Z"/>
+        <text class="svg-texto" x="320" y="128" text-anchor="start">retire a água</text>
+        <text class="svg-texto" x="320" y="196" text-anchor="start">brita</text>
+        <text class="svg-texto" x="230" y="52" text-anchor="start">pilão</text>
+      </svg>
+      <figcaption>Fundo socado, 20 cm de brita e retirada da água</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Pilão ou madeira pesada <small>para socar o fundo</small></span></label></li>
+          <li><label><input type="checkbox"><span>Brita 1 <small>~0,03 m³ por buraco de linha; ~0,08 m³ por ponta</small></span></label></li>
+          <li><label><input type="checkbox"><span>Pedras maiores <small>para firmar fundo lamacento</small></span></label></li>
+          <li><label><input type="checkbox"><span>Balde <small>retirar a água que voltar a juntar</small></span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Soque bem o fundo do buraco com o pilão.</li>
+          <li>Se o fundo for lama, jogue pedras e soque até firmar.</li>
+          <li>Lance 20 cm de brita e compacte com o pilão.</li>
+          <li>Confira se o fundo está nivelado antes de seguir.</li>
+          <li>Abra uma valeta rasa de drenagem ao lado da cerca (detalhada na etapa 8).</li>
+        </ol></div>
+      <p class="alerta">A brita no fundo deixa a água escoar e evita que o mourão apodreça ou afunde na lama.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-4" data-etapa="4">
+  <header class="etapa__cabecalho"><span class="etapa__numero">04</span><h2 class="etapa__titulo">Posicionar o mourão</h2><p class="etapa__resumo">Assente o mourão sobre a brita, alinhado, no prumo e bem escorado.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Mourão de concreto no centro do buraco sobre a brita, com duas escoras de madeira e fio de prumo ao lado">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <path class="svg-buraco svg-neon-c" d="M160 100 L160 150 L135 175 L135 205 L265 205 L265 175 L240 150 L240 100"/>
+        <rect class="svg-neon-v svg-brita" x="135" y="185" width="130" height="20"/>
+        <rect class="svg-mourao" x="190" y="24" width="20" height="161"/>
+        <line class="svg-neon-m svg-tracejado" x1="200" y1="14" x2="200" y2="185"/>
+        <line class="svg-neon-v" x1="205" y1="64" x2="130" y2="100"/>
+        <line class="svg-neon-v" x1="195" y1="64" x2="270" y2="100"/>
+        <rect class="svg-mourao" x="126" y="100" width="6" height="22"/>
+        <rect class="svg-mourao" x="268" y="100" width="6" height="22"/>
+        <line class="svg-neon-c" x1="340" y1="20" x2="340" y2="86"/>
+        <circle class="svg-fill-c" cx="340" cy="92" r="6"/>
+        <line class="svg-neon-c" x1="330" y1="20" x2="350" y2="20"/>
+        <text class="svg-texto-forte" x="340" y="116" text-anchor="middle">prumo</text>
+        <text class="svg-texto" x="100" y="90" text-anchor="middle">escoras</text>
+        <text class="svg-texto" x="300" y="90" text-anchor="middle">escoras</text>
+        <text class="svg-texto" x="215" y="40" text-anchor="start">mourão</text>
+      </svg>
+      <figcaption>Mourão no centro, escorado e conferido no prumo</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Mourões de concreto <small>altura da cerca + parte enterrada (cerca de 1/3 do total)</small></span></label></li>
+          <li><label><input type="checkbox"><span>Prumo ou nível de bolha <small>para conferir a vertical</small></span></label></li>
+          <li><label><input type="checkbox"><span>Escoras de madeira <small>2 a 3 por mourão</small></span></label></li>
+          <li><label><input type="checkbox"><span>Pregos e estacas de apoio <small>para fixar as escoras no chão</small></span></label></li>
+          <li><label><input type="checkbox"><span>Linha de alinhamento <small>a mesma esticada na etapa 1</small></span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Baixe o mourão com cuidado e centralize-o no buraco, apoiado na brita.</li>
+          <li>Alinhe a face do mourão com a linha esticada.</li>
+          <li>Confira o prumo em duas faces perpendiculares com o prumo ou o nível.</li>
+          <li>Escore firme com as madeiras, pregadas em estacas cravadas no chão.</li>
+          <li>Só siga para a próxima etapa quando o mourão estiver totalmente imóvel.</li>
+        </ol></div>
+      <p class="alerta">Mourão de concreto é pesado: peça ajuda para baixá-lo e mantenha os pés longe da borda do buraco.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-5" data-etapa="5">
+  <header class="etapa__cabecalho"><span class="etapa__numero">05</span><h2 class="etapa__titulo">Concretar</h2><p class="etapa__resumo">Preencha o buraco em camadas com concreto firme, socando bem e conferindo o prumo.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Corte lateral do buraco com o mourão no centro, concreto em camadas, dois vergalhões e uma vara de socar">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <path class="svg-buraco svg-neon-c" d="M160 100 L160 150 L135 175 L135 205 L265 205 L265 175 L240 150 L240 100"/>
+        <rect class="svg-brita" x="136" y="185" width="128" height="19"/>
+        <path class="svg-concreto" d="M160 94 L240 94 L240 150 L265 175 L265 185 L135 185 L135 175 L160 150 Z"/>
+        <path fill="url(#padrao-concreto)" d="M160 94 L240 94 L240 150 L265 175 L265 185 L135 185 L135 175 L160 150 Z"/>
+        <rect class="svg-mourao" x="190" y="30" width="20" height="160"/>
+        <line class="svg-neon-m" x1="176" y1="96" x2="176" y2="180"/>
+        <line class="svg-neon-m" x1="224" y1="96" x2="224" y2="180"/>
+        <line class="svg-neon-v svg-tracejado" x1="200" y1="14" x2="200" y2="30"/>
+        <line class="svg-neon-v" x1="290" y1="40" x2="250" y2="92"/>
+        <line class="svg-cota" x1="292" y1="38" x2="258" y2="82" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="296" y="36">vara de socar</text>
+        <text class="svg-texto-forte" x="14" y="130">traço 1 : 2 : 3</text>
+        <text class="svg-texto" x="14" y="146">cimento : areia : brita</text>
+        <text class="svg-texto" x="95" y="226">brita 20 cm</text>
+        <text class="svg-texto" x="236" y="130">vergalhão 8 mm</text>
+        <line class="svg-cota" x1="285" y1="100" x2="285" y2="205" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="292" y="158">80 cm</text>
+      </svg>
+      <figcaption>Concreto lançado em camadas ao redor do mourão, com vergalhões nas pontas.</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Cimento CP IV <small>~1 saco de 50 kg por mourão de linha; ~3 sacos por ponta/esquina</small></span></label></li>
+          <li><label><input type="checkbox"><span>Areia média limpa</span></label></li>
+          <li><label><input type="checkbox"><span>Brita 1</span></label></li>
+          <li><label><input type="checkbox"><span>Água limpa</span></label></li>
+          <li><label><input type="checkbox"><span>Vergalhão de 8 mm <small>só nas pontas, portão e esquinas</small></span></label></li>
+          <li><label><input type="checkbox"><span>Carrinho de mão ou betoneira</span></label></li>
+          <li><label><input type="checkbox"><span>Enxada para misturar</span></label></li>
+          <li><label><input type="checkbox"><span>Balde</span></label></li>
+          <li><label><input type="checkbox"><span>Vara para socar</span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Prepare o traço: 1 parte de cimento, 2 de areia e 3 de brita, medidas em volume.</li>
+          <li>Adicione água aos poucos até obter uma massa firme, não mole.</li>
+          <li>Retire a água acumulada no buraco antes de lançar o concreto.</li>
+          <li>Lance o concreto em camadas ao redor do mourão.</li>
+          <li>Soque cada camada com a vara para tirar as bolhas de ar.</li>
+          <li>Confira o prumo do mourão durante todo o preenchimento.</li>
+        </ol></div>
+      <p class="alerta">Concreto mole fica fraco: use pouca água e massa firme, principalmente em solo úmido.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-6" data-etapa="6">
+  <header class="etapa__cabecalho"><span class="etapa__numero">06</span><h2 class="etapa__titulo">Acabamento e cura</h2><p class="etapa__resumo">Dê caimento ao topo, mantenha o concreto úmido e espere antes de mexer no poste.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Topo do concreto em declive ao redor do mourão, com a água escorrendo para fora e gotas molhando a cura">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <path class="svg-buraco svg-neon-c" d="M160 100 L160 150 L135 175 L135 205 L265 205 L265 175 L240 150 L240 100"/>
+        <path class="svg-concreto" d="M135 205 L135 175 L160 150 L160 100 L150 100 Q175 80 200 80 Q225 80 250 100 L240 100 L240 150 L265 175 L265 205 Z"/>
+        <path fill="url(#padrao-concreto)" d="M135 205 L135 175 L160 150 L160 100 L150 100 Q175 80 200 80 Q225 80 250 100 L240 100 L240 150 L265 175 L265 205 Z"/>
+        <rect class="svg-mourao" x="190" y="20" width="20" height="130"/>
+        <path class="svg-neon-m" d="M190 80 L174 90 M210 80 L226 90" />
+        <line class="svg-cota" x1="176" y1="86" x2="128" y2="96" marker-end="url(#seta-fim)"/>
+        <line class="svg-cota" x1="224" y1="86" x2="272" y2="96" marker-end="url(#seta-fim)"/>
+        <path class="svg-gota" d="M70 30 q-6 10 0 14 q6 -4 0 -14z"/>
+        <path class="svg-gota" d="M110 50 q-6 10 0 14 q6 -4 0 -14z"/>
+        <path class="svg-gota" d="M290 30 q-6 10 0 14 q6 -4 0 -14z"/>
+        <path class="svg-gota" d="M330 56 q-6 10 0 14 q6 -4 0 -14z"/>
+        <path class="svg-gota" d="M120 112 q-4 7 0 10 q4 -3 0 -10z"/>
+        <path class="svg-gota" d="M280 112 q-4 7 0 10 q4 -3 0 -10z"/>
+        <text class="svg-texto" x="40" y="22">molhar 1–2× ao dia</text>
+        <line class="svg-cota" x1="300" y1="80" x2="300" y2="100" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="308" y="94">5–10 cm</text>
+        <circle class="svg-neon-v" cx="340" cy="160" r="22"/>
+        <path class="svg-neon-v" d="M340 160 L340 146 M340 160 L350 166"/>
+        <text class="svg-texto-forte" x="40" y="170">48–72 h</text>
+        <text class="svg-texto" x="40" y="186">sem mexer no poste</text>
+      </svg>
+      <figcaption>O morrinho afasta a água do poste enquanto o concreto cura úmido.</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Colher de pedreiro ou desempenadeira</span></label></li>
+          <li><label><input type="checkbox"><span>Mangueira com regador ou esguicho</span></label></li>
+          <li><label><input type="checkbox"><span>Lona ou sacos úmidos <small>para cobrir o concreto</small></span></label></li>
+          <li><label><input type="checkbox"><span>Escoras <small>mantidas durante toda a cura</small></span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Deixe o concreto de 5 a 10 cm acima do nível do solo.</li>
+          <li>Dê o caimento para fora, afastando a água do poste.</li>
+          <li>Alise a superfície com a colher de pedreiro.</li>
+          <li>Molhe de leve, 1 a 2 vezes ao dia, e cubra com lona ou sacos úmidos.</li>
+          <li>Não mexa no mourão nem estique arame por 48 a 72 horas.</li>
+          <li>Só retire as escoras depois da cura.</li>
+        </ol></div>
+      <p class="alerta">Água parada junto ao poste apodrece e enferruja: o caimento para fora é o que protege a base.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-7" data-etapa="7">
+  <header class="etapa__cabecalho"><span class="etapa__numero">07</span><h2 class="etapa__titulo">Reforçar pontas e esquinas</h2><p class="etapa__resumo">Pontas, esquinas e portão recebem sapata maior, vergalhão e escora a 45°.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Mourão de ponta em sapata larga com vergalhão e escora a 45 graus apoiada em um pé de concreto, contra a tração do arame">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <path class="svg-buraco svg-neon-c" d="M50 100 L50 220 L170 220 L170 100"/>
+        <path class="svg-concreto" d="M52 100 L52 218 L168 218 L168 100 Z"/>
+        <path fill="url(#padrao-concreto)" d="M52 100 L52 218 L168 218 L168 100 Z"/>
+        <rect class="svg-mourao" x="100" y="20" width="20" height="190"/>
+        <line class="svg-neon-m" x1="76" y1="104" x2="76" y2="208"/>
+        <path class="svg-concreto" d="M190 150 L260 150 L260 200 L190 200 Z"/>
+        <path fill="url(#padrao-concreto)" d="M190 150 L260 150 L260 200 L190 200 Z"/>
+        <line class="svg-mourao svg-neon-v" x1="120" y1="60" x2="215" y2="155"/>
+        <line class="svg-cota" x1="124" y1="30" x2="230" y2="30" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="236" y="34">tração do arame</text>
+        <text class="svg-texto-forte" x="215" y="100">escora 45°</text>
+        <line class="svg-cota" x1="52" y1="230" x2="168" y2="230" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="76" y="124">60–80 cm</text>
+        <line class="svg-cota" x1="30" y1="100" x2="30" y2="218" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="270" y="180">pé de concreto</text>
+      </svg>
+      <figcaption>A escora a 45° divide a força do arame com um pé de concreto.</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Mourão extra para escora <small>ou escora de concreto/madeira tratada</small></span></label></li>
+          <li><label><input type="checkbox"><span>Vergalhão de 8 mm</span></label></li>
+          <li><label><input type="checkbox"><span>Cimento, areia e brita <small>~3 sacos de cimento por ponta</small></span></label></li>
+          <li><label><input type="checkbox"><span>Parafusos e arruelas <small>galvanizados a fogo ou inox</small></span></label></li>
+          <li><label><input type="checkbox"><span>Arame de amarração</span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Cave mais fundo (cerca de 1 m) e mais largo (60 a 80 cm) nas pontas, esquinas e portão.</li>
+          <li>Arme a sapata com vergalhão antes de concretar.</li>
+          <li>Posicione a escora a 45°, voltada contra a direção da tração do arame.</li>
+          <li>Fixe a escora no mourão com parafusos e arruelas galvanizados ou inox.</li>
+          <li>Concrete o pé da escora, socando bem.</li>
+          <li>Faça a cura igual à dos demais mourões.</li>
+        </ol></div>
+      <p class="alerta">Sem escora, as pontas inclinam com a tensão do arame em solo mole.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-8" data-etapa="8">
+  <header class="etapa__cabecalho"><span class="etapa__numero">08</span><h2 class="etapa__titulo">Esticar a cerca e drenar</h2><p class="etapa__resumo">Estique o arame só depois da cura e abra uma valeta para a água escorrer longe dos postes.</p></header>
+  <div class="etapa__corpo">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 400 240" role="img" aria-label="Três mourões com quatro fios de arame esticados entre eles e, à direita, uma valeta rasa de drenagem com água escorrendo">
+        <rect class="svg-solo" x="0" y="100" width="400" height="140"/>
+        <line class="svg-linha" x1="0" y1="100" x2="400" y2="100"/>
+        <rect class="svg-concreto" x="30" y="100" width="20" height="30"/>
+        <rect class="svg-concreto" x="130" y="100" width="20" height="30"/>
+        <rect class="svg-concreto" x="230" y="100" width="20" height="30"/>
+        <rect class="svg-mourao" x="35" y="25" width="10" height="100"/>
+        <rect class="svg-mourao" x="135" y="25" width="10" height="100"/>
+        <rect class="svg-mourao" x="235" y="25" width="10" height="100"/>
+        <line class="svg-neon-c" x1="40" y1="35" x2="240" y2="35"/>
+        <line class="svg-neon-c" x1="40" y1="50" x2="240" y2="50"/>
+        <line class="svg-neon-c" x1="40" y1="65" x2="240" y2="65"/>
+        <line class="svg-neon-c" x1="40" y1="80" x2="240" y2="80"/>
+        <line class="svg-cota" x1="40" y1="14" x2="140" y2="14" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="64" y="10">2 a 3 m</text>
+        <path class="svg-buraco svg-neon-c" d="M285 100 L300 118 L370 118 L385 100"/>
+        <path class="svg-gota" d="M320 90 q-5 9 0 13 q5 -4 0 -13z"/>
+        <line class="svg-cota svg-tracejado" x1="305" y1="112" x2="365" y2="112" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="310" y="140">valeta</text>
+        <text class="svg-texto" x="262" y="170">faixa livre ~30 cm</text>
+      </svg>
+      <figcaption>Arame esticado entre mourões curados e valeta rasa levando a água embora.</figcaption>
+    </figure>
+    <div class="etapa__texto">
+      <div class="painel"><h3 class="painel__titulo">Materiais e ferramentas</h3>
+        <ul class="lista-materiais">
+          <li><label><input type="checkbox"><span>Arame liso ou farpado galvanizado classe 3 <small>ou tela revestida em PVC</small></span></label></li>
+          <li><label><input type="checkbox"><span>Esticador ou catraca</span></label></li>
+          <li><label><input type="checkbox"><span>Alicate</span></label></li>
+          <li><label><input type="checkbox"><span>Grampos ou parafusos <small>galvanizados a fogo ou inox</small></span></label></li>
+          <li><label><input type="checkbox"><span>Tinta anticorrosiva <small>para cortes e soldas</small></span></label></li>
+          <li><label><input type="checkbox"><span>Enxada para a valeta</span></label></li>
+          <li><label><input type="checkbox"><span>Roçadeira <small>para manter 30 cm livres de mato</small></span></label></li>
+        </ul></div>
+      <div class="painel"><h3 class="painel__titulo">Passo a passo</h3>
+        <ol class="lista-passos">
+          <li>Prenda o arame primeiro numa ponta e estique até a outra com o esticador.</li>
+          <li>Fixe o arame em cada mourão com grampos ou parafusos.</li>
+          <li>Mantenha os fios paralelos e na mesma tensão.</li>
+          <li>Pinte cortes e soldas com tinta anticorrosiva.</li>
+          <li>Abra uma valeta rasa ao lado da cerca para a água escorrer.</li>
+          <li>Mantenha uma faixa de cerca de 30 cm livre de vegetação.</li>
+        </ol></div>
+      <p class="alerta">Só estique o arame depois de 72 horas de cura do concreto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="etapa" id="etapa-9" data-etapa="9">
+  <header class="etapa__cabecalho"><span class="etapa__numero">09</span><h2 class="etapa__titulo">Layout final</h2><p class="etapa__resumo">Veja em corte todas as camadas dentro do buraco, do fundo até o topo do concreto.</p></header>
+  <div class="etapa__corpo etapa__corpo--dupla">
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 440 480" role="img" aria-label="Corte do mourão de linha: 20 cm de brita 1 no fundo, 80 cm de concreto ao redor do mourão até o chão e topo do concreto de 5 a 10 cm acima do chão, em declive">
+        <rect class="svg-solo" x="0" y="130" width="440" height="340"/>
+        <line class="svg-linha" x1="0" y1="130" x2="440" y2="130"/>
+        <text class="svg-texto-forte" x="220" y="26" text-anchor="middle">MOURÃO DE LINHA</text>
+        <text class="svg-texto" x="220" y="46" text-anchor="middle">buraco 45 cm × 1 m</text>
+        <text class="svg-texto" x="8" y="122">nível do chão</text>
+        <rect class="svg-brita" x="161.5" y="338" width="117" height="52"/>
+        <circle class="svg-brita" cx="175" cy="350" r="6"/>
+        <circle class="svg-brita" cx="196" cy="358" r="6"/>
+        <circle class="svg-brita" cx="218" cy="348" r="6"/>
+        <circle class="svg-brita" cx="240" cy="360" r="6"/>
+        <circle class="svg-brita" cx="260" cy="350" r="6"/>
+        <circle class="svg-brita" cx="270" cy="372" r="6"/>
+        <circle class="svg-brita" cx="178" cy="376" r="6"/>
+        <circle class="svg-brita" cx="200" cy="380" r="6"/>
+        <circle class="svg-brita" cx="224" cy="374" r="6"/>
+        <circle class="svg-brita" cx="248" cy="381" r="6"/>
+        <rect fill="url(#padrao-concreto)" stroke="#00f0ff" stroke-width="1.5" x="161.5" y="130" width="117" height="208"/>
+        <polygon fill="url(#padrao-concreto)" stroke="#00f0ff" stroke-width="1.5" points="161.5,130 190,112 250,112 278.5,130"/>
+        <rect class="svg-mourao" x="200.5" y="56" width="39" height="282"/>
+        <line class="svg-neon-c" x1="239.5" y1="76" x2="292" y2="76"/>
+        <text class="svg-texto" x="298" y="72">mourão</text>
+        <text class="svg-texto" x="298" y="85">de concreto</text>
+        <line class="svg-cota" x1="130" y1="130" x2="130" y2="390" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="122" y="258" text-anchor="end">1 m</text>
+        <text class="svg-texto" x="122" y="274" text-anchor="end">fundura</text>
+        <line class="svg-cota" x1="300" y1="112" x2="300" y2="130" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="312" y="125">5–10 cm topo</text>
+        <line class="svg-cota" x1="300" y1="130" x2="300" y2="338" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="312" y="228">80 cm</text>
+        <text class="svg-texto" x="312" y="244">concreto</text>
+        <line class="svg-cota" x1="300" y1="338" x2="300" y2="390" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="312" y="361">20 cm</text>
+        <text class="svg-texto" x="312" y="376">brita 1</text>
+        <line class="svg-cota" x1="161.5" y1="414" x2="278.5" y2="414" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="220" y="434" text-anchor="middle">45 cm</text>
+        <text class="svg-texto" x="220" y="458" text-anchor="middle">mourão apoiado sobre a brita</text>
+      </svg>
+      <figcaption>Corte lateral do mourão de linha, com 1 m de fundura</figcaption>
+    </figure>
+    <figure class="painel etapa__desenho">
+      <svg viewBox="0 0 440 480" role="img" aria-label="Corte do mourão de ponta, esquina ou portão: buraco de 70 cm por 1 m, 20 cm de brita 1, 80 cm de concreto com dois vergalhões e topo inclinado de 5 a 10 cm acima do chão">
+        <rect class="svg-solo" x="0" y="130" width="440" height="340"/>
+        <line class="svg-linha" x1="0" y1="130" x2="440" y2="130"/>
+        <text class="svg-texto-forte" x="220" y="26" text-anchor="middle">PONTA · ESQUINA · PORTÃO</text>
+        <text class="svg-texto" x="220" y="46" text-anchor="middle">buraco 70 cm × 1 m</text>
+        <text class="svg-texto" x="8" y="122">nível do chão</text>
+        <rect class="svg-brita" x="129" y="338" width="182" height="52"/>
+        <circle class="svg-brita" cx="144" cy="350" r="6"/>
+        <circle class="svg-brita" cx="166" cy="360" r="6"/>
+        <circle class="svg-brita" cx="190" cy="349" r="6"/>
+        <circle class="svg-brita" cx="214" cy="361" r="6"/>
+        <circle class="svg-brita" cx="238" cy="350" r="6"/>
+        <circle class="svg-brita" cx="262" cy="360" r="6"/>
+        <circle class="svg-brita" cx="286" cy="349" r="6"/>
+        <circle class="svg-brita" cx="300" cy="373" r="6"/>
+        <circle class="svg-brita" cx="148" cy="377" r="6"/>
+        <circle class="svg-brita" cx="174" cy="381" r="6"/>
+        <circle class="svg-brita" cx="200" cy="375" r="6"/>
+        <circle class="svg-brita" cx="228" cy="382" r="6"/>
+        <circle class="svg-brita" cx="254" cy="376" r="6"/>
+        <circle class="svg-brita" cx="278" cy="382" r="6"/>
+        <rect fill="url(#padrao-concreto)" stroke="#00f0ff" stroke-width="1.5" x="129" y="130" width="182" height="208"/>
+        <polygon fill="url(#padrao-concreto)" stroke="#00f0ff" stroke-width="1.5" points="129,130 168,110 272,110 311,130"/>
+        <line class="svg-neon-m" x1="147" y1="140" x2="147" y2="328" stroke-width="3"/>
+        <line class="svg-neon-m" x1="293" y1="140" x2="293" y2="328" stroke-width="3"/>
+        <rect class="svg-mourao" x="200.5" y="56" width="39" height="282"/>
+        <line class="svg-neon-c" x1="239.5" y1="76" x2="292" y2="76"/>
+        <text class="svg-texto" x="298" y="72">mourão</text>
+        <text class="svg-texto" x="298" y="85">de concreto</text>
+        <line class="svg-neon-m" x1="62" y1="230" x2="145" y2="230"/>
+        <text class="svg-texto" x="8" y="226">vergalhão</text>
+        <text class="svg-texto" x="8" y="240">8 mm</text>
+        <line class="svg-cota" x1="104" y1="130" x2="104" y2="390" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="96" y="290" text-anchor="end">1 m</text>
+        <text class="svg-texto" x="96" y="306" text-anchor="end">fundura</text>
+        <line class="svg-cota" x1="332" y1="110" x2="332" y2="130" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto" x="344" y="124">5–10 cm topo</text>
+        <line class="svg-cota" x1="332" y1="130" x2="332" y2="338" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="344" y="228">80 cm</text>
+        <text class="svg-texto" x="344" y="244">concreto</text>
+        <line class="svg-cota" x1="332" y1="338" x2="332" y2="390" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="344" y="361">20 cm</text>
+        <text class="svg-texto" x="344" y="376">brita 1</text>
+        <line class="svg-cota" x1="129" y1="414" x2="311" y2="414" marker-start="url(#seta-inicio)" marker-end="url(#seta-fim)"/>
+        <text class="svg-texto-forte" x="220" y="434" text-anchor="middle">70 cm</text>
+        <text class="svg-texto" x="220" y="458" text-anchor="middle">+ escora a 45° (etapa 7)</text>
+      </svg>
+      <figcaption>Corte lateral do mourão reforçado, com vergalhão e 1 m de fundura</figcaption>
+    </figure>
+  </div>
+  <div class="etapa__rodape">
+    <div class="painel">
+      <h3 class="painel__titulo">Camadas, de baixo para cima</h3>
+      <div class="tabela-rolagem">
+        <table class="tabela-camadas">
+          <thead><tr><th>Camada</th><th>Altura</th><th>Material</th></tr></thead>
+          <tbody>
+            <tr><td>1. Fundo</td><td class="tabela-camadas__destaque">20 cm</td><td>Brita 1 pura e compactada, sem cimento: drena a água e firma a base.</td></tr>
+            <tr><td>2. Concreto</td><td class="tabela-camadas__destaque">80 cm</td><td>Cimento, areia, brita 1 e água no traço 1 : 2 : 3, ao redor do mourão, até o nível do chão.</td></tr>
+            <tr><td>3. Topo</td><td class="tabela-camadas__destaque">5 a 10 cm</td><td>Concreto acima do chão e inclinado para fora, para a água escorrer.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="painel"><h3 class="painel__titulo">Conferência final</h3>
+      <ul class="lista-materiais">
+        <li><label><input type="checkbox"><span>Fundo com 20 cm de brita 1 compactada</span></label></li>
+        <li><label><input type="checkbox"><span>Mourão apoiado na brita, no prumo e bem escorado</span></label></li>
+        <li><label><input type="checkbox"><span>Concreto 1 : 2 : 3 até o nível do chão <small>~1 a 1,2 saco por mourão de linha; ~3 sacos por ponta</small></span></label></li>
+        <li><label><input type="checkbox"><span>Topo 5 a 10 cm acima do chão, em declive</span></label></li>
+        <li><label><input type="checkbox"><span>Vergalhão e escora a 45° nas pontas, esquinas e portão</span></label></li>
+        <li><label><input type="checkbox"><span>Cura de 48 a 72 horas antes de esticar o arame</span></label></li>
+      </ul>
+    </div>
+    <p class="alerta">O mourão precisa ter 1 m enterrado mais a altura da cerca: para uma cerca de 1,8 m, use peça de pelo menos 2,8 m.</p>
+  </div>
+</section>
+
+    <section class="etapa" id="calculadora" data-etapa="calculadora">
+      <header class="etapa__cabecalho">
+        <span class="etapa__numero">Σ</span>
+        <h2 class="etapa__titulo">Calculadora de materiais</h2>
+        <p class="etapa__resumo">Estimativa de cimento, areia e brita pelo número de mourões.</p>
+      </header>
+      <div class="painel calc">
+        <div class="calc__campos">
+          <label class="calc__campo">Mourões de linha (45 cm × 80 cm)
+            <input id="calc-linha" type="number" min="0" step="1" value="20" inputmode="numeric">
+          </label>
+          <label class="calc__campo">Pontas, esquinas e portão (70 cm × 1 m)
+            <input id="calc-pontas" type="number" min="0" step="1" value="4" inputmode="numeric">
+          </label>
+        </div>
+        <div class="calc__resultados">
+          <div class="calc__resultado"><span class="calc__valor" id="res-mouroes">—</span><span class="calc__rotulo">mourões no total</span></div>
+          <div class="calc__resultado"><span class="calc__valor" id="res-cimento">—</span><span class="calc__rotulo">cimento CP IV</span></div>
+          <div class="calc__resultado"><span class="calc__valor" id="res-areia">—</span><span class="calc__rotulo">areia média</span></div>
+          <div class="calc__resultado"><span class="calc__valor" id="res-brita">—</span><span class="calc__rotulo">brita 1 (concreto + fundo)</span></div>
+        </div>
+        <p class="calc__nota">Valores estimados, com 10% de margem de segurança. O consumo real varia com o
+          terreno e com a bitola do mourão. Compre um pouco a mais e confira ao cavar.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container">
+      <p>Segurança: use luvas, botas e óculos. Antes de cavar, confirme que não há tubulação de água,
+        esgoto ou fiação enterrada no traçado. Em caso de dúvida, procure um profissional.</p>
+    </div>
+  </footer>
+
+  <script>
+(function () {
+  'use strict';
+
+  const SACOS_POR_MOURAO_LINHA = 0.8;
+  const SACOS_POR_MOURAO_PONTA = 2.8;
+  const AREIA_M3_POR_SACO = 0.072;
+  const BRITA_M3_POR_SACO = 0.108;
+  const BRITA_FUNDO_M3_LINHA = 0.03;
+  const BRITA_FUNDO_M3_PONTA = 0.08;
+  const MARGEM_SEGURANCA = 1.1;
+  const LIMITE_VISIBILIDADE = 0.35;
+  const CLASSE_LINK_ATIVO = 'trilha__link--ativo';
+  const CLASSE_ETAPA_VISIVEL = 'etapa--visivel';
+  const LOCALE = 'pt-BR';
+  const CASAS_DECIMAIS = 2;
+  const CONSULTA_MOVIMENTO_REDUZIDO = '(prefers-reduced-motion: reduce)';
+
+  /**
+   * Converte um valor digitado em número não negativo.
+   * @param {string} valor - Texto do campo.
+   * @returns {number} Número válido ou 0.
+   */
+  function lerQuantidade(valor) {
+    const numero = Number.parseFloat(valor);
+    if (!Number.isFinite(numero) || numero < 0) return 0;
+    return numero;
+  }
+
+  /**
+   * Calcula os materiais necessários para a cerca.
+   * @param {{quantidadeLinha: number, quantidadePontas: number}} entrada - Quantidades.
+   * @returns {{mouroes: number, sacos: number, areia: number, brita: number}}
+   * Totais com margem de segurança (brita 1 soma o concreto e o fundo do buraco).
+   */
+  function calcularMateriais({ quantidadeLinha, quantidadePontas }) {
+    const sacosBase =
+      quantidadeLinha * SACOS_POR_MOURAO_LINHA + quantidadePontas * SACOS_POR_MOURAO_PONTA;
+    const sacos = Math.ceil(sacosBase * MARGEM_SEGURANCA);
+    const britaFundoBase =
+      quantidadeLinha * BRITA_FUNDO_M3_LINHA + quantidadePontas * BRITA_FUNDO_M3_PONTA;
+    const britaBase = sacosBase * BRITA_M3_POR_SACO + britaFundoBase;
+
+    return {
+      mouroes: quantidadeLinha + quantidadePontas,
+      sacos,
+      areia: sacosBase * AREIA_M3_POR_SACO * MARGEM_SEGURANCA,
+      brita: britaBase * MARGEM_SEGURANCA,
+    };
+  }
+
+  /**
+   * Formata um volume em metros cúbicos no padrão brasileiro.
+   * @param {number} valor - Volume.
+   * @returns {string} Texto como "1,23 m³".
+   */
+  function formatarVolume(valor) {
+    const texto = valor.toLocaleString(LOCALE, {
+      minimumFractionDigits: CASAS_DECIMAIS,
+      maximumFractionDigits: CASAS_DECIMAIS,
+    });
+    return texto + ' m³';
+  }
+
+  /**
+   * Escreve o texto em um elemento, se ele existir.
+   * @param {string} id - Id do elemento.
+   * @param {string} texto - Texto a exibir.
+   * @returns {void}
+   */
+  function escreverTexto(id, texto) {
+    const elemento = document.getElementById(id);
+    if (!elemento) return;
+    elemento.textContent = texto;
+  }
+
+  /**
+   * Mostra os resultados da calculadora na tela.
+   * @param {{mouroes: number, sacos: number, areia: number, brita: number}} resultado
+   * - Totais calculados.
+   * @returns {void}
+   */
+  function exibirResultados(resultado) {
+    escreverTexto('res-mouroes', String(resultado.mouroes));
+    escreverTexto('res-cimento', resultado.sacos + ' sacos de 50 kg');
+    escreverTexto('res-areia', formatarVolume(resultado.areia));
+    escreverTexto('res-brita', formatarVolume(resultado.brita));
+  }
+
+  /**
+   * Lê os campos da calculadora e atualiza os resultados.
+   * @returns {void}
+   */
+  function recalcular() {
+    const campoLinha = document.getElementById('calc-linha');
+    const campoPontas = document.getElementById('calc-pontas');
+    if (!campoLinha || !campoPontas) return;
+
+    const resultado = calcularMateriais({
+      quantidadeLinha: lerQuantidade(campoLinha.value),
+      quantidadePontas: lerQuantidade(campoPontas.value),
+    });
+    exibirResultados(resultado);
+  }
+
+  /**
+   * Liga os eventos da calculadora e faz o primeiro cálculo.
+   * @returns {void}
+   */
+  function iniciarCalculadora() {
+    const campos = document.querySelectorAll('#calc-linha, #calc-pontas');
+    campos.forEach((campo) => campo.addEventListener('input', recalcular));
+    recalcular();
+  }
+
+  /**
+   * Marca como ativo o link da trilha que aponta para a etapa.
+   * @param {string} idEtapa - Id da seção visível.
+   * @returns {void}
+   */
+  function ativarLinkDaTrilha(idEtapa) {
+    const links = document.querySelectorAll('.trilha__link');
+    links.forEach((link) => {
+      const alvo = link.dataset.alvo || (link.getAttribute('href') || '').replace('#', '');
+      link.classList.toggle(CLASSE_LINK_ATIVO, alvo === idEtapa);
+    });
+  }
+
+  /**
+   * Trata as entradas do observador de etapas.
+   * @param {IntersectionObserverEntry[]} entradas - Entradas observadas.
+   * @param {IntersectionObserver} observador - Observador em uso.
+   * @returns {void}
+   */
+  function tratarEntradas(entradas, observador) {
+    entradas.forEach((entrada) => {
+      if (!entrada.isIntersecting) return;
+      entrada.target.classList.add(CLASSE_ETAPA_VISIVEL);
+      ativarLinkDaTrilha(entrada.target.id);
+      observador.unobserve(entrada.target);
+    });
+  }
+
+  /**
+   * Destaca a trilha e revela as etapas conforme a rolagem.
+   * @returns {void}
+   */
+  function iniciarObservadorEtapas() {
+    const etapas = document.querySelectorAll('.etapa');
+    if (!etapas.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      etapas.forEach((etapa) => etapa.classList.add(CLASSE_ETAPA_VISIVEL));
+      return;
+    }
+
+    const revelador = new IntersectionObserver(tratarEntradas, {
+      threshold: LIMITE_VISIBILIDADE,
+    });
+    const destacador = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) ativarLinkDaTrilha(entrada.target.id);
+        });
+      },
+      { threshold: LIMITE_VISIBILIDADE }
+    );
+    etapas.forEach((etapa) => {
+      revelador.observe(etapa);
+      destacador.observe(etapa);
+    });
+  }
+
+  /**
+   * Atualiza a barra de progresso conforme a rolagem da página.
+   * @returns {void}
+   */
+  function atualizarProgresso() {
+    const barra = document.getElementById('barra-progresso');
+    if (!barra) return;
+
+    const raiz = document.documentElement;
+    const total = raiz.scrollHeight - window.innerHeight;
+    const progresso = total > 0 ? Math.min(Math.max(window.scrollY / total, 0), 1) : 0;
+    barra.style.setProperty('--progresso', String(progresso));
+  }
+
+  /**
+   * Liga a barra de progresso ao evento de rolagem.
+   * @returns {void}
+   */
+  function iniciarBarraProgresso() {
+    if (!document.getElementById('barra-progresso')) return;
+
+    let agendado = false;
+    window.addEventListener(
+      'scroll',
+      () => {
+        if (agendado) return;
+        agendado = true;
+        window.requestAnimationFrame(() => {
+          atualizarProgresso();
+          agendado = false;
+        });
+      },
+      { passive: true }
+    );
+    atualizarProgresso();
+  }
+
+  /**
+   * Faz a rolagem até a seção do link, suave se o usuário permitir.
+   * @param {MouseEvent} evento - Clique no link.
+   * @returns {void}
+   */
+  function rolarParaAlvo(evento) {
+    const href = evento.currentTarget.getAttribute('href') || '';
+    if (!href.startsWith('#')) return;
+
+    const alvo = document.getElementById(href.slice(1));
+    if (!alvo) return;
+
+    evento.preventDefault();
+    const reduzir = window.matchMedia(CONSULTA_MOVIMENTO_REDUZIDO).matches;
+    alvo.scrollIntoView({ behavior: reduzir ? 'auto' : 'smooth', block: 'start' });
+  }
+
+  /**
+   * Liga a rolagem suave aos links da trilha.
+   * @returns {void}
+   */
+  function iniciarRolagemSuave() {
+    const links = document.querySelectorAll('.trilha__link');
+    links.forEach((link) => link.addEventListener('click', rolarParaAlvo));
+  }
+
+  /**
+   * Inicializa todas as funcionalidades da página.
+   * @returns {void}
+   */
+  function inicializar() {
+    iniciarCalculadora();
+    iniciarObservadorEtapas();
+    iniciarBarraProgresso();
+    iniciarRolagemSuave();
+  }
+
+  inicializar();
+})();
+  </script>
+</body>
+</html>

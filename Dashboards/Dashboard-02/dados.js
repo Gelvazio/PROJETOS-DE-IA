@@ -1,0 +1,178 @@
+/** CSV embutido (mesmo conteúdo de dados-exemplo.csv) para funcionar via file://. */
+const CSV_EMBUTIDO = `data,categoria,valor,descricao
+2026-05-01,receita,6581.60,Vendas - Armário arquivo
+2026-05-02,receita,7140.69,Vendas - Kit escritório
+2026-05-03,receita,4617.49,Serviços - Consultoria Hotel Aurora
+2026-05-05,despesa,4500.00,Aluguel - Sala comercial
+2026-05-05,despesa,23500.00,Folha de pagamento - Salários e encargos
+2026-05-06,despesa,8000.00,Fornecedores - Compra de mercadorias lote 1
+2026-05-09,receita,7289.83,Vendas - Armário arquivo
+2026-05-09,receita,4700.19,Vendas - Cadeira ergonômica
+2026-05-10,despesa,785.24,Energia - Conta de luz
+2026-05-10,despesa,320.00,Internet - Plano empresarial
+2026-05-12,receita,5486.16,Serviços - Consultoria Escritório Lima
+2026-05-12,despesa,1500.00,Marketing - Anúncios online
+2026-05-12,despesa,7200.00,Fornecedores - Compra de mercadorias lote 2
+2026-05-14,despesa,900.00,Marketing - Redes sociais
+2026-05-15,receita,5565.65,Vendas - Notebook corporativo
+2026-05-15,despesa,1200.00,Contabilidade - Honorários
+2026-05-16,receita,7574.42,Vendas - Pacote de papelaria
+2026-05-18,despesa,6400.00,Fornecedores - Compra de mercadorias lote 3
+2026-05-18,despesa,1300.00,Manutenção - Reparos e equipamentos
+2026-05-19,receita,6478.14,Vendas - Armário arquivo
+2026-05-20,despesa,5841.11,Impostos - Simples Nacional
+2026-05-21,receita,5220.14,Vendas - Pacote de papelaria
+2026-05-21,receita,5021.71,Serviços - Consultoria Escola Horizonte
+2026-05-23,receita,5828.21,Vendas - Cadeira ergonômica
+2026-05-24,receita,6855.54,Vendas - Kit escritório
+2026-05-24,despesa,5000.00,Fornecedores - Compra de mercadorias lote 4
+2026-05-25,despesa,640.00,Software - Assinaturas
+2026-06-03,receita,7694.33,Vendas - Monitor 24 pol
+2026-06-03,receita,6939.37,Serviços - Consultoria Clínica Vida
+2026-06-04,receita,5086.98,Vendas - Kit escritório
+2026-06-05,despesa,4500.00,Aluguel - Sala comercial
+2026-06-05,despesa,23650.00,Folha de pagamento - Salários e encargos
+2026-06-06,receita,5909.98,Vendas - Mesa de reunião
+2026-06-06,despesa,8200.00,Fornecedores - Compra de mercadorias lote 1
+2026-06-10,despesa,796.88,Energia - Conta de luz
+2026-06-10,despesa,320.00,Internet - Plano empresarial
+2026-06-11,receita,6848.18,Vendas - Pacote de papelaria
+2026-06-12,receita,6288.77,Serviços - Consultoria Clínica Vida
+2026-06-12,despesa,1550.00,Marketing - Anúncios online
+2026-06-12,despesa,7400.00,Fornecedores - Compra de mercadorias lote 2
+2026-06-14,despesa,950.00,Marketing - Redes sociais
+2026-06-15,despesa,1200.00,Contabilidade - Honorários
+2026-06-17,receita,7394.47,Vendas - Cadeira ergonômica
+2026-06-18,despesa,6600.00,Fornecedores - Compra de mercadorias lote 3
+2026-06-18,despesa,1400.00,Manutenção - Reparos e equipamentos
+2026-06-19,receita,5555.17,Vendas - Mesa de reunião
+2026-06-20,despesa,6596.51,Impostos - Simples Nacional
+2026-06-21,receita,8967.24,Vendas - Kit escritório
+2026-06-21,receita,5757.90,Serviços - Consultoria Escritório Lima
+2026-06-22,receita,8638.88,Vendas - Pacote de papelaria
+2026-06-24,despesa,5200.00,Fornecedores - Compra de mercadorias lote 4
+2026-06-25,despesa,640.00,Software - Assinaturas
+2026-06-27,receita,4928.52,Vendas - Monitor 24 pol
+2026-06-28,receita,6607.90,Vendas - Notebook corporativo
+2026-07-03,receita,5169.55,Serviços - Consultoria Escola Horizonte
+2026-07-05,despesa,4500.00,Aluguel - Sala comercial
+2026-07-05,despesa,23800.00,Folha de pagamento - Salários e encargos
+2026-07-06,receita,8347.15,Vendas - Monitor 24 pol
+2026-07-06,despesa,8500.00,Fornecedores - Compra de mercadorias lote 1
+2026-07-10,receita,8447.07,Vendas - Mesa de reunião
+2026-07-10,despesa,868.05,Energia - Conta de luz
+2026-07-10,despesa,320.00,Internet - Plano empresarial
+2026-07-12,receita,4990.31,Serviços - Consultoria Mercado Bom Preço
+2026-07-12,despesa,1500.00,Marketing - Anúncios online
+2026-07-12,despesa,7600.00,Fornecedores - Compra de mercadorias lote 2
+2026-07-14,receita,9015.63,Vendas - Monitor 24 pol
+2026-07-14,despesa,950.00,Marketing - Redes sociais
+2026-07-15,despesa,1200.00,Contabilidade - Honorários
+2026-07-17,receita,9380.60,Vendas - Linha de periféricos
+2026-07-17,receita,6279.65,Vendas - Kit escritório
+2026-07-18,receita,6484.81,Vendas - Pacote de papelaria
+2026-07-18,despesa,6800.00,Fornecedores - Compra de mercadorias lote 3
+2026-07-18,despesa,1350.00,Manutenção - Reparos e equipamentos
+2026-07-20,despesa,6509.50,Impostos - Simples Nacional
+2026-07-21,receita,6366.53,Vendas - Armário arquivo
+2026-07-21,receita,5507.79,Serviços - Consultoria Clínica Vida
+2026-07-24,despesa,5400.00,Fornecedores - Compra de mercadorias lote 4
+2026-07-25,receita,5449.90,Vendas - Notebook corporativo
+2026-07-25,despesa,640.00,Software - Assinaturas
+2026-07-28,receita,5268.21,Vendas - Linha de periféricos
+2026-07-30,receita,9250.99,Vendas - Linha de periféricos
+2026-08-01,receita,8741.73,Vendas - Monitor 24 pol
+2026-08-01,receita,6081.61,Vendas - Notebook corporativo
+2026-08-02,receita,8577.59,Vendas - Monitor 24 pol
+2026-08-03,receita,5854.49,Serviços - Consultoria Escola Horizonte
+2026-08-04,receita,9392.07,Vendas - Mesa de reunião
+2026-08-05,despesa,4500.00,Aluguel - Sala comercial
+2026-08-05,despesa,23950.00,Folha de pagamento - Salários e encargos
+2026-08-06,receita,7832.97,Vendas - Mesa de reunião
+2026-08-06,despesa,8700.00,Fornecedores - Compra de mercadorias lote 1
+2026-08-09,receita,6362.75,Vendas - Mesa de reunião
+2026-08-10,receita,9025.00,Vendas - Linha de periféricos
+2026-08-10,despesa,905.39,Energia - Conta de luz
+2026-08-10,despesa,320.00,Internet - Plano empresarial
+2026-08-12,receita,5927.72,Serviços - Consultoria Escritório Lima
+2026-08-12,despesa,1600.00,Marketing - Anúncios online
+2026-08-12,despesa,7800.00,Fornecedores - Compra de mercadorias lote 2
+2026-08-14,despesa,1000.00,Marketing - Redes sociais
+2026-08-15,despesa,1200.00,Contabilidade - Honorários
+2026-08-18,receita,10035.11,Vendas - Cadeira ergonômica
+2026-08-18,despesa,7000.00,Fornecedores - Compra de mercadorias lote 3
+2026-08-18,despesa,1450.00,Manutenção - Reparos e equipamentos
+2026-08-19,receita,7463.60,Vendas - Cadeira ergonômica
+2026-08-20,despesa,6061.85,Impostos - Simples Nacional
+2026-08-21,receita,5866.41,Serviços - Consultoria Escola Horizonte
+2026-08-24,despesa,5500.00,Fornecedores - Compra de mercadorias lote 4
+2026-08-25,despesa,640.00,Software - Assinaturas
+2026-08-27,receita,9621.05,Vendas - Cadeira ergonômica
+2026-09-02,receita,8072.06,Vendas - Cadeira ergonômica
+2026-09-03,receita,5186.78,Serviços - Consultoria Mercado Bom Preço
+2026-09-05,receita,9595.06,Vendas - Pacote de papelaria
+2026-09-05,despesa,4500.00,Aluguel - Sala comercial
+2026-09-05,despesa,24100.00,Folha de pagamento - Salários e encargos
+2026-09-06,despesa,9000.00,Fornecedores - Compra de mercadorias lote 1
+2026-09-07,receita,5928.85,Vendas - Monitor 24 pol
+2026-09-09,receita,6722.97,Vendas - Monitor 24 pol
+2026-09-10,receita,5695.79,Vendas - Mesa de reunião
+2026-09-10,despesa,917.83,Energia - Conta de luz
+2026-09-10,despesa,320.00,Internet - Plano empresarial
+2026-09-12,receita,7268.92,Serviços - Consultoria Clínica Vida
+2026-09-12,despesa,1700.00,Marketing - Anúncios online
+2026-09-12,despesa,8000.00,Fornecedores - Compra de mercadorias lote 2
+2026-09-14,receita,7034.63,Vendas - Monitor 24 pol
+2026-09-14,despesa,1100.00,Marketing - Redes sociais
+2026-09-15,receita,8247.07,Vendas - Pacote de papelaria
+2026-09-15,despesa,1200.00,Contabilidade - Honorários
+2026-09-18,receita,6275.89,Vendas - Mesa de reunião
+2026-09-18,despesa,7200.00,Fornecedores - Compra de mercadorias lote 3
+2026-09-18,despesa,1500.00,Manutenção - Reparos e equipamentos
+2026-09-20,despesa,6193.60,Impostos - Simples Nacional
+2026-09-21,receita,5952.38,Serviços - Consultoria Mercado Bom Preço
+2026-09-24,despesa,5600.00,Fornecedores - Compra de mercadorias lote 4
+2026-09-25,receita,9736.16,Vendas - Linha de periféricos
+2026-09-25,despesa,640.00,Software - Assinaturas
+2026-09-27,receita,9301.42,Vendas - Linha de periféricos
+2026-10-02,receita,5661.37,Vendas - Cadeira ergonômica
+2026-10-03,receita,8842.11,Vendas - Monitor 24 pol
+2026-10-03,receita,8104.61,Serviços - Consultoria Hotel Aurora
+2026-10-05,receita,7291.63,Vendas - Kit escritório
+2026-10-05,despesa,4500.00,Aluguel - Sala comercial
+2026-10-05,despesa,24250.00,Folha de pagamento - Salários e encargos
+2026-10-06,despesa,9200.00,Fornecedores - Compra de mercadorias lote 1
+2026-10-10,despesa,799.48,Energia - Conta de luz
+2026-10-10,despesa,320.00,Internet - Plano empresarial
+2026-10-11,receita,7737.99,Vendas - Notebook corporativo
+2026-10-12,receita,6488.62,Serviços - Consultoria Escritório Lima
+2026-10-12,despesa,2100.00,Marketing - Anúncios online
+2026-10-12,despesa,8300.00,Fornecedores - Compra de mercadorias lote 2
+2026-10-14,despesa,1400.00,Marketing - Redes sociais
+2026-10-15,receita,9001.61,Vendas - Armário arquivo
+2026-10-15,despesa,1200.00,Contabilidade - Honorários
+2026-10-18,despesa,7500.00,Fornecedores - Compra de mercadorias lote 3
+2026-10-18,despesa,1900.00,Manutenção - Reparos e equipamentos
+2026-10-19,receita,7091.32,Vendas - Armário arquivo
+2026-10-20,receita,7200.87,Vendas - Notebook corporativo
+2026-10-20,despesa,5838.14,Impostos - Simples Nacional
+2026-10-21,receita,5429.00,Serviços - Consultoria Clínica Vida
+2026-10-22,despesa,1850.00,Impostos - ISS outubro [a pagar]
+2026-10-24,despesa,5800.00,Fornecedores - Compra de mercadorias lote 4
+2026-10-25,receita,9917.56,Vendas - Monitor 24 pol
+2026-10-25,receita,9971.30,Vendas - Pacote de papelaria
+2026-10-25,despesa,640.00,Software - Assinaturas
+2026-10-28,despesa,4200.00,Fornecedores - NF 8841 Distribuidora Sul [a pagar]
+2026-10-29,receita,9767.88,Vendas - Monitor 24 pol
+2026-10-30,receita,6850.00,Vendas - Kit escritório
+2026-11-01,despesa,890.00,Energia - Conta de luz [a pagar]
+2026-11-02,despesa,4500.00,Aluguel - Sala comercial [a pagar]
+2026-11-05,despesa,23650.00,Folha de pagamento - Salários e encargos [a pagar]
+2026-11-10,despesa,320.00,Internet - Plano empresarial [a pagar]
+2026-11-12,despesa,3500.00,Marketing - Anúncios online [a pagar]
+2026-11-15,despesa,1200.00,Contabilidade - Honorários [a pagar]
+2026-11-20,despesa,6100.00,Impostos - Simples Nacional [a pagar]
+2026-11-25,despesa,9800.00,Fornecedores - NF 9102 Atacado Central [a pagar]
+2026-11-28,despesa,640.00,Software - Assinaturas [a pagar]
+2026-12-10,despesa,2300.00,Seguros - Apólice empresarial [a pagar]
+`;

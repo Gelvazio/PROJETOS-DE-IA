@@ -24,7 +24,7 @@ from pathlib import Path
 
 PASTAS_IGNORADAS_PREFIXO = ("DEMAIS-PROJETOS-",)
 # "dashboard" guarda o CSS/JS do proprio index.html, nao e um projeto
-PASTAS_IGNORADAS_NOMES = {"node_modules", "__pycache__", ".git", "dashboard"}
+PASTAS_IGNORADAS_NOMES = {"node_modules", "__pycache__", ".git", "dashboard", "tasks", "_backup-git"}
 PASTAS_FORA_DO_TAMANHO = {"node_modules", ".git"}
 ARQUIVO_JSON = "projetos.json"
 ARQUIVO_JS = "projetos.js"

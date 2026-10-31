@@ -1,0 +1,18 @@
+{
+  "name": "chaos-code-clone",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Clone do Chaos Code v3 em Node/TypeScript + Electron (ETAPA-005).",
+  "main": "dist/main/principal.js",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "build": "node scripts/construir.mjs",
+    "dev": "npm run build && electron ."
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "electron": "^44.7.2",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2"
+  }
+}

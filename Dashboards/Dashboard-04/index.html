@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard Executivo</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1 class="cabecalho__titulo">Painel Executivo</h1>
+    <p class="cabecalho__periodo" id="periodo"></p>
+  </header>
+
+  <main class="principal">
+    <section class="grade-kpis" id="kpis" aria-label="Indicadores principais"></section>
+
+    <section class="cartao">
+      <h2 class="cartao__titulo">Faturamento x lucro por mês</h2>
+      <div class="cartao__grafico"><canvas id="graficoArea"></canvas></div>
+    </section>
+
+    <section class="grade-duas">
+      <article class="cartao">
+        <h2 class="cartao__titulo">Top 7 clientes do ano</h2>
+        <table class="tabela">
+          <thead>
+            <tr><th>#</th><th>Cliente</th><th class="tabela__numero">Comprado</th></tr>
+          </thead>
+          <tbody id="tabelaClientes"></tbody>
+        </table>
+      </article>
+
+      <article class="cartao">
+        <h2 class="cartao__titulo">Margem líquida por mês</h2>
+        <div class="cartao__grafico"><canvas id="graficoMargem"></canvas></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

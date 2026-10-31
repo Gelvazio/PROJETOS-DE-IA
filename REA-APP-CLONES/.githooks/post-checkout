@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# .githooks/post-checkout
+#
+# Mantém a referência `origin/main` fresca ao trocar de branch, para que o
+# `git status` não minta (ver .claude/rules/git-quick.md). Não bloqueia nada: no
+# máximo avisa que o branch está atrás do remoto.
+#
+#   $1 = HEAD anterior | $2 = HEAD novo | $3 = 1 (branch) ou 0 (arquivo)
+
+# Só em troca de branch; checkout de arquivo não interessa.
+[ "$3" = "1" ] || exit 0
+
+gitdir=$(git rev-parse --git-dir 2>/dev/null) || exit 0
+
+# Não dispara no meio de rebase/merge/cherry-pick:
+# o rebase faz um checkout por commit aplicado e geraria um fetch por commit.
+[ -d "$gitdir/rebase-merge" ] && exit 0
+[ -d "$gitdir/rebase-apply" ] && exit 0
+[ -f "$gitdir/MERGE_HEAD" ] && exit 0
+[ -f "$gitdir/CHERRY_PICK_HEAD" ] && exit 0
+
+# Sem remoto configurado não há o que atualizar.
+[ -n "$(git remote)" ] || exit 0
+
+git fetch --all --prune --quiet 2>/dev/null || true
+
+# Aviso (não bloqueante) quando o branch atual ficou atrás do upstream.
+up=$(git rev-parse --abbrev-ref --symbolic-full-name '@{u}' 2>/dev/null) || exit 0
+[ -n "$up" ] || exit 0
+
+behind=$(git rev-list --count "HEAD..$up" 2>/dev/null) || exit 0
+case "$behind" in ''|*[!0-9]*) exit 0 ;; esac
+[ "$behind" -gt 0 ] || exit 0
+
+echo "[post-checkout] Você está $behind commit(s) atrás de $up." >&2
+echo "[post-checkout] Rode: git pull --rebase origin main  (e releia o quadro)" >&2
+
+exit 0

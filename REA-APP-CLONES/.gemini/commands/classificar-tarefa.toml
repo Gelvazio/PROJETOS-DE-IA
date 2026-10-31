@@ -1,0 +1,9 @@
+# Gerado por scripts/sincronizar-agentes.mjs. Fonte: .agents/skills/classificar-tarefa/SKILL.md.
+description = "Classifica uma subtarefa do quadro (tasks/STATUS.md + etapa) no nível LEVE (fácil), MEDIO (média) ou PESADO (difícil) pelo Jev ou pelos sinais desta skill, e diz qual ferramenta e modelo de IA pode pegá-la (matriz ferramenta × modelo × nível). Use ao criar ou dividir subtarefa, quando perguntarem \"qual o nível desta tarefa?\", \"quem pode pegar?\", \"esta tarefa é para mim?\" ou \"/classificar-tarefa\"."
+prompt = """
+Siga a skill `classificar-tarefa` do projeto (fonte única: .agents/skills/classificar-tarefa/SKILL.md), cujo texto vem abaixo.
+
+@{.agents/skills/classificar-tarefa/SKILL.md}
+
+Pedido do usuário: {{args}}
+"""

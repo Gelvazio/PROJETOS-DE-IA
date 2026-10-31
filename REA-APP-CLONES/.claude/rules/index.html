@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Regras e Tarefas</title>
+  <!-- Visualizador das regras (.claude/rules/) e do quadro (tasks/). Não tem dados embutidos:
+       os scripts de visualizador/ leem os .md ao abrir (local por servidor, ou GitHub main). -->
+  <link rel="stylesheet" href="visualizador/estilo.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__titulos">
+      <h1 class="topo__titulo">📜 Regras e Tarefas</h1>
+      <p class="topo__subtitulo">
+        Quadro do projeto · lido de <strong id="fonte-dados">…</strong>
+        em <strong id="data-carregamento">…</strong>
+      </p>
+    </div>
+    <nav class="abas" role="tablist">
+      <button class="abas__botao abas__botao--ativa" type="button" role="tab"
+        data-aba="regras">REGRAS</button>
+      <button class="abas__botao" type="button" role="tab" data-aba="tasks">TASKS</button>
+    </nav>
+  </header>
+
+  <main class="conteudo">
+    <p class="aviso" id="aviso-carregamento" hidden></p>
+
+    <section class="painel" id="painel-regras">
+      <div class="filtros">
+        <input class="filtros__busca" id="busca-regras" type="search"
+          placeholder="Buscar nas regras...">
+        <div class="filtros__chips" id="filtro-categorias"></div>
+        <div class="filtros__chips" id="filtro-tipos"></div>
+      </div>
+      <p class="contagem" id="contagem-regras"></p>
+      <div id="lista-regras"></div>
+    </section>
+
+    <section class="painel" id="painel-tasks" hidden>
+      <div class="filtros">
+        <input class="filtros__busca" id="busca-tasks" type="search"
+          placeholder="Buscar nas tarefas...">
+        <div class="filtros__chips" id="filtro-situacoes"></div>
+      </div>
+      <div class="resumo" id="resumo-tasks"></div>
+      <h2 class="grupo__titulo">📌 Tarefas</h2>
+      <p class="contagem" id="contagem-tasks"></p>
+      <div class="grade" id="lista-tasks"></div>
+      <h2 class="grupo__titulo">🧭 Frentes ativas (coluna "Em uso por")</h2>
+      <div class="grade" id="lista-frentes"></div>
+      <h2 class="grupo__titulo">⏳ Aguardando o usuário</h2>
+      <div class="tabela-rolagem" id="lista-aguardando"></div>
+    </section>
+  </main>
+
+  <dialog class="modal" id="modal">
+    <header class="modal__topo">
+      <div>
+        <p class="modal__etiquetas" id="modal-etiquetas"></p>
+        <h2 class="modal__titulo" id="modal-titulo"></h2>
+      </div>
+      <button class="modal__fechar" type="button" id="modal-fechar" aria-label="Fechar">✕</button>
+    </header>
+    <article class="modal__corpo markdown" id="modal-corpo"></article>
+  </dialog>
+
+  <script src="visualizador/markdown.js"></script>
+  <script src="visualizador/app.js"></script>
+  <script src="visualizador/fonte.js"></script>
+  <script src="visualizador/leitor-regras.js"></script>
+  <script src="visualizador/leitor-tarefas.js"></script>
+  <script src="visualizador/aba-regras.js"></script>
+  <script src="visualizador/aba-tasks.js"></script>
+  <script src="visualizador/inicio.js"></script>
+</body>
+</html>

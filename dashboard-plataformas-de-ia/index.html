@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Plataformas de IA</title>
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --card-bg: white;
+            --text-primary: #333;
+            --text-secondary: #666;
+            --text-tertiary: #999;
+            --border-color: #e0e0e0;
+            --input-bg: white;
+            --modal-bg: white;
+            --table-header-bg: #667eea;
+            --table-header-text: white;
+            --table-border: #e0e0e0;
+            --table-even: #f9f9f9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.15);
+            --glow-color: rgba(102, 126, 234, 0.3);
+            --border-glow: 0 0 10px rgba(102, 126, 234, 0.2);
+        }
+
+        [data-theme="dark"] {
+            --bg-gradient: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 50%, #16213e 100%);
+            --card-bg: #1a1a2e;
+            --text-primary: #ffffff;
+            --text-secondary: #c0c0c0;
+            --text-tertiary: #909090;
+            --border-color: #4a4a6a;
+            --input-bg: #252540;
+            --modal-bg: #1a1a2e;
+            --table-header-bg: #667eea;
+            --table-header-text: white;
+            --table-border: #4a4a6a;
+            --table-even: #252540;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            --shadow-hover: 0 8px 12px rgba(0, 0, 0, 0.6);
+            --glow-color: rgba(102, 126, 234, 0.5);
+            --border-glow: 0 0 15px rgba(102, 126, 234, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 20px;
+            transition: background 0.3s ease;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        h1 {
+            color: var(--text-primary);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .theme-toggle {
+            background: var(--input-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 24px;
+            color: var(--text-primary);
+            transition: all 0.3s;
+            box-shadow: var(--border-glow);
+        }
+
+        .theme-toggle:hover {
+            border-color: #667eea;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .controls {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+
+        .search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            z-index: 1;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .filter-select {
+            padding: 10px 15px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            transition: all 0.3s;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #667eea;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.4);
+            position: relative;
+        }
+
+        .card-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s;
+            filter: blur(10px);
+        }
+
+        .card:hover .card-icon::after {
+            opacity: 0.6;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--text-primary);
+        }
+
+        .card-category {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-category::before {
+            content: '📁';
+        }
+
+        .card-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card-price {
+            background: var(--input-bg);
+            color: var(--text-secondary);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .card-price:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-price-label {
+            font-weight: bold;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-price-label::before {
+            content: '💰';
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--modal-bg);
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 30px;
+            margin: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            animation: slideUp 0.3s ease;
+            position: relative;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+            border-radius: 12px 12px 0 0;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-primary);
+            text-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .close-btn {
+            background: var(--input-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-tertiary);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn:hover {
+            color: var(--text-primary);
+            border-color: #667eea;
+            transform: rotate(90deg);
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.5);
+        }
+
+        .modal-section {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--input-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s;
+        }
+
+        .modal-section:hover {
+            border-color: #667eea;
+            box-shadow: 0 0 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .modal-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modal-section h3::before {
+            content: '✨';
+        }
+
+        .modal-section:nth-child(1) h3::before {
+            content: '📝';
+        }
+
+        .modal-section:nth-child(2) h3::before {
+            content: '🤖';
+        }
+
+        .modal-section:nth-child(3) h3::before {
+            content: '💰';
+        }
+
+        .modal-section:nth-child(4) h3::before {
+            content: '🔗';
+        }
+
+        .modal-section p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .modal-section a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .modal-section a:hover {
+            text-decoration: underline;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--table-border);
+            color: var(--text-primary);
+        }
+
+        .price-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .price-table tr:hover {
+            background: var(--table-even);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid var(--table-border);
+            color: var(--text-primary);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: var(--table-even);
+        }
+
+        .comparison-table tr:hover {
+            background: var(--input-bg);
+        }
+
+        .selected-count {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-tertiary);
+            font-size: 18px;
+        }
+
+        .no-results::before {
+            content: '🔍';
+            display: block;
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+
+        header {
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .menu-principal {
+            display: flex;
+            gap: 10px;
+        }
+
+        .menu-principal__link {
+            padding: 8px 16px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .menu-principal__link:hover,
+        .menu-principal__link--ativo {
+            border-color: #667eea;
+            box-shadow: var(--border-glow);
+        }
+
+        .menu-principal__link--ativo {
+            background: #667eea;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>🤖 Dashboard de Plataformas de IA</h1>
+                <p class="subtitle">Documentação completa de plataformas de IA, modelos, preços e conceitos técnicos</p>
+            </div>
+            <nav class="menu-principal" aria-label="Menu principal">
+                <a class="menu-principal__link menu-principal__link--ativo" href="index.html">📊 Dashboard</a>
+                <a class="menu-principal__link" href="models-openrouter-ai.html">🆓 Modelos OpenRouter</a>
+            </nav>
+            <button class="theme-toggle" id="themeToggle" title="Alternar tema">🌙</button>
+        </header>
+
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Buscar plataforma...">
+            </div>
+            <select class="filter-select" id="categoryFilter">
+                <option value="all">Todas as Categorias</option>
+                <option value="platform">Plataformas de IA</option>
+                <option value="devtools">Ferramentas de Desenvolvimento</option>
+                <option value="chinese">Plataformas Chinesas</option>
+                <option value="concept">Conceitos Técnicos</option>
+            </select>
+            <select class="filter-select" id="sortBy">
+                <option value="name">Ordenar por Nome</option>
+                <option value="price">Ordenar por Preço (crescente)</option>
+                <option value="price-desc">Ordenar por Preço (decrescente)</option>
+            </select>
+            <button class="btn btn-primary" id="compareBtn">Comparar Selecionados <span class="selected-count" id="selectedCount">0</span></button>
+        </div>
+
+        <div class="grid" id="platformsGrid"></div>
+    </div>
+
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">Detalhes</h2>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="compareModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Comparação de Plataformas</h2>
+                <button class="close-btn" id="closeCompareModal">&times;</button>
+            </div>
+            <div id="compareBody"></div>
+        </div>
+    </div>
+
+    <script>
+        // Dados das plataformas (extraídos do AGENTS.md)
+        const platforms = [
+            {
+                id: 1,
+                name: "OpenAI",
+                category: "platform",
+                description: "Uma das empresas mais influentes no campo de IA, responsável pelo GPT. Modeles amplamente utilizados para geração de texto, código, imagens e análise de dados.",
+                models: ["GPT-4o", "GPT-4o Mini", "GPT-4 Turbo", "GPT-3.5 Turbo", "DALL·E 3", "Whisper"],
+                pricing: {
+                    "GPT-4o": { input: 2.50, output: 10.00 },
+                    "GPT-4o Mini": { input: 0.15, output: 0.60 },
+                    "GPT-3.5 Turbo": { input: 0.50, output: 1.50 }
+                },
+                link: "https://platform.openai.com/docs"
+            },
+            {
+                id: 2,
+                name: "Anthropic",
+                category: "platform",
+                description: "Empresa de IA focada em segurança e alinhamento. Modelos Claude são conhecidos pelo raciocínio robusto e capacidade de processar documentos longos.",
+                models: ["Claude 3.5 Sonnet", "Claude 3.5 Haiku", "Claude 3 Opus", "Claude 3 Sonnet", "Claude 3 Haiku"],
+                pricing: {
+                    "Claude 3.5 Sonnet": { input: 3.00, output: 15.00 },
+                    "Claude 3.5 Haiku": { input: 0.80, output: 4.00 },
+                    "Claude 3 Haiku": { input: 0.25, output: 1.25 }
+                },
+                link: "https://docs.anthropic.com"
+            },
+            {
+                id: 3,
+                name: "Google (Gemini)",
+                category: "platform",
+                description: "Modelos multimodais avançados desenvolvidos pelo Google DeepMind, com forte integração ao ecossistema Google.",
+                models: ["Gemini 1.5 Pro", "Gemini 1.5 Flash", "Gemini 1.0 Pro"],
+                pricing: {
+                    "Gemini 1.5 Pro": { input: 1.25, output: 5.00 },
+                    "Gemini 1.5 Flash": { input: 0.075, output: 0.30 }
+                },
+                link: "https://ai.google.dev/docs"
+            },
+            {
+                id: 4,
+                name: "Meta (Llama)",
+                category: "platform",
+                description: "Modelos open-source que podem ser executados em servidores próprios ou via hospedagem.",
+                models: ["Llama 3.1 405B", "Llama 3.1 70B", "Llama 3.1 8B", "Llama 3 70B", "Llama 3 8B"],
+                pricing: {
+                    "Llama 3.1 70B (hospedado)": { input: 1.50, output: 2.00 },
+                    "Llama 3.1 8B (hospedado)": { input: 0.15, output: 0.20 }
+                },
+                link: "https://llama.meta.com"
+            },
+            {
+                id: 5,
+                name: "Mistral AI",
+                category: "platform",
+                description: "Empresa europeia que oferece modelos de alta performance, incluindo opções open-source e comerciais.",
+                models: ["Mistral Large", "Mistral Medium", "Mistral Small", "Codestral", "Mixtral 8x7B"],
+                pricing: {
+                    "Mistral Large": { input: 4.00, output: 12.00 },
+                    "Mistral Small": { input: 0.20, output: 0.60 }
+                },
+                link: "https://docs.mistral.ai"
+            },
+            {
+                id: 6,
+                name: "Cohere",
+                category: "platform",
+                description: "Focada em modelos para aplicações empresariais, com forte ênfase em geração de texto, embeddings e busca semântica.",
+                models: ["Command R+", "Command R", "Command", "Embed", "Rerank"],
+                pricing: {
+                    "Command R+": { input: 3.00, output: 15.00 },
+                    "Command R": { input: 0.50, output: 1.50 }
+                },
+                link: "https://docs.cohere.com"
+            },
+            {
+                id: 7,
+                name: "Perplexity AI",
+                category: "platform",
+                description: "Motor de busca com IA integrada, combinando modelos de linguagem com busca na web em tempo real.",
+                models: ["Sonar (Online)", "Sonar (Offline)"],
+                pricing: {
+                    "Sonar Online": { input: 7.50, output: 7.50 },
+                    "Sonar Offline": { input: 2.00, output: 2.00 }
+                },
+                link: "https://docs.perplexity.ai"
+            },
+            {
+                id: 8,
+                name: "DeepSeek",
+                category: "chinese",
+                description: "Empresa chinesa que oferece modelos de IA de alta performance com custos muito competitivos.",
+                models: ["DeepSeek-V4 Pro", "DeepSeek-V4 Flash", "DeepSeek-V3.2", "DeepSeek-R1"],
+                pricing: {
+                    "DeepSeek-V4 Flash": { input: 0.14, output: 0.28 },
+                    "DeepSeek-V4 Pro": { input: 1.69, output: 3.38 }
+                },
+                link: "https://platform.deepseek.com"
+            },
+            {
+                id: 9,
+                name: "Verdent AI",
+                category: "devtools",
+                description: "Plataforma de agentes de IA para desenvolvimento de software, disponível como extensão VS Code e desktop app.",
+                models: ["Multiple Models"],
+                pricing: {
+                    "Starter": { price: 19, credits: 320 },
+                    "Pro": { price: 59, credits: 1000 },
+                    "Max": { price: 179, credits: 3000 }
+                },
+                link: "https://www.verdent.ai"
+            },
+            {
+                id: 10,
+                name: "Devin AI",
+                category: "devtools",
+                description: "Plataforma de agentes de IA autônomos para desenvolvimento de software.",
+                models: ["Multiple Models"],
+                pricing: {
+                    "Pro": { price: 20 },
+                    "Max": { price: 200 },
+                    "Teams": { price: 80 }
+                },
+                link: "https://devin.ai"
+            },
+            {
+                id: 11,
+                name: "Cursor",
+                category: "devtools",
+                description: "Editor de código AI-first com modelos Grok e sistema de roteamento inteligente.",
+                models: ["Grok 4.7", "Grok 4.6", "Composer 2.5"],
+                pricing: {
+                    "Pro": { price: 20 },
+                    "Pro+": { price: 60 },
+                    "Ultra": { price: 200 }
+                },
+                link: "https://cursor.com"
+            },
+            {
+                id: 12,
+                name: "Kiro.dev",
+                category: "devtools",
+                description: "Plataforma de IA com agentes estruturados (Spec mode e Vibe mode).",
+                models: ["Multiple Models"],
+                pricing: {
+                    "Pro": { price: 20, credits: 1000 },
+                    "Pro+": { price: 40, credits: 2000 },
+                    "Pro Max": { price: 100, credits: 5000 }
+                },
+                link: "https://kiro.dev"
+            },
+            {
+                id: 13,
+                name: "Google Antigravity",
+                category: "devtools",
+                description: "Plataforma de agentes do Google com múltiplas superfícies: Desktop, CLI, SDK e IDE.",
+                models: ["Gemini 3.8 Flash"],
+                pricing: {
+                    "API": { price: "Variable" }
+                },
+                link: "https://antigravity.google"
+            },
+            {
+                id: 14,
+                name: "Claude Code",
+                category: "devtools",
+                description: "Ferramenta de linha de comando da Anthropic para desenvolvimento com IA.",
+                models: ["Claude Models"],
+                pricing: {
+                    "Pro": { price: 20 },
+                    "Max 5x": { price: 100 },
+                    "Max 20x": { price: 200 }
+                },
+                link: "https://claude.com/product/claude-code"
+            },
+            {
+                id: 15,
+                name: "OpenAI Codex",
+                category: "devtools",
+                description: "Ferramenta de desenvolvimento com IA integrada ao ChatGPT.",
+                models: ["GPT-5.6", "GPT-6"],
+                pricing: {
+                    "Plus": { price: 20 },
+                    "Pro 5x": { price: 100 },
+                    "Pro 20x": { price: 200 }
+                },
+                link: "https://chatgpt.com/codex"
+            },
+            {
+                id: 16,
+                name: "Alibaba Qwen",
+                category: "chinese",
+                description: "Modelos de alta performance com suporte a thinking mode e contextos longos.",
+                models: ["Qwen-Max", "Qwen-Plus", "Qwen-Flash"],
+                pricing: {
+                    "Qwen-Max": { input: 1.65, output: 4.951 },
+                    "Qwen-Plus": { input: 0.276, output: 1.101 }
+                },
+                link: "https://www.alibabacloud.com/product/model-studio"
+            },
+            {
+                id: 17,
+                name: "Baidu ERNIE",
+                category: "chinese",
+                description: "Modelos chineses de alta performance com forte suporte a idioma chinês.",
+                models: ["ERNIE 5.0", "ERNIE 4.5 Turbo", "ERNIE 4.5 Turbo VL"],
+                pricing: {
+                    "ERNIE 4.5 Turbo": { input: 0.11, output: 0.44 }
+                },
+                link: "https://cloud.baidu.com/product/qianfan"
+            },
+            {
+                id: 18,
+                name: "Zhipu AI (GLM)",
+                category: "chinese",
+                description: "Família de modelos GLM incluindo modelos de texto, visão e código.",
+                models: ["GLM-5.3", "GLM-5.3-Flash", "GLM-4.6V"],
+                pricing: {
+                    "GLM-5.3-Flash": { input: 0.11, output: 0.39 }
+                },
+                link: "https://www.bigmodel.cn"
+            },
+            {
+                id: 19,
+                name: "MiniMax AI",
+                category: "chinese",
+                description: "Plataforma chinesa com modelos de alta performance para texto, imagem, áudio e vídeo. Conhecida pelos modelos M3 e M2 com contexto longo.",
+                models: ["MiniMax-M3", "MiniMax-M3.1 Flash", "MiniMax-M2.7", "H3 (Video)"],
+                pricing: {
+                    "M3 (≤512K)": { input: 0.30, output: 1.20 },
+                    "M2.7": { input: 0.30, output: 1.20 }
+                },
+                link: "https://platform.minimax.io"
+            },
+            {
+                id: 20,
+                name: "Moonshot AI (Kimi)",
+                category: "chinese",
+                description: "Conhecida pelo contexto longo e capacidade de processar documentos extensos.",
+                models: ["Kimi K2.6", "Kimi K2.5", "Moonshot-v1"],
+                pricing: {
+                    "Kimi K2.5": { input: 0.56, output: 2.94 }
+                },
+                link: "https://www.moonshot.cn"
+            },
+            {
+                id: 21,
+                name: "xAI (Grok)",
+                category: "platform",
+                description: "Empresa de IA de Elon Musk, oferece modelos Grok com baixa taxa de alucinação.",
+                models: ["Grok 4.7", "Grok 4.6", "Grok 4.5", "Grok 4.20", "Grok-build-0.1"],
+                pricing: {
+                    "Grok 4.7 (curto)": { input: 2.00, output: 6.00 },
+                    "Grok 4.20 (curto)": { input: 1.25, output: 2.50 }
+                },
+                link: "https://x.ai"
+            },
+            {
+                id: 22,
+                name: "Grok Bot",
+                category: "devtools",
+                description: "Time de agentes de IA que executam tarefas em computadores na nuvem.",
+                models: ["Grok Models"],
+                pricing: {
+                    "Cursor Pro": { price: 20 },
+                    "SuperGrok": { price: 30 },
+                    "SuperGrok Plus": { price: 100 }
+                },
+                link: "https://x.ai/bot"
+            },
+            {
+                id: 23,
+                name: "Agent Harness",
+                category: "concept",
+                description: "Camada de software que transforma um modelo de linguagem em um agente capaz de realizar trabalho.",
+                models: ["N/A"],
+                pricing: {
+                    "Open Source": { price: 0 },
+                    "Enterprise": { price: "Variable" }
+                },
+                link: "https://code.visualstudio.com/docs/agents/concepts/agent-harnesses"
+            },
+            {
+                id: 24,
+                name: "RAG",
+                category: "concept",
+                description: "Técnica que combina sistema de recuperação com modelo generativo.",
+                models: ["N/A"],
+                pricing: {
+                    "Open Source": { price: 0 },
+                    "Managed": { price: "Variable" }
+                },
+                link: "https://github.com/NVIDIA-AI-Blueprints/rag"
+            },
+            {
+                id: 25,
+                name: "JEV AI",
+                category: "concept",
+                description: "Modelo de avaliação que classifica, roteia e pontua estado estruturado.",
+                models: ["jev-latest"],
+                pricing: {
+                    "Input only": { input: 0.042, output: 0 }
+                },
+                link: "https://jevai.tools"
+            }
+        ];
+
+        let selectedPlatforms = new Set();
+
+        // Função para renderizar as plataformas
+        function renderPlatforms(platformsToRender) {
+            const grid = document.getElementById('platformsGrid');
+            grid.innerHTML = '';
+
+            if (platformsToRender.length === 0) {
+                grid.innerHTML = '<div class="no-results">Nenhuma plataforma encontrada</div>';
+                return;
+            }
+
+            platformsToRender.forEach(platform => {
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <div class="card-icon">${platform.name.charAt(0)}</div>
+                        <div>
+                            <div class="card-title">${platform.name}</div>
+                            <div class="card-category">${getCategoryName(platform.category)}</div>
+                        </div>
+                    </div>
+                    <div class="card-description">${platform.description.substring(0, 150)}...</div>
+                    <div class="card-price">
+                        <div class="card-price-label">Preço:</div>
+                        ${getPriceSummary(platform)}
+                    </div>
+                `;
+                
+                card.addEventListener('click', () => showDetail(platform));
+                card.addEventListener('contextmenu', (e) => {
+                    e.preventDefault();
+                    toggleSelection(platform.id);
+                });
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function getCategoryName(category) {
+            const names = {
+                'platform': 'Plataforma de IA',
+                'devtools': 'Ferramenta de Desenvolvimento',
+                'chinese': 'Plataforma Chinesa',
+                'concept': 'Conceito Técnico'
+            };
+            return names[category] || category;
+        }
+
+        function getPriceSummary(platform) {
+            if (platform.category === 'concept') {
+                return 'Open Source / Variable';
+            }
+            
+            const firstModel = Object.keys(platform.pricing)[0];
+            const pricing = platform.pricing[firstModel];
+            
+            if (pricing.price) {
+                return `$${pricing.price}/mês`;
+            }
+            
+            if (pricing.input && pricing.output) {
+                return `Input: $${pricing.input}/M, Output: $${pricing.output}/M`;
+            }
+            
+            return 'Consulte detalhes';
+        }
+
+        function showDetail(platform) {
+            const modal = document.getElementById('detailModal');
+            const title = document.getElementById('modalTitle');
+            const body = document.getElementById('modalBody');
+
+            title.textContent = platform.name;
+            
+            let pricingHTML = '<table class="price-table"><thead><tr><th>Modelo</th><th>Input</th><th>Output</th></tr></thead><tbody>';
+            
+            for (const [model, pricing] of Object.entries(platform.pricing)) {
+                if (pricing.price) {
+                    pricingHTML += `<tr><td>${model}</td><td colspan="2">$${pricing.price}/mês</td></tr>`;
+                } else if (pricing.input !== undefined) {
+                    pricingHTML += `<tr><td>${model}</td><td>$${pricing.input}/M</td><td>$${pricing.output}/M</td></tr>`;
+                } else {
+                    pricingHTML += `<tr><td>${model}</td><td colspan="2">${JSON.stringify(pricing)}</td></tr>`;
+                }
+            }
+            pricingHTML += '</tbody></table>';
+
+            body.innerHTML = `
+                <div class="modal-section">
+                    <h3>Descrição</h3>
+                    <p>${platform.description}</p>
+                </div>
+                <div class="modal-section">
+                    <h3>Modelos</h3>
+                    <p>${platform.models.join(', ')}</p>
+                </div>
+                <div class="modal-section">
+                    <h3>Preços</h3>
+                    ${pricingHTML}
+                </div>
+                <div class="modal-section">
+                    <h3>Link</h3>
+                    <p><a href="${platform.link}" target="_blank">${platform.link}</a></p>
+                </div>
+                <div class="modal-section">
+                    <button class="btn btn-primary" onclick="toggleSelection(${platform.id}); document.getElementById('detailModal').classList.remove('active');">
+                        ${selectedPlatforms.has(platform.id) ? 'Remover da Comparação' : 'Adicionar à Comparação'}
+                    </button>
+                </div>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function toggleSelection(id) {
+            if (selectedPlatforms.has(id)) {
+                selectedPlatforms.delete(id);
+            } else {
+                selectedPlatforms.add(id);
+            }
+            updateSelectedCount();
+        }
+
+        function updateSelectedCount() {
+            document.getElementById('selectedCount').textContent = selectedPlatforms.size;
+        }
+
+        function showComparison() {
+            if (selectedPlatforms.size < 2) {
+                alert('Selecione pelo menos 2 plataformas para comparar');
+                return;
+            }
+
+            const modal = document.getElementById('compareModal');
+            const body = document.getElementById('compareBody');
+            
+            const selected = platforms.filter(p => selectedPlatforms.has(p.id));
+            
+            let html = '<table class="comparison-table"><thead><tr><th>Plataforma</th>';
+            selected.forEach(p => {
+                html += `<th>${p.name}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            
+            html += '<tr><td>Categoria</td>';
+            selected.forEach(p => {
+                html += `<td>${getCategoryName(p.category)}</td>`;
+            });
+            html += '</tr>';
+            
+            html += '<tr><td>Modelos</td>';
+            selected.forEach(p => {
+                html += `<td>${p.models.slice(0, 3).join(', ')}${p.models.length > 3 ? '...' : ''}</td>`;
+            });
+            html += '</tr>';
+            
+            html += '<tr><td>Preço Mínimo</td>';
+            selected.forEach(p => {
+                const firstModel = Object.keys(p.pricing)[0];
+                const pricing = p.pricing[firstModel];
+                if (pricing.price) {
+                    html += `<td>$${pricing.price}/mês</td>`;
+                } else if (pricing.input) {
+                    html += `<td>$${pricing.input}/M input</td>`;
+                } else {
+                    html += `<td>Variable</td>`;
+                }
+            });
+            html += '</tr>';
+            
+            html += '</tbody></table>';
+            
+            body.innerHTML = html;
+            modal.classList.add('active');
+        }
+
+        // Event Listeners
+        document.getElementById('searchInput').addEventListener('input', filterPlatforms);
+        document.getElementById('categoryFilter').addEventListener('change', filterPlatforms);
+        document.getElementById('sortBy').addEventListener('change', filterPlatforms);
+        document.getElementById('compareBtn').addEventListener('click', showComparison);
+        document.getElementById('closeModal').addEventListener('click', () => {
+            document.getElementById('detailModal').classList.remove('active');
+        });
+        document.getElementById('closeCompareModal').addEventListener('click', () => {
+            document.getElementById('compareModal').classList.remove('active');
+        });
+
+        // Fechar modais ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target.classList.contains('modal')) {
+                e.target.classList.remove('active');
+            }
+        });
+
+        function filterPlatforms() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categoryFilter').value;
+            const sortBy = document.getElementById('sortBy').value;
+
+            let filtered = platforms.filter(platform => {
+                const matchesSearch = platform.name.toLowerCase().includes(searchTerm) ||
+                                     platform.description.toLowerCase().includes(searchTerm);
+                const matchesCategory = category === 'all' || platform.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            // Ordenação
+            if (sortBy === 'name') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            } else if (sortBy === 'price') {
+                filtered.sort((a, b) => {
+                    const priceA = getMinPrice(a);
+                    const priceB = getMinPrice(b);
+                    return priceA - priceB;
+                });
+            } else if (sortBy === 'price-desc') {
+                filtered.sort((a, b) => {
+                    const priceA = getMinPrice(a);
+                    const priceB = getMinPrice(b);
+                    return priceB - priceA;
+                });
+            }
+
+            renderPlatforms(filtered);
+        }
+
+        function getMinPrice(platform) {
+            const firstModel = Object.keys(platform.pricing)[0];
+            const pricing = platform.pricing[firstModel];
+            if (pricing.price) return pricing.price;
+            if (pricing.input) return pricing.input;
+            return Infinity;
+        }
+
+        // Inicialização
+        renderPlatforms(platforms);
+
+        // Alternância de tema
+        const themeToggle = document.getElementById('themeToggle');
+        let isDark = localStorage.getItem('theme') === 'dark';
+
+        function updateTheme() {
+            document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+            themeToggle.textContent = isDark ? '☀️' : '🌙';
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // Inicializar tema
+        updateTheme();
+
+        themeToggle.addEventListener('click', () => {
+            isDark = !isDark;
+            updateTheme();
+        });
+    </script>
+</body>
+</html>

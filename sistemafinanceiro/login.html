@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+  <title>Login — Financeiro</title>
+  <meta name="theme-color" content="#0d0b1f" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="Financeiro" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./css/theme.css" />
+  <link rel="stylesheet" href="./css/styles.css" />
+  <link rel="stylesheet" href="./css/loading.css" />
+  <style>
+    /* ── Login brand com gradiente ────────────────────────────── */
+    .login-brand {
+      background: linear-gradient(90deg, var(--h1), var(--h3), var(--h2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 26px;
+      text-align: center;
+      margin: 0 0 6px;
+    }
+
+    /* ── Divisor ─────────────────────────────────────────────── */
+    .login-divider {
+      border: none;
+      border-top: 1px solid rgba(180,110,255,0.18);
+      margin: 22px 0 18px;
+    }
+
+    /* ── Bloco de cadastro ───────────────────────────────────── */
+    .register-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--txt-soft);
+    }
+    .btn-open-register {
+      padding: 7px 16px;
+      border-radius: 9px;
+      border: 1px solid rgba(52,224,215,0.4);
+      background: rgba(52,224,215,0.10);
+      color: var(--h2);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-open-register:hover { background: rgba(52,224,215,0.20); }
+
+    /* ── Inputs do modal de cadastro ─────────────────────────── */
+    .modal .field input[type="text"],
+    .modal .field input[type="email"],
+    .modal .field input[type="password"] {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(180,110,255,0.25);
+      color: var(--txt);
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      box-sizing: border-box;
+    }
+    .modal .field input:focus { border-color: var(--h2); }
+    .modal .field label {
+      display: block;
+      font-size: 12px;
+      color: var(--txt-soft);
+      margin-bottom: 6px;
+    }
+    .modal .field { margin-bottom: 14px; }
+
+    .btn-link-esqueci {
+      display: block;
+      margin: 12px auto 0;
+      background: none;
+      border: none;
+      color: var(--h2);
+      font-family: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    @media (max-width: 430px) {
+      .login-brand { font-size: 22px; }
+      .register-row {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .btn-open-register {
+        min-height: 44px;
+        width: 100%;
+      }
+      .modal .field input[type="email"],
+      .modal .field input[type="password"],
+      .modal .field input[type="text"] {
+        min-height: 48px;
+        font-size: 16px;
+      }
+    }
+  </style>
+  <!-- Camada celular/PWA: precisa vir depois dos estilos acima -->
+  <link rel="stylesheet" href="./css/mobile.css" />
+</head>
+<body class="splash">
+
+  <!-- Login box -->
+  <div class="login-box">
+    <h1 class="login-brand">💰 Financeiro</h1>
+    <p class="login-tagline">Gestão financeira pessoal</p>
+
+    <form id="form-login" class="login-form" novalidate>
+      <div class="field">
+        <label>E-mail</label>
+        <input type="email" id="login-email" placeholder="seu@email.com" autocomplete="email" />
+      </div>
+      <div class="field">
+        <label>Senha</label>
+        <input type="password" id="login-senha" placeholder="••••••" autocomplete="current-password" />
+      </div>
+      <p class="err" id="login-err"></p>
+      <button type="submit" class="btn btn-primary btn-auth-submit" id="btn-entrar">
+        Entrar
+      </button>
+      <button type="button" class="btn-link-esqueci" id="btn-esqueci-senha">Esqueci a senha</button>
+    </form>
+
+    <hr class="login-divider" />
+
+    <div class="register-row">
+      <span>Não tem conta?</span>
+      <button class="btn-open-register" id="btn-abrir-cadastro">Cadastrar usuário</button>
+    </div>
+  </div>
+
+  <!-- Modal: Novo Usuário -->
+  <div class="modal-back" id="modal-cadastro" style="display:none">
+    <div class="modal">
+      <h3>Novo Usuário</h3>
+      <form id="form-cadastro" novalidate autocomplete="off">
+        <div class="field">
+          <label>Nome *</label>
+          <input type="text" id="cad-nome" placeholder="Seu nome completo" maxlength="100" />
+        </div>
+        <div class="field">
+          <label>E-mail *</label>
+          <input type="email" id="cad-email" placeholder="usuario@email.com" />
+        </div>
+        <div class="field">
+          <label>
+            Senha *
+            <span style="font-size:10px;color:var(--txt-soft);font-weight:400"> (mín. 6 caracteres)</span>
+          </label>
+          <input type="password" id="cad-senha" placeholder="••••••" />
+        </div>
+        <div class="field">
+          <label>Confirmar Senha *</label>
+          <input type="password" id="cad-senha2" placeholder="••••••" />
+        </div>
+        <p id="cad-err" style="color:var(--warn-red);font-size:12px;min-height:16px;margin-bottom:10px;text-align:center"></p>
+        <div class="modal-actions-center modal-actions-pair">
+          <button type="button" class="btn btn-cancel-light" id="btn-fechar-cadastro">Cancelar</button>
+          <button type="submit" class="btn btn-activate" id="btn-cad-submit">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Esqueci a senha -->
+  <div class="modal-back" id="modal-esqueci" style="display:none">
+    <div class="modal">
+      <h3>Recuperar senha</h3>
+      <form id="form-esqueci" novalidate>
+        <div class="field">
+          <label>E-mail *</label>
+          <input type="email" id="esq-email" placeholder="seu@email.com" autocomplete="email" />
+        </div>
+        <p id="esq-err" style="color:var(--warn-red);font-size:12px;min-height:16px;margin-bottom:10px;text-align:center"></p>
+        <div class="modal-actions-center modal-actions-pair">
+          <button type="button" class="btn btn-cancel-light" id="btn-fechar-esqueci">Cancelar</button>
+          <button type="submit" class="btn btn-activate" id="btn-esq-submit">Enviar link</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Nova senha (após clicar no link do e-mail) -->
+  <div class="modal-back" id="modal-nova-senha" style="display:none">
+    <div class="modal">
+      <h3>Definir nova senha</h3>
+      <form id="form-nova-senha" novalidate autocomplete="off">
+        <div class="field">
+          <label>Nova senha * <span style="font-size:10px;font-weight:400">(mín. 6 caracteres)</span></label>
+          <input type="password" id="nova-senha" placeholder="••••••" autocomplete="new-password" />
+        </div>
+        <div class="field">
+          <label>Confirmar senha *</label>
+          <input type="password" id="nova-senha2" placeholder="••••••" autocomplete="new-password" />
+        </div>
+        <p id="nova-err" style="color:var(--warn-red);font-size:12px;min-height:16px;margin-bottom:10px;text-align:center"></p>
+        <div class="modal-actions-center">
+          <button type="submit" class="btn btn-activate" id="btn-nova-submit">Salvar senha</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" style="display:none"></div>
+
+  <script type="module" src="./src/login.js"></script>
+</body>
+</html>

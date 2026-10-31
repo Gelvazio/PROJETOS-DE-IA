@@ -1,0 +1,11 @@
+{
+  "version": "0.2.0",
+  "notes": "Exemplo para desenvolvimento local. Não é uma versão publicada.",
+  "pub_date": "2026-10-16T00:00:00Z",
+  "platforms": {
+    "windows-x86_64": {
+      "signature": "EXEMPLO_ASSINATURA_MINISIGN_NAO_VALIDA",
+      "url": "http://localhost:3000/releases/chaos-code-0.2.0-x64.exe"
+    }
+  }
+}

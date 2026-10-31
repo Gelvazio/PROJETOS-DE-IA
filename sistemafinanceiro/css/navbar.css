@@ -1,0 +1,108 @@
+:root {
+  --txt: #e6e3ff;
+  --txt-dim: #a09bc7;
+  --h1: #ff4fa3;
+  --h2: #34e0d7;
+  --h3: #ffb84d;
+}
+
+/* Top Navbar */
+.navbar {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(10, 8, 24, 0.97), rgba(17, 9, 42, 0.95));
+  color: var(--txt);
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(180, 110, 255, 0.2);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.navbar h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  background: linear-gradient(90deg, var(--h1), var(--h3), var(--h2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.navbar .nav-links a {
+  color: var(--txt-dim);
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: 0.2s;
+  border: 1px solid transparent;
+}
+
+.navbar .nav-links a:hover,
+.navbar .nav-links a.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--txt);
+  border-color: rgba(180, 110, 255, 0.2);
+}
+
+.navbar .nav-links a.nav-card {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(180, 110, 255, 0.25);
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--txt-dim);
+}
+
+.navbar .nav-links a.nav-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--txt);
+  border-color: rgba(180, 110, 255, 0.45);
+}
+
+.navbar .nav-card-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.navbar .nav-card-title {
+  display: inline;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.navbar .btn-logout {
+  background: rgba(255, 91, 110, 0.1);
+  color: #ff8a97;
+  border: 1px solid rgba(255, 91, 110, 0.3);
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+  font-family: inherit;
+}
+
+.navbar .btn-logout:hover {
+  background: rgba(255, 91, 110, 0.2);
+}

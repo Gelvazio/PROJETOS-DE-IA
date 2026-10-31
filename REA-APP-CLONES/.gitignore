@@ -1,0 +1,7 @@
+.env
+
+node_modules
+graphify-out/cache
+tools/
+
+apps-to-be-cloned/

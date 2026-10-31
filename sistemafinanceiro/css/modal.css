@@ -1,0 +1,77 @@
+/* Modais de alerta/confirmação — centralizados, paleta do theme.css */
+.app-modal-back {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.62);
+  animation: app-modal-fade-in 0.18s ease-out;
+}
+
+.app-modal {
+  width: 100%;
+  max-width: 420px;
+  padding: 22px 24px;
+  border-radius: 14px;
+  background: var(--bg-1);
+  border: 1px solid rgba(180, 110, 255, 0.28);
+  box-shadow: var(--shadow-card);
+  animation: app-modal-scale-in 0.2s ease-out;
+}
+
+.app-modal-title {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--h2);
+}
+
+.app-modal-body {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--txt);
+}
+
+.app-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.app-modal-actions-confirm {
+  justify-content: center;
+}
+
+/* Verde claro: use .btn-activate em theme.css */
+
+.btn-modal-cancel {
+  background: rgba(255, 91, 110, 0.18);
+  color: #ffc4cb;
+  border: 1px solid rgba(255, 91, 110, 0.48);
+  box-shadow: 0 2px 12px rgba(255, 91, 110, 0.1);
+}
+.btn-modal-cancel:hover {
+  background: rgba(255, 91, 110, 0.28);
+  color: #ffe0e4;
+}
+
+@keyframes app-modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes app-modal-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}

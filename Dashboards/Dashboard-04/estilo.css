@@ -1,0 +1,68 @@
+:root {
+  --cor-fundo: #0d0d1a;
+  --cor-cartao: #15152a;
+  --cor-borda: #24243f;
+  --cor-texto: #e8eaf6;
+  --cor-texto-suave: #8b8fb0;
+  --cor-destaque: #6699ff;
+  --cor-positivo: #4cd6a0;
+  --cor-negativo: #ff6b7a;
+  --espaco: 16px;
+  --raio: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.cabecalho { padding: 24px var(--espaco) 8px; max-width: 1200px; margin: 0 auto; }
+.cabecalho__titulo { margin: 0; font-size: 1.4rem; font-weight: 600; }
+.cabecalho__periodo { margin: 4px 0 0; color: var(--cor-texto-suave); }
+
+.principal {
+  display: grid;
+  gap: var(--espaco);
+  padding: var(--espaco);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.grade-kpis {
+  display: grid;
+  gap: var(--espaco);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.grade-duas {
+  display: grid;
+  gap: var(--espaco);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+}
+
+.cartao, .kpi {
+  background: var(--cor-cartao);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 20px;
+  min-width: 0;
+}
+
+.cartao__titulo { margin: 0 0 12px; font-size: 1rem; color: var(--cor-texto-suave); font-weight: 500; }
+.cartao__grafico { position: relative; height: 280px; }
+
+.kpi__rotulo { color: var(--cor-texto-suave); font-size: 0.9rem; }
+.kpi__valor { font-size: 2.2rem; font-weight: 700; color: var(--cor-destaque); margin: 6px 0; }
+.kpi__variacao { font-size: 0.9rem; color: var(--cor-texto-suave); }
+.kpi__variacao--positiva { color: var(--cor-positivo); }
+.kpi__variacao--negativa { color: var(--cor-negativo); }
+
+.tabela { width: 100%; border-collapse: collapse; }
+.tabela th, .tabela td { padding: 10px 6px; text-align: left; border-bottom: 1px solid var(--cor-borda); }
+.tabela th { color: var(--cor-texto-suave); font-weight: 500; font-size: 0.85rem; }
+.tabela .tabela__numero { text-align: right; font-variant-numeric: tabular-nums; }
+.tabela td.tabela__numero { color: var(--cor-destaque); font-weight: 600; }

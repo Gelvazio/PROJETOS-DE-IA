@@ -1,0 +1,511 @@
+/*
+ * Tokens de tema do original (docs/inventario/telas.md, "Tokens visuais"; valores conferidos
+ * em docs/original/assets/index-VYKA43iw.css). Os nomes são os do original.
+ * O original carrega a fonte Figtree por @import do Google Fonts; este clone não busca na rede,
+ * então a Figtree entra só como nome na pilha local, sem @import.
+ */
+:root {
+  --bg-primary: #111827;
+  --bg-secondary: #030712;
+  --bg-tertiary: #1f2937;
+  --bg-card: #1f2937;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --text-muted: rgba(255, 255, 255, .4);
+  --accent: #a78bfa;
+  --accent-hover: #8b5cf6;
+  --accent-glow: rgba(167, 139, 250, .15);
+  --accent-gradient: linear-gradient(135deg, #8b5cf6, #d946ef);
+  --accent-solid: #7c3aed;
+  --accent-solid-hover: #6d28d9;
+  --violet-500: #8b5cf6;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --border: #374151;
+  --border-primary: #374151;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.5);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --sidebar-width: 256px;
+  --sidebar-collapsed: 80px;
+  --transition-fast: .15s ease;
+  --transition-normal: .3s ease-in-out;
+
+  /* Variáveis antigas deste clone, agora apontando para os tokens do original. */
+  --cor-fundo: var(--bg-primary);
+  --cor-texto: var(--text-primary);
+  --cor-texto-suave: var(--text-secondary);
+  --fonte-base: 'Figtree', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --espaco-medio: 16px;
+  --tamanho-titulo: 2rem;
+
+  /* Moldura (CLONE.13.3): cores avulsas do CSS da barra lateral do original
+     (docs/original/assets/index-VYKA43iw.css, componente da Sidebar), viradas em tokens. */
+  --cor-borda-lateral: rgba(255, 255, 255, .1);
+  --cor-fundo-hover: rgba(255, 255, 255, .05);
+  --cor-texto-hover: #e5e7eb;
+  --cor-item-ativo: rgba(124, 58, 237, .1);
+  --cor-marca-fundo: rgba(124, 58, 237, .15);
+  --cor-marca-texto: rgba(255, 255, 255, .9);
+  --cor-situacao-fundo: rgba(255, 255, 255, .03);
+  --cor-situacao-borda: rgba(255, 255, 255, .06);
+  --cor-sair-hover: rgba(239, 68, 68, .1);
+  --cor-selo-fundo: rgba(167, 139, 250, .1);
+  --cor-sobreposicao: rgba(0, 0, 0, .6);
+  --fundo-area-principal: linear-gradient(180deg, rgba(139, 92, 246, .02) 0%, transparent 200px);
+  --transicao-lateral: .25s cubic-bezier(.4, 0, .2, 1);
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte-base);
+}
+
+/* ---------------------------- Layout (CLONE.13.3) ---------------------------- */
+
+.layout-aplicativo {
+  display: flex;
+  height: 100vh;
+  background: var(--bg-primary);
+}
+
+.layout-aplicativo--tela-cheia .barra-lateral {
+  display: none;
+}
+
+.conteudo-principal {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 40px;
+  background: var(--fundo-area-principal);
+  outline: none;
+}
+
+.layout-aplicativo--tela-cheia .conteudo-principal {
+  padding: 0;
+  background: none;
+}
+
+/* ---------------------------- Barra lateral ---------------------------- */
+
+.barra-lateral {
+  width: var(--sidebar-width);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 16px 12px;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  border-right: 1px solid var(--cor-borda-lateral);
+  transition: width var(--transicao-lateral);
+}
+
+.barra-lateral--recolhida {
+  width: var(--sidebar-collapsed);
+  padding: 16px 8px;
+}
+
+.barra-lateral__marca {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  margin-bottom: 24px;
+}
+
+.barra-lateral__espaco {
+  flex: 1;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.marca__icone {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--cor-marca-fundo);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  transition: transform var(--transition-fast);
+}
+
+.marca:hover .marca__icone {
+  transform: scale(1.05);
+}
+
+.marca__texto {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.marca__chaos {
+  color: var(--cor-marca-texto);
+}
+
+.marca__code {
+  color: var(--accent);
+}
+
+.marca__selo {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--cor-selo-fundo);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.barra-lateral--recolhida .marca__texto,
+.barra-lateral--recolhida .marca__selo,
+.barra-lateral--recolhida .menu__rotulo,
+.barra-lateral--recolhida .situacao__texto,
+.barra-lateral--recolhida .botao-lateral__rotulo,
+.barra-lateral--recolhida .rodape-versao {
+  display: none;
+}
+
+/* ---------------------------- Menu ---------------------------- */
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.menu__item:hover {
+  background: var(--cor-fundo-hover);
+  color: var(--cor-texto-hover);
+  transform: translateX(2px);
+}
+
+.menu__item--ativo {
+  background: var(--cor-item-ativo);
+  color: var(--accent);
+}
+
+.menu__item--ativo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2px;
+  height: 24px;
+  border-radius: 0 2px 2px 0;
+  background: var(--accent);
+  transform: translateY(-50%);
+}
+
+.menu__sigla {
+  width: 20px;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.menu__rotulo {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------------------------- Situação (Auth, MCP, Proj) ---------------------------- */
+
+.situacao {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 8px;
+  margin-bottom: 12px;
+  border: 1px solid var(--cor-situacao-borda);
+  border-radius: var(--radius-md);
+  background: var(--cor-situacao-fundo);
+}
+
+.situacao__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.situacao__item--ativo {
+  color: var(--text-primary);
+}
+
+.situacao__ponto {
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--text-secondary);
+}
+
+.situacao__item--ativo .situacao__ponto {
+  background: var(--success);
+  box-shadow: 0 0 6px var(--success);
+}
+
+.situacao__texto {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* ---------------------------- Botões da lateral e rodapé ---------------------------- */
+
+.botao-lateral {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.botao-lateral:hover {
+  background: var(--cor-fundo-hover);
+  color: var(--text-primary);
+}
+
+.botao-lateral--sair {
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.botao-lateral--sair:hover {
+  background: var(--cor-sair-hover);
+  color: var(--error);
+}
+
+.botao-lateral__icone {
+  flex-shrink: 0;
+}
+
+.botao-lateral__icone--recolher {
+  transition: transform var(--transicao-lateral);
+}
+
+.barra-lateral--recolhida .botao-lateral__icone--recolher {
+  transform: rotate(180deg);
+}
+
+.rodape-versao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  margin-bottom: 4px;
+}
+
+.rodape-versao__rotulo {
+  color: var(--text-secondary);
+  font-size: 11px;
+  opacity: .6;
+  user-select: none;
+}
+
+.rodape-versao__atualizar {
+  padding: 4px 10px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--accent-solid);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.rodape-versao__atualizar[hidden] {
+  display: none;
+}
+
+/* ---------------------------- Marcador "em construção" ---------------------------- */
+
+.em-construcao {
+  max-width: 560px;
+  padding: 24px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+}
+
+.em-construcao__titulo {
+  margin: 0 0 8px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.em-construcao__texto {
+  margin: 0 0 4px;
+  color: var(--text-secondary);
+}
+
+.em-construcao__dona {
+  margin: 0;
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+/* ---------------------- Camadas (consentimento MCP, atualização) ---------------------- */
+
+.camada {
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+}
+
+.camada::backdrop {
+  background: var(--cor-sobreposicao);
+}
+
+.camada__caixa {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(440px, 90vw);
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.camada__titulo {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.camada__texto {
+  margin: 0;
+  font-size: 14px;
+}
+
+.camada__texto--suave {
+  color: var(--text-secondary);
+  font-size: 12px;
+  word-break: break-all;
+}
+
+.camada__aviso {
+  margin: 0;
+  color: var(--warning);
+  font-size: 13px;
+}
+
+.camada__erro {
+  margin: 0;
+  color: var(--error);
+  font-size: 13px;
+}
+
+.camada__aviso[hidden],
+.camada__erro[hidden] {
+  display: none;
+}
+
+.camada__acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.botao {
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.botao[hidden] {
+  display: none;
+}
+
+.botao--primario {
+  border: none;
+  background: var(--accent-solid);
+  color: var(--text-primary);
+}
+
+.botao--primario:hover {
+  background: var(--accent-solid-hover);
+}
+
+.botao--secundario {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.botao--secundario:hover {
+  background: var(--cor-fundo-hover);
+  color: var(--text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .barra-lateral,
+  .menu__item,
+  .botao-lateral,
+  .botao-lateral__icone--recolher,
+  .marca__icone {
+    transition: none;
+  }
+}

@@ -1,0 +1,9 @@
+# Gerado por scripts/sincronizar-agentes.mjs. Fonte: .agents/skills/proxima-task/SKILL.md.
+description = "Mostra o que fazer agora no quadro do projeto (tasks/STATUS.md) - frentes ativas (coluna \"Em uso por\") e o próximo passo de cada uma, as subtarefas livres para pegar por prioridade e o que está aguardando o usuário. Use quando perguntarem \"qual a próxima tarefa?\", \"o que tem pendente?\", \"o que posso pegar?\" ou \"/proxima-task\"."
+prompt = """
+Siga a skill `proxima-task` do projeto (fonte única: .agents/skills/proxima-task/SKILL.md), cujo texto vem abaixo.
+
+@{.agents/skills/proxima-task/SKILL.md}
+
+Pedido do usuário: {{args}}
+"""

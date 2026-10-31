@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Vendas</title>
+  <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Dashboard de Vendas</h1>
+    <p id="periodo" class="cabecalho__periodo"></p>
+  </header>
+
+  <main class="conteudo">
+    <section class="kpis" aria-label="Indicadores principais">
+      <article class="cartao kpi">
+        <h2 class="kpi__titulo">Faturamento do mês</h2>
+        <p id="kpi-faturamento" class="kpi__valor"></p>
+        <p id="kpi-faturamento-detalhe" class="kpi__detalhe"></p>
+      </article>
+      <article class="cartao kpi">
+        <h2 class="kpi__titulo">Meta do mês</h2>
+        <p id="kpi-meta" class="kpi__valor"></p>
+        <p id="kpi-meta-detalhe" class="kpi__detalhe"></p>
+      </article>
+      <article class="cartao kpi">
+        <h2 class="kpi__titulo">Ticket médio</h2>
+        <p id="kpi-ticket" class="kpi__valor"></p>
+        <p class="kpi__detalhe">Por pedido concluído</p>
+      </article>
+      <article class="cartao kpi">
+        <h2 class="kpi__titulo">Total de pedidos</h2>
+        <p id="kpi-pedidos" class="kpi__valor"></p>
+        <p id="kpi-pedidos-detalhe" class="kpi__detalhe"></p>
+      </article>
+    </section>
+
+    <section class="graficos" aria-label="Gráficos">
+      <article class="cartao grafico grafico--largo">
+        <h2 class="cartao__titulo">Vendas por dia vs. meta diária</h2>
+        <div class="grafico__area"><canvas id="grafico-dias"></canvas></div>
+      </article>
+      <article class="cartao grafico">
+        <h2 class="cartao__titulo">Vendas por canal</h2>
+        <div class="grafico__area"><canvas id="grafico-canais"></canvas></div>
+      </article>
+    </section>
+
+    <section class="cartao" aria-label="Ranking de vendedores">
+      <h2 class="cartao__titulo">Ranking de vendedores</h2>
+      <div class="tabela-rolagem">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>#</th><th>Vendedor</th><th class="direita">Vendas</th>
+              <th class="direita">Meta</th><th class="direita">% da meta</th><th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="ranking"></tbody>
+        </table>
+      </div>
+      <p class="legenda">
+        <span class="selo selo--verde">Acima de 90%</span>
+        <span class="selo selo--amarelo">70% a 90%</span>
+        <span class="selo selo--vermelho">Abaixo de 70%</span>
+      </p>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

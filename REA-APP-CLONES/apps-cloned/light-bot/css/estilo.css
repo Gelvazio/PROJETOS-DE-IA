@@ -1,0 +1,359 @@
+/* Robô de Luz — tokens primeiro; componentes usam só os tokens. */
+
+:root {
+  --cor-fundo: #10162b;
+  --cor-superficie: #1b2442;
+  --cor-superficie-alta: #26315a;
+  --cor-texto: #e8ecf8;
+  --cor-texto-suave: #9aa6c8;
+  --cor-destaque: #ffd23f;
+  --cor-sucesso: #3ddc97;
+  --cor-erro: #ff6b6b;
+  --cor-borda: #34406e;
+
+  --cor-ladrilho-topo: #9aa3b8;
+  --cor-ladrilho-lado-esquerdo: #6d7690;
+  --cor-ladrilho-lado-direito: #545c74;
+  --cor-ladrilho-azul: #3d7bff;
+  --cor-ladrilho-aceso: #ffd23f;
+  --cor-brilho: rgba(255, 230, 120, 0.85);
+  --cor-contorno: rgba(10, 14, 30, 0.55);
+  --cor-robo: #eef2ff;
+  --cor-visor: #2a3550;
+  --cor-sombra: rgba(0, 0, 0, 0.35);
+
+  --cor-comando-movimento: #4f8cff;
+  --cor-comando-giro: #8b6cff;
+  --cor-comando-pulo: #2fbf9b;
+  --cor-comando-luz: #e0a91a;
+  --cor-comando-funcao: #e0577b;
+
+  --raio: 10px;
+  --espaco: 16px;
+  --tamanho-casa: 44px;
+  --fonte: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, var(--cor-superficie-alta), var(--cor-fundo) 60%);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+}
+
+/* Layout */
+
+.cabecalho {
+  padding: var(--espaco) var(--espaco) 0;
+  text-align: center;
+}
+
+.cabecalho__titulo {
+  margin: 0;
+  color: var(--cor-destaque);
+  letter-spacing: 0.04em;
+}
+
+.cabecalho__subtitulo {
+  margin: 4px 0 0;
+  color: var(--cor-texto-suave);
+}
+
+.jogo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-areas:
+    "palco programacao"
+    "fases fases";
+  gap: var(--espaco);
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: var(--espaco);
+}
+
+.rodape {
+  padding: 0 var(--espaco) var(--espaco);
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+@media (max-width: 860px) {
+  .jogo {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "palco"
+      "programacao"
+      "fases";
+  }
+}
+
+/* Palco */
+
+.palco-area,
+.programacao,
+.fases {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: var(--espaco);
+}
+
+.palco-area {
+  grid-area: palco;
+}
+
+.palco-area__fase {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.palco-area__dica {
+  margin: 4px 0 12px;
+  min-height: 1.3em;
+  color: var(--cor-texto-suave);
+}
+
+.palco-area__moldura {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  border-radius: var(--raio);
+  background: var(--cor-fundo);
+}
+
+.palco {
+  display: block;
+  width: 100%;
+  max-width: 640px;
+  max-height: 460px;
+  height: auto;
+  object-fit: contain;
+}
+
+.aviso {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 8px 14px;
+  border-radius: var(--raio);
+  background: var(--cor-superficie-alta);
+  font-weight: 600;
+  text-align: center;
+}
+
+.aviso--sucesso {
+  color: var(--cor-fundo);
+  background: var(--cor-sucesso);
+}
+
+.aviso--erro {
+  color: var(--cor-fundo);
+  background: var(--cor-erro);
+}
+
+/* Botões de controle */
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.controles__opcao {
+  margin-left: auto;
+  color: var(--cor-texto-suave);
+}
+
+.botao {
+  padding: 8px 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  background: var(--cor-superficie-alta);
+  color: var(--cor-texto);
+  font: inherit;
+  cursor: pointer;
+}
+
+.botao:hover {
+  border-color: var(--cor-destaque);
+}
+
+.botao:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.botao--principal {
+  background: var(--cor-destaque);
+  border-color: var(--cor-destaque);
+  color: var(--cor-fundo);
+  font-weight: 700;
+}
+
+/* Programação */
+
+.programacao {
+  grid-area: programacao;
+}
+
+.programacao__titulo,
+.fases__titulo {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.programacao__ajuda {
+  margin: 4px 0 12px;
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+}
+
+.paleta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: var(--espaco);
+}
+
+.paleta--bloqueada,
+.listas--bloqueadas {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.comando,
+.casa {
+  width: var(--tamanho-casa);
+  height: var(--tamanho-casa);
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  color: var(--cor-texto);
+  font: 700 1.1rem var(--fonte);
+  cursor: pointer;
+}
+
+.comando {
+  background: var(--cor-superficie-alta);
+}
+
+.comando:hover {
+  transform: translateY(-2px);
+}
+
+.comando--andar {
+  background: var(--cor-comando-movimento);
+}
+
+.comando--virarEsquerda,
+.comando--virarDireita {
+  background: var(--cor-comando-giro);
+}
+
+.comando--pular {
+  background: var(--cor-comando-pulo);
+}
+
+.comando--acender {
+  background: var(--cor-comando-luz);
+}
+
+.comando--f1,
+.comando--f2 {
+  background: var(--cor-comando-funcao);
+}
+
+.listas {
+  display: grid;
+  gap: 10px;
+}
+
+.lista-programa {
+  padding: 8px;
+  border: 2px solid transparent;
+  border-radius: var(--raio);
+  background: var(--cor-fundo);
+}
+
+.lista-programa--ativa {
+  border-color: var(--cor-destaque);
+}
+
+.lista-programa__titulo {
+  margin-bottom: 6px;
+  padding: 2px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--cor-texto);
+  font: 700 0.95rem var(--fonte);
+  cursor: pointer;
+}
+
+.lista-programa__casas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, var(--tamanho-casa));
+  gap: 6px;
+}
+
+.casa {
+  background: var(--cor-superficie);
+  border-style: dashed;
+}
+
+.casa--cheia {
+  border-style: solid;
+}
+
+.casa--atual {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 1px;
+}
+
+/* Fases */
+
+.fases {
+  grid-area: fases;
+}
+
+.fases__lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.fase {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  background: var(--cor-superficie-alta);
+  color: var(--cor-texto);
+  font: 700 1rem var(--fonte);
+  cursor: pointer;
+}
+
+.fase:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.fase--concluida {
+  background: var(--cor-sucesso);
+  color: var(--cor-fundo);
+}
+
+.fase--atual {
+  outline: 3px solid var(--cor-destaque);
+  outline-offset: 2px;
+}

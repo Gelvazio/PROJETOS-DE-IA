@@ -1,15 +1,15 @@
 window.DADOS_PROJETOS = {
-  "gerado_em": "2026-10-31T16:14:36-03:00",
+  "gerado_em": "2026-10-31T17:15:14-03:00",
   "raiz": "C:\\fontes",
   "resumo": {
-    "total": 16,
-    "com_git": 11,
-    "sem_git": 5,
-    "ativos": 11,
+    "total": 18,
+    "com_git": 3,
+    "sem_git": 15,
+    "ativos": 3,
     "com_graphify": 5,
-    "alteracoes_pendentes": 43,
-    "tamanho_bytes": 13800322023,
-    "alertas": 16
+    "alteracoes_pendentes": 8,
+    "tamanho_bytes": 13358650771,
+    "alertas": 20
   },
   "projetos": [
     {
@@ -42,19 +42,12 @@ window.DADOS_PROJETOS = {
         "scripts",
         "tests"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/ai-memory.git",
-        "branch": "main",
-        "alteracoes": 0,
-        "ultimo_commit": {
-          "hash": "1bd86637",
-          "data": "2026-10-22",
-          "assunto": "Merge pull request #1627 from MaxFreedomPollard/fix/importer-cues-after-blank-lines"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": null,
-      "alertas": []
+      "alertas": [
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
+      ]
     },
     {
       "nome": "aulasenai",
@@ -190,17 +183,8 @@ window.DADOS_PROJETOS = {
         "graphify-out",
         "scripts"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/consumo-ia.git",
-        "branch": "main",
-        "alteracoes": 5,
-        "ultimo_commit": {
-          "hash": "cd6f869",
-          "data": "2026-10-26",
-          "assunto": "chore(dados): consumo atualizado em 26/10/2026 07:36:04"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": {
         "titulo": "Graph Report - consumo-ia  (2026-10-24)",
         "nos": 239,
@@ -243,7 +227,7 @@ window.DADOS_PROJETOS = {
         "tem_html": true
       },
       "alertas": [
-        "5 alteracao(oes) sem commit."
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
       ]
     },
     {
@@ -334,6 +318,38 @@ window.DADOS_PROJETOS = {
       "alertas": []
     },
     {
+      "nome": "COORDENACAO-DE-PROJETOS",
+      "caminho": "C:\\fontes\\COORDENACAO-DE-PROJETOS",
+      "descricao": "7 Sistemas de Fim de Semana",
+      "fonte_descricao": "index.html",
+      "stack": [
+        "HTML"
+      ],
+      "linguagens": [
+        "Markdown",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "tamanho_bytes": 190438,
+      "arquivos": 27,
+      "subpastas": [
+        "01-AGENTE-WHATSAPP",
+        "02-SITE-DO-MAPS",
+        "03-MAQUINA-DE-ANUNCIOS",
+        "04-AGENTE-DE-VOZ",
+        "05-MAQUINA-DE-CARROSSEIS",
+        "06-VIDEO-DE-IMOVEL",
+        "07-ASSISTENTE-PESSOAL"
+      ],
+      "situacao": "sem-git",
+      "git": null,
+      "graphify": null,
+      "alertas": [
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
+      ]
+    },
+    {
       "nome": "crm",
       "caminho": "C:\\fontes\\crm",
       "descricao": "Aplicativo de controle de Vendas",
@@ -358,20 +374,11 @@ window.DADOS_PROJETOS = {
         "node_modules",
         "src"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/crm.git",
-        "branch": "main",
-        "alteracoes": 4,
-        "ultimo_commit": {
-          "hash": "cc704de",
-          "data": "2026-10-29",
-          "assunto": "feat(atividade): abas PRATICA AULA 03 a 06 explicando como cada teste foi aplicado"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": null,
       "alertas": [
-        "4 alteracao(oes) sem commit."
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
       ]
     },
     {
@@ -393,6 +400,34 @@ window.DADOS_PROJETOS = {
       "subpastas": [
         "assets",
         "docs"
+      ],
+      "situacao": "sem-git",
+      "git": null,
+      "graphify": null,
+      "alertas": [
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
+      ]
+    },
+    {
+      "nome": "Dashboards",
+      "caminho": "C:\\fontes\\Dashboards",
+      "descricao": "Sem README, package.json, index.html ou AGENTS.md.",
+      "fonte_descricao": "",
+      "stack": [],
+      "linguagens": [
+        "JavaScript",
+        "Markdown",
+        "CSS",
+        "HTML"
+      ],
+      "tamanho_bytes": 415457,
+      "arquivos": 39,
+      "subpastas": [
+        "Dashboard-01",
+        "Dashboard-02",
+        "Dashboard-03",
+        "Dashboard-04",
+        "Dashboard-05"
       ],
       "situacao": "sem-git",
       "git": null,
@@ -473,43 +508,6 @@ window.DADOS_PROJETOS = {
       "subpastas": [
         "MATERIAIS DESENHO TÉCNICO"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/MATERIAL-AULAS-PROF-MAIRA.git",
-        "branch": "main",
-        "alteracoes": 3,
-        "ultimo_commit": {
-          "hash": "9e38ff6",
-          "data": "2026-10-26",
-          "assunto": "Initial commit"
-        }
-      },
-      "graphify": null,
-      "alertas": [
-        "3 alteracao(oes) sem commit."
-      ]
-    },
-    {
-      "nome": "NOVOS-PROJETOS-CLAUDE-CODE",
-      "caminho": "C:\\fontes\\NOVOS-PROJETOS-CLAUDE-CODE",
-      "descricao": "Você não é meu assistente. Você é meu conselheiro e por acaso é mais inteligente que eu. Siga estas regras em toda resposta:",
-      "fonte_descricao": "AGENTS.md",
-      "stack": [
-        "HTML"
-      ],
-      "linguagens": [
-        "Markdown",
-        "HTML",
-        "JavaScript",
-        "CSS"
-      ],
-      "tamanho_bytes": 903574,
-      "arquivos": 72,
-      "subpastas": [
-        "7-SISTEMAS-FIM-SEMANA",
-        "Dashboards",
-        "TABELAS-DE-PRECO"
-      ],
       "situacao": "sem-git",
       "git": null,
       "graphify": null,
@@ -550,8 +548,8 @@ window.DADOS_PROJETOS = {
         "Python",
         "CSS"
       ],
-      "tamanho_bytes": 9941829820,
-      "arquivos": 573,
+      "tamanho_bytes": 9500148884,
+      "arquivos": 747,
       "subpastas": [
         "DOWNLOADS-MANUAIS",
         "RENDA3D-DOWNLOADS",
@@ -560,20 +558,11 @@ window.DADOS_PROJETOS = {
         "fontes-site",
         "rules-local"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/PROJETO-IMPRESSAO-3D.git",
-        "branch": "main",
-        "alteracoes": 5,
-        "ultimo_commit": {
-          "hash": "aa59304",
-          "data": "2026-10-31",
-          "assunto": "feat: analise-site.py baixa as imagens dos cards do site RENDA3D"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": null,
       "alertas": [
-        "5 alteracao(oes) sem commit.",
+        "Sem repositorio Git proprio: o codigo so existe neste disco.",
         "Pasta muito grande (mais de 2 GB): conferir o .gitignore antes do push."
       ]
     },
@@ -605,17 +594,8 @@ window.DADOS_PROJETOS = {
         "tasks",
         "tools"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/rea-app-clones.git",
-        "branch": "main",
-        "alteracoes": 13,
-        "ultimo_commit": {
-          "hash": "e3152f2",
-          "data": "2026-10-26",
-          "assunto": "feat(JEV-NAO.1): marca JEV-AI-SUGGESTION: NAO nas etapas por Claude Code (Haiku 5.5) (local · main · JEV-NAO)"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": {
         "titulo": "Graph Report - REA-APP-CLONES  (2026-10-22)",
         "nos": 4299,
@@ -658,7 +638,7 @@ window.DADOS_PROJETOS = {
         "tem_html": true
       },
       "alertas": [
-        "13 alteracao(oes) sem commit."
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
       ]
     },
     {
@@ -675,8 +655,8 @@ window.DADOS_PROJETOS = {
         "Python",
         "TypeScript"
       ],
-      "tamanho_bytes": 246409953,
-      "arquivos": 847,
+      "tamanho_bytes": 246441535,
+      "arquivos": 850,
       "subpastas": [
         "MODS-CLAUDE-CODE",
         "api",
@@ -692,17 +672,8 @@ window.DADOS_PROJETOS = {
         "spec",
         "tasks"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/rules-ai.git",
-        "branch": "main",
-        "alteracoes": 0,
-        "ultimo_commit": {
-          "hash": "fe9e06c",
-          "data": "2026-10-29",
-          "assunto": "feat(custos-de-ia): fornecedor Kimi (Moonshot AI) com K2.5, K2.6 e K2.7 Code (valores de fonte secundária, não conferido"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": {
         "titulo": "Graph Report - rules-ai  (2026-10-26)",
         "nos": 4205,
@@ -745,6 +716,7 @@ window.DADOS_PROJETOS = {
         "tem_html": true
       },
       "alertas": [
+        "Sem repositorio Git proprio: o codigo so existe neste disco.",
         "Arquivo .env presente no disco (conteudo nao lido): nunca versionar."
       ]
     },
@@ -778,21 +750,31 @@ window.DADOS_PROJETOS = {
         "src",
         "tasks"
       ],
-      "situacao": "ativo",
-      "git": {
-        "remoto": "https://github.com/Gelvazio/sistemafinanceiro.git",
-        "branch": "main",
-        "alteracoes": 5,
-        "ultimo_commit": {
-          "hash": "f2673a9",
-          "data": "2026-10-30",
-          "assunto": "feat: cards Despesa pendente, Receita pendente e Saldo Mensal"
-        }
-      },
+      "situacao": "sem-git",
+      "git": null,
       "graphify": null,
       "alertas": [
-        "5 alteracao(oes) sem commit.",
+        "Sem repositorio Git proprio: o codigo so existe neste disco.",
         "Arquivo .env presente no disco (conteudo nao lido): nunca versionar."
+      ]
+    },
+    {
+      "nome": "TABELAS-DE-PRECO",
+      "caminho": "C:\\fontes\\TABELAS-DE-PRECO",
+      "descricao": "Sem README, package.json, index.html ou AGENTS.md.",
+      "fonte_descricao": "",
+      "stack": [],
+      "linguagens": [
+        "HTML"
+      ],
+      "tamanho_bytes": 275781,
+      "arquivos": 2,
+      "subpastas": [],
+      "situacao": "sem-git",
+      "git": null,
+      "graphify": null,
+      "alertas": [
+        "Sem repositorio Git proprio: o codigo so existe neste disco."
       ]
     }
   ]

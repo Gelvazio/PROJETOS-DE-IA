@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preços — Meshy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fundo: #0b0b0b;
+    --cartao: #141414;
+    --borda: #232323;
+    --texto: #ffffff;
+    --texto-suave: #8d8d8d;
+    --texto-item: #c9c9c9;
+    --verde: #b7f53a;
+    --verde-claro: #d4ff6b;
+    --roxo: #a56bff;
+    --azul: #8ea2ff;
+    --laranja: #ff8a3d;
+    --raio: 22px;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: "Inter", "Segoe UI", sans-serif;
+  }
+
+  /* ---------- Cabeçalho ---------- */
+  .topo {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 24px;
+    background: #050505;
+    border-bottom: 1px solid var(--borda);
+  }
+
+  .marca {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 2rem;
+    letter-spacing: 0.01em;
+    color: var(--verde);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .marca__icone {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #ff6ba8, #7b3cff 70%);
+    border: 2px solid var(--verde);
+  }
+
+  .menu {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .menu a {
+    color: var(--texto);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .menu .seta::after {
+    content: " ⌄";
+    font-size: 0.8em;
+  }
+
+  .selo {
+    display: inline-block;
+    padding: 1px 7px;
+    border: 1px solid var(--laranja);
+    border-radius: 999px;
+    color: var(--laranja);
+    font-size: 0.6rem;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+
+  .botao-topo {
+    padding: 10px 18px;
+    background: var(--verde-claro);
+    color: #111 !important;
+    border-radius: 12px;
+    font-weight: 700;
+  }
+
+  /* ---------- Planos ---------- */
+  .planos {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: start;
+    gap: 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 24px 24px 48px;
+    zoom: 0.8;
+  }
+
+  .plano {
+    background: var(--cartao);
+    border-radius: var(--raio);
+    padding: 30px;
+    min-height: 0;
+  }
+
+  .plano--destaque {
+    margin-top: 0;
+    padding-top: 36px;
+    border: 1px solid var(--borda);
+  }
+
+  .plano--pro {
+    border-color: #6b5a3a;
+    background:
+      linear-gradient(#141414, #141414) padding-box,
+      linear-gradient(180deg, #ff9ad5, #f3d27a 40%, #3a3a2a) border-box;
+    border: 2px solid transparent;
+  }
+
+  .plano__cabecalho {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .plano__nome {
+    margin: 0;
+    font-size: 1.9rem;
+    font-weight: 600;
+  }
+
+  .plano__nome--free { color: var(--verde-claro); }
+  .plano__nome--starter { color: var(--verde-claro); }
+  .plano__nome--pro { color: var(--azul); }
+  .plano__nome--premium { color: var(--roxo); }
+
+  .etiqueta {
+    white-space: nowrap;
+    padding: 4px 7px;
+    border: 1px solid #3a3a3a;
+    border-radius: 7px;
+    background: #1b1b1b;
+    color: var(--verde-claro);
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .plano__descricao {
+    margin: 12px 0 0;
+    color: var(--texto-suave);
+    font-size: 0.88rem;
+  }
+
+  .plano__preco-antigo {
+    margin: 40px 0 0;
+    color: var(--texto-suave);
+    font-size: 1.1rem;
+    text-decoration: line-through;
+  }
+
+  .plano__preco {
+    margin: 6px 0 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .plano__preco small {
+    color: var(--texto-suave);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  .plano__preco--espaco { margin-top: 70px; }
+
+  .plano__cobranca {
+    margin: 10px 0 0;
+    color: #5f5f5f;
+    font-size: 0.85rem;
+  }
+
+  .botao {
+    display: block;
+    width: 100%;
+    margin: 28px 0 30px;
+    padding: 14px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #c8ff4d, #a8f22a);
+    color: #121212;
+    font-family: inherit;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .botao--cinza {
+    background: #232323;
+    border: 1px solid #333;
+    color: var(--texto-item);
+  }
+
+  .botao:focus-visible,
+  .menu a:focus-visible {
+    outline: 2px solid #ff2bd6;
+    outline-offset: 3px;
+  }
+
+  .plano__titulo-lista {
+    margin: 22px 0 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .plano__titulo-lista:first-of-type { margin-top: 0; }
+
+  .lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lista li {
+    position: relative;
+    margin-bottom: 14px;
+    padding-left: 26px;
+    color: var(--texto-item);
+    font-size: 0.88rem;
+    line-height: 1.35;
+  }
+
+  .lista li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #e8e8e8;
+  }
+
+  .lista li.novo::before {
+    content: "🔥";
+    font-size: 0.85rem;
+  }
+
+  .lista b {
+    color: var(--verde-claro);
+    font-weight: 500;
+  }
+
+  .ajuda {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    border-radius: 50%;
+    background: #3a3a3a;
+    color: #cfcfcf;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .selo-novo {
+    margin-left: 4px;
+    padding: 1px 6px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--laranja);
+    font-size: 0.55rem;
+    font-weight: 700;
+  }
+
+  /* ---------- Responsivo ---------- */
+  @media (max-width: 1200px) {
+    .menu { display: none; }
+    .planos { grid-template-columns: repeat(2, 1fr); padding-top: 24px; }
+    .plano { border-radius: var(--raio); min-height: 0; }
+  }
+
+  @media (max-width: 720px) {
+    .planos { grid-template-columns: 1fr; }
+    .topo { justify-content: space-between; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topo" style="display: none;">
+  <div class="marca"><span class="marca__icone" aria-hidden="true"></span>Meshy</div>
+  <ul class="menu">
+    <li><a class="seta" href="#">Funcionalidades</a></li>
+    <li><a class="seta" href="#">Soluções</a></li>
+    <li><a class="seta" href="#">Comunidade</a></li>
+    <li><a class="seta" href="#">Recursos</a></li>
+    <li><a href="#">Empresas</a></li>
+    <li><a class="seta" href="#">Loja <span class="selo">NOVO</span></a></li>
+    <li><a class="seta" href="#">Desenvolvedores</a></li>
+    <li><a href="#">Preços</a></li>
+    <li><a href="#">Fale com Vendas</a></li>
+    <li><a href="#">Entrar</a></li>
+    <li><a class="botao-topo" href="#">Inscreva-se grátis</a></li>
+  </ul>
+</header>
+
+<main class="planos">
+
+  <!-- Free -->
+  <section class="plano">
+    <div class="plano__cabecalho"><h2 class="plano__nome plano__nome--free">Free</h2></div>
+    <p class="plano__descricao">Cartão de crédito não necessário</p>
+    <p class="plano__preco plano__preco--espaco">R$ 0 <small>/ mês</small></p>
+    <a class="botao botao--cinza" href="#" style="margin-top:62px">Começar</a>
+
+    <p class="plano__titulo-lista">Essenciais para começar:</p>
+    <ul class="lista">
+      <li><b>100</b> créditos mensais <span class="ajuda">?</span></li>
+      <li><b>1</b> tarefa simultânea</li>
+      <li><b>Baixa</b> prioridade na fila</li>
+    </ul>
+    <p class="plano__titulo-lista">Uso limitado:</p>
+    <ul class="lista">
+      <li>Recursos básicos de IA</li>
+      <li>Licença CC BY 4.0 (uso comercial com atribuição)</li>
+    </ul>
+  </section>
+
+  <!-- Starter -->
+  <section class="plano">
+    <div class="plano__cabecalho"><h2 class="plano__nome plano__nome--starter">Starter</h2></div>
+    <p class="plano__descricao">Melhor para hobbistas e iniciantes</p>
+    <p class="plano__preco plano__preco--espaco">R$ 54 <small>/ mês</small></p>
+    <p class="plano__cobranca">Cobrado mensalmente</p>
+    <a class="botao" href="#">Assine Agora &nbsp;›</a>
+
+    <p class="plano__titulo-lista">Tudo no Free, além de:</p>
+    <ul class="lista">
+      <li class="novo">Acesso ao <b>primeiro agente 3D do mundo</b> <span class="selo-novo">NOVO</span></li>
+      <li>Ferramentas de geração avançada <span class="ajuda">?</span></li>
+      <li><b>250</b> recarga mensal de créditos (até 25 ativos) <span class="ajuda">?</span></li>
+      <li><b>20</b> downloads por mês de todos os modelos <span class="ajuda">?</span></li>
+      <li><b>5</b> tarefas na fila</li>
+      <li><b>Prioridade</b> de fila média</li>
+      <li>Ativos são privados e de propriedade do cliente</li>
+      <li><b>2</b> tentativas gratuitas por tarefa (app web) <span class="ajuda">?</span></li>
+      <li><b>20% DE DESCONTO</b> em Pacotes de Créditos Extras</li>
+      <li><b>15</b> downloads de modelos da comunidade</li>
+    </ul>
+  </section>
+
+  <!-- Pro -->
+  <section class="plano plano--destaque plano--pro">
+    <div class="plano__cabecalho">
+      <h2 class="plano__nome plano__nome--pro">Pro</h2>
+      <span class="etiqueta">MAIS POPULAR</span>
+    </div>
+    <p class="plano__descricao">Melhor para criadores individuais</p>
+    <p class="plano__preco-antigo">R$ 107,9</p>
+    <p class="plano__preco">R$ 53,95 <small>primeiro mês</small></p>
+    <p class="plano__cobranca">Cobrado mensalmente, R$ 107,9 / mês</p>
+    <a class="botao" href="#">Assine Agora &nbsp;›</a>
+
+    <p class="plano__titulo-lista">Privilégios:</p>
+    <ul class="lista">
+      <li class="novo">Acesso ao <b>primeiro agente 3D do mundo</b> <span class="selo-novo">NOVO</span></li>
+      <li><b>1.000</b> créditos mensais (até 100 recursos) <span class="ajuda">?</span></li>
+      <li><b>10</b> tarefas simultâneas</li>
+      <li><b>Alta</b> prioridade na fila</li>
+      <li><b>60%</b> mais velocidade de geração</li>
+      <li><b>4</b> tentativas gratuitas por tarefa (app web) <span class="ajuda">?</span></li>
+      <li><b>20% DE DESCONTO</b> em Pacotes de Créditos Extras</li>
+    </ul>
+    <p class="plano__titulo-lista">Uso ilimitado:</p>
+    <ul class="lista">
+      <li><b>Ilimitado</b> de downloads de modelos 3D</li>
+      <li><b>Ilimitado</b> de downloads de modelos da comunidade</li>
+      <li>Gerações de imagens <b>ilimitadas</b> com créditos <span class="ajuda">?</span></li>
+      <li><b>Ilimitado</b> de animações com 600+ movimentos</li>
+    </ul>
+  </section>
+
+  <!-- Premium -->
+  <section class="plano plano--destaque">
+    <div class="plano__cabecalho">
+      <h2 class="plano__nome plano__nome--premium">Premium</h2>
+      <span class="etiqueta">MELHOR CUSTO-BENEFÍCIO</span>
+    </div>
+    <p class="plano__descricao">Melhor para criadores com alto volume</p>
+    <p class="plano__preco-antigo">R$ 216</p>
+    <p class="plano__preco">R$ 108 <small>primeiro mês</small></p>
+    <p class="plano__cobranca">Cobrado mensalmente, R$ 216 / mês</p>
+    <a class="botao" href="#">Assine Agora &nbsp;›</a>
+
+    <p class="plano__titulo-lista">Privilégios:</p>
+    <ul class="lista">
+      <li class="novo">Acesso ao <b>primeiro agente 3D do mundo</b> <span class="selo-novo">NOVO</span></li>
+      <li><b>3.000</b> créditos mensais (até 300 recursos) <span class="ajuda">?</span></li>
+      <li><b>30</b> tarefas simultâneas</li>
+      <li><b>Prioridade</b> de fila mais alta</li>
+      <li><b>80%</b> mais velocidade de geração</li>
+      <li><b>12</b> tentativas gratuitas por tarefa (app web) <span class="ajuda">?</span></li>
+    </ul>
+    <p class="plano__titulo-lista">Tudo em Pro, além de:</p>
+    <ul class="lista">
+      <li>Acesso antecipado a novos recursos</li>
+      <li>Creative Lab: <b>4</b> designs gratuitos / dia <span class="ajuda">?</span></li>
+      <li>Creative Lab: cupom de <b>$30</b> em frete grátis <span class="ajuda">?</span></li>
+    </ul>
+  </section>
+
+</main>
+
+</body>
+</html>

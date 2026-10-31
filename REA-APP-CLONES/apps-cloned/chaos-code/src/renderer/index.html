@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'"
+    />
+    <title>Chaos Code</title>
+    <link rel="stylesheet" href="estilos.css" />
+  </head>
+  <body>
+    <!-- Moldura do original (docs/inventario/telas.md, "Moldura"): barra lateral + área principal.
+         No login a barra lateral some (classe layout-aplicativo--tela-cheia). -->
+    <div id="aplicativo" class="layout-aplicativo">
+      <aside id="barra-lateral" class="barra-lateral" aria-label="Barra lateral">
+        <div class="barra-lateral__marca">
+          <button id="botao-marca" class="marca" type="button" title="Ir ao Dashboard">
+            <span class="marca__icone" aria-hidden="true">CC</span>
+            <span class="marca__texto">
+              <span class="marca__chaos">Chaos</span><span class="marca__code">Code</span>
+            </span>
+          </button>
+          <span class="marca__selo">v3</span>
+        </div>
+
+        <!-- Itens criados por tela.ts a partir das rotas de navegacao.ts. -->
+        <nav id="menu-principal" class="menu" aria-label="Menu principal"></nav>
+
+        <div class="barra-lateral__espaco"></div>
+
+        <section class="situacao" aria-label="Situação">
+          <p id="situacao-auth" class="situacao__item">
+            <span class="situacao__ponto" aria-hidden="true"></span>
+            <span class="situacao__texto">Auth: Desconectado</span>
+          </p>
+          <p id="situacao-mcp" class="situacao__item">
+            <span class="situacao__ponto" aria-hidden="true"></span>
+            <span class="situacao__texto">MCP: Parado</span>
+          </p>
+          <p id="situacao-projetos" class="situacao__item">
+            <span class="situacao__ponto" aria-hidden="true"></span>
+            <span class="situacao__texto">Proj —</span>
+          </p>
+        </section>
+
+        <button id="botao-sair" class="botao-lateral botao-lateral--sair" type="button"
+          title="Sair" aria-label="Sair da conta">
+          <span class="botao-lateral__icone" aria-hidden="true">⎋</span>
+          <span class="botao-lateral__rotulo">Sair</span>
+        </button>
+
+        <div class="rodape-versao">
+          <button id="botao-atualizar" class="rodape-versao__atualizar" type="button" hidden>
+            Atualizar
+          </button>
+          <span id="rotulo-versao" class="rodape-versao__rotulo">Chaos Code</span>
+        </div>
+
+        <button id="botao-recolher" class="botao-lateral botao-lateral--recolher" type="button"
+          title="Recolher menu" aria-label="Recolher menu" aria-expanded="true">
+          <span class="botao-lateral__icone botao-lateral__icone--recolher"
+            aria-hidden="true">«</span>
+          <span class="botao-lateral__rotulo">Recolher</span>
+        </button>
+      </aside>
+
+      <main id="conteudo-tela" class="conteudo-principal" tabindex="-1"></main>
+    </div>
+
+    <!-- Camada: consentimento MCP (evento mcp:consent-request do original). -->
+    <dialog id="camada-consentimento-mcp" class="camada"
+      aria-labelledby="consentimento-mcp-titulo">
+      <form method="dialog" class="camada__caixa">
+        <h2 id="consentimento-mcp-titulo" class="camada__titulo">Autorizar acesso MCP</h2>
+        <p id="consentimento-mcp-mensagem" class="camada__texto"></p>
+        <p id="consentimento-mcp-redirecionamento" class="camada__texto camada__texto--suave"></p>
+        <p id="consentimento-mcp-erro" class="camada__erro" hidden>
+          Erro ao responder solicitação
+        </p>
+        <div class="camada__acoes">
+          <button class="botao botao--secundario" type="submit" value="negar">Negar</button>
+          <button class="botao botao--primario" type="submit" value="autorizar">Autorizar</button>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- Camada: janela de atualização (store update do original). -->
+    <dialog id="camada-atualizacao" class="camada" aria-labelledby="atualizacao-titulo">
+      <form method="dialog" class="camada__caixa">
+        <h2 id="atualizacao-titulo" class="camada__titulo">Atualização disponível</h2>
+        <p id="atualizacao-versao" class="camada__texto"></p>
+        <p id="atualizacao-obrigatoria" class="camada__aviso" hidden>
+          Esta atualização é obrigatória
+        </p>
+        <div class="camada__acoes">
+          <button id="atualizacao-depois" class="botao botao--secundario" type="submit"
+            value="depois">Depois</button>
+          <button class="botao botao--primario" type="submit" value="instalar">
+            Instalar e reiniciar
+          </button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="tela.js"></script>
+  </body>
+</html>
