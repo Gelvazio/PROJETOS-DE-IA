@@ -1,0 +1,39 @@
+# Publica o quadro (tasks/STATUS.md) no Supabase Realtime Broadcast, canal quadro:rules-ai.
+# Contrato: tasks/etapas/ETAPA-031-a3249f9e-MIGRAR-AGENTES-BROADCAST.md (seção da .1).
+# A chave secreta vem só do secret do GitHub e nunca é impressa (INV-1).
+name: Publicar quadro
+
+on:
+  push:
+    branches: [main]
+    paths: [tasks/STATUS.md]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publicar-quadro
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      # Janela de coalescência (AGENTES-REALTIME.14): o push seguinte cancela esta execução
+      # (concurrency) durante a espera; só a última envia, com sequencia = GITHUB_RUN_NUMBER.
+      - name: Esperar a janela de 3 s
+        run: sleep 3
+      - name: Enviar o quadro ao Broadcast
+        env:
+          SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
+        run: |
+          if [ -z "$SUPABASE_SECRET_KEY" ]; then
+            echo "::notice title=Publicar quadro::Secret do Supabase não cadastrado; envio pulado."
+            exit 0
+          fi
+          python3 -B dashboard/publicar_quadro.py --projeto rules-ai

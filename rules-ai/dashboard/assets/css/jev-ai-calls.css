@@ -1,0 +1,109 @@
+/* Página CHAMADAS JEV AI: usa só os tokens do tema-futurista.css e do base.css. */
+
+.chamadas {
+  position: relative;
+  z-index: 1;
+  padding: var(--espaco);
+  height: calc(100vh - var(--altura-cabecalho));
+  overflow: auto;
+}
+
+.chamadas__titulo {
+  margin: 0 0 var(--espaco);
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  color: var(--cor-ciano);
+  text-shadow: var(--brilho-ciano);
+}
+
+.chamadas__erro,
+.chamadas__alerta {
+  margin: 0 0 var(--espaco);
+  padding: 10px 14px;
+  border-radius: var(--raio);
+  border: 1px solid var(--cor-magenta);
+  box-shadow: var(--brilho-magenta);
+  background: var(--vidro);
+}
+
+.chamadas__alerta {
+  border-color: var(--cor-ativo);
+  box-shadow: none;
+}
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--espaco);
+  margin-bottom: var(--espaco);
+}
+
+.resumo__cartao {
+  padding: 12px 14px;
+  background: var(--vidro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.resumo__rotulo {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--cor-texto-suave);
+}
+
+.resumo__valor {
+  margin: 4px 0 0;
+  font-family: var(--fonte-titulo);
+  font-size: 1.2rem;
+  color: var(--cor-ciano);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px var(--espaco);
+  margin-bottom: var(--espaco);
+}
+
+.filtros__rotulo {
+  color: var(--cor-texto-suave);
+}
+
+.filtros__campo {
+  padding: 6px 10px;
+  background: var(--vidro);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-family: var(--fonte-dados);
+}
+
+.tabela-rolagem {
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.tabela th,
+.tabela td {
+  padding: 6px 10px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela th {
+  color: var(--cor-ciano);
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+}
+
+.tabela__celula--erro {
+  color: var(--cor-magenta);
+}

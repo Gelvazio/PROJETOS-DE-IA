@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agentes ao vivo</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/graphs.css">
+  <link rel="stylesheet" href="assets/css/kanban.css">
+  <link rel="stylesheet" href="assets/css/tema-futurista.css">
+  <script type="module" src="assets/js/menu.js"></script>
+  <script type="module" src="assets/js/agentes.js"></script>
+</head>
+<body class="tela-cheia">
+  <header class="barra barra--com-transmissao">
+    <nav class="abas abas--barra" aria-label="Navegação" data-menu
+      data-menu-ocultar="../index.html index.html cena.html"></nav>
+    <section class="transmissao transmissao--barra" aria-label="Transmissão">
+      <p id="selo-ao-vivo" class="transmissao__selo">● ao vivo</p>
+      <p id="estado-conexao" class="transmissao__conexao transmissao__conexao--offline"
+        aria-live="polite">Offline: lendo do GitHub</p>
+      <label class="painel__rotulo" for="atraso">Atraso</label>
+      <select id="atraso" class="painel__campo transmissao__atraso"></select>
+      <p id="estado-leitura" class="transmissao__estado" aria-live="polite">Lendo o quadro…</p>
+      <p id="nota-movimento" class="transmissao__estado" hidden>Movimento reduzido: sem animação.</p>
+    </section>
+  </header>
+
+  <main id="quadro" class="kanban" aria-label="Quadro kanban das subtarefas ao vivo"></main>
+
+  <p id="aviso" class="aviso" hidden></p>
+</body>
+</html>

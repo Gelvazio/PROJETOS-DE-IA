@@ -1,0 +1,140 @@
+/* Página CUSTOS DE IA: usa só os tokens do tema-futurista.css e do base.css. */
+
+.custos {
+  position: relative;
+  z-index: 1;
+  padding: var(--espaco);
+  height: calc(100vh - var(--altura-cabecalho));
+  overflow: auto;
+}
+
+.custos__titulo {
+  margin: 0 0 var(--espaco);
+  font-family: var(--fonte-titulo);
+  font-size: 1.25rem;
+  color: var(--cor-ciano);
+  text-shadow: var(--brilho-ciano);
+}
+
+.custos__erro {
+  margin: 0 0 var(--espaco);
+  padding: 10px 14px;
+  border-radius: var(--raio);
+  border: 1px solid var(--cor-magenta);
+  box-shadow: var(--brilho-magenta);
+  background: var(--vidro);
+}
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--espaco);
+  margin-bottom: var(--espaco);
+}
+
+.resumo__cartao {
+  padding: 12px 14px;
+  background: var(--vidro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  backdrop-filter: blur(6px);
+}
+
+.resumo__rotulo {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--cor-texto-suave);
+}
+
+.resumo__valor {
+  margin: 4px 0 0;
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  color: var(--cor-ciano);
+}
+
+.fornecedores {
+  display: grid;
+  gap: var(--espaco);
+}
+
+.fornecedor {
+  padding: var(--espaco);
+  background: var(--vidro);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  backdrop-filter: blur(6px);
+  box-shadow: var(--brilho-ciano);
+}
+
+.fornecedor--claude { border-color: var(--cor-ciano); }
+.fornecedor--deepseek { border-color: var(--cor-magenta); }
+.fornecedor--codex { border-color: var(--cor-violeta); }
+.fornecedor--gemini { border-color: var(--cor-ativo); }
+
+.fornecedor__titulo {
+  margin: 0;
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  color: var(--cor-texto);
+}
+
+.fornecedor__meta {
+  margin: 4px 0 var(--espaco);
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.fornecedor__fonte {
+  color: var(--cor-ciano);
+}
+
+.fornecedor__fonte:focus-visible {
+  outline: 2px solid var(--cor-magenta);
+  outline-offset: 2px;
+}
+
+.tabela-rolagem {
+  overflow-x: auto;
+}
+
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.tabela th,
+.tabela td {
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.tabela th {
+  color: var(--cor-ciano);
+  font-family: var(--fonte-titulo);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tabela__numero {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tabela__vazio {
+  color: var(--cor-texto-suave);
+}
+
+.tabela__observacao {
+  max-width: 420px;
+  color: var(--cor-texto-suave);
+}
+
+@media (max-width: 720px) {
+  .resumo {
+    grid-template-columns: 1fr;
+  }
+}

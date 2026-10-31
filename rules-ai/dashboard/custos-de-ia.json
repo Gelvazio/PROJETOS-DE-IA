@@ -1,0 +1,89 @@
+{
+  "geradoEm": "2026-10-24T09:30:00-03:00",
+  "moeda": "USD",
+  "unidade": "por 1 milhão de tokens",
+  "fornecedores": [
+    {
+      "id": "claude",
+      "nome": "Claude (Anthropic)",
+      "fonte": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "coletadoEm": "2026-10-24",
+      "modelos": [
+        { "nome": "Claude Fable 5.1", "entrada": 10, "saida": 50, "cache": 0.25, "observacao": "Cache = leitura (cache hits). Escrita 5m: 12.50; 1h: 20." },
+        { "nome": "Claude Mythos 5.1", "entrada": 10, "saida": 50, "cache": 0.25, "observacao": "Acesso limitado (link da página). Escrita 5m: 12.50; 1h: 20." },
+        { "nome": "Claude Fable 5", "entrada": 10, "saida": 50, "cache": 1, "observacao": "Cache = leitura. Escrita 5m: 12.50; 1h: 20." },
+        { "nome": "Claude Mythos 5", "entrada": 10, "saida": 50, "cache": 1, "observacao": "Acesso limitado (link da página). Escrita 5m: 12.50; 1h: 20." },
+        { "nome": "Claude Opus 5.5", "entrada": 4, "saida": 20, "cache": 0.20, "observacao": "Cache = leitura. Escrita 5m: 5; 1h: 8." },
+        { "nome": "Claude Opus 5", "entrada": 5, "saida": 25, "cache": 0.50, "observacao": "Cache = leitura. Escrita 5m: 6.25; 1h: 10." },
+        { "nome": "Claude Opus 4.8", "entrada": 5, "saida": 25, "cache": 0.50, "observacao": "Cache = leitura. Escrita 5m: 6.25; 1h: 10." },
+        { "nome": "Claude Opus 4.7", "entrada": 5, "saida": 25, "cache": 0.50, "observacao": "Cache = leitura. Escrita 5m: 6.25; 1h: 10." },
+        { "nome": "Claude Opus 4.6", "entrada": 5, "saida": 25, "cache": 0.50, "observacao": "Cache = leitura. Escrita 5m: 6.25; 1h: 10." },
+        { "nome": "Claude Opus 4.5", "entrada": 5, "saida": 25, "cache": 0.50, "observacao": "Cache = leitura. Escrita 5m: 6.25; 1h: 10." },
+        { "nome": "Claude Sonnet 5.5", "entrada": 2, "saida": 10, "cache": 0.10, "observacao": "Cache = leitura. Escrita 5m: 2.50; 1h: 4." },
+        { "nome": "Claude Sonnet 5", "entrada": 2, "saida": 10, "cache": 0.20, "observacao": "Cache = leitura. Escrita 5m: 2.50; 1h: 4. Entrada e saída têm nota de rodapé na página (não detalhada aqui)." },
+        { "nome": "Claude Sonnet 4.6", "entrada": 3, "saida": 15, "cache": 0.30, "observacao": "Cache = leitura. Escrita 5m: 3.75; 1h: 6." },
+        { "nome": "Claude Sonnet 4.5", "entrada": 3, "saida": 15, "cache": 0.30, "observacao": "Cache = leitura. Escrita 5m: 3.75; 1h: 6." },
+        { "nome": "Claude Haiku 5.5 (prompts até 100 mil tokens)", "entrada": 0.10, "saida": 0.50, "cache": 0.01, "observacao": "Cache = leitura. Escrita 5m: 0.125; 1h: 0.20. Para prompts acima de 100 mil tokens: entrada 0.50, saída 2.50, cache 0.05." },
+        { "nome": "Claude Haiku 4.5", "entrada": 1, "saida": 5, "cache": 0.10, "observacao": "Cache = leitura. Escrita 5m: 1.25; 1h: 2." }
+      ]
+    },
+    {
+      "id": "deepseek",
+      "nome": "DeepSeek",
+      "fonte": "https://api-docs.deepseek.com/quick_start/pricing",
+      "coletadoEm": "2026-10-24",
+      "modelos": [
+        { "nome": "deepseek-flash (DeepSeek-V4.1-Flash-1017)", "entrada": 0.15, "saida": 0.60, "cache": 0.003, "observacao": "Valores fora de pico (off-peak). Cache = cache hit fora de pico. Pico (UTC, seg a sex, 01:00-04:00 e 06:00-10:00): entrada 0.30, saída 1.20, cache 0.006. Página mostra \"$\" sem código de moeda." },
+        { "nome": "deepseek-v4-pro (DeepSeek-V4-Pro-0813)", "entrada": 0.66, "saida": 1.98, "cache": 0.022, "observacao": "Valores fora de pico (off-peak). Cache = cache hit fora de pico. Pico: entrada 1.32, saída 3.96, cache 0.044. Página mostra \"$\" sem código de moeda." }
+      ]
+    },
+    {
+      "id": "codex",
+      "nome": "Codex (OpenAI)",
+      "fonte": "https://developers.openai.com/api/docs/pricing",
+      "coletadoEm": "2026-10-24",
+      "modelos": [
+        { "nome": "gpt-5.5", "entrada": 5, "saida": 30, "cache": 0.50, "observacao": "Padrão, contexto até 272K. Acima disso a página informa tarifa maior (não listada aqui)." },
+        { "nome": "gpt-5.4", "entrada": 2.50, "saida": 15, "cache": 0.25, "observacao": "Padrão, contexto até 272K." },
+        { "nome": "gpt-5.4-mini", "entrada": 0.75, "saida": 4.50, "cache": 0.075, "observacao": "Padrão." },
+        { "nome": "gpt-5.3-codex", "entrada": 1.75, "saida": 14, "cache": 0.175, "observacao": "Modelo Codex listado na página oficial de preços. Versão Fast na mesma página: entrada 3.50, cache 0.35, saída 28. Uso com login ChatGPT é cobrado em créditos, não por token." },
+        { "nome": "gpt-5.2", "entrada": 1.75, "saida": 14, "cache": 0.175, "observacao": "Padrão." },
+        { "nome": "gpt-5.2-codex", "entrada": 1.75, "saida": 14, "cache": 0.175, "observacao": "Valor obtido do snippet de busca da página do modelo (developers.openai.com/api/docs/models/gpt-5.2-codex), não listado na página de preços. Não conferido na página do modelo." },
+        { "nome": "gpt-5.1", "entrada": 1.25, "saida": 10, "cache": 0.125, "observacao": "Padrão." },
+        { "nome": "gpt-5.1-codex", "entrada": 1.25, "saida": 10, "cache": 0.125, "observacao": "Valor obtido do snippet de busca da página do modelo (developers.openai.com/api/docs/models/gpt-5.1-codex), não listado na página de preços. Página do modelo marca como deprecated." },
+        { "nome": "gpt-5-codex", "entrada": 1.25, "saida": 10, "cache": 0.125, "observacao": "Valor obtido do snippet de busca da página do modelo (developers.openai.com/api/docs/models/gpt-5-codex), não listado na página de preços. Página do modelo marca como deprecated." },
+        { "nome": "gpt-5", "entrada": 1.25, "saida": 10, "cache": 0.125, "observacao": "Padrão." },
+        { "nome": "gpt-5-mini", "entrada": 0.25, "saida": 2, "cache": 0.025, "observacao": "Padrão." }
+      ]
+    },
+    {
+      "id": "gemini",
+      "nome": "Gemini (Google)",
+      "fonte": "https://ai.google.dev/gemini-api/docs/pricing",
+      "coletadoEm": "2026-10-24",
+      "modelos": [
+        { "nome": "gemini-4-argon", "entrada": 2, "saida": 10, "cache": 0.10, "observacao": "Nível pago padrão. A partir de 1 dez 2026: entrada 4, saída 20, cache 0.20." },
+        { "nome": "gemini-3.8-flash", "entrada": 0.75, "saida": 3.75, "cache": 0.075, "observacao": "Texto/imagem/vídeo. A partir de 1 jan 2027: entrada 1.50, saída 7.50, cache 0.15, mais armazenamento." },
+        { "nome": "gemini-3.6-flash", "entrada": 0.75, "saida": 3.75, "cache": 0.075, "observacao": "A partir de 1 jan 2027: entrada 1.50, saída 7.50, cache 0.15, mais armazenamento." },
+        { "nome": "gemini-3.1-pro-preview", "entrada": 2, "saida": 12, "cache": 0.20, "observacao": "Até 200k tokens de contexto. Acima de 200k: entrada 4, saída 18, cache 0.40, mais armazenamento." },
+        { "nome": "gemini-3.5-flash-lite", "entrada": 0.30, "saida": 2.50, "cache": 0.03, "observacao": "Texto/imagem/vídeo/áudio. Mais armazenamento de cache de 1 USD por 1M tokens/hora." },
+        { "nome": "gemini-3.1-flash-lite", "entrada": 0.25, "saida": 1.50, "cache": 0.025, "observacao": "Texto/imagem/vídeo; áudio 0.50 de entrada. Mais armazenamento de cache de 1 USD por 1M tokens/hora." },
+        { "nome": "gemini-3-flash-preview", "entrada": 0.50, "saida": 3, "cache": 0.05, "observacao": "Texto/imagem/vídeo; áudio 1.00 de entrada. Mais armazenamento." },
+        { "nome": "gemini-2.5-pro", "entrada": 1.25, "saida": 10, "cache": 0.125, "observacao": "Até 200k tokens. Acima de 200k: entrada 2.50, saída 15, cache 0.25. Mais armazenamento." },
+        { "nome": "gemini-2.5-flash", "entrada": 0.30, "saida": 2.50, "cache": 0.03, "observacao": "Texto/imagem/vídeo; áudio 1.00 de entrada. Mais armazenamento." },
+        { "nome": "gemini-2.5-flash-lite", "entrada": 0.10, "saida": 0.40, "cache": 0.01, "observacao": "Texto/imagem/vídeo; áudio 0.30 de entrada. Mais armazenamento." }
+      ]
+    },
+    {
+      "id": "kimi",
+      "nome": "Kimi (Moonshot AI)",
+      "fonte": "https://platform.kimi.ai/docs/pricing/chat",
+      "coletadoEm": "2026-10-29",
+      "modelos": [
+        { "nome": "Kimi K2.7 Code", "entrada": 0.95, "saida": 4.00, "cache": 0.19, "observacao": "Valor de fonte secundária (guia de preços jun/2026), não conferido na tabela oficial, que não carregou. Série K2 sai para novos usuários em 31/10/2026 e é aposentada até o fim de dez/2026. Confirmado também por CometAPI (entrada 0.95, cache 0.19)." },
+        { "nome": "Kimi K2.6", "entrada": 0.95, "saida": 4.00, "cache": 0.16, "observacao": "Valor de fonte secundária (guia de preços jun/2026), não conferido na tabela oficial, que não carregou. Série K2 sai para novos usuários em 31/10/2026 e é aposentada até o fim de dez/2026." },
+        { "nome": "Kimi K2.5", "entrada": 0.60, "saida": 3.00, "cache": 0.10, "observacao": "Valor de fonte secundária (guia de preços jun/2026), não conferido na tabela oficial, que não carregou. Série K2 sai para novos usuários em 31/10/2026 e é aposentada até o fim de dez/2026." }
+      ]
+    }
+  ]
+}

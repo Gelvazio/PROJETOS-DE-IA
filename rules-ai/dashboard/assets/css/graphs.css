@@ -1,0 +1,650 @@
+/* Página 3D GRAPHS AI. Usa os tokens de ../assets/css/base.css. */
+
+/* Cabeçalho com altura livre (menu em 2 linhas) e a área principal ocupando o resto da tela. */
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.abas {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.abas__botao {
+  padding: 6px 12px;
+  color: var(--cor-texto-suave);
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.abas__botao:hover {
+  color: var(--cor-texto);
+}
+
+.graphs {
+  display: grid;
+  grid-template-columns: 1fr var(--largura-painel);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.graphs__cena {
+  position: relative;
+  overflow: hidden;
+  min-height: 360px;
+}
+
+.graphs__rotulo {
+  position: absolute;
+  left: var(--espaco);
+  bottom: var(--espaco);
+  margin: 0;
+  padding: 6px 10px;
+  background: rgb(11 16 32 / 80%);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+  pointer-events: none;
+}
+
+.graphs__painel {
+  overflow-y: auto;
+  border-left: 1px solid var(--cor-borda);
+}
+
+@media (max-width: 800px) {
+  body:not(.tela-cheia) {
+    display: block;
+    height: auto;
+  }
+
+  .graphs {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .graphs__cena {
+    height: 60vh;
+  }
+
+  .graphs__painel {
+    border-left: none;
+    border-top: 1px solid var(--cor-borda);
+  }
+}
+
+.painel {
+  padding: var(--espaco);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco);
+}
+
+.painel__bloco {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 12px;
+}
+
+.painel__titulo {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.painel__rotulo {
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+.painel__campo {
+  width: 100%;
+  padding: 6px;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.gerar {
+  display: grid;
+  gap: 6px;
+}
+
+.gerar__prompt {
+  resize: vertical;
+}
+
+.gerar__custo,
+.gerar__estado,
+.progresso__texto {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.gerar__estado {
+  margin-top: 8px;
+}
+
+.botao {
+  padding: 8px;
+  background: var(--cor-destaque);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.botao:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.progresso {
+  margin-top: 8px;
+}
+
+.progresso__trilho {
+  height: 10px;
+  background: var(--cor-fundo);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progresso__barra {
+  height: 100%;
+  width: 0;
+  background: var(--cor-destaque);
+  transition: width 0.4s;
+}
+
+.galeria {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.galeria__item {
+  width: 100%;
+  padding: 8px;
+  text-align: left;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.8rem;
+}
+
+.galeria__item[aria-current="true"] {
+  border-color: var(--cor-destaque);
+}
+
+.galeria__data {
+  display: block;
+  color: var(--cor-texto-suave);
+  font-size: 0.72rem;
+}
+
+.galeria__vazia {
+  color: var(--cor-texto-suave);
+  font-size: 0.8rem;
+}
+
+.abas__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  background: transparent;
+  color: var(--cor-texto-suave);
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.abas__icone:hover {
+  color: var(--cor-texto);
+  border-color: var(--cor-destaque);
+}
+
+.modal {
+  width: min(440px, calc(100vw - 32px));
+  padding: 0;
+  background: var(--cor-superficie);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.modal::backdrop {
+  background: rgb(0 0 0 / 60%);
+}
+
+.modal__corpo {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+}
+
+.modal__titulo {
+  margin: 0 0 4px;
+  font-size: 1.05rem;
+}
+
+.modal__linha {
+  display: flex;
+  gap: 6px;
+}
+
+.modal__nota,
+.modal__erro {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.modal__erro {
+  color: #fca5a5;
+}
+
+.modal__erro:empty {
+  display: none;
+}
+
+.modal__acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.modal__secundario {
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.modal__secundario--perigo {
+  margin-right: auto;
+  color: #fca5a5;
+}
+
+.modal__secundario:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.hud {
+  position: absolute;
+  top: var(--espaco);
+  left: var(--espaco);
+  padding: 10px 14px;
+  background: rgb(11 16 32 / 82%);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.hud__destaque {
+  margin: 0 0 4px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #86efac;
+}
+
+.hud__linha {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.controles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.controles__velocidade {
+  width: auto;
+}
+
+.objetos {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.objetos__item {
+  display: grid;
+  gap: 2px;
+  font-size: 0.8rem;
+}
+
+.objetos__estado {
+  font-size: 0.72rem;
+}
+
+.objetos__estado--glb {
+  color: #86efac;
+}
+
+.objetos__estado--forma {
+  color: #fde68a;
+}
+
+.objetos__prompt {
+  color: var(--cor-texto-suave);
+  font-size: 0.72rem;
+  overflow-wrap: anywhere;
+}
+
+.abas__saldo {
+  margin-left: auto;
+  align-self: center;
+  padding: 4px 10px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.abas__saldo + .abas__icone {
+  margin-left: 0;
+}
+
+.abas__saldo--neutro {
+  color: var(--cor-texto-suave);
+}
+
+.abas__saldo--ok {
+  color: #86efac;
+  border-color: #166534;
+}
+
+.abas__saldo--baixo {
+  color: #fca5a5;
+  border-color: #7f1d1d;
+}
+
+/* Página "Agentes ao vivo": só a barra de menus em cima e a cena em toda a largura. */
+.tela-cheia {
+  overflow: hidden;
+}
+
+.barra {
+  display: grid;
+  gap: 6px;
+  padding: 8px var(--espaco);
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.barra .abas {
+  margin-top: 0;
+  flex-wrap: wrap;
+}
+
+.abas__botao--atual {
+  color: var(--cor-texto);
+  border-color: var(--cor-destaque);
+}
+
+.tela-cheia__cena {
+  position: relative;
+  width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.sobreposto {
+  position: absolute;
+  max-width: min(320px, calc(100% - 2 * var(--espaco)));
+  padding: 10px 14px;
+  background: rgb(11 16 32 / 82%);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  font-size: 0.8rem;
+  box-sizing: border-box;
+}
+
+.sobreposto--topo-esquerda {
+  top: var(--espaco);
+  left: var(--espaco);
+}
+
+.sobreposto--topo-direita {
+  top: var(--espaco);
+  right: var(--espaco);
+  pointer-events: none;
+}
+
+.sobreposto--baixo-esquerda {
+  bottom: var(--espaco);
+  left: var(--espaco);
+  pointer-events: none;
+}
+
+.transmissao__selo {
+  margin: 0 0 6px;
+  font-weight: bold;
+  color: #f87171;
+}
+
+.transmissao__atraso {
+  width: auto;
+}
+
+.transmissao__estado {
+  margin: 6px 0 0;
+  color: var(--cor-texto-suave);
+  font-variant-numeric: tabular-nums;
+}
+
+.transmissao__estado--erro {
+  color: #fca5a5;
+}
+
+.transmissao__conexao {
+  margin: 0 0 6px;
+  font-size: 0.85em;
+}
+
+.transmissao__conexao--aovivo {
+  color: var(--cor-ao-vivo);
+}
+
+.transmissao__conexao--reconectando {
+  color: var(--cor-ativo);
+}
+
+.transmissao__conexao--offline {
+  color: var(--cor-texto-suave);
+}
+
+.contagem,
+.legenda,
+.eventos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+}
+
+.legenda {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--cor-borda);
+  grid-template-columns: repeat(2, auto);
+  color: var(--cor-texto-suave);
+}
+
+.legenda__cor {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 6px;
+  border-radius: 2px;
+}
+
+.legenda__cor--leve { background: #f59e0b; }
+.legenda__cor--medio { background: #3b82f6; }
+.legenda__cor--pesado { background: #ec4899; }
+.legenda__cor--usuario { background: #94a3b8; }
+
+.contagem__item--progresso { color: #93c5fd; }
+.contagem__item--aguardando { color: #fde68a; }
+.contagem__item--bloqueado { color: #fca5a5; }
+.contagem__item--concluido { color: #86efac; }
+
+.eventos__item {
+  font-variant-numeric: tabular-nums;
+}
+
+.eventos__item--concluida { color: #86efac; }
+.eventos__item--reservada { color: #93c5fd; }
+.eventos__item--bloqueada { color: #fca5a5; }
+.eventos__item--aguardando { color: #fde68a; }
+
+@media (max-width: 800px) {
+  .sobreposto--topo-direita {
+    display: none;
+  }
+}
+
+/* Rótulos 3D em HTML (CSS2DRenderer) da página "Agentes ao vivo". */
+.camada-rotulos {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sobreposto {
+  z-index: 2;
+}
+
+.rotulo3d {
+  display: grid;
+  max-width: 220px;
+  padding: 4px 8px;
+  background: rgb(11 16 32 / 88%);
+  border: 1.5px solid var(--cor-rotulo, var(--cor-texto));
+  border-radius: 6px;
+  font-size: 0.78rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+}
+
+.rotulo3d strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--cor-rotulo, var(--cor-texto));
+}
+
+.rotulo3d span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--cor-texto);
+}
+
+.rotulo3d--pequeno {
+  padding: 1px 5px;
+  font-size: 0.66rem;
+  border-width: 1px;
+}
+
+/* Percentual na cabeça do agente (regra C31 do rules-ai). */
+.progresso3d {
+  display: grid;
+  gap: 3px;
+  padding: 4px 8px;
+  background: rgb(11 16 32 / 90%);
+  border: 1.5px solid var(--cor-rotulo, var(--cor-texto));
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.progresso3d__linha {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progresso3d__id:empty {
+  display: none;
+}
+
+.progresso3d__id {
+  color: var(--cor-texto-suave);
+  font-size: 0.7rem;
+}
+
+.progresso3d__barra {
+  width: 56px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cor-rotulo) var(--valor), rgb(255 255 255 / 15%) var(--valor));
+}
+
+.progresso3d strong {
+  color: var(--cor-texto);
+}
+
+/* Linha dos projetos, acima do menu das páginas (assets/js/menu.js). */
+.abas--projetos {
+  flex-wrap: wrap;
+}
+
+.abas__botao--projeto {
+  font-weight: bold;
+  letter-spacing: 0.02em;
+}
+
+.abas__botao--projeto.abas__botao--atual {
+  color: #fff;
+  background: var(--cor-destaque);
+}
+
+/* Caixa de transmissão (ao vivo, atraso e leitura) dentro da barra do menu, no topo. */
+.barra .transmissao--barra {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-left: auto;
+  padding: 0.3rem 0.6rem;
+  position: static;
+  font-size: 0.8rem;
+}
+
+.barra--com-transmissao {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}

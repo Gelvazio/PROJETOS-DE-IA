@@ -1,0 +1,132 @@
+{
+  "projetos": [
+    {
+      "id": "aulas-senai-CLAUDE-HAIKU",
+      "nome": "aulas-senai-CLAUDE-HAIKU",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/aulas-senai-CLAUDE-HAIKU",
+      "repositorio": "Gelvazio/aulasenai",
+      "cortadoEm": null,
+      "ordem": 7
+    },
+    {
+      "id": "aulas-senai-CLAUDE-OPUS",
+      "nome": "aulas-senai-CLAUDE-OPUS",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/aulas-senai-CLAUDE-OPUS",
+      "repositorio": "Gelvazio/aulasenai",
+      "cortadoEm": null,
+      "ordem": 9
+    },
+    {
+      "id": "aulas-senai-CLAUDE-OPUS-LIDER",
+      "nome": "aulas-senai-CLAUDE-OPUS-LIDER",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/aulas-senai-CLAUDE-OPUS-LIDER",
+      "repositorio": "Gelvazio/aulasenai",
+      "cortadoEm": null,
+      "ordem": 10
+    },
+    {
+      "id": "aulas-senai-CLAUDE-SONNET",
+      "nome": "aulas-senai-CLAUDE-SONNET",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/aulas-senai-CLAUDE-SONNET",
+      "repositorio": "Gelvazio/aulasenai",
+      "cortadoEm": null,
+      "ordem": 8
+    },
+    {
+      "id": "aulasenai",
+      "nome": "aulasenai",
+      "tipo": "filho",
+      "status": "ativo",
+      "monitorado": false,
+      "motivo": "aguarda a carga na API (.54)",
+      "caminho": "C:/fontes/aulasenai",
+      "repositorio": "Gelvazio/aulasenai",
+      "cortadoEm": null,
+      "ordem": 2
+    },
+    {
+      "id": "dashboard-ai",
+      "nome": "dashboard-ai",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "fora do escopo da migração para a API (pedido do usuário)",
+      "caminho": "C:/fontes/dashboard-ai",
+      "repositorio": "Gelvazio/dashboard-ai",
+      "cortadoEm": null,
+      "ordem": 3
+    },
+    {
+      "id": "gerenciador-de-ia",
+      "nome": "gerenciador-de-ia",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "cortadoEm": null,
+      "ordem": 4
+    },
+    {
+      "id": "projeto-frontend-com-testes",
+      "nome": "projeto-frontend-com-testes",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/projeto-frontend-com-testes",
+      "cortadoEm": null,
+      "ordem": 6
+    },
+    {
+      "id": "REA-APP-CLONES",
+      "nome": "REA-APP-CLONES",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/REA-APP-CLONES",
+      "repositorio": "Gelvazio/REA-APP-CLONES",
+      "cortadoEm": null,
+      "ordem": 11
+    },
+    {
+      "id": "rules-ai",
+      "nome": "rules-ai",
+      "tipo": "mae",
+      "status": "ativo",
+      "monitorado": true,
+      "caminho": "C:/fontes/rules-ai",
+      "repositorio": "Gelvazio/rules-ai",
+      "cortadoEm": null,
+      "ordem": 1
+    },
+    {
+      "id": "testes-de-frontend",
+      "nome": "testes-de-frontend",
+      "tipo": "filho",
+      "status": "aguardando",
+      "monitorado": false,
+      "motivo": "migração para a API",
+      "caminho": "C:/fontes/testes-de-frontend",
+      "repositorio": "Gelvazio/testes-de-frontend",
+      "cortadoEm": null,
+      "ordem": 5
+    }
+  ]
+}

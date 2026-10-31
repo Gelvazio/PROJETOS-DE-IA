@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHAMADAS JEV AI</title>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/tema-futurista.css">
+  <link rel="stylesheet" href="assets/css/jev-ai-calls.css">
+  <script type="module" src="assets/js/menu.js"></script>
+  <script type="module" src="assets/js/jev-ai-calls.js"></script>
+</head>
+<body class="tela-cheia">
+  <header class="barra">
+    <nav class="abas abas--barra" aria-label="Navegação" data-menu
+      data-menu-ocultar="../index.html index.html cena.html"></nav>
+  </header>
+
+  <main class="chamadas" aria-label="Chamadas ao Jev">
+    <h1 class="chamadas__titulo">CHAMADAS JEV AI</h1>
+    <p id="chamadas-erro" class="chamadas__erro" role="alert" hidden></p>
+    <p id="chamadas-puladas" class="chamadas__alerta" hidden></p>
+    <section id="chamadas-resumo" class="resumo" aria-label="Resumo"></section>
+    <section class="filtros" aria-label="Filtros">
+      <label class="filtros__rotulo" for="filtro-acao">Ação</label>
+      <select id="filtro-acao" class="filtros__campo"></select>
+      <label class="filtros__rotulo" for="filtro-situacao">Situação</label>
+      <select id="filtro-situacao" class="filtros__campo"></select>
+    </section>
+    <div class="tabela-rolagem">
+      <table class="tabela">
+        <thead id="chamadas-cabecalho"></thead>
+        <tbody id="chamadas-corpo"></tbody>
+      </table>
+    </div>
+  </main>
+</body>
+</html>

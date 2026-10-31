@@ -1,0 +1,137 @@
+.painel {
+  padding: var(--espaco);
+  display: flex;
+  flex-direction: column;
+  gap: var(--espaco);
+}
+
+.painel__bloco {
+  background: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 12px;
+}
+
+.painel__titulo {
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.painel__entradas {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 6px 8px;
+}
+
+.painel__rotulo {
+  color: var(--cor-texto-suave);
+  font-size: 0.85rem;
+}
+
+.painel__campo {
+  width: 100%;
+  padding: 4px 6px;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+  border-radius: 6px;
+}
+
+.botao {
+  grid-column: 1 / -1;
+  padding: 8px;
+  background: var(--cor-destaque);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.botao:hover {
+  filter: brightness(1.1);
+}
+
+.painel__calculo {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8rem;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+.painel__dica {
+  margin: 0;
+  color: var(--cor-texto-suave);
+  font-family: var(--fonte);
+}
+
+.barra {
+  margin: 6px 0;
+}
+
+.barra__rotulo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+}
+
+.barra__trilho {
+  height: 10px;
+  background: var(--cor-fundo);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.barra__preenchimento {
+  height: 100%;
+  width: 0;
+  background: var(--cor-destaque);
+  transition: width 0.4s;
+}
+
+.legenda {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.legenda__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
+.legenda__cor {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legenda__cor--negativo {
+  background: var(--cor-peso-negativo);
+}
+
+.legenda__cor--positivo {
+  background: var(--cor-peso-positivo);
+}
+
+.legenda__cor--ativo {
+  background: var(--cor-ativo);
+}
+
+.rotulo-neuronio {
+  font-size: 0.7rem;
+  color: var(--cor-texto-suave);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.rotulo-camada {
+  font-size: 0.8rem;
+  color: var(--cor-texto);
+  font-weight: bold;
+  pointer-events: none;
+  white-space: nowrap;
+}

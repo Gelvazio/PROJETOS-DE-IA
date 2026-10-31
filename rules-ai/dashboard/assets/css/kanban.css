@@ -1,0 +1,73 @@
+/* Quadro kanban da página "Agentes ao vivo": uma coluna por status, com rolagem própria. */
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem;
+  padding: 0.75rem;
+  /* Folga no fim da página. */
+  padding-bottom: 1rem;
+  align-items: start;
+}
+
+.kanban__coluna {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-width: 0;
+}
+
+.kanban__cabecalho {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.kanban__coluna--progresso { border-top: 3px solid #4fc3f7; }
+.kanban__coluna--aguardando { border-top: 3px solid #fdd835; }
+.kanban__coluna--bloqueado { border-top: 3px solid #e53935; }
+.kanban__coluna--concluido { border-top: 3px solid #43a047; }
+.kanban__coluna--pendente { border-top: 3px solid #607d8b; }
+
+.kanban__cartoes {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.kanban__cartao {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  padding: 0.5rem 0.6rem;
+  overflow-wrap: anywhere;
+}
+
+.kanban__id {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.kanban__titulo {
+  margin: 0.2rem 0;
+  font-size: 0.82rem;
+}
+
+.kanban__detalhe {
+  margin: 0;
+  font-size: 0.72rem;
+  color: #9aa3b5;
+}
+
+.kanban__progresso {
+  height: 4px;
+  margin-top: 0.3rem;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  overflow: hidden;
+}
+
+.kanban__progresso > div {
+  height: 100%;
+  background: #4fc3f7;
+}
