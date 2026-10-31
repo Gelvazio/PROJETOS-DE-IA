@@ -1,0 +1,87 @@
+{
+  "descricao": "Quais C-levels do conglomerado (conglomerado-agentes-ia.md) agem em cada um dos 7 sistemas.",
+  "fonte": "conglomerado-agentes-ia.md",
+  "base_projetos": "NOVOS-PROJETOS-CLAUDE-CODE/7-SISTEMAS-FIM-SEMANA",
+  "lider": {
+    "perfil": "NOVOS-PROJETOS-CLAUDE-CODE/7-SISTEMAS-FIM-SEMANA/ANALISTA-SENIOR-LIDER.md",
+    "papel": "CEO orquestrador: escolhe os C-levels, consolida os pareceres e entrega a recomendação."
+  },
+  "regras": {
+    "maximo_c_levels_por_rodada": 4,
+    "veto": "O CRO tem poder de veto em todos os projetos; veto vermelho sem mitigação para a execução.",
+    "decisao_final": "Humana: os agentes apenas recomendam.",
+    "fora_do_escopo": ["CLO", "Especialistas setoriais"]
+  },
+  "projetos": [
+    {
+      "pasta": "01-AGENTE-WHATSAPP",
+      "nome": "Agente de WhatsApp",
+      "c_levels": [
+        { "cargo": "CPO", "foco": "Jornada de atendimento e agendamento; funcionalidades Must do MVP." },
+        { "cargo": "CTO", "foco": "Fluxo no n8n e integração com a API oficial do WhatsApp." },
+        { "cargo": "CFO", "foco": "Custo por conversa e preço mensal ao cliente." },
+        { "cargo": "CRO", "foco": "LGPD (dados de saúde em clínicas) e política do WhatsApp/Meta." }
+      ]
+    },
+    {
+      "pasta": "02-SITE-DO-MAPS",
+      "nome": "Site a partir do Maps",
+      "c_levels": [
+        { "cargo": "CMO", "foco": "Abordagem de venda ao dono do negócio e oferta inicial." },
+        { "cargo": "CPO", "foco": "Estrutura da landing page de uma página e o que fica de fora." },
+        { "cargo": "CTO", "foco": "Extração dos dados do Maps e geração do site." },
+        { "cargo": "CRO", "foco": "Termos de uso do Google, direitos de imagem e dados da empresa." }
+      ]
+    },
+    {
+      "pasta": "03-MAQUINA-DE-ANUNCIOS",
+      "nome": "Máquina de Anúncios",
+      "c_levels": [
+        { "cargo": "CSO", "foco": "Hipóteses sobre o ângulo do anúncio e o teste mais barato de cada." },
+        { "cargo": "CMO", "foco": "Mensagem, público e variações no mesmo ângulo." },
+        { "cargo": "CFO", "foco": "Custo da geração versus verba de mídia e retorno esperado." },
+        { "cargo": "CRO", "foco": "Políticas de anúncios da Meta e proibição de promessa de resultado." }
+      ]
+    },
+    {
+      "pasta": "04-AGENTE-DE-VOZ",
+      "nome": "Agente de Voz",
+      "c_levels": [
+        { "cargo": "CTO", "foco": "Telefonia, voz, latência e integração com a agenda." },
+        { "cargo": "CPO", "foco": "Roteiro de atendimento e quando passar para um humano." },
+        { "cargo": "CFO", "foco": "Custo por minuto de ligação e margem do serviço." },
+        { "cargo": "CRO", "foco": "Aviso e consentimento de gravação de voz e LGPD." }
+      ]
+    },
+    {
+      "pasta": "05-MAQUINA-DE-CARROSSEIS",
+      "nome": "Máquina de Carrosséis",
+      "c_levels": [
+        { "cargo": "CMO", "foco": "Linha editorial, ganchos e frequência de publicação." },
+        { "cargo": "CPO", "foco": "Formato do carrossel e fluxo de aprovação do cliente." },
+        { "cargo": "CTO", "foco": "Geração de imagens e textos no visual da marca." },
+        { "cargo": "CRO", "foco": "Direitos de imagem e fonte, uso de marca e políticas do Instagram." }
+      ]
+    },
+    {
+      "pasta": "06-VIDEO-DE-IMOVEL",
+      "nome": "Vídeo de Imóvel",
+      "c_levels": [
+        { "cargo": "CPO", "foco": "Roteiro do tour vertical de 30 segundos e o que o corretor recebe." },
+        { "cargo": "CTO", "foco": "Montagem do vídeo a partir das fotos." },
+        { "cargo": "CMO", "foco": "Oferta para corretores e imobiliárias e canal de venda." },
+        { "cargo": "CRO", "foco": "Normas do CRECI e veracidade das informações do imóvel." }
+      ]
+    },
+    {
+      "pasta": "07-ASSISTENTE-PESSOAL",
+      "nome": "Assistente Pessoal",
+      "c_levels": [
+        { "cargo": "CPO", "foco": "Conteúdo do resumo diário e o que entra antes das 7h." },
+        { "cargo": "CTO", "foco": "Integração com e-mail e agenda e agendamento diário." },
+        { "cargo": "CFO", "foco": "Custo diário de API e viabilidade como produto." },
+        { "cargo": "CRO", "foco": "Acesso a e-mails e agenda, LGPD e segurança das credenciais." }
+      ]
+    }
+  ]
+}
