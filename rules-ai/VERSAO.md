@@ -41,16 +41,16 @@
 
 ## Pacote do rules-local (scripts e Jev)
 
-- **Código do pacote:** a7fc37dc
+- **Código do pacote:** 4b9e4f23
 
 | # | Arquivo | Código |
 |---|---------|--------|
-| 0 | baixar.mjs | de50e3aaf67824e9 |
+| 0 | baixar.mjs | a151efc551fcc195 |
 | 1 | comparar.mjs | c8236d3502c0ca3b |
 | 2 | conferir.mjs | c82d6e4cb69dbc16 |
 | 3 | pacote.mjs | 792f53e47f7c2cbd |
 | 4 | proxy.mjs | a027d2b70b57a904 |
-| 5 | sessao.mjs | ad9ae0c98e17a4d1 |
+| 5 | sessao.mjs | 82df4566495d8b94 |
 | 6 | jev/cliente.mjs | 6b7824f10440578f |
 | 7 | jev/config.mjs | 40c6d99b6227f964 |
 | 8 | jev/decidir.mjs | 0548abe0d9805f84 |

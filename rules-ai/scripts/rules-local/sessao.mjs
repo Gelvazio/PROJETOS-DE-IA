@@ -10,7 +10,7 @@ import {
 } from 'node:fs';
 import { dirname, join, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { URL_RAW_BASE, baixarRegras, baixarVersao } from './baixar.mjs';
+import { baixarRegras, baixarVersao } from './baixar.mjs';
 import { compararListas } from './comparar.mjs';
 import {
   ARQUIVO_VERSAO, PASTA_REGRAS, calcularCodigo, conferirPasta, lerVersao, normalizarTexto,
@@ -19,6 +19,8 @@ import { baixarPacoteConferido, gravarPacote } from './pacote.mjs';
 import { rodarComProxySePreciso } from './proxy.mjs';
 
 const PASTA_RULES_LOCAL = dirname(fileURLToPath(import.meta.url));
+// Fonte das regras: a pasta rules-ai de C:\fontes (irmã das pastas de projeto), sempre.
+const PASTA_RULES_AI = resolve(PASTA_RULES_LOCAL, '..', '..', 'rules-ai');
 const ARQUIVO_RELATORIO = 'RELATORIO.md';
 const ARQUIVO_TRAVA = '.trava';
 const TRAVA_VALIDADE_MS = 120000;
@@ -406,7 +408,7 @@ async function sincronizarComTrava(pasta, nuvem, opcoes) {
 async function executarSessao(pasta) {
   let marca = null;
   try {
-    const opcoes = { urlBase: process.env.RULES_LOCAL_URL_BASE ?? URL_RAW_BASE };
+    const opcoes = { urlBase: process.env.RULES_LOCAL_URL_BASE ?? PASTA_RULES_AI };
     const download = await baixarVersao(opcoes);
     if (!download.ok) return avisar(avisoSemAcesso(download.motivo, lerVersaoLocal(pasta)));
     const leitura = lerVersao(download.texto);
