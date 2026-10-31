@@ -1,14 +1,14 @@
 {
   "descricao": "Quais C-levels do conglomerado (conglomerado-agentes-ia.md) agem em cada um dos 7 sistemas.",
   "fonte": "conglomerado-agentes-ia.md",
-  "base_projetos": "NOVOS-PROJETOS-CLAUDE-CODE/7-SISTEMAS-FIM-SEMANA",
+  "base_projetos": "COORDENACAO-DE-PROJETOS",
   "lider": {
     "perfil": "ANALISTA-SENIOR-LIDER.md",
-    "papel": "CEO orquestrador: escolhe os C-levels, consolida os pareceres e entrega a recomendação."
+    "papel": "Coordenador de projetos (chefe de gabinete): lê o estado dos projetos e entrega o briefing; em decisão de negócio dos 7 sistemas, age como CEO orquestrador, aciona os C-levels e consolida a recomendação."
   },
   "regras": {
     "maximo_c_levels_por_rodada": 4,
-    "veto": "O CRO tem poder de veto em todos os projetos; veto vermelho sem mitigação para a execução.",
+    "veto": "O CRO tem poder de veto em todos os projetos: veto = vermelho sem mitigação viável; todo vermelho recomenda consulta a um profissional.",
     "decisao_final": "Humana: os agentes apenas recomendam.",
     "fora_do_escopo": ["CLO", "Especialistas setoriais"]
   },
