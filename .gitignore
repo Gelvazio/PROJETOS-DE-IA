@@ -1,0 +1,49 @@
+# Raiz de C:\fontes (repositório PROJETOS-DE-IA).
+# Cada pasta de projeto com Git próprio fica de fora: senão vira submódulo quebrado ou arrasta
+# o histórico inteiro. Os projetos são versionados pelos remotos deles.
+
+# Projetos com .git próprio (repositórios aninhados)
+/aulasenai/
+/rules-ai/
+/ai-memory/
+/consumo-ia/
+/REA-APP-CLONES/
+/LOGIC-GAME-BLOCK/
+/MATERIAL-AULAS-PROF-MAIRA/
+/PROJETO-IMPRESSAO-3D/
+/crm/
+/sistemafinanceiro/
+/controlemercadoria/
+
+# Pastas de projetos parados ou offline (regras C20 e C23)
+/DEMAIS-PROJETOS-NAO-MEXER-AGORA/
+/DEMAIS-PROJETOS-DE-SISTEMAS-MANTER-OFFLINE/
+
+# Segredos e configuração local
+.env
+.env.*
+!.env.example
+config-de-tarefa-agendada.txt
+variaveis.js
+*.key
+*.pem
+
+# Dependências, caches e saídas geradas
+node_modules/
+__pycache__/
+*.pyc
+graphify-out/
+dist/
+*.log
+.vscode/
+
+# Binários e arquivos grandes
+*.exe
+*.zip
+*.rar
+*.7z
+*.iso
+*.mp4
+*.mov
+*.pptx.tmp
+~$*
