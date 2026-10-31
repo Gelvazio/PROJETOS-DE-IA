@@ -1,16 +1,16 @@
-## Etapa 001-18aa4eac — REMOVER-GIT: deixar Git só em aulasenai e controlemercadoria
+## Etapa 001-18aa4eac — REMOVER-GIT: deixar Git só em aulasenai, controlemercadoria e rules-ai
 **Tarefa:** REMOVER-GIT · **Pedido em:** 2026-10-31 · **Criada por:** Claude Code (Haiku 5.5)
 **Pedido:** "dentro de fontes, apenas aulasenai e controlemercadoria devem ser git, crie 1 tarefa pra remover o git de todos os demais, com 1 subtask por projeto"
-**Objetivo:** deixar só `aulasenai` e `controlemercadoria` como repositórios Git dentro de `C:\fontes`. Os outros nove perdem a pasta `.git` local. O código, os arquivos e o remoto no GitHub continuam como estão.
+**Objetivo:** deixar só `aulasenai`, `controlemercadoria` e `rules-ai` como repositórios Git dentro de `C:\fontes`. Os outros oito perdem a pasta `.git` local. O código, os arquivos e o remoto no GitHub continuam como estão.
 
 ### Escopo
-- Entra: apagar a pasta `.git` local de cada um dos 9 projetos abaixo; registrar o estado de cada um antes; atualizar o `CLAUDE.md` da raiz (mapa de projetos).
-- Não entra: apagar o remoto no GitHub; mexer em `aulasenai` e `controlemercadoria`; mexer no código dos 9 projetos; fazer commit em nenhum deles.
+- Entra: apagar a pasta `.git` local de cada um dos 8 projetos abaixo (todos menos o `rules-ai`); registrar o estado de cada um antes; atualizar o `CLAUDE.md` da raiz (mapa de projetos).
+- Não entra: apagar o remoto no GitHub; mexer em `aulasenai`, `controlemercadoria` e `rules-ai` (os três mantêm o Git); mexer no código dos 8 projetos; fazer commit em nenhum deles.
 
 ### Projetos (1 subtarefa cada)
 | Subtarefa | Projeto | Remoto (fica no GitHub) | Estado local ao planejar |
 |---|---|---|---|
-| .1 | rules-ai | Gelvazio/rules-ai | limpo, sincronizado |
+| .1 | rules-ai | Gelvazio/rules-ai | **MANTÉM o Git** (decisão de 2026-10-31); nada a remover |
 | .2 | ai-memory | Gelvazio/ai-memory | limpo, sincronizado |
 | .3 | consumo-ia | Gelvazio/consumo-ia | 5 alterações não commitadas |
 | .4 | REA-APP-CLONES | Gelvazio/rea-app-clones | 13 alterações não commitadas |
@@ -32,11 +32,13 @@
 
 ### Decisões
 - 2026-10-31: tarefa criada a partir do pedido do usuário. Aguarda aprovação do plano antes de qualquer `.git` ser apagado (tarefa grande: apaga dados).
+- 2026-10-31: por ordem do usuário, o `rules-ai` **deve manter o Git**. A tarefa passa a deixar Git em `aulasenai`, `controlemercadoria` e `rules-ai`; a subtarefa .1 fica sem ação (Git mantido, público em `Gelvazio/rules-ai`).
 
 ### Verificação (cada subtarefa)
 - Antes: `git -C <projeto> status -sb` (sem alterações pendentes) e remoto conferido com `git remote -v`.
 - Depois: a pasta `<projeto>/.git` não existe; os arquivos do projeto estão intactos; `git -C <projeto> rev-parse` falha como esperado.
-- Raiz: `git -C C:\fontes status` não lista mais os nove projetos como repositórios aninhados.
+- Raiz: `git -C C:\fontes status` não lista mais os oito projetos como repositórios aninhados.
+- `rules-ai`: a pasta `rules-ai/.git` continua existindo.
 
 ### Próximo passo
 Aguardar sua resposta sobre o plano, o plano B de cada item e o tratamento do `rules-ai`.

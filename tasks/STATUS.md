@@ -29,8 +29,8 @@ tarefas e guarda as tarefas globais (que valem para todos os projetos).
 
 ## Tarefas globais
 
-- #REMOVER-GIT — [deixar Git só em aulasenai e controlemercadoria](etapas/ETAPA-001-18aa4eac-REMOVER-GIT-EXTRAS.md) · 🔄 Em execução · tarefa grande (apaga dados; backup em `_backup-git\`)
-  - #REMOVER-GIT.1 — remover o Git de rules-ai · 🔄 Revertido: rules-ai voltou a ter Git próprio (público) · nível a classificar pelo Jev
+- #REMOVER-GIT — [deixar Git só em aulasenai, controlemercadoria e rules-ai](etapas/ETAPA-001-18aa4eac-REMOVER-GIT-EXTRAS.md) · 🔄 Em execução · tarefa grande (apaga dados; backup em `_backup-git\`)
+  - #REMOVER-GIT.1 — rules-ai mantém o Git · ✅ Concluído (decisão de 2026-10-31: rules-ai fica com Git próprio, público; nada a remover) · nível a classificar pelo Jev
   - #REMOVER-GIT.2 — remover o Git de ai-memory · ✅ Concluído (backup em `_backup-git\ai-memory\.git`) · nível a classificar pelo Jev
   - #REMOVER-GIT.3 — remover o Git de consumo-ia · ✅ Concluído (5 alterações preservadas) · nível a classificar pelo Jev
   - #REMOVER-GIT.4 — remover o Git de REA-APP-CLONES · ✅ Concluído (13 alterações preservadas; havia rebase pendente no backup, conferir) · nível a classificar pelo Jev
