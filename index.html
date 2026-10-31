@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard de Projetos</title>
+  <meta name="description" content="Painel de todos os projetos de C:\fontes: o que cada um faz, Git, tamanho e graphify.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Share+Tech+Mono&display=swap">
+  <link rel="stylesheet" href="dashboard/estilo.css">
+  <script defer src="projetos.js"></script>
+  <script defer src="dashboard/painel.js"></script>
+</head>
+<body>
+  <div class="pagina">
+    <header class="topo">
+      <div>
+        <p class="topo__rotulo">C:\fontes // nucleo de projetos</p>
+        <h1 class="topo__titulo">Dashboard de Projetos</h1>
+        <p class="topo__descricao">
+          Analise automatica de cada projeto: o que e, stack, Git, tamanho e graphify.
+          Dados de <strong data-gerado-em>—</strong>. Para atualizar:
+          <code>python update-projects-status.py</code>
+        </p>
+      </div>
+      <svg class="topo__rede" viewBox="0 0 320 140" role="img"
+        aria-label="Rede decorativa de nos conectados">
+        <line class="rede__linha" x1="30" y1="110" x2="120" y2="40"/>
+        <line class="rede__linha rede__linha--magenta" x1="120" y1="40" x2="210" y2="95"/>
+        <line class="rede__linha" x1="210" y1="95" x2="290" y2="30"/>
+        <line class="rede__linha rede__linha--magenta" x1="120" y1="40" x2="170" y2="12"/>
+        <line class="rede__linha" x1="210" y1="95" x2="250" y2="130"/>
+        <circle class="rede__no" cx="30" cy="110" r="4"/>
+        <circle class="rede__no rede__no--ciano" cx="120" cy="40" r="4"/>
+        <circle class="rede__no" cx="210" cy="95" r="4"/>
+        <circle class="rede__no rede__no--ciano" cx="290" cy="30" r="4"/>
+        <circle class="rede__no" cx="170" cy="12" r="4"/>
+        <circle class="rede__no rede__no--ciano" cx="250" cy="130" r="4"/>
+      </svg>
+      <div class="telemetria" aria-hidden="true"></div>
+    </header>
+
+    <p id="aviso" class="indicador indicador--alerta" role="alert" hidden></p>
+
+    <section id="indicadores" class="indicadores" aria-label="Indicadores gerais"></section>
+
+    <section class="controles" aria-label="Filtros">
+      <input id="busca" class="controles__busca" type="search"
+        placeholder="Buscar por nome, descricao ou stack..." aria-label="Buscar projetos">
+      <div id="filtros" class="filtros" role="group" aria-label="Filtrar por situacao"></div>
+      <select id="ordem" class="controles__ordem" aria-label="Ordenar projetos">
+        <option value="nome">Ordenar: nome</option>
+        <option value="tamanho">Ordenar: tamanho</option>
+        <option value="commit">Ordenar: ultimo commit</option>
+      </select>
+    </section>
+
+    <main id="cartoes" class="cartoes" aria-live="polite"></main>
+
+    <footer class="rodape">
+      Gerado em <span data-gerado-em>—</span> por update-projects-status.py
+    </footer>
+  </div>
+</body>
+</html>

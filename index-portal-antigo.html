@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mapa de Projetos</title>
+  <meta name="description" content="Mapa de C:\fontes, regras globais, líder Opus e tarefas.">
+  <link rel="stylesheet" href="assets/css/estilo.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.6/purify.min.js"></script>
+  <script defer src="assets/js/dados.js"></script>
+  <script defer src="assets/js/markdown.js"></script>
+  <script defer src="assets/js/modal.js"></script>
+  <script defer src="assets/js/tarefas.js"></script>
+  <script defer src="assets/js/pagina.js"></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__conteudo">
+      <p class="topo__rotulo">C:\fontes</p>
+      <h1 class="topo__titulo">Mapa de Projetos</h1>
+      <p class="topo__descricao">
+        Mapa da raiz, regras globais do <code>rules-ai</code>, líder Opus e quadro de tarefas.
+        Dados gerados em <strong id="gerado-em">—</strong>
+        (para atualizar: <code>atualizar-index.cmd</code>).
+      </p>
+    </div>
+  </header>
+
+  <p class="aviso" id="aviso" role="alert" hidden></p>
+
+  <section class="cartoes" id="cartoes" aria-label="Atalhos"></section>
+
+  <div class="layout">
+    <nav class="sumario" id="sumario" aria-label="Sumário"></nav>
+    <main class="conteudo" id="conteudo">
+      <p class="carregando">Carregando...</p>
+    </main>
+  </div>
+
+  <dialog class="modal" id="modal" aria-labelledby="modal-titulo">
+    <div class="modal__caixa">
+      <header class="modal__topo">
+        <div>
+          <h2 class="modal__titulo" id="modal-titulo" data-modal="titulo"></h2>
+          <p class="modal__subtitulo" data-modal="subtitulo"></p>
+        </div>
+        <button type="button" class="modal__fechar" data-modal="fechar"
+          aria-label="Fechar">✕</button>
+      </header>
+      <div class="modal__miolo">
+        <nav class="modal__abas" data-modal="abas" role="tablist"></nav>
+        <div class="modal__corpo" data-modal="corpo"></div>
+      </div>
+    </div>
+  </dialog>
+</body>
+</html>
