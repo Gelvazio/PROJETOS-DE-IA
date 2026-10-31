@@ -47,3 +47,6 @@ dist/
 *.mov
 *.pptx.tmp
 ~$*
+
+# Backup do Git removido dos projetos (etapa 001-18aa4eac)
+/_backup-git/

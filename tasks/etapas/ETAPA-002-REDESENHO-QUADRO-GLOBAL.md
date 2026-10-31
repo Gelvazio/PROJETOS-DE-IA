@@ -30,6 +30,7 @@
 
 ### Decisões
 - 2026-10-31: quadro global em `C:\fontes\tasks\`; regras pelo `rules-local` de cada projeto.
+- 2026-10-31 (resposta do usuário): todo projeto deve ter `rules-local`, e o `rules-local` de cada projeto **sempre busca as regras do rules-ai**. Consequência: o instalador (`scripts/instalar-rules-local.mjs`, que hoje recusa pasta sem `.git`) e o `sessao.mjs` precisam funcionar em pasta sem Git, buscando a fonte no `rules-ai`. Subtarefa .3 depende disso; ainda não implementada.
 
 ### Verificação
 - `grep -r sincronizar regras scripts` no `rules-ai` não encontra nada, exceto notas de histórico.
