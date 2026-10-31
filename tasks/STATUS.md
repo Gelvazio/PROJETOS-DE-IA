@@ -29,12 +29,12 @@ tarefas e guarda as tarefas globais (que valem para todos os projetos).
 
 ## Tarefas globais
 
-- #REMOVER-GIT — [deixar Git só em aulasenai, controlemercadoria e rules-ai](etapas/ETAPA-001-18aa4eac-REMOVER-GIT-EXTRAS.md) · 🔄 Em execução · tarefa grande (apaga dados; backup em `_backup-git\`)
+- #REMOVER-GIT — [deixar Git só em aulasenai, controlemercadoria e rules-ai](etapas/ETAPA-001-18aa4eac-REMOVER-GIT-EXTRAS.md) · ✅ Concluído · tarefa grande (apaga dados; backup em `_backup-git\`)
   - #REMOVER-GIT.1 — rules-ai mantém o Git · ✅ Concluído (decisão de 2026-10-31: rules-ai fica com Git próprio, público; nada a remover) · nível a classificar pelo Jev
   - #REMOVER-GIT.2 — remover o Git de ai-memory · ✅ Concluído (backup em `_backup-git\ai-memory\.git`) · nível a classificar pelo Jev
   - #REMOVER-GIT.3 — remover o Git de consumo-ia · ✅ Concluído (5 alterações preservadas) · nível a classificar pelo Jev
   - #REMOVER-GIT.4 — remover o Git de REA-APP-CLONES · ✅ Concluído (13 alterações preservadas; havia rebase pendente no backup, conferir) · nível a classificar pelo Jev
-  - #REMOVER-GIT.5 — remover o Git de LOGIC-GAME-BLOCK · ⛔ Bloqueado (exclusão negada pelo classificador; backup pronto) · nível a classificar pelo Jev
+  - #REMOVER-GIT.5 — remover o Git de LOGIC-GAME-BLOCK · ✅ Concluído (apagado pelo usuário em 2026-10-31; backup em `_backup-git\LOGIC-GAME-BLOCK\.git`) · nível a classificar pelo Jev
   - #REMOVER-GIT.6 — remover o Git de MATERIAL-AULAS-PROF-MAIRA · ✅ Concluído (3 alterações preservadas) · nível a classificar pelo Jev
   - #REMOVER-GIT.7 — remover o Git de PROJETO-IMPRESSAO-3D · ✅ Concluído (5 alterações preservadas) · nível a classificar pelo Jev
   - #REMOVER-GIT.8 — remover o Git de crm · ✅ Concluído (4 alterações preservadas) · nível a classificar pelo Jev

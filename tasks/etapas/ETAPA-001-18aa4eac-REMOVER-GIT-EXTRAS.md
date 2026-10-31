@@ -40,5 +40,7 @@
 - Raiz: `git -C C:\fontes status` não lista mais os oito projetos como repositórios aninhados.
 - `rules-ai`: a pasta `rules-ai/.git` continua existindo.
 
+- 2026-10-31: o usuário apagou o `.git` do LOGIC-GAME-BLOCK (a exclusão fora negada pelo classificador). Conferido: só aulasenai, controlemercadoria e rules-ai têm `.git`. Tarefa concluída.
+
 ### Próximo passo
-Aguardar sua resposta sobre o plano, o plano B de cada item e o tratamento do `rules-ai`.
+Nenhum: tarefa concluída. Resta atualizar o mapa de projetos do `CLAUDE.md`/`AGENTS.md` da raiz, se ainda citar Git nesses oito projetos.
