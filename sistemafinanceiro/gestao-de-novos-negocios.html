@@ -62,6 +62,43 @@
     <div id="ideia-modal-corpo" class="ideia-modal-corpo"></div>
   </dialog>
 
+  <dialog id="parametros-modal" class="ideia-modal" aria-labelledby="parametros-modal-titulo">
+    <div class="ideia-modal-topo">
+      <h2 id="parametros-modal-titulo">Regras de Análise Iniciais</h2>
+      <button type="button" class="ideia-modal-fechar" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="ideia-modal-corpo">
+      <p id="parametros-ideia" class="parametros-ideia"></p>
+      <form id="parametros-formulario" class="parametros-formulario" novalidate>
+        <label class="calculos-campo">
+          <span>Horas por semana disponíveis</span>
+          <input id="parametros-horas" type="text" inputmode="decimal" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Investimento inicial máximo (R$)</span>
+          <input id="parametros-investimento" type="text" inputmode="decimal" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Retorno máximo aceitável (meses)</span>
+          <input id="parametros-retorno" type="text" inputmode="numeric" autocomplete="off" />
+        </label>
+        <label class="calculos-campo parametros-largo">
+          <span>Regras de análise (uma por linha)</span>
+          <textarea id="parametros-regras" rows="8"></textarea>
+        </label>
+        <label class="calculos-campo parametros-largo">
+          <span>Prompt que a IA vai seguir (gerado das regras e salvo junto)</span>
+          <textarea id="parametros-prompt" rows="8" readonly></textarea>
+        </label>
+        <p id="parametros-mensagem" class="parametros-mensagem" aria-live="polite"></p>
+        <div class="parametros-acoes parametros-largo">
+          <button type="button" id="parametros-restaurar" class="btn ideia-detalhes">Restaurar regras iniciais</button>
+          <button type="submit" class="btn ideia-detalhes">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
   <script type="module" src="./src/novosNegocios.js"></script>
 
 </body>

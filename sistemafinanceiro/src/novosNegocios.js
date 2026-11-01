@@ -4,6 +4,7 @@
 import { IDEIAS_NEGOCIOS, AVISO_ESTIMATIVAS } from './ideiasNegocios.js';
 import { criarElemento, criarLista, criarSecaoModal, ligarFechamentoModal } from './elementosUi.js';
 import { obterAnaliseFinanceira, criarSeloStatus } from './analisesFinanceiras.js';
+import { prepararModalParametros } from './modalParametrosAnalise.js';
 
 const ROTULOS_CARD = [
   ['tempoAGastar', 'Tempo a gastar'],
@@ -26,15 +27,51 @@ function criarDadoCard(rotulo, valor) {
 }
 
 /**
+ * Cria um botão de ação do card.
+ * @param {string} texto - Texto do botão.
+ * @param {() => void} aoClicar - Chamado ao clicar.
+ * @returns {HTMLButtonElement} Botão pronto.
+ */
+function criarBotaoAcao(texto, aoClicar) {
+  const botao = criarElemento('button', 'btn ideia-detalhes', texto);
+  botao.type = 'button';
+  botao.addEventListener('click', aoClicar);
+  return botao;
+}
+
+/**
+ * Faz o selo de status abrir uma ação ao clicar (mouse ou Enter/Espaço).
+ * @param {HTMLElement} selo - Selo de status.
+ * @param {() => void} aoAtivar - Chamado ao ativar o selo.
+ * @returns {void}
+ */
+function tornarSeloClicavel(selo, aoAtivar) {
+  selo.classList.add('ideia-status--clicavel');
+  selo.setAttribute('role', 'button');
+  selo.tabIndex = 0;
+  selo.title = 'Abrir as regras de análise';
+  selo.addEventListener('click', aoAtivar);
+  selo.addEventListener('keydown', evento => {
+    if (evento.key !== 'Enter' && evento.key !== ' ') return;
+    evento.preventDefault();
+    aoAtivar();
+  });
+}
+
+/**
  * Monta o card de uma ideia.
  * @param {import('./ideiasNegocios.js').IdeiaNegocio} ideia - Ideia exibida.
  * @param {(ideia: object) => void} aoAbrirDetalhes - Chamado ao clicar em Detalhes.
+ * @param {(ideia: object) => void} aoAbrirParametros - Chamado ao clicar em Parâmetros de Análise
+ *   ou no selo de status.
  * @returns {HTMLElement} Card pronto.
  */
-function criarCardIdeia(ideia, aoAbrirDetalhes) {
+function criarCardIdeia(ideia, aoAbrirDetalhes, aoAbrirParametros) {
   const card = criarElemento('article', 'ideia-card');
   const topo = criarElemento('div', 'ideia-topo');
-  topo.append(criarElemento('span', 'ideia-codigo', ideia.codigo), criarSeloStatus(ideia.codigo));
+  const selo = criarSeloStatus(ideia.codigo);
+  tornarSeloClicavel(selo, () => aoAbrirParametros(ideia));
+  topo.append(criarElemento('span', 'ideia-codigo', ideia.codigo), selo);
   card.append(topo);
   card.append(criarElemento('h2', 'ideia-nome', ideia.nome));
 
@@ -42,10 +79,12 @@ function criarCardIdeia(ideia, aoAbrirDetalhes) {
   ROTULOS_CARD.forEach(([campo, rotulo]) => dados.append(criarDadoCard(rotulo, ideia[campo])));
   card.append(dados);
 
-  const botao = criarElemento('button', 'btn ideia-detalhes', 'Detalhes');
-  botao.type = 'button';
-  botao.addEventListener('click', () => aoAbrirDetalhes(ideia));
-  card.append(botao);
+  const acoes = criarElemento('div', 'ideia-acoes');
+  acoes.append(
+    criarBotaoAcao('Parâmetros de Análise', () => aoAbrirParametros(ideia)),
+    criarBotaoAcao('Detalhes', () => aoAbrirDetalhes(ideia)),
+  );
+  card.append(acoes);
   return card;
 }
 
@@ -112,11 +151,16 @@ function abrirModal(modal, ideia) {
 function iniciar() {
   const area = document.getElementById('ideias-cards');
   const modal = document.getElementById('ideia-modal');
-  if (!area || !modal) return;
+  const modalParametros = document.getElementById('parametros-modal');
+  if (!area || !modal || !modalParametros) return;
 
   ligarFechamentoModal(modal);
+  ligarFechamentoModal(modalParametros);
   const aoAbrir = ideia => abrirModal(modal, ideia);
-  area.replaceChildren(...IDEIAS_NEGOCIOS.map(ideia => criarCardIdeia(ideia, aoAbrir)));
+  const aoAbrirParametros = prepararModalParametros(modalParametros);
+  area.replaceChildren(
+    ...IDEIAS_NEGOCIOS.map(ideia => criarCardIdeia(ideia, aoAbrir, aoAbrirParametros)),
+  );
 }
 
 iniciar();

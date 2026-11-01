@@ -3,6 +3,7 @@
 // ============================================================================
 import { PARAMETROS_PADRAO, calcularSimulacao } from './simuladorPrevidencia.js';
 import { criarElemento } from './elementosUi.js';
+import { analisarNumero } from './numeros.js';
 
 const RECEBIMENTO_MINIMO_ANOS = 6;
 const CAMPO_SALARIO = 'salario';
@@ -39,18 +40,6 @@ const GRUPOS_RESULTADO = [
     ['Custo real para você (contribuição − economia)', 'custoReal', formatarMoeda],
   ] },
 ];
-
-/**
- * Converte um texto digitado em número (aceita "6.700,50", "6700,5" e "6700.5").
- * @param {string} texto - Texto digitado.
- * @returns {number} Número lido, ou 0 se inválido.
- */
-export function analisarNumero(texto) {
-  const limpo = String(texto).replace(/[R$\s%]/g, '');
-  const normalizado = limpo.includes(',') ? limpo.replace(/\./g, '').replace(',', '.') : limpo;
-  const numero = Number(normalizado);
-  return Number.isFinite(numero) ? Math.max(numero, 0) : 0;
-}
 
 /**
  * Lê os campos do formulário e monta a entrada da simulação.
