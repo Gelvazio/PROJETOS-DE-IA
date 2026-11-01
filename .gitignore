@@ -16,6 +16,9 @@
 /DEMAIS-PROJETOS-NAO-MEXER-AGORA/
 /DEMAIS-PROJETOS-DE-SISTEMAS-MANTER-OFFLINE/
 
+# Registros locais do AutoSwarm (AUTOSWARM_HOME)
+/autoswarm-dados/
+
 # Segredos e configuração local
 .env
 .env.*
