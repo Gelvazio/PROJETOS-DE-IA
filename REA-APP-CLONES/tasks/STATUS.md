@@ -43,12 +43,9 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 |---|---|---|---|---|---|---|---|
 | CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.4.13 | Montar o serviço de login no `principal.ts` | 🟠 Alta | — (a classificar pelo Jev) | CLONE.4.12, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.6.11 | Serviço de indexação do projeto | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.3.6, CLONE.6.3, CLONE.6.7, CLONE.6.8, CLONE.6.9, CLONE.6.10 | 🔄 Em execução | Devin (SWE-2 High Lightning) (local · main) (desde 2026-11-01 16:35) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.6.12 | Canais IPC de vetores | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.6.11 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.7.5 | Extração de entidades e relações | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.7.2, CLONE.7.3, CLONE.7.4 | 🔄 Em execução | Devin (SWE-2 High Lightning) (local · main) (desde 2026-11-01 16:35) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.10 | Serviço de consulta (grafo + vetores) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.6.11, CLONE.7.5, CLONE.7.7, CLONE.7.8, CLONE.7.9 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.11 | Canais IPC do grafo | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.7.10 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.2 | Servidor HTTP em `/mcp/{project_id}` | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.3.6 | 🔄 Em execução | Devin (SWE-2 High Lightning) (local · main) (desde 2026-11-01 16:35) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.8.3 | Token de sessão `X-MCP-Session-Token` | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.8.4 | Descoberta OAuth (`.well-known`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.2, CLONE.4.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.8.5 | Ferramenta de busca nos vetores | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.6.11, CLONE.8.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
@@ -63,7 +60,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | CLONE.9.7 | Canais IPC de CLIs e WSL | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.3, CLONE.9.4, CLONE.9.6 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.10.4 | Serviço de agentes | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.6, CLONE.10.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.10.5 | Canais IPC de agentes | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.10.4 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.13.4 | Tela de login | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.4.12 | 🔄 Em execução | Devin (SWE-2 High Lightning) (local · main) (desde 2026-11-01 16:35) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.5 | Tela de projetos | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.3.7, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.6 | Tela de tarefas | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.7 | Tela de indexação e busca | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.6.12 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

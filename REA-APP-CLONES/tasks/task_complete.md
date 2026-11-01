@@ -170,3 +170,8 @@
 | CLONE.5.3 | API de projetos | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.4.12 | Canais IPC de login | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.4.11 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.5.7 | Canais IPC da API | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.3, CLONE.5.4, CLONE.5.5, CLONE.5.6 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+
+| CLONE.6.11 | Serviço de indexação do projeto | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.3.6, CLONE.6.3, CLONE.6.7, CLONE.6.8, CLONE.6.9, CLONE.6.10 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.7.5 | Extração de entidades e relações | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.7.2, CLONE.7.3, CLONE.7.4 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.8.2 | Servidor HTTP em /mcp/{project_id} | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.3.6 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.13.4 | Tela de login | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.4.12 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

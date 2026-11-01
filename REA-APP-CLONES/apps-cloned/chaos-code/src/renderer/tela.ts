@@ -9,10 +9,13 @@ import {
   criarGuardaPadrao,
   criarVerificadorPlataforma,
   obterMontadorTela,
+  registrarTela,
   type DefinicaoRota,
   type LimpezaTela,
   type NomeRota,
 } from './navegacao';
+import { ehErroIpc } from '../compartilhado/tipos-ipc';
+import { montarTelaLogin } from './telas/login.tela';
 
 const SELETORES = {
   aplicativo: '#aplicativo',
@@ -121,20 +124,19 @@ function obterElemento<T extends HTMLElement>(seletor: string, raiz: ParentNode 
 
 /**
  * Fonte provisória: deixa ver a moldura antes dos canais IPC existirem.
- * Começa "logada" de propósito, só em memória; sair a desliga até recarregar a janela.
+ * Login e logout já usam o canal de login; MCP e projetos seguem provisórios.
  * @returns Fonte com valores provisórios.
  */
 function criarFonteProvisoria(): FonteEstadoAplicativo {
-  let autenticado = true;
-
   return {
-    // TODO(CLONE.4.12): get_auth_status pelo canal de login.
-    estaAutenticado: async () => autenticado,
+    estaAutenticado: async () => {
+      const estado = await window.chaosCode.obterEstadoLogin();
+      return !ehErroIpc(estado) && estado.situacao === 'logado';
+    },
     // TODO(CLONE.4.12): check_platform_online (commands::auth do original).
     consultarPlataforma: async () => true,
-    // TODO(CLONE.4.12): logout (revoga o token e limpa o cofre).
     sair: async () => {
-      autenticado = false;
+      await window.chaosCode.fazerLogout();
     },
     // TODO(CLONE.8.10): situação do servidor MCP.
     mcpAtivo: async () => null,
@@ -405,6 +407,10 @@ function ligarAcoesDaMoldura(roteador: Roteador, fonte: FonteEstadoAplicativo): 
  */
 async function iniciarTela(): Promise<void> {
   const fonte = criarFonteProvisoria();
+  registrarTela('login', montarTelaLogin);
+  window.chaosCode.aoMudarEstadoLogin(() => {
+    void atualizarSituacao(fonte);
+  });
   const roteador = new Roteador({
     rotas: ROTAS,
     guarda: criarGuardaPadrao({

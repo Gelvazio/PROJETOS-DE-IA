@@ -509,3 +509,58 @@ body {
     transition: none;
   }
 }
+
+.login-tela {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: var(--espaco-medio);
+}
+
+.login-tela__cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(100%, 380px);
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.login-tela__titulo {
+  margin: 0;
+  font-size: var(--tamanho-titulo);
+  color: var(--text-primary);
+}
+
+.login-tela__subtitulo {
+  margin: 0;
+  color: var(--accent);
+}
+
+.login-tela__chamada {
+  margin: 0 0 8px;
+  color: var(--text-secondary);
+}
+
+.login-tela__botao {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font: inherit;
+  cursor: pointer;
+}
+
+.login-tela__botao:disabled {
+  opacity: .6;
+  cursor: progress;
+}
+
+.login-tela__erro {
+  margin: 0;
+  color: var(--error);
+  font-size: .875rem;
+}

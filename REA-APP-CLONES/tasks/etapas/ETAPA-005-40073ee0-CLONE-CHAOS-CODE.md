@@ -663,12 +663,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.6.11 — Serviço de indexação do projeto
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01, retomada do executor Claude Code).
 
 - **Nível:** PESADO — liga várias peças · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.3.6, CLONE.6.3, CLONE.6.7, CLONE.6.8, CLONE.6.9, CLONE.6.10
 - **Descrição:** `apps-cloned/chaos-code/src/main/vetores/indexacao.servico.ts`: ler arquivos, dividir, embutir, gravar, buscar.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `apps-cloned/chaos-code/src/main/vetores/indexacao.servico.ts`: pipeline de indexação (fetching→chunking→embedding→saving) com lotes, RPM e reintentativas; incremental por versão de documento; índice HNSW por projeto; `buscar` com k 1–100.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.6.12 — Canais IPC de vetores
 
@@ -731,12 +733,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.7.5 — Extração de entidades e relações
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01, retomada do executor Claude Code).
 
 - **Nível:** PESADO — LLM + junção de duplicados · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.7.2, CLONE.7.3, CLONE.7.4
 - **Descrição:** `apps-cloned/chaos-code/src/main/grafo/extracao.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `apps-cloned/chaos-code/src/main/grafo/extracao.ts`: estratégias regex/llm/hybrid, fallback regex com aviso, 50 entidades e 100 relações por pedaço, 12 pedaços em paralelo, junção de duplicados pelo repositório.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.7.6 — Detecção de comunidades
 
@@ -829,12 +833,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.8.2 — Servidor HTTP em `/mcp/{project_id}`
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01, retomada do executor Claude Code).
 
 - **Nível:** PESADO — servidor de rede · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.3.6
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/servidor.ts` só em 127.0.0.1 (e WSL quando liberado).
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `apps-cloned/chaos-code/src/main/mcp/servidor.ts`: HTTP só em 127.0.0.1 (e IP do host p/ WSL quando liberado), POST `/mcp/{id}` JSON-RPC, `/health`, lista de Host/Origin permitidos, limite de corpo 4 MiB.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.3 — Token de sessão `X-MCP-Session-Token`
 
@@ -1205,12 +1211,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.13.4 — Tela de login
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01, retomada do executor Claude Code).
 
 - **Nível:** MEDIO — 1 tela · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.13.3, CLONE.4.12
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/login.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `src/renderer/telas/login.tela.ts` + `tela.ts`/`estilos.css`: tela de login com botão OAuth; estado via canal de login; token fora do renderer.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.13.5 — Tela de projetos
 
