@@ -99,6 +99,8 @@
 
 /* Modal */
 .ideia-modal {
+  /* o reset global zera a margem; sem "auto" o <dialog> gruda no canto */
+  margin: auto;
   width: min(720px, calc(100vw - 24px));
   max-height: calc(100dvh - 40px);
   padding: 0;
