@@ -114,3 +114,6 @@ body { padding-top: calc(var(--menu-h) + var(--sat, 0px)); }
   }
   .pagina-conteudo { padding: 24px 12px 40px; }
 }
+
+/* Link da página atual: sem destino, então clicar nele não recarrega a página */
+.menu-link[aria-current="page"] { cursor: default; }
