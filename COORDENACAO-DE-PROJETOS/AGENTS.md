@@ -20,3 +20,9 @@ Sempre que o usuário pedir **melhoria de prompt com Opus** (ou com qualquer age
   a página `index.html` lê esse arquivo ao renderizar, então não precisa ser editada.
 - ✅ Um agente por projeto: cada agente mexe só no `PROMPT_BASE.md` da sua própria pasta.
 - ✅ Ao terminar, o agente confirma que **somente** o `PROMPT_BASE.md` foi modificado.
+---
+
+## Quadro de tarefas
+
+O quadro fica em `tasks/STATUS.md` (etapas em `tasks/etapas/`, concluídas em `tasks/task_complete.md`).
+As regras do quadro estão em `.claude/rules/tasks/`; ler antes de criar ou executar tarefa.

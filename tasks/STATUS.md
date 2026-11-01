@@ -20,7 +20,8 @@ tarefas e guarda as tarefas globais (que valem para todos os projetos).
 | MATERIAL-AULAS-PROF-MAIRA | — | — | Sem quadro |
 | PROJETO-IMPRESSAO-3D | — | — | Sem quadro |
 | dashboard | — | — | Sem quadro |
-| Dashboards, HACKATON, PROJETO-CERCA, TABELAS-DE-PRECO, COORDENACAO-DE-PROJETOS | — | — | Sem quadro |
+| COORDENACAO-DE-PROJETOS | `COORDENACAO-DE-PROJETOS/tasks/STATUS.md` | `COORDENACAO-DE-PROJETOS/tasks/etapas/` | Quadro próprio |
+| Dashboards, HACKATON, PROJETO-CERCA, TABELAS-DE-PRECO | — | — | Sem quadro |
 | **GLOBAL (raiz)** | `C:\fontes\tasks\STATUS.md` (este arquivo) | `C:\fontes\tasks\etapas\` | Tarefas que valem para todos |
 
 > Regra: cada projeto guarda as suas tarefas dentro da própria pasta (`<projeto>/tasks/`). Só a
