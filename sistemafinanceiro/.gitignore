@@ -6,3 +6,6 @@ dist/
 
 # PDFs dos regulamentos/certificados (só servem localmente; não versionar)
 REGRAS-PROJETOS/**/*.pdf
+
+# Cópia local do Project NOMAD (repositório próprio, não versionar aqui)
+REGRAS-PROJETOS/PROJETO-NOMADE/project-nomad/
