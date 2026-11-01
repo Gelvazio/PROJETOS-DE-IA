@@ -83,7 +83,7 @@ function preencherModal(corpo) {
     ...secoesPlano,
     criarSecaoModal('Dados a informar para a análise', [criarLista(PREVIDENCIA_FIESC.dadosAInformar)]),
     criarSecaoModal('O que a análise precisa responder', [criarLista(PREVIDENCIA_FIESC.perguntasDaAnalise)]),
-    criarElemento('p', 'ideia-aviso', 'Fonte: Cartilha do Participante FIESCPrev 2025. [CONFIRMAR] = dado que a cartilha não traz.'),
+    criarElemento('p', 'ideia-aviso', 'Fontes: Regulamento do FIESCprev e Cartilha do Participante 2025. [CONFIRMAR] = dado que nenhum dos dois traz (fica no Plano de Custeio).'),
   );
 }
 

@@ -6,6 +6,9 @@ import { criarElemento } from './elementosUi.js';
 import { analisarNumero } from './numeros.js';
 
 const RECEBIMENTO_MINIMO_ANOS = 6;
+const CONTRAPARTIDA_MAXIMA_PCT = 100; // Art. 49: não pode exceder a contribuição básica
+const RENDA_PCT_MINIMO = 0.1;
+const RENDA_PCT_MAXIMO = 2;
 const CAMPO_SALARIO = 'salario';
 
 const formatadorMoeda = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -53,6 +56,8 @@ function lerEntrada(formulario) {
       campo.type === 'checkbox' ? campo.checked : analisarNumero(campo.value);
   });
   entrada.anos = Math.max(entrada.anos, 1);
+  entrada.contrapartidaPct = Math.min(entrada.contrapartidaPct, CONTRAPARTIDA_MAXIMA_PCT);
+  entrada.rendaPct = Math.min(Math.max(entrada.rendaPct, RENDA_PCT_MINIMO), RENDA_PCT_MAXIMO);
   entrada.recebimentoAnos = Math.max(entrada.recebimentoAnos, RECEBIMENTO_MINIMO_ANOS);
   return entrada;
 }

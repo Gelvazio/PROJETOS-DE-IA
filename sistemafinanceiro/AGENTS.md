@@ -94,7 +94,9 @@ Como consultar:
 
 O card **Previdência Privada FIESC** do Dashboard segue a mesma regra, com o arquivo
 `docs/analises/ANALISE-FINANCEIRA-PREVIDENCIA-FIESC.md` (dados do plano em
-`src/previdenciaFiesc.js`, vindos da cartilha FIESCPrev 2025).
+`src/previdenciaFiesc.js`, vindos do Regulamento e da cartilha FIESCPrev 2025). O texto do
+Regulamento está em `REGRAS-PROJETOS/FIESC-PREV/Regulamento-FIESCPREV.md` (convertido do PDF): é a
+fonte principal; em divergência com a cartilha, vale o Regulamento.
 
 ### Regras de análise e prompt no banco (tabela `novos_negocios`)
 
