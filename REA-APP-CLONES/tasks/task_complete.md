@@ -169,3 +169,4 @@
 | CLONE.5.6 | API de modelos de agente | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.5.3 | API de projetos | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.4.12 | Canais IPC de login | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.4.11 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.5.7 | Canais IPC da API | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.3, CLONE.5.4, CLONE.5.5, CLONE.5.6 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

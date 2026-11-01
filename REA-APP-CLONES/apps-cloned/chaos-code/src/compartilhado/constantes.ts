@@ -71,6 +71,43 @@ export const CANAIS_IPC = {
   loginEstadoMudou: 'login:estado-mudou',
 } as const;
 
+/** Prefixo dos canais da API da plataforma (`api:<grupo>:<metodo>`, CLONE.5.7). */
+export const PREFIXO_CANAL_API = 'api';
+
+/**
+ * Métodos de cada API da plataforma expostos ao renderer. O número é a quantidade de primeiros
+ * argumentos que devem ser texto (ids); os demais são repassados como vieram.
+ */
+export const METODOS_API_IPC = {
+  projetos: {
+    listarProjetos: 0,
+    listarFerramentasMcp: 1,
+    listarConfigFerramentasMcp: 1,
+    atualizarConfigFerramentaMcp: 1,
+    listarArtigosWiki: 1,
+    obterArtigoWiki: 2,
+    criarArtigoWiki: 1,
+    atualizarArtigoWiki: 2,
+    apagarArtigoWiki: 2,
+    restaurarArtigoWiki: 2,
+    listarLixeiraWiki: 1,
+    listarSincronizacaoWiki: 1,
+  },
+  tarefas: { listar: 1, obter: 2, criar: 1, atualizar: 2, apagar: 2, restaurar: 2 },
+  imagens: { listar: 1, obterStatus: 2, apagar: 2 },
+  modelosAgente: { listar: 0 },
+} as const;
+
+/**
+ * Monta o nome do canal IPC de um método da API da plataforma.
+ * @param {string} grupo - Grupo da API (ex.: `projetos`).
+ * @param {string} metodo - Nome do método (ex.: `listarProjetos`).
+ * @returns {string} Ex.: `api:projetos:listarProjetos`.
+ */
+export function nomeCanalApi(grupo: string, metodo: string): string {
+  return `${PREFIXO_CANAL_API}:${grupo}:${metodo}`;
+}
+
 export const NOME_API_PRELOAD = 'chaosCode';
 
 /** Tempo máximo para consultar o `latest.json` (o original usa 15 s). */

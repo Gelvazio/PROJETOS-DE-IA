@@ -1,14 +1,35 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { CANAIS_IPC, NOME_API_PRELOAD } from '../compartilhado/constantes';
+import {
+  CANAIS_IPC,
+  METODOS_API_IPC,
+  NOME_API_PRELOAD,
+  nomeCanalApi,
+} from '../compartilhado/constantes';
 import type { ApiChaosCode } from '../compartilhado/tipos';
 import type { ApiAtualizador } from '../compartilhado/tipos-ipc-atualizador';
 import type { ApiImagem } from '../compartilhado/tipos-ipc-imagem';
 import type { ApiProjetos } from '../compartilhado/tipos-ipc-projetos';
+import type { ApiPlataformaIpc } from '../main/api/api.canais';
 import type { ApiLogin } from '../main/login/login.canais';
 
 // Só funções específicas são expostas: a interface nunca recebe o ipcRenderer inteiro.
 // Cada módulo novo acrescenta aqui o seu bloco e o tipo `Api<Modulo>` em `ApiExposta`.
-type ApiExposta = ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin;
+type ApiExposta = ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin &
+  ApiPlataformaIpc;
+
+/**
+ * Monta as funções de um grupo da API da plataforma: cada método invoca o canal `api:*`.
+ * @param grupo - Nome do grupo (chave de `METODOS_API_IPC`).
+ * @returns Objeto com um método por canal do grupo.
+ */
+function montarGrupoApi(grupo: keyof typeof METODOS_API_IPC): Record<string, unknown> {
+  const funcoes: Record<string, unknown> = {};
+  for (const metodo of Object.keys(METODOS_API_IPC[grupo])) {
+    funcoes[metodo] = (...argumentos: unknown[]) =>
+      ipcRenderer.invoke(nomeCanalApi(grupo, metodo), ...argumentos);
+  }
+  return funcoes;
+}
 
 const api: ApiExposta = {
   obterInformacoes: () => ipcRenderer.invoke(CANAIS_IPC.obterInformacoes),
@@ -51,6 +72,14 @@ const api: ApiExposta = {
   definirConfiguracaoImagem: (configuracao) =>
     ipcRenderer.invoke(CANAIS_IPC.imagemDefinirConfiguracao, configuracao),
   gerarImagem: (pedido) => ipcRenderer.invoke(CANAIS_IPC.imagemGerar, pedido),
+
+  // API da plataforma (CLONE.5.7): o token fica no main.
+  api: {
+    projetos: montarGrupoApi('projetos'),
+    tarefas: montarGrupoApi('tarefas'),
+    imagens: montarGrupoApi('imagens'),
+    modelosAgente: montarGrupoApi('modelosAgente'),
+  } as ApiPlataformaIpc['api'],
 
   // Login (CLONE.4.12): só o estado chega aqui; o token fica no main.
   obterEstadoLogin: () => ipcRenderer.invoke(CANAIS_IPC.loginObterEstado),

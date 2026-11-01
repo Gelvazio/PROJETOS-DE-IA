@@ -1,6 +1,7 @@
 import { BrowserWindow, ipcMain } from 'electron';
 import { CANAIS_IPC } from '../compartilhado/constantes';
 import { montarInformacoes } from './configuracao';
+import { registrarCanaisApi, type ApisPlataforma } from './api/api.canais';
 import { registrarCanaisAtualizador } from './atualizador/atualizador.canais';
 import type { ServicoAtualizador } from './atualizador/atualizador.servico';
 import { registrarCanaisImagem } from './imagem/imagem.canais';
@@ -16,6 +17,8 @@ export interface ContextoCanais {
   servicoAtualizador: ServicoAtualizador;
   /** Opcional até o `principal.ts` montar o serviço de login; sem ele, `login:*` não existe. */
   servicoLogin?: ServicoLoginCanais;
+  /** Opcional até o `principal.ts` montar o cliente HTTP; sem ele, `api:*` não existe. */
+  apisPlataforma?: ApisPlataforma;
 }
 
 /**
@@ -41,5 +44,8 @@ export function registrarCanais(contexto: ContextoCanais): void {
   registrarCanaisAtualizador(ipcMain, contexto.servicoAtualizador, difundirParaJanelas);
   if (contexto.servicoLogin) {
     registrarCanaisLogin(ipcMain, contexto.servicoLogin, difundirParaJanelas);
+  }
+  if (contexto.apisPlataforma) {
+    registrarCanaisApi(ipcMain, contexto.apisPlataforma);
   }
 }

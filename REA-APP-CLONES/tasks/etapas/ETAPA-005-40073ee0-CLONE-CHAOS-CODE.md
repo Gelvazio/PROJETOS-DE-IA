@@ -538,12 +538,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.5.7 — Canais IPC da API
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída.
 
 - **Nível:** MEDIO — liga arquivos existentes · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.5.3, CLONE.5.4, CLONE.5.5, CLONE.5.6
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** commit `feat(CLONE.5.7)` (2026-11-01) · **Verificação:** typecheck e build ok; canais api:<grupo>:<metodo> via registrarCanalSeguro, token fica no main. Pendência: principal.ts montar as 4 APIs como apisPlataforma (CLONE.4.13)
+
 ### CLONE.6 — Vetores (divisor, embeddings, índice)
 - **JEV-AI-SUGGESTION:** NAO
 
