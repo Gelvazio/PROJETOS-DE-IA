@@ -49,58 +49,58 @@ tarefas e guarda as tarefas globais (que valem para todos os projetos).
   - #REDESENHO-QUADRO-GLOBAL.5 — plano B para IAs fora dos projetos · 👀 Aguardando o usuário · nível a classificar pelo Jev
 
 - #UNIFICAR-PROJETOS — [juntar dashboard-plataformas-de-ia e COORDENACAO-DE-PROJETOS em rules-ai/dashboard](etapas/ETAPA-003-b7d3f9a2-UNIFICAR-PROJETOS.md) · 👀 Aguardando o usuário (plano grande: falta o "sim") · — (não reservável)
-  - #UNIFICAR-PROJETOS.1 — Inventariar arquivos, tamanhos e dependências dos 3 projetos · ⬜ Pendente · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.2 — Mapear URLs, caminhos absolutos e referências cruzadas entre os 3 · ⬜ Pendente (depende da UNIFICAR-PROJETOS.1) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.3 — Conferir trava de sessão e regras do rules-ai/dashboard (CLAUDE.md, AGENTS.md) · ⬜ Pendente · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.4 — Definir o mapa de destino das pastas dentro de rules-ai/dashboard · ⬜ Pendente (depende da UNIFICAR-PROJETOS.2, UNIFICAR-PROJETOS.3) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.5 — Fazer backup (cópia fora de qualquer repositório) dos 3 projetos · ⬜ Pendente (depende da UNIFICAR-PROJETOS.1) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.6 — Registrar as decisões das perguntas abertas na etapa · ⬜ Pendente (depende da UNIFICAR-PROJETOS.4) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.7 — Migrar o conteúdo de plataformas (AGENTS.md da origem) para docs/plataformas.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.8 — Migrar SKILLS.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.9 — Migrar README.md e LICENSE (licença preservada) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.10 — Migrar docs/criar-secao-ferramentas-recursos.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.11 — Migrar docs/pagina-models-openrouter-ai.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.12 — Migrar open-routers-models.json · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.13 — Migrar os 4 JS models-openrouter-* para assets/js · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.14 — Migrar os CSS da origem para assets/css (com prefixo) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.15 — Migrar models-openrouter-ai.html como página do dashboard (menu e tema futurista) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.12, UNIFICAR-PROJETOS.13, UNIFICAR-PROJETOS.14) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.16 — Migrar o index.html (abas) para plataformas.html · ⬜ Pendente (depende da UNIFICAR-PROJETOS.7, UNIFICAR-PROJETOS.14) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.17 — Migrar o histórico do STATUS.md (etapas 1 a 11) para uma etapa histórica · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.18 — Recriar as pendências (item 10.2 aba Ferramentas; 11.10 aceite) como subtarefas · ⬜ Pendente (depende da UNIFICAR-PROJETOS.17) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.19 — Migrar o index.html dos 7 cards como página projetos-de-ia.html · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.20 — Migrar 01-AGENTE-WHATSAPP · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.21 — Migrar 02-SITE-DO-MAPS · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.22 — Migrar 03-MAQUINA-DE-ANUNCIOS · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.23 — Migrar 04-AGENTE-DE-VOZ · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.24 — Migrar 05-MAQUINA-DE-CARROSSEIS · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.25 — Migrar 06-VIDEO-DE-IMOVEL · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.26 — Migrar 07-ASSISTENTE-PESSOAL · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.27 — Unificar estilo.css e markdown.css com o tema-futurista · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.28 — Migrar copiar.js · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.29 — Migrar VISUAL-FUTURISTA.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.30 — Preservar no destino a regra 'melhoria de prompt só no PROMPT_BASE.md' · ⬜ Pendente (depende da UNIFICAR-PROJETOS.20, UNIFICAR-PROJETOS.21, UNIFICAR-PROJETOS.22, UNIFICAR-PROJETOS.23, UNIFICAR-PROJETOS.24, UNIFICAR-PROJETOS.25, UNIFICAR-PROJETOS.26) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.31 — Migrar AUTO-SWARM-AGENT-COORDINATOR.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.32 — Migrar definir-autoswarm-home.cmd e ajustar o caminho de AUTOSWARM_HOME · ⬜ Pendente (depende da UNIFICAR-PROJETOS.31) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.33 — Decidir o lugar do clone AutoSwarm/ (fica fora do Git do dashboard) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.34 — Migrar o quadro tasks/ e as regras .claude/rules/tasks do COORDENACAO · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.35 — Menu unificado: abas novas em assets/js/menu.js · ⬜ Pendente (depende da UNIFICAR-PROJETOS.15, UNIFICAR-PROJETOS.16, UNIFICAR-PROJETOS.19) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.36 — Atualizar projetos.json para listar os novos conteúdos · ⬜ Pendente (depende da UNIFICAR-PROJETOS.35) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.37 — Resolver conflitos de nomes de arquivos e de classes CSS (prefixos) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.14, UNIFICAR-PROJETOS.27) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.38 — Ajustar caminhos relativos e links das páginas migradas · ⬜ Pendente (depende da UNIFICAR-PROJETOS.35, UNIFICAR-PROJETOS.37) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.39 — Script que roda `autoswarm calls` e grava autoswarm-calls.json · ⬜ Pendente (depende da UNIFICAR-PROJETOS.32) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.40 — Página AUTOSWARM-CALLS.html no molde de JEV-AI-CALLS.html · ⬜ Pendente (depende da UNIFICAR-PROJETOS.39, UNIFICAR-PROJETOS.35) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.41 — Cruzar chamadas do AutoSwarm com as tarefas do quadro (ID no prompt) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.40) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.42 — Aplicar SOLID, limite de 45 linhas por função e 1000 por arquivo nos JS/Python migrados · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.43 — Documentar as funções migradas (JSDoc e docstring) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.42) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.44 — Rodar `node --check` em todos os JS do dashboard · ⬜ Pendente (depende da UNIFICAR-PROJETOS.43) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.45 — Conferir links e caminhos por leitura e `grep` · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.46 — Conferir que o kanban e o globo atuais seguem intactos (diff dos arquivos antigos) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.47 — Conferir privacidade: sem segredo, token ou caminho pessoal antes de publicar · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.48 — Atualizar o README e o CLAUDE.md do dashboard · ⬜ Pendente (depende da UNIFICAR-PROJETOS.44, UNIFICAR-PROJETOS.45, UNIFICAR-PROJETOS.46, UNIFICAR-PROJETOS.47) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.49 — Atualizar o mapa C:\fontes\CLAUDE.md e AGENTS.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.50 — Atualizar o portal index.html da raiz e seus dados · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.51 — Atualizar o índice C:\fontes\tasks\STATUS.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.52 — Conferir vercel.json e .vercelignore do rules-ai (regra C46) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.53 — Commit e push no rules-ai (e na raiz para o que ficar nela) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.47, UNIFICAR-PROJETOS.48) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.54 — Arquivar as pastas antigas em _backup (só com o 'sim' do usuário) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.53) · nível a classificar pelo Jev
-  - #UNIFICAR-PROJETOS.55 — Tirar os projetos antigos do índice e do mapa · ⬜ Pendente (depende da UNIFICAR-PROJETOS.54) · nível a classificar pelo Jev
+  - #UNIFICAR-PROJETOS.1 — Inventariar arquivos, tamanhos e dependências dos 3 projetos · ⬜ Pendente · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.2 — Mapear URLs, caminhos absolutos e referências cruzadas entre os 3 · ⬜ Pendente (depende da UNIFICAR-PROJETOS.1) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.3 — Conferir trava de sessão e regras do rules-ai/dashboard (CLAUDE.md, AGENTS.md) · ⬜ Pendente · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.4 — Definir o mapa de destino das pastas dentro de rules-ai/dashboard · ⬜ Pendente (depende da UNIFICAR-PROJETOS.2, UNIFICAR-PROJETOS.3) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.5 — Fazer backup (cópia fora de qualquer repositório) dos 3 projetos · ⬜ Pendente (depende da UNIFICAR-PROJETOS.1) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.6 — Registrar as decisões das perguntas abertas na etapa · ⬜ Pendente (depende da UNIFICAR-PROJETOS.4) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.7 — Migrar o conteúdo de plataformas (AGENTS.md da origem) para docs/plataformas.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.8 — Migrar SKILLS.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.9 — Migrar README.md e LICENSE (licença preservada) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.10 — Migrar docs/criar-secao-ferramentas-recursos.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.11 — Migrar docs/pagina-models-openrouter-ai.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.12 — Migrar open-routers-models.json · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.13 — Migrar os 4 JS models-openrouter-* para assets/js · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.14 — Migrar os CSS da origem para assets/css (com prefixo) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.15 — Migrar models-openrouter-ai.html como página do dashboard (menu e tema futurista) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.12, UNIFICAR-PROJETOS.13, UNIFICAR-PROJETOS.14) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.16 — Migrar o index.html (abas) para plataformas.html · ⬜ Pendente (depende da UNIFICAR-PROJETOS.7, UNIFICAR-PROJETOS.14) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.17 — Migrar o histórico do STATUS.md (etapas 1 a 11) para uma etapa histórica · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.18 — Recriar as pendências (item 10.2 aba Ferramentas; 11.10 aceite) como subtarefas · ⬜ Pendente (depende da UNIFICAR-PROJETOS.17) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.19 — Migrar o index.html dos 7 cards como página projetos-de-ia.html · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.20 — Migrar 01-AGENTE-WHATSAPP · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.21 — Migrar 02-SITE-DO-MAPS · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.22 — Migrar 03-MAQUINA-DE-ANUNCIOS · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.23 — Migrar 04-AGENTE-DE-VOZ · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.24 — Migrar 05-MAQUINA-DE-CARROSSEIS · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.25 — Migrar 06-VIDEO-DE-IMOVEL · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.26 — Migrar 07-ASSISTENTE-PESSOAL · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.27 — Unificar estilo.css e markdown.css com o tema-futurista · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.28 — Migrar copiar.js · ⬜ Pendente (depende da UNIFICAR-PROJETOS.19) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.29 — Migrar VISUAL-FUTURISTA.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.30 — Preservar no destino a regra 'melhoria de prompt só no PROMPT_BASE.md' · ⬜ Pendente (depende da UNIFICAR-PROJETOS.20, UNIFICAR-PROJETOS.21, UNIFICAR-PROJETOS.22, UNIFICAR-PROJETOS.23, UNIFICAR-PROJETOS.24, UNIFICAR-PROJETOS.25, UNIFICAR-PROJETOS.26) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.31 — Migrar AUTO-SWARM-AGENT-COORDINATOR.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.32 — Migrar definir-autoswarm-home.cmd e ajustar o caminho de AUTOSWARM_HOME · ⬜ Pendente (depende da UNIFICAR-PROJETOS.31) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.33 — Decidir o lugar do clone AutoSwarm/ (fica fora do Git do dashboard) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.34 — Migrar o quadro tasks/ e as regras .claude/rules/tasks do COORDENACAO · ⬜ Pendente (depende da UNIFICAR-PROJETOS.6) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.35 — Menu unificado: abas novas em assets/js/menu.js · ⬜ Pendente (depende da UNIFICAR-PROJETOS.15, UNIFICAR-PROJETOS.16, UNIFICAR-PROJETOS.19) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.36 — Atualizar projetos.json para listar os novos conteúdos · ⬜ Pendente (depende da UNIFICAR-PROJETOS.35) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.37 — Resolver conflitos de nomes de arquivos e de classes CSS (prefixos) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.14, UNIFICAR-PROJETOS.27) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.38 — Ajustar caminhos relativos e links das páginas migradas · ⬜ Pendente (depende da UNIFICAR-PROJETOS.35, UNIFICAR-PROJETOS.37) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.39 — Script que roda `autoswarm calls` e grava autoswarm-calls.json · ⬜ Pendente (depende da UNIFICAR-PROJETOS.32) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.40 — Página AUTOSWARM-CALLS.html no molde de JEV-AI-CALLS.html · ⬜ Pendente (depende da UNIFICAR-PROJETOS.39, UNIFICAR-PROJETOS.35) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.41 — Cruzar chamadas do AutoSwarm com as tarefas do quadro (ID no prompt) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.40) · `MEDIO · effort medium` · só Sonnet
+  - #UNIFICAR-PROJETOS.42 — Aplicar SOLID, limite de 45 linhas por função e 1000 por arquivo nos JS/Python migrados · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.43 — Documentar as funções migradas (JSDoc e docstring) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.42) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.44 — Rodar `node --check` em todos os JS do dashboard · ⬜ Pendente (depende da UNIFICAR-PROJETOS.43) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.45 — Conferir links e caminhos por leitura e `grep` · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.46 — Conferir que o kanban e o globo atuais seguem intactos (diff dos arquivos antigos) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.47 — Conferir privacidade: sem segredo, token ou caminho pessoal antes de publicar · ⬜ Pendente (depende da UNIFICAR-PROJETOS.38) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.48 — Atualizar o README e o CLAUDE.md do dashboard · ⬜ Pendente (depende da UNIFICAR-PROJETOS.44, UNIFICAR-PROJETOS.45, UNIFICAR-PROJETOS.46, UNIFICAR-PROJETOS.47) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.49 — Atualizar o mapa C:\fontes\CLAUDE.md e AGENTS.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.50 — Atualizar o portal index.html da raiz e seus dados · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.51 — Atualizar o índice C:\fontes\tasks\STATUS.md · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.52 — Conferir vercel.json e .vercelignore do rules-ai (regra C46) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.48) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.53 — Commit e push no rules-ai (e na raiz para o que ficar nela) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.47, UNIFICAR-PROJETOS.48) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
+  - #UNIFICAR-PROJETOS.54 — Arquivar as pastas antigas em _backup (só com o 'sim' do usuário) · ⬜ Pendente (depende da UNIFICAR-PROJETOS.53) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek
+  - #UNIFICAR-PROJETOS.55 — Tirar os projetos antigos do índice e do mapa · ⬜ Pendente (depende da UNIFICAR-PROJETOS.54) · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek

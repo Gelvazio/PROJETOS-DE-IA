@@ -76,9 +76,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.1 — Inventariar arquivos, tamanhos e dependências dos 3 projetos
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: nenhuma).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** nenhuma
 - **Descrição:** Inventariar arquivos, tamanhos e dependências dos 3 projetos. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -87,9 +88,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.2 — Mapear URLs, caminhos absolutos e referências cruzadas entre os 3
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.1).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.1
 - **Descrição:** Mapear URLs, caminhos absolutos e referências cruzadas entre os 3. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -98,9 +100,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.3 — Conferir trava de sessão e regras do rules-ai/dashboard (CLAUDE.md, AGENTS.md)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: nenhuma).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** nenhuma
 - **Descrição:** Conferir trava de sessão e regras do rules-ai/dashboard (CLAUDE.md, AGENTS.md). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -109,9 +112,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.4 — Definir o mapa de destino das pastas dentro de rules-ai/dashboard
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.2, UNIFICAR-PROJETOS.3).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.2, UNIFICAR-PROJETOS.3
 - **Descrição:** Definir o mapa de destino das pastas dentro de rules-ai/dashboard. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -120,9 +124,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.5 — Fazer backup (cópia fora de qualquer repositório) dos 3 projetos
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.1).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.1
 - **Descrição:** Fazer backup (cópia fora de qualquer repositório) dos 3 projetos. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -131,10 +136,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.6 — Registrar as decisões das perguntas abertas na etapa
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.4).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.88))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.88)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.4
 - **Descrição:** Registrar as decisões das perguntas abertas na etapa. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -145,10 +151,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.7 — Migrar o conteúdo de plataformas (AGENTS.md da origem) para docs/plataformas.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.96))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.96)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar o conteúdo de plataformas (AGENTS.md da origem) para docs/plataformas.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -156,10 +163,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.8 — Migrar SKILLS.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.92))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.92)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar SKILLS.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -167,10 +175,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.9 — Migrar README.md e LICENSE (licença preservada)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.97))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.97)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar README.md e LICENSE (licença preservada). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -178,10 +187,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.10 — Migrar docs/criar-secao-ferramentas-recursos.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.96))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.96)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar docs/criar-secao-ferramentas-recursos.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -189,10 +199,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.11 — Migrar docs/pagina-models-openrouter-ai.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.97))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.97)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar docs/pagina-models-openrouter-ai.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -200,9 +211,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.12 — Migrar open-routers-models.json
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar open-routers-models.json. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -211,9 +223,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.13 — Migrar os 4 JS models-openrouter-* para assets/js
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar os 4 JS models-openrouter-* para assets/js. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -222,9 +235,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.14 — Migrar os CSS da origem para assets/css (com prefixo)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar os CSS da origem para assets/css (com prefixo). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -233,9 +247,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.15 — Migrar models-openrouter-ai.html como página do dashboard (menu e tema futurista)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.12, UNIFICAR-PROJETOS.13, UNIFICAR-PROJETOS.14).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** MEDIO — classificado (sinais)
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.12, UNIFICAR-PROJETOS.13, UNIFICAR-PROJETOS.14
 - **Descrição:** Migrar models-openrouter-ai.html como página do dashboard (menu e tema futurista). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -244,9 +259,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.16 — Migrar o index.html (abas) para plataformas.html
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.7, UNIFICAR-PROJETOS.14).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** MEDIO — classificado (sinais)
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.7, UNIFICAR-PROJETOS.14
 - **Descrição:** Migrar o index.html (abas) para plataformas.html. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -255,10 +271,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.17 — Migrar o histórico do STATUS.md (etapas 1 a 11) para uma etapa histórica
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.85))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.85)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar o histórico do STATUS.md (etapas 1 a 11) para uma etapa histórica. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -266,9 +283,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.18 — Recriar as pendências (item 10.2 aba Ferramentas; 11.10 aceite) como subtarefas
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.17).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.17
 - **Descrição:** Recriar as pendências (item 10.2 aba Ferramentas; 11.10 aceite) como subtarefas. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -280,9 +298,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.19 — Migrar o index.html dos 7 cards como página projetos-de-ia.html
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** MEDIO — classificado (sinais)
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar o index.html dos 7 cards como página projetos-de-ia.html. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -291,9 +310,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.20 — Migrar 01-AGENTE-WHATSAPP
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 01-AGENTE-WHATSAPP. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -302,9 +322,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.21 — Migrar 02-SITE-DO-MAPS
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 02-SITE-DO-MAPS. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -313,9 +334,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.22 — Migrar 03-MAQUINA-DE-ANUNCIOS
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 03-MAQUINA-DE-ANUNCIOS. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -324,9 +346,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.23 — Migrar 04-AGENTE-DE-VOZ
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 04-AGENTE-DE-VOZ. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -335,9 +358,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.24 — Migrar 05-MAQUINA-DE-CARROSSEIS
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 05-MAQUINA-DE-CARROSSEIS. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -346,9 +370,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.25 — Migrar 06-VIDEO-DE-IMOVEL
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 06-VIDEO-DE-IMOVEL. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -357,9 +382,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.26 — Migrar 07-ASSISTENTE-PESSOAL
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar 07-ASSISTENTE-PESSOAL. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -368,9 +394,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.27 — Unificar estilo.css e markdown.css com o tema-futurista
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** MEDIO — classificado (sinais)
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Unificar estilo.css e markdown.css com o tema-futurista. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -379,10 +406,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.28 — Migrar copiar.js
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** MEDIO — classificado (jev (confiança 0.83))
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** jev (confiança 0.83)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.19
 - **Descrição:** Migrar copiar.js. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -390,10 +418,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.29 — Migrar VISUAL-FUTURISTA.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.92))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.92)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar VISUAL-FUTURISTA.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -401,9 +430,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.30 — Preservar no destino a regra 'melhoria de prompt só no PROMPT_BASE.md'
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.20, UNIFICAR-PROJETOS.21, UNIFICAR-PROJETOS.22, UNIFICAR-PROJETOS.23, UNIFICAR-PROJETOS.24, UNIFICAR-PROJETOS.25, UNIFICAR-PROJETOS.26).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.20, UNIFICAR-PROJETOS.21, UNIFICAR-PROJETOS.22, UNIFICAR-PROJETOS.23, UNIFICAR-PROJETOS.24, UNIFICAR-PROJETOS.25, UNIFICAR-PROJETOS.26
 - **Descrição:** Preservar no destino a regra 'melhoria de prompt só no PROMPT_BASE.md'. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -412,10 +442,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.31 — Migrar AUTO-SWARM-AGENT-COORDINATOR.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.94))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.94)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar AUTO-SWARM-AGENT-COORDINATOR.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -423,9 +454,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.32 — Migrar definir-autoswarm-home.cmd e ajustar o caminho de AUTOSWARM_HOME
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.31).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.31
 - **Descrição:** Migrar definir-autoswarm-home.cmd e ajustar o caminho de AUTOSWARM_HOME. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -434,10 +466,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.33 — Decidir o lugar do clone AutoSwarm/ (fica fora do Git do dashboard)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.85))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.85)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Decidir o lugar do clone AutoSwarm/ (fica fora do Git do dashboard). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -445,9 +478,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.34 — Migrar o quadro tasks/ e as regras .claude/rules/tasks do COORDENACAO
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.6).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.6
 - **Descrição:** Migrar o quadro tasks/ e as regras .claude/rules/tasks do COORDENACAO. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -459,10 +493,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.35 — Menu unificado: abas novas em assets/js/menu.js
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.15, UNIFICAR-PROJETOS.16, UNIFICAR-PROJETOS.19).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** MEDIO — classificado (jev (confiança 0.88))
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** jev (confiança 0.88)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.15, UNIFICAR-PROJETOS.16, UNIFICAR-PROJETOS.19
 - **Descrição:** Menu unificado: abas novas em assets/js/menu.js. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -470,10 +505,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.36 — Atualizar projetos.json para listar os novos conteúdos
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.35).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.94))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.94)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.35
 - **Descrição:** Atualizar projetos.json para listar os novos conteúdos. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -481,9 +517,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.37 — Resolver conflitos de nomes de arquivos e de classes CSS (prefixos)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.14, UNIFICAR-PROJETOS.27).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.14, UNIFICAR-PROJETOS.27
 - **Descrição:** Resolver conflitos de nomes de arquivos e de classes CSS (prefixos). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -492,9 +529,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.38 — Ajustar caminhos relativos e links das páginas migradas
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.35, UNIFICAR-PROJETOS.37).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.35, UNIFICAR-PROJETOS.37
 - **Descrição:** Ajustar caminhos relativos e links das páginas migradas. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -503,10 +541,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.39 — Script que roda `autoswarm calls` e grava autoswarm-calls.json
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.32).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** MEDIO — classificado (jev (confiança 0.88))
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** jev (confiança 0.88)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.32
 - **Descrição:** Script que roda `autoswarm calls` e grava autoswarm-calls.json. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -514,10 +553,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.40 — Página AUTOSWARM-CALLS.html no molde de JEV-AI-CALLS.html
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.39, UNIFICAR-PROJETOS.35).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** MEDIO — classificado (jev (confiança 0.83))
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** jev (confiança 0.83)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.39, UNIFICAR-PROJETOS.35
 - **Descrição:** Página AUTOSWARM-CALLS.html no molde de JEV-AI-CALLS.html. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -525,9 +565,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.41 — Cruzar chamadas do AutoSwarm com as tarefas do quadro (ID no prompt)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.40).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** MEDIO — classificado (sinais)
+- **Modelo:** só Sonnet — nunca outro
+- **Effort:** medium
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.40
 - **Descrição:** Cruzar chamadas do AutoSwarm com as tarefas do quadro (ID no prompt). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -536,9 +577,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.42 — Aplicar SOLID, limite de 45 linhas por função e 1000 por arquivo nos JS/Python migrados
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.38).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.38
 - **Descrição:** Aplicar SOLID, limite de 45 linhas por função e 1000 por arquivo nos JS/Python migrados. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -547,10 +589,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.43 — Documentar as funções migradas (JSDoc e docstring)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.42).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.92))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.92)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.42
 - **Descrição:** Documentar as funções migradas (JSDoc e docstring). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -561,9 +604,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.44 — Rodar `node --check` em todos os JS do dashboard
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.43).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.43
 - **Descrição:** Rodar `node --check` em todos os JS do dashboard. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -572,9 +616,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.45 — Conferir links e caminhos por leitura e `grep`
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.38).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.38
 - **Descrição:** Conferir links e caminhos por leitura e `grep`. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -583,9 +628,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.46 — Conferir que o kanban e o globo atuais seguem intactos (diff dos arquivos antigos)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.38).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.38
 - **Descrição:** Conferir que o kanban e o globo atuais seguem intactos (diff dos arquivos antigos). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -594,9 +640,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.47 — Conferir privacidade: sem segredo, token ou caminho pessoal antes de publicar
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.38).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.38
 - **Descrição:** Conferir privacidade: sem segredo, token ou caminho pessoal antes de publicar. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -608,10 +655,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.48 — Atualizar o README e o CLAUDE.md do dashboard
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.44, UNIFICAR-PROJETOS.45, UNIFICAR-PROJETOS.46, UNIFICAR-PROJETOS.47).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.85))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.85)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.44, UNIFICAR-PROJETOS.45, UNIFICAR-PROJETOS.46, UNIFICAR-PROJETOS.47
 - **Descrição:** Atualizar o README e o CLAUDE.md do dashboard. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -619,10 +667,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.49 — Atualizar o mapa C:\fontes\CLAUDE.md e AGENTS.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.48).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.94))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.94)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.48
 - **Descrição:** Atualizar o mapa C:\fontes\CLAUDE.md e AGENTS.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -630,9 +679,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.50 — Atualizar o portal index.html da raiz e seus dados
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.48).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.48
 - **Descrição:** Atualizar o portal index.html da raiz e seus dados. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -641,10 +691,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.51 — Atualizar o índice C:\fontes\tasks\STATUS.md
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.48).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.98))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.98)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.48
 - **Descrição:** Atualizar o índice C:\fontes\tasks\STATUS.md. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -652,10 +703,11 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.52 — Conferir vercel.json e .vercelignore do rules-ai (regra C46)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.48).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
-- **JEV-AI-SUGGESTION:** NAO
+- **Nível:** LEVE — classificado (jev (confiança 0.97))
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** jev (confiança 0.97)
+- **JEV-AI-SUGGESTION:** SIM
 - **Dependências:** UNIFICAR-PROJETOS.48
 - **Descrição:** Conferir vercel.json e .vercelignore do rules-ai (regra C46). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
 - **Critérios de Aceitação:** feito o que o título diz, sem tocar nos arquivos de origem (INV-1).
@@ -663,9 +715,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.53 — Commit e push no rules-ai (e na raiz para o que ficar nela)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.47, UNIFICAR-PROJETOS.48).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** LEVE — classificado (sinais)
+- **Modelo:** só Haiku 5.5 ou DeepSeek V4.1 Flash — nunca outro
+- **Effort:** low
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.47, UNIFICAR-PROJETOS.48
 - **Descrição:** Commit e push no rules-ai (e na raiz para o que ficar nela). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -674,9 +727,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.54 — Arquivar as pastas antigas em _backup (só com o 'sim' do usuário)
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.53).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.53
 - **Descrição:** Arquivar as pastas antigas em _backup (só com o 'sim' do usuário). Origem e destino conforme o mapa da etapa; origens nunca alteradas.
@@ -685,9 +739,10 @@ subtarefa foi reservada nem executada.
 
 ### UNIFICAR-PROJETOS.55 — Tirar os projetos antigos do índice e do mapa
 **Próximo passo:** aguardar o "sim" do usuário ao plano; depois reservar (livre, dependências: UNIFICAR-PROJETOS.54).
-- **Nível:** (a classificar pelo Jev)
-- **Modelo:** (a classificar pelo Jev)
-- **Effort:** (a classificar pelo Jev)
+- **Nível:** PESADO — classificado (sinais)
+- **Modelo:** só Opus 5.5+/Fable, Sonnet ou DeepSeek — nunca outro
+- **Effort:** high
+- **Fonte:** sinais
 - **JEV-AI-SUGGESTION:** NAO
 - **Dependências:** UNIFICAR-PROJETOS.54
 - **Descrição:** Tirar os projetos antigos do índice e do mapa. Origem e destino conforme o mapa da etapa; origens nunca alteradas.
