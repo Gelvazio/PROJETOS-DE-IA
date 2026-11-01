@@ -63,6 +63,35 @@ Despesas: R$ …
 
 Fonte dos dados: tabela `public.lancamento` no Supabase do projeto.
 
+## Especialista financeiro — consultar o CFO (via Analista Sênior Líder)
+
+O Analista Sênior Líder (`C:\fontes\ANALISTA-SENIOR-LIDER.md`) indica quem é o especialista
+financeiro: o **CFO — Finanças e Viabilidade** do conselho (`C:\fontes\conglomerado-agentes-ia.md`,
+seção 3.3; cargo também listado em `C:\fontes\lider-coordenador.json`). Quem aciona o conselho é o
+Sênior; a decisão final é sempre do Gelvazio.
+
+Consultar o CFO quando o pedido for **decisão de negócio** com dinheiro:
+
+- preço, custo (MVP e mensal), modelo de receita, ponto de equilíbrio ou viabilidade;
+- as páginas de negócio do sistema: **Finanças Pessoais**, **Gestão Financeira** e **Gestão de
+  Novos Negócios**, quando o Gelvazio trouxer os dados e pedir análise ou decisão;
+- risco, jurídico ou compliance ligado a esse dinheiro: acrescentar o **CRO** (semáforo
+  verde, amarelo ou vermelho; não substitui advogado).
+
+Como consultar:
+
+1. Ler `C:\fontes\ANALISTA-SENIOR-LIDER.md` (seção "Conselho dos 7 sistemas") e a seção 3.3 do
+   `conglomerado-agentes-ia.md` antes de responder.
+2. Responder no papel do CFO: tabela com 3 cenários (pessimista, base, otimista) com
+   investimento inicial, custo mensal, receita mensal e meses até o ponto de equilíbrio, valores em R$.
+3. Listar cada premissa com a confiança: `[Certeza]` (veio de dado lido agora), `[Provável]`,
+   `[Chute]` ou `[CONFIRMAR]` (dado ausente). Nunca inventar número nem apresentar projeção sem o
+   cenário pessimista.
+4. Fechar com recomendação (seguir, pivotar ou matar), nota de 0 a 10 e 3 próximos passos baratos.
+
+Não usar o CFO para pergunta operacional do dia a dia (saldo do mês, pendências, atalhos `.`, `,`
+e `1`, código ou tela): isso segue as regras acima, sem simular conselho.
+
 <!-- rules-local:inicio -->
 ## Regras globais (rules-local)
 
