@@ -96,3 +96,49 @@ a.ideia-detalhes {
   justify-content: center;
   text-decoration: none;
 }
+
+/* Modal de documentos (iframe) */
+.dashboard-card-acoes { flex-wrap: wrap; }
+.dashboard-card-acoes .ideia-detalhes { min-width: 110px; }
+
+.ideia-modal--largo { width: min(1100px, calc(100vw - 24px)); }
+.ideia-modal--largo[open] { display: flex; flex-direction: column; height: calc(100dvh - 40px); }
+
+.documentos-barra {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 20px;
+  border-bottom: 1px solid rgba(180, 110, 255, 0.2);
+}
+.documentos-abas { display: flex; gap: 8px; flex-wrap: wrap; }
+.documentos-aba {
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(180, 110, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--txt-dim);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.documentos-aba[aria-selected="true"] {
+  color: var(--txt);
+  border-color: var(--h2);
+  background: rgba(52, 224, 215, 0.12);
+}
+.documentos-link { font-size: 13px; color: var(--h2); white-space: nowrap; }
+
+.documentos-iframe {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  background: #fff;
+}
+
+@media (max-width: 640px) {
+  .documentos-barra { flex-direction: column; align-items: stretch; }
+}

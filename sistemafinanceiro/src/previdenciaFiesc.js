@@ -116,3 +116,11 @@ export const PREVIDENCIA_FIESC = {
     'Qual tabela de IR (progressiva ou regressiva) fica melhor no seu horizonte?',
   ],
 };
+
+// Documentos exibidos em iframe no modal "Documentos". Os PDFs ficam em
+// REGRAS-PROJETOS/FIESC-PREV/ e só existem localmente (não são versionados).
+export const DOCUMENTOS_PREVIDENCIA = [
+  { titulo: 'Regulamento', arquivo: '/REGRAS-PROJETOS/FIESC-PREV/Regulamento-FIESCPREV.pdf' },
+  { titulo: 'Cartilha', arquivo: '/REGRAS-PROJETOS/FIESC-PREV/CARTILHA-FIESCPREV-2025.pdf' },
+  { titulo: 'Certificado', arquivo: '/REGRAS-PROJETOS/FIESC-PREV/Certificado-FIESCPrev.pdf' },
+];

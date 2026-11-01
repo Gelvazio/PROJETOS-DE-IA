@@ -9,6 +9,7 @@ import {
   ligarFechamentoModal,
 } from './elementosUi.js';
 import { PROJETO_NOMADE, CHAVE_ANALISE_NOMADE } from './projetoNomade.js';
+import { prepararModalDocumentos } from './documentosPrevidencia.js';
 import { prepararModalCalculos } from './calculosPrevidencia.js';
 import { obterAnaliseFinanceira, criarSeloStatus } from './analisesFinanceiras.js';
 
@@ -42,9 +43,10 @@ function criarBotaoAcao(texto, aoClicar) {
  * Monta o card da Previdência Privada FIESC.
  * @param {() => void} aoAbrirDetalhes - Chamado ao clicar em Detalhes.
  * @param {() => void} aoAbrirCalculos - Chamado ao clicar em Cálculos.
+ * @param {() => void} aoAbrirDocumentos - Chamado ao clicar em Documentos.
  * @returns {HTMLElement} Card pronto.
  */
-function criarCardPrevidencia(aoAbrirDetalhes, aoAbrirCalculos) {
+function criarCardPrevidencia(aoAbrirDetalhes, aoAbrirCalculos, aoAbrirDocumentos) {
   const card = criarElemento('article', 'dashboard-card');
   const topo = criarElemento('div', 'ideia-topo');
   topo.append(
@@ -60,6 +62,7 @@ function criarCardPrevidencia(aoAbrirDetalhes, aoAbrirCalculos) {
   const acoes = criarElemento('div', 'dashboard-card-acoes');
   acoes.append(
     criarBotaoAcao('Cálculos', aoAbrirCalculos),
+    criarBotaoAcao('Documentos', aoAbrirDocumentos),
     criarBotaoAcao('Detalhes', aoAbrirDetalhes),
   );
   card.append(acoes);
@@ -134,13 +137,16 @@ function iniciar() {
   const area = document.getElementById('dashboard-cards');
   const modal = document.getElementById('ideia-modal');
   const modalCalculos = document.getElementById('calculos-modal');
-  if (!area || !modal || !modalCalculos) return;
+  const modalDocumentos = document.getElementById('documentos-modal');
+  if (!area || !modal || !modalCalculos || !modalDocumentos) return;
 
   ligarFechamentoModal(modal);
   ligarFechamentoModal(modalCalculos);
+  ligarFechamentoModal(modalDocumentos);
+  const abrirDocumentos = prepararModalDocumentos(modalDocumentos);
   const abrirCalculos = prepararModalCalculos(modalCalculos);
   area.replaceChildren(
-    criarCardPrevidencia(() => abrirModal(modal), abrirCalculos),
+    criarCardPrevidencia(() => abrirModal(modal), abrirCalculos, abrirDocumentos),
     criarCardNomade(),
   );
 }
