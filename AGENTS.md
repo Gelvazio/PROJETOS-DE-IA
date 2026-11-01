@@ -1,5 +1,11 @@
 # AGENTS.md — Mapa de todos os projetos em `C:\fontes`
 
+<!-- rules-ai:global -->
+> 🌐 **Regras globais:** além das regras deste arquivo, valem as regras globais de
+> `C:\fontes\rules-ai` (`regras/*.md`, entregues a cada IA pelo arquivo global dela). Em divergência,
+> a regra deste projeto prevalece, e o usuário decide o que fazer com cada divergência
+> (`rules-ai/CONFLITOS.md`). Ao finalizar uma tarefa: commit + push.
+
 Este arquivo fica na raiz de `C:\fontes` e descreve **o que existe em cada pasta** e **quais regras
 valem para todas elas**. Ele não substitui o `AGENTS.md` / `CLAUDE.md` de cada projeto: ao trabalhar
 dentro de um projeto, as regras dele vencem as deste arquivo.
@@ -7,7 +13,7 @@ dentro de um projeto, as regras dele vencem as deste arquivo.
 **Ordem de precedência:** `AGENTS.md` / `CLAUDE.md` do projeto → este arquivo →
 `C:\Users\gelva\.Codex\AGENTS.md` (global).
 
-> Atualizado em 2026-10-31 (raiz agora é repositório Git; pastas novas e ausentes reconferidas); base: auditoria
+> Atualizado em 2026-11-01 (C57: a raiz segue as regras globais do `rules-ai`; pastas reconferidas em 31/10 e 01/11); base: auditoria
 > completa de 2026-10-18 (achados e recomendações em
 > `ANALISE-DE-FONTES-2026-10-18.md`). Quando uma pasta nova entrar, uma existente mudar de propósito
 > ou for removida, atualize a tabela correspondente aqui e regrave o portal com
@@ -32,7 +38,7 @@ dentro de um projeto, as regras dele vencem as deste arquivo.
 - **Sem abrir navegador para validar.** A validação é feita por leitura do código, checagem de sintaxe
   e comandos de terminal.
 - **Commit por tarefa:** cada pedido atendido vira um commit, feito com `git add` dos arquivos da
-  tarefa (nunca `git add .`). O push segue a regra de cada projeto.
+  tarefa (nunca `git add .`). Na raiz `C:\fontes`, o push é feito a cada tarefa, na `main` (C57).
 - **Sem git worktree** e sem branches paralelas, salvo quando o projeto disser o contrário.
 - **Código:** princípios SOLID, funções de até 45 linhas, arquivos de até 1000 linhas, nomes em
   português sem acentos (exceto APIs, palavras reservadas e nomes já existentes no banco).
@@ -46,10 +52,10 @@ dentro de um projeto, as regras dele vencem as deste arquivo.
 - **Projetos parados:** **nada** da pasta `DEMAIS-PROJETOS-NAO-MEXER-AGORA\` é lido nas sessões do
   Codex (nem listar, buscar, indexar, rodar graphify ou citar). Ela guarda projetos parados por
   tempo indeterminado; só entrar quando o usuário pedir o projeto pelo nome ou caminho (regra C23,
-  `rules-ai\regras\pastas-ignoradas.md`).
-- **`graphify`:** só roda quando o usuário pedir (`/graphify`).
+  `rules-ai\regras\pastas-ignoradas.md`). Nenhuma IA a lê, lista ou cita (C57), e a pasta fica no `.gitignore` da raiz.
+- **`graphify`:** a raiz não roda graphify (C57); cada projeto mantém o seu (C25).
 - **Quadro de tarefas:** projetos que mudam algo registram a tarefa no quadro (`tasks/STATUS.md` ou
-  `STATUS.md`) antes de executar.
+  `STATUS.md`) antes de executar. A raiz tem o quadro `tasks\` (índice dos quadros dos projetos e tarefas globais, C57).
 - **Status do `rules-ai`:** toda vez que algo na pasta `C:\fontes\rules-ai\` for criado, alterado
   ou apagado, atualize no mesmo passo o status local do projeto,
   `C:\fontes\rules-ai\STATUS_PROJETO.md`, registrando o que mudou e a data e hora (Brasília).
@@ -58,13 +64,13 @@ dentro de um projeto, as regras dele vencem as deste arquivo.
 
 ## Visão geral
 
-Desde 2026-10-31 a raiz `C:ontes` **é um repositório Git**, ligado (`origin`, branch `main`) a
-`github.com/Gelvazio/PROJETOS-DE-IA`; ainda sem fetch, sem commit de conteúdo e sem push. Cada pasta de
+Desde 2026-10-31 a raiz `C:\fontes` **é um repositório Git**, ligado (`origin`, branch `main`) a
+`github.com/Gelvazio/PROJETOS-DE-IA`; cada tarefa da raiz vira commit + push na `main` (C57). Cada pasta de
 projeto abaixo continua com o próprio `.git`: `aulasenai`, `rules-ai`, `ai-memory`, `consumo-ia`,
 `REA-APP-CLONES`, `LOGIC-GAME-BLOCK`, `MATERIAL-AULAS-PROF-MAIRA`, `PROJETO-IMPRESSAO-3D`, `crm` e
 `sistemafinanceiro` (remotos `github.com/Gelvazio/*`) e `controlemercadoria` (GitLab `c3tecnologia`).
 ⚠️ Repositório dentro de repositório: `git add` na raiz transforma essas pastas em submódulos quebrados
-e arrasta pastas grandes; antes de commitar conteúdo, definir o `.gitignore` da raiz.
+e arrasta pastas grandes. O `.gitignore` da raiz já existe (`a85aed0`): nunca `git add` de pasta com `.git` próprio (C57).
 
 | Pasta | O que é | Tipo / stack |
 |-------|---------|--------------|
@@ -80,7 +86,10 @@ e arrasta pastas grandes; antes de commitar conteúdo, definir o `.gitignore` da
 | `controlemercadoria\` | Controle de mercadoria, com `ANALISE_SUPABASE_MCP.md`; remoto GitLab `c3tecnologia/controlemercadoria` | Web + Supabase |
 | `PROJETO-IMPRESSAO-3D\` | Projeto de impressão 3D (`RENDA3D-DOWNLOADS`, `analise-site.py`); `github.com/Gelvazio/PROJETO-IMPRESSAO-3D` | Python + anotações |
 | `MATERIAL-AULAS-PROF-MAIRA\` | Material de aulas de desenho técnico (pptx); `github.com/Gelvazio/MATERIAL-AULAS-PROF-MAIRA` | Documentos |
-| `NOVOS-PROJETOS-CLAUDE-CODE\` | Novos projetos: `7-SISTEMAS-FIM-SEMANA`, `Dashboards`, `TABELAS-DE-PRECO`; sem Git | HTML/CSS |
+| `COORDENACAO-DE-PROJETOS\` | Coordenação dos projetos novos: pastas `01-` a `07-`, `AutoSwarm\`, `tasks\`, `AGENTS.md` e `index.html` | HTML/JS + Markdown |
+| `tasks\` | Quadro global da raiz: índice dos quadros dos projetos e tarefas globais (C57) | Markdown |
+| `dashboard\` | Dashboard da raiz; está no índice do Git da raiz, mas **não existe no disco** em 2026-11-01 | HTML/JS |
+| `projetos.json`, `update-projects-status.py`, `lider-coordenador.json`, `ANALISTA-SENIOR-LIDER.md` | Coordenação da raiz: lista de projetos, atualização de status e líder coordenador (ver `ANALISTA-SENIOR-LIDER.md`) | JSON + Python + Markdown |
 | `HACKATON\` | Pasta só com `AGENTS.md`, `CLAUDE.md`, `.agents` e `.claude`; sem Git | Regras |
 | `PROJETO-CERCA\` | Apenas um `index.html`; sem Git | HTML |
 | `conglomerado-agentes-ia.md` | Documento de arquitetura: conselho C-Level e especialistas setoriais de agentes de IA | Markdown |
@@ -178,7 +187,7 @@ e arrasta pastas grandes; antes de commitar conteúdo, definir o `.gitignore` da
   agir. `sistemafinanceiro\` e `crm\` têm `.env`/`node_modules` no disco (não versionar).
 - `PROJETO-IMPRESSAO-3D\` e `MATERIAL-AULAS-PROF-MAIRA\` são repositórios de conteúdo (downloads,
   análise de site, pptx).
-- `NOVOS-PROJETOS-CLAUDE-CODE\` (tem `AGENTS.md`), `HACKATON\`, `PROJETO-CERCA\` e
+- `HACKATON\`, `PROJETO-CERCA\` e
   `dashboard-plataformas-de-ia\` não têm Git próprio: entram direto no repositório da raiz.
 - Detalhes de stack e quadro **não foram auditados**; ler o `AGENTS.md` do projeto antes de agir.
 
@@ -226,6 +235,7 @@ Sumiram entre 17/10 e 31/10/2026. Se alguma voltar, recrie a linha na tabela e a
 
 | Item | O que era |
 |------|-----------|
+| `NOVOS-PROJETOS-CLAUDE-CODE\` | Novos projetos (`7-SISTEMAS-FIM-SEMANA`, `Dashboards`, `TABELAS-DE-PRECO`); não existe mais em 2026-11-01 (substituída por `COORDENACAO-DE-PROJETOS\`, C57) |
 | `gerador-atividades\` | Gerador de atividades HTML no padrão SENAI (Python) |
 | `plataforma-ia\` | Plataforma de agentes de IA em Django |
 | `ajax-ai-by-pewdiepie\` | Cópias de repositórios/skills de terceiros |
