@@ -453,12 +453,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.4.12 — Canais IPC de login
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída.
 
 - **Nível:** PESADO — login exposto à interface · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.4.11
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`; o token nunca vai para o renderer.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** commit `feat(CLONE.4.12)` (2026-11-01) · **Verificação:** typecheck e build ok; teste node com ipc/serviço falsos: token não vaza (ServicoLoginCanais sem obterTokenAcesso, copiarEstadoSeguro). Pendência: montar o serviço no principal.ts (servicoLogin opcional em ContextoCanais)
+
 ### CLONE.5 — Cliente da API (servidor próprio)
 - **JEV-AI-SUGGESTION:** NAO
 

@@ -62,6 +62,13 @@ export const CANAIS_IPC = {
   imagemObterConfiguracao: 'imagem:obter-configuracao',
   imagemDefinirConfiguracao: 'imagem:definir-configuracao',
   imagemGerar: 'imagem:gerar',
+  // Login (CLONE.4.12): nenhum canal devolve token à interface.
+  loginObterEstado: 'login:obter-estado',
+  loginEntrar: 'login:entrar',
+  loginSair: 'login:sair',
+  loginRenovar: 'login:renovar',
+  /** Evento do main para a interface (não é `handle`). */
+  loginEstadoMudou: 'login:estado-mudou',
 } as const;
 
 export const NOME_API_PRELOAD = 'chaosCode';
