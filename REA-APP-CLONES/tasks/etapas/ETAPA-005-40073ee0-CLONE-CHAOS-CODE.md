@@ -1400,6 +1400,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** marcar no `docs/INVENTARIO.md` o arquivo do clone que cobre cada função (ou o motivo de faltar).
 - **Critérios de Aceitação:** nenhuma função sem equivalente ou justificativa.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `docs/INVENTARIO.md` ganhou a seção "Cobertura pelo clone": cada arquivo de inventário mapeado para os arquivos do `src/`; 3 itens sem equivalente têm justificativa (`get_shadow_nsis_path`/`check_platform_online`/`list_chaos_code_mcp_tools`, NSIS shadow e `auth::mock`).
+
+**Verificação:** Nenhuma função confirmada sem equivalente; `typecheck`/`build` OK.
+
 ### CLONE.14.2 — README de como rodar e o que testar
 
 **Próximo passo:** —
@@ -1408,6 +1412,8 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.14.1
 - **Descrição:** `apps-cloned/chaos-code/README.md`: instalar, `npm run dev`, roteiro de teste por tela.
 - **Critérios de Aceitação:** roteiro cobre todas as telas.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `apps-cloned/chaos-code/README.md` ganhou "Como rodar e o que testar": comandos, pasta de dados, `CHAOS_CODE_SERVIDOR`, login simulado, o que testar em cada tela e no MCP local.
 
 ### CLONE.14.3 — Aceite do usuário
 

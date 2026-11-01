@@ -14,7 +14,7 @@ Uma linha por frente (`<IA (modelo)> (<ambiente> · <branch>)`). Cada sessão at
 
 | Frente | Tarefa (etapa) | Situação | Atualizado em |
 |---|---|---|---|
-| Devin (SWE-2 High Lightning) (local · main) | CLONE: assumi a sessão a pedido do usuário (2026-11-01); retomando as 4 subtarefas em execução e o restante | 🔄 Ativa | 2026-11-01 16:35 |
+| Devin (SWE-2 High Lightning) (local · main) | CLONE finalizada: todas as subtarefas concluídas; 14.3 aguarda aceite do usuário | ⏹️ Encerrada | 2026-11-01 |
 | Claude Code (Sonnet 5.5) (local · main) | COMMIT.INICIAL.RULES-AI.1 concluída ([ETAPA-020](etapas/ETAPA-020-8951bfc3-COMMIT-INICIAL-RULES-AI.md)) | ⏹️ Encerrada | 2026-10-23 09:43 |
 | Claude Code (Sonnet 5.5) (local · main) | ALINHAR.1 a ALINHAR.5 entregues; aguarda aceite ([ETAPA-013](etapas/ETAPA-013-7c4a1e90-ALINHAR-GLOBAL.md)) | ⏹️ Encerrada | 2026-10-16 15:40 |
 | Claude Code (Opus 5.5) (local · main) | CAMINHO.1 a CAMINHO.3 entregues ([ETAPA-014](etapas/ETAPA-014-e727457b-CAMINHO-HOOKS.md)) | ⏹️ Encerrada | 2026-10-16 19:54 |
@@ -41,7 +41,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 
 | Tarefa | Título | Prioridade | Modelo | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|---|
-| CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 👀 Aguardando o usuário (14.3) | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.9.3 | Configurar o Claude Code (`claude mcp add`) | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.9.4 | Configurar os outros CLIs | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.9.6 | Liberar o localhost para o WSL (`netsh`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.9.5, CLONE.8.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
@@ -57,8 +57,8 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | CLONE.13.11 | Tela de imagens | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.11.4 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.12 | Tela de configurações e atualização | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.12.7 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.13 | Tela do Dashboard (início) | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.3.7, CLONE.5.7 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.14.1 | Conferir o inventário contra o clone | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.4 a CLONE.13.13 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.14.2 | README de como rodar e o que testar | 🟠 Alta | LEVE · Haiku 5.5 · effort low | CLONE.14.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.14.1 | Conferir o inventário contra o clone | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.13.4 a CLONE.13.13 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.14.2 | README de como rodar e o que testar | 🟠 Alta | LEVE · Devin (SWE-2 High Lightning) · sessão assumida (era Haiku 5.5 · effort low | CLONE.14.1 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.14.3 | Aceite do usuário | 🟠 Alta | Usuário | CLONE.14.2 | 👀 Aguardando o usuário | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | SERVIDOR | **Servidor local do clone (Python + FastAPI)** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-007](etapas/ETAPA-007-2bd3351f-SERVIDOR.md) |
 | SERVIDOR.11 | Conferência do PKCE (S256) | 🟠 Alta | PESADO · Opus 5.5 · effort high | SERVIDOR.2 | ⬜ Pendente | — | [ETAPA-007](etapas/ETAPA-007-2bd3351f-SERVIDOR.md) |

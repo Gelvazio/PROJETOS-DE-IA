@@ -90,3 +90,38 @@ ou de um arquivo real gerado pelo app.
   e `min_version` no manifesto.
 - [`telas.md`](inventario/telas.md): detalhar o layout dos cartões do Dashboard e da lista do Chat.
 - [`telas.md`](inventario/telas.md): confirmar que `/vite.svg` não existe no executável.
+
+## Cobertura pelo clone (CLONE.14.1)
+
+Conferência de 2026-11-01 por Devin (SWE-2 High Lightning): cada arquivo de inventário e os
+arquivos do clone (`src/`) que cobrem a função, ou o motivo de faltar.
+
+| Inventário | Coberto por | Situação |
+|---|---|---|
+| `modulos.md` (módulos Tauri) | `src/main/` (organização por domínio: `login`, `vetores`, `grafo`, `mcp`, `cli`, `wsl`, `agentes`, `api`, `projeto`, `imagem`, `atualizador`, `armazenamento`) | ✅ Equivalente em Node/Electron |
+| `comandos.md` (79 `invoke` Tauri) | canais IPC `src/main/**/​*.canais.ts` + `src/compartilhado/constantes.ts` (`CANAIS_IPC`) + `src/preload/preload.ts` | ✅ Mesmos comandos como IPC |
+| `api.md` (rotas `chaoscode.ai`) | `src/main/api/cliente-http.ts`, `projetos.api.ts`, `tarefas.api.ts`, `imagens.api.ts`, `modelos-agente.api.ts`, `src/main/api/api.canais.ts` | ✅ Cliente HTTP injetado |
+| `arquivos-locais.md` | `src/main/armazenamento/arquivo-json.ts` (gravação atômica), `caminhos.ts`, `src/compartilhado/tipos-armazenamento.ts` | ✅ Mesmos `*.json` |
+| `login.md` | `src/main/login/` (`pkce`, `autorizacao`, `token`, `revogacao`, `cofre-tokens`, `aparelho`, `registro-cliente`, `login-simulado`, `login.servico`, `login.canais`, `login.dependencias`) | ✅ OAuth + simulado |
+| `vetores-grafo.md` (pedaços, embeddings, HNSW) | `src/main/vetores/` (`divisor`, `provedor-embedding`, `provedores/{gemini,openai,openrouter}`, `hnsw`, `indice`, `similaridade`, `indexacao.servico`, `chaves-provedores`, `vetores.canais`) | ✅ Lote, RPM, 429, incremental |
+| `vetores-grafo.md` (grafo, RAG) | `src/main/grafo/` (`extracao`, `grafo.repositorio`, `comunidades`, `resumo-comunidades`, `transformar-consulta`, `reordenacao`, `cliente-llm`, `prompts`, `consulta.servico`, `grafo.canais`) | ✅ Modos local/global/hybrid |
+| `mcp-cli-wsl.md` (servidor MCP) | `src/main/mcp/` (`servidor`, `roteador`, `token-sessao`, `descoberta-oauth`, `ferramentas/*`, `mcp.servico`, `mcp.canais`, `ferramentas-definicoes`) | ✅ Loopback + `/health` + `.well-known` |
+| `mcp-cli-wsl.md` (CLIs e WSL) | `src/main/cli/` (`clis-suportados`, `descoberta-cli`, `configuracao-cli`, `cli.canais`), `src/main/wsl/` (`deteccao`, `encaminhamento`) | ✅ `.mcp.json`/`.gemini`/`.codex` + `.wslconfig` |
+| `prompts-agentes.md` (prompts + formato) | `src/main/grafo/prompts.ts`, `src/main/agentes/` (`frontmatter`, `gravar-agente`, `agentes.servico`, `agentes.canais`) | ✅ 12 modelos embutidos + `.md` |
+| `imagem-atualizador.md` (imagem) | `src/main/imagem/` (`gemini-imagem`, `gravar-imagem`, `imagem.servico`, `imagem.canais`) | ✅ Gemini local + plataforma |
+| `imagem-atualizador.md` (atualizador) | `src/main/atualizador/` (`verificar`, `versao`, `assinatura`, `instalar`, `historico`, `atualizador.servico`, `fabrica`, `canais`) | ✅ minisign + histórico |
+| `telas.md` (telas) | `src/renderer/` (`navegacao`, `tela`, `textos`, `telas/*.tela.ts`, `telas/dashboard.ts`, `estilos.css`) | ✅ 10 rotas com guarda |
+
+### Funções sem equivalente (justificativa)
+
+- `get_shadow_nsis_path`, `check_platform_online`, `list_chaos_code_mcp_tools` (marcados ⚙️/sem
+  confirmação no inventário): sem equivalente — o clone não instala via NSIS shadow e não tem o
+  comando de "estou online" separado (o cliente HTTP já trata falha de rede).
+- `auth::mock` do original: coberto pelo modo simulado explícito
+  (`CHAOS_CLONE_LOGIN_SIMULADO`), que é a forma documentada do inventário ("descobrir como o
+  `auth::mock` é ativado" ficou em aberto no original).
+- Itens *(inferido)* que pedem Ghidra: mantidos como abertos — não bloqueiam o clone, que usa os
+  nomes confirmados.
+
+Nenhuma função confirmada do inventário ficou sem equivalente nem justificativa.
+
