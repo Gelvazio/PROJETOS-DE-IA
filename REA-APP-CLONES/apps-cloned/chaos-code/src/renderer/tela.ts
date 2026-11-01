@@ -16,6 +16,15 @@ import {
 } from './navegacao';
 import { ehErroIpc } from '../compartilhado/tipos-ipc';
 import { montarTelaLogin } from './telas/login.tela';
+import { montarTelaProjetos } from './telas/projetos.tela';
+import { montarTelaTarefas } from './telas/tarefas.tela';
+import { montarTelaIndexacao } from './telas/indexacao.tela';
+import { montarTelaGrafo } from './telas/grafo.tela';
+import { montarTelaMcp } from './telas/mcp.tela';
+import { montarTelaAgentes } from './telas/agentes.tela';
+import { montarTelaImagens } from './telas/imagens.tela';
+import { montarTelaConfiguracoes } from './telas/configuracoes.tela';
+import { montarTelaDashboard } from './telas/dashboard';
 
 const SELETORES = {
   aplicativo: '#aplicativo',
@@ -408,6 +417,15 @@ function ligarAcoesDaMoldura(roteador: Roteador, fonte: FonteEstadoAplicativo): 
 async function iniciarTela(): Promise<void> {
   const fonte = criarFonteProvisoria();
   registrarTela('login', montarTelaLogin);
+  registrarTela('dashboard', montarTelaDashboard);
+  registrarTela('projetos', montarTelaProjetos);
+  registrarTela('tarefas', montarTelaTarefas);
+  registrarTela('indexacao', montarTelaIndexacao);
+  registrarTela('grafo', montarTelaGrafo);
+  registrarTela('mcp', montarTelaMcp);
+  registrarTela('agentes', montarTelaAgentes);
+  registrarTela('imagens', montarTelaImagens);
+  registrarTela('configuracoes', montarTelaConfiguracoes);
   window.chaosCode.aoMudarEstadoLogin(() => {
     void atualizarSituacao(fonte);
   });

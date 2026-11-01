@@ -1277,6 +1277,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/projetos.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/projetos.tela.ts` — lista/cria/abre/remove projetos (`projetos:*`). Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.13.6 — Tela de tarefas
 
 **Próximo passo:** —
@@ -1285,6 +1289,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.13.3, CLONE.5.7
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/tarefas.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/tarefas.tela.ts` — lista/cria/conclui tarefas do projeto ativo (`api.tarefas`). Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
 
 ### CLONE.13.7 — Tela de indexação e busca
 
@@ -1295,6 +1303,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/indexacao.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/indexacao.tela.ts` — status RAG, indexar/cancelar com progresso e busca vetorial. Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.13.8 — Tela do grafo
 
 **Próximo passo:** —
@@ -1303,6 +1315,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.13.3, CLONE.7.11
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/grafo.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/grafo.tela.ts` — `consultarConhecimento`, `obterDadosGrafo` (entidades e relações). Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
 
 ### CLONE.13.9 — Tela do MCP, CLIs e WSL
 
@@ -1313,6 +1329,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/mcp.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/mcp.tela.ts` — estado/ligar/desligar MCP, comandos por CLI (token oculto), gravar config, painel WSL. Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.13.10 — Tela de agentes
 
 **Próximo passo:** —
@@ -1321,6 +1341,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.13.3, CLONE.10.5
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/agentes.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/agentes.tela.ts` — modelos de agente e agentes por pasta de CLI; gravação validada. Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
 
 ### CLONE.13.11 — Tela de imagens
 
@@ -1331,6 +1355,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/imagens.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/imagens.tela.ts` — gera imagem (Gemini local) e lista a galeria do projeto. Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.13.12 — Tela de configurações e atualização
 
 **Próximo passo:** —
@@ -1339,6 +1367,11 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.13.3, CLONE.12.7
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/configuracoes.tela.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/configuracoes.tela.ts` — versão, verificação/download de atualização, chave do Gemini, sair. Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.14 — Aceite do usuário
 - **JEV-AI-SUGGESTION:** NAO
 
@@ -1353,6 +1386,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/renderer/telas/dashboard.ts`, registrada em `navegacao.ts` na rota `#/dashboard`, reproduzindo o `DashboardView` do original (`docs/inventario/telas.md` e `docs/original/assets/DashboardView-*.js`).
 - **Critérios de Aceitação:** typecheck e build ok.
 - **Anotação:** criada em 2026-10-18 05:01 por Claude Code (Opus 5.5) (local · main) — líder (C26): a CLONE.13.3 achou a rota `#/dashboard` do original sem subtarefa dona. A CLONE.14.1 passa a depender também desta.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/renderer/telas/dashboard.ts` — resumo do projeto ativo: RAG, MCP e WSL (registrada na rota `#/dashboard`). Helper comum: `telas/comum.tela.ts`; registro em `tela.ts`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
 
 ### CLONE.14.1 — Conferir o inventário contra o clone
 
