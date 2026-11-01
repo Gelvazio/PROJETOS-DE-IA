@@ -92,6 +92,10 @@ Como consultar:
    `docs/analises/ANALISE-FINANCEIRA-IDEIA NN.md` (o `NN` é o código da ideia em
    `src/ideiasNegocios.js`: `IDEIA 01`, `IDEIA 02`…; o nome tem espaço, exatamente assim).
 
+O card **Previdência Privada FIESC** do Dashboard segue a mesma regra, com o arquivo
+`docs/analises/ANALISE-FINANCEIRA-PREVIDENCIA-FIESC.md` (dados do plano em
+`src/previdenciaFiesc.js`, vindos da cartilha FIESCPrev 2025).
+
 O status do card (`ANALISAR` ou `ANALISADO`) é calculado pelo código: vira `ANALISADO` **somente**
 quando esse arquivo existe e não está vazio. Nunca criar o arquivo sem a análise do CFO feita, e nunca
 mexer no status à mão.

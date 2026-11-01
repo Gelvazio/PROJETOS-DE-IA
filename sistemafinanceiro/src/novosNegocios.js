@@ -2,17 +2,8 @@
 // GESTÃO DE NOVOS NEGÓCIOS - cards das ideias e modal "Detalhes"
 // ============================================================================
 import { IDEIAS_NEGOCIOS, AVISO_ESTIMATIVAS } from './ideiasNegocios.js';
-
-const STATUS_ANALISAR = 'ANALISAR';
-const STATUS_ANALISADO = 'ANALISADO';
-
-// Análises do CFO: docs/analises/ANALISE-FINANCEIRA-<código da ideia>.md (ex.: IDEIA 01).
-// O status só vira ANALISADO quando esse arquivo existe e não está vazio.
-const ANALISES_FINANCEIRAS = import.meta.glob('../docs/analises/ANALISE-FINANCEIRA-*.md', {
-  query: '?raw',
-  import: 'default',
-  eager: true,
-});
+import { criarElemento, criarLista, criarSecaoModal, ligarFechamentoModal } from './elementosUi.js';
+import { obterAnaliseFinanceira, criarSeloStatus } from './analisesFinanceiras.js';
 
 const ROTULOS_CARD = [
   ['tempoAGastar', 'Tempo a gastar'],
@@ -20,54 +11,6 @@ const ROTULOS_CARD = [
   ['analiseRetorno', 'Análise de retorno'],
   ['tempoRetorno', 'Tempo de retorno'],
 ];
-
-/**
- * Cria um elemento com classe e texto.
- * @param {string} tag - Nome da tag.
- * @param {string} classe - Classe CSS (pode ser vazia).
- * @param {string} [texto] - Texto do elemento.
- * @returns {HTMLElement} Elemento criado.
- */
-function criarElemento(tag, classe, texto = '') {
-  const elemento = document.createElement(tag);
-  if (classe) elemento.className = classe;
-  elemento.textContent = texto;
-  return elemento;
-}
-
-/**
- * Cria uma lista (<ul>) a partir de textos.
- * @param {string[]} itens - Textos dos itens.
- * @returns {HTMLUListElement} Lista pronta.
- */
-function criarLista(itens) {
-  const lista = criarElemento('ul', 'ideia-lista');
-  itens.forEach(item => lista.append(criarElemento('li', '', item)));
-  return lista;
-}
-
-/**
- * Lê o markdown da análise financeira de uma ideia.
- * @param {{codigo: string}} ideia - Ideia consultada.
- * @returns {string|null} Texto da análise, ou null se o arquivo não existir ou estiver vazio.
- */
-function obterAnaliseFinanceira(ideia) {
-  const texto = ANALISES_FINANCEIRAS[`../docs/analises/ANALISE-FINANCEIRA-${ideia.codigo}.md`];
-  const temTexto = typeof texto === 'string' && texto.trim() !== '';
-  return temTexto ? texto : null;
-}
-
-/**
- * Cria o selo de status da ideia (ANALISAR até existir a análise do CFO).
- * @param {{codigo: string}} ideia - Ideia exibida.
- * @returns {HTMLElement} Selo de status.
- */
-function criarStatusIdeia(ideia) {
-  const analisada = obterAnaliseFinanceira(ideia) !== null;
-  const selo = criarElemento('span', 'ideia-status', analisada ? STATUS_ANALISADO : STATUS_ANALISAR);
-  selo.dataset.estado = analisada ? 'analisado' : 'analisar';
-  return selo;
-}
 
 /**
  * Cria o bloco de um dado do card (rótulo + valor).
@@ -91,7 +34,7 @@ function criarDadoCard(rotulo, valor) {
 function criarCardIdeia(ideia, aoAbrirDetalhes) {
   const card = criarElemento('article', 'ideia-card');
   const topo = criarElemento('div', 'ideia-topo');
-  topo.append(criarElemento('span', 'ideia-codigo', ideia.codigo), criarStatusIdeia(ideia));
+  topo.append(criarElemento('span', 'ideia-codigo', ideia.codigo), criarSeloStatus(ideia.codigo));
   card.append(topo);
   card.append(criarElemento('h2', 'ideia-nome', ideia.nome));
 
@@ -128,19 +71,6 @@ function criarTabelaCenarios(cenarios) {
 }
 
 /**
- * Cria uma seção do modal (título + conteúdo).
- * @param {string} titulo - Título da seção.
- * @param {HTMLElement[]} conteudo - Elementos da seção.
- * @returns {HTMLElement} Seção pronta.
- */
-function criarSecaoModal(titulo, conteudo) {
-  const secao = criarElemento('section', 'ideia-secao');
-  secao.append(criarElemento('h3', '', titulo));
-  secao.append(...conteudo);
-  return secao;
-}
-
-/**
  * Preenche o modal com todos os detalhes da ideia.
  * @param {HTMLElement} corpo - Elemento que recebe o conteúdo.
  * @param {import('./ideiasNegocios.js').IdeiaNegocio} ideia - Ideia exibida.
@@ -148,7 +78,7 @@ function criarSecaoModal(titulo, conteudo) {
  */
 function preencherModal(corpo, ideia) {
   const explicacao = ideia.explicacao.map(texto => criarElemento('p', '', texto));
-  const analise = obterAnaliseFinanceira(ideia);
+  const analise = obterAnaliseFinanceira(ideia.codigo);
   const secaoAnalise = analise
     ? [criarSecaoModal('Análise financeira (CFO)', [criarElemento('pre', 'ideia-analise', analise)])]
     : [];
@@ -176,18 +106,6 @@ function abrirModal(modal, ideia) {
 }
 
 /**
- * Liga o fechamento do modal: botão Fechar e clique no fundo.
- * @param {HTMLDialogElement} modal - Elemento do modal.
- * @returns {void}
- */
-function ligarFechamento(modal) {
-  modal.querySelector('#ideia-modal-fechar').addEventListener('click', () => modal.close());
-  modal.addEventListener('click', evento => {
-    if (evento.target === modal) modal.close();
-  });
-}
-
-/**
  * Inicializa a página: desenha os cards e liga o modal.
  * @returns {void}
  */
@@ -196,7 +114,7 @@ function iniciar() {
   const modal = document.getElementById('ideia-modal');
   if (!area || !modal) return;
 
-  ligarFechamento(modal);
+  ligarFechamentoModal(modal);
   const aoAbrir = ideia => abrirModal(modal, ideia);
   area.replaceChildren(...IDEIAS_NEGOCIOS.map(ideia => criarCardIdeia(ideia, aoAbrir)));
 }

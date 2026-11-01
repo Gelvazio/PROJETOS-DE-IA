@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./css/styles.css" />
   <link rel="stylesheet" href="./css/mobile.css" />
   <link rel="stylesheet" href="./css/menu.css" />
+  <link rel="stylesheet" href="./css/novos-negocios.css" />
   <link rel="stylesheet" href="./css/dashboard.css" />
 </head>
 <body>
@@ -31,13 +32,19 @@
   </header>
 
   <main class="pagina-conteudo">
-    <section class="dashboard-cards" aria-label="Cards do dashboard">
-      <article class="dashboard-card">
-        <h2 class="dashboard-card-titulo">Previdência Privada FIESC</h2>
-        <p class="dashboard-card-valor">Dados a informar.</p>
-      </article>
-    </section>
+    <section id="dashboard-cards" class="dashboard-cards" aria-label="Cards do dashboard"></section>
   </main>
+
+  <dialog id="ideia-modal" class="ideia-modal" aria-labelledby="ideia-modal-titulo">
+    <div class="ideia-modal-topo">
+      <h2 id="ideia-modal-titulo"></h2>
+      <button type="button" id="ideia-modal-fechar" class="ideia-modal-fechar"
+        aria-label="Fechar">&times;</button>
+    </div>
+    <div id="ideia-modal-corpo" class="ideia-modal-corpo"></div>
+  </dialog>
+
+  <script type="module" src="./src/dashboard.js"></script>
 
 </body>
 </html>

@@ -39,31 +39,10 @@ body.visual-futurista::before {
 
 body.visual-futurista .pagina-conteudo { position: relative; z-index: 1; }
 
-/* Barra de menu holográfica */
+/* A barra de menu NÃO muda de estilo: mantém a fonte padrão do sistema */
 body.visual-futurista .menu-bar {
-  background: rgba(5, 3, 13, 0.82);
-  border-bottom: 1px solid rgba(25, 240, 255, 0.4);
-  box-shadow: 0 0 18px rgba(25, 240, 255, 0.18);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
-body.visual-futurista .menu-link {
-  font-family: var(--fonte-titulo);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--cor-texto-suave);
-}
-body.visual-futurista .menu-link:hover,
-body.visual-futurista .menu-link:focus-visible {
-  color: var(--neon-ciano);
-  background: rgba(25, 240, 255, 0.08);
-}
-body.visual-futurista .menu-link[aria-current="page"] {
-  color: var(--neon-ciano);
-  background: rgba(25, 240, 255, 0.1);
-  border-color: var(--neon-ciano);
-  box-shadow: 0 0 12px rgba(25, 240, 255, 0.35);
-}
-body.visual-futurista .menu-bar-separador { background: rgba(255, 43, 214, 0.5); }
 
 /* Cabeçalho com rede de nós */
 body.visual-futurista .ideias-cabecalho {
@@ -177,8 +156,7 @@ body.visual-futurista .ideia-detalhes:hover {
   box-shadow: 0 0 22px rgba(25, 240, 255, 0.6);
 }
 body.visual-futurista .ideia-detalhes:focus-visible,
-body.visual-futurista .ideia-modal-fechar:focus-visible,
-body.visual-futurista .menu-link:focus-visible {
+body.visual-futurista .ideia-modal-fechar:focus-visible {
   outline: 2px solid var(--neon-magenta);
   outline-offset: 2px;
 }
