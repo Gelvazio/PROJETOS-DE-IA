@@ -46,7 +46,7 @@ export function criarSecaoModal(titulo, conteudo) {
  * @returns {void}
  */
 export function ligarFechamentoModal(modal) {
-  modal.querySelector('#ideia-modal-fechar').addEventListener('click', () => modal.close());
+  modal.querySelector('.ideia-modal-fechar').addEventListener('click', () => modal.close());
   modal.addEventListener('click', evento => {
     if (evento.target === modal) modal.close();
   });

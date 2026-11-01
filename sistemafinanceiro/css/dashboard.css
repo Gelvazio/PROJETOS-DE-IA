@@ -37,3 +37,54 @@
 @media (max-width: 640px) {
   .dashboard-cards { grid-template-columns: 1fr; }
 }
+
+/* Botões do card */
+.dashboard-card-acoes {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+.dashboard-card-acoes .ideia-detalhes { flex: 1; margin-top: 0; }
+
+/* Modal de cálculos */
+.calculos-formulario {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 16px 0;
+}
+.calculos-campo { display: grid; gap: 4px; font-size: 12px; color: var(--txt-soft); }
+.calculos-campo input[type="text"] {
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(180, 110, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--txt);
+  font-family: inherit;
+  font-size: 15px;
+}
+.calculos-campo input[type="text"]:focus { border-color: var(--h2); outline: none; }
+.calculos-campo-check {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.calculos-lista { margin: 0; display: grid; gap: 4px; }
+.calculos-linha {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(180, 110, 255, 0.15);
+  font-size: 14px;
+}
+.calculos-linha dt { color: var(--txt-dim); }
+.calculos-linha dd { margin: 0; font-weight: 700; color: var(--txt); white-space: nowrap; }
+
+@media (max-width: 640px) {
+  .calculos-formulario { grid-template-columns: 1fr; }
+  .calculos-linha { flex-direction: column; gap: 2px; }
+}

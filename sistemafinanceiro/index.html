@@ -44,6 +44,55 @@
     <div id="ideia-modal-corpo" class="ideia-modal-corpo"></div>
   </dialog>
 
+  <dialog id="calculos-modal" class="ideia-modal" aria-labelledby="calculos-modal-titulo">
+    <div class="ideia-modal-topo">
+      <h2 id="calculos-modal-titulo">Cálculos — Previdência Privada FIESC</h2>
+      <button type="button" class="ideia-modal-fechar" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="ideia-modal-corpo">
+      <form id="calculos-formulario" class="calculos-formulario" novalidate>
+        <label class="calculos-campo">
+          <span>Salário bruto (R$)</span>
+          <input type="text" inputmode="decimal" data-campo="salario" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Sua contribuição (% do salário) [Chute]</span>
+          <input type="text" inputmode="decimal" data-campo="contribuicaoPct" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Contrapartida da empresa (% da sua contribuição) [CONFIRMAR]</span>
+          <input type="text" inputmode="decimal" data-campo="contrapartidaPct" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Anos contribuindo até se aposentar [Chute]</span>
+          <input type="text" inputmode="decimal" data-campo="anos" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Rentabilidade anual (%) [Chute]</span>
+          <input type="text" inputmode="decimal" data-campo="rentabilidadePct" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Alíquota marginal do IR (%) [CONFIRMAR]</span>
+          <input type="text" inputmode="decimal" data-campo="aliquotaIrPct" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Receber por quantos anos (mínimo 6)</span>
+          <input type="text" inputmode="decimal" data-campo="recebimentoAnos" autocomplete="off" />
+        </label>
+        <label class="calculos-campo">
+          <span>Renda por percentual (% do saldo ao mês, de 0,1 a 2)</span>
+          <input type="text" inputmode="decimal" data-campo="rendaPct" autocomplete="off" />
+        </label>
+        <label class="calculos-campo calculos-campo-check">
+          <input type="checkbox" data-campo="modeloCompleto" />
+          <span>Declara o IR no modelo completo (permite deduzir até 12%)</span>
+        </label>
+      </form>
+      <div id="calculos-resultado" aria-live="polite"></div>
+      <p class="ideia-aviso">Simulação com premissas editáveis, não é promessa de rendimento. [Chute] = valor suposto por mim; [CONFIRMAR] = dado que a cartilha não traz.</p>
+    </div>
+  </dialog>
+
   <script type="module" src="./src/dashboard.js"></script>
 
 </body>

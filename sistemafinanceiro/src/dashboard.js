@@ -8,6 +8,7 @@ import {
   criarSecaoModal,
   ligarFechamentoModal,
 } from './elementosUi.js';
+import { prepararModalCalculos } from './calculosPrevidencia.js';
 import { obterAnaliseFinanceira, criarSeloStatus } from './analisesFinanceiras.js';
 
 /**
@@ -24,11 +25,25 @@ function criarDadoCard(rotulo, valor) {
 }
 
 /**
+ * Cria um botão de ação do card.
+ * @param {string} texto - Texto do botão.
+ * @param {() => void} aoClicar - Chamado ao clicar.
+ * @returns {HTMLButtonElement} Botão pronto.
+ */
+function criarBotaoAcao(texto, aoClicar) {
+  const botao = criarElemento('button', 'btn ideia-detalhes', texto);
+  botao.type = 'button';
+  botao.addEventListener('click', aoClicar);
+  return botao;
+}
+
+/**
  * Monta o card da Previdência Privada FIESC.
  * @param {() => void} aoAbrirDetalhes - Chamado ao clicar em Detalhes.
+ * @param {() => void} aoAbrirCalculos - Chamado ao clicar em Cálculos.
  * @returns {HTMLElement} Card pronto.
  */
-function criarCardPrevidencia(aoAbrirDetalhes) {
+function criarCardPrevidencia(aoAbrirDetalhes, aoAbrirCalculos) {
   const card = criarElemento('article', 'dashboard-card');
   const topo = criarElemento('div', 'ideia-topo');
   topo.append(
@@ -41,10 +56,12 @@ function criarCardPrevidencia(aoAbrirDetalhes) {
   PREVIDENCIA_FIESC.resumoCard.forEach(([rotulo, valor]) => dados.append(criarDadoCard(rotulo, valor)));
   card.append(dados);
 
-  const botao = criarElemento('button', 'btn ideia-detalhes', 'Detalhes');
-  botao.type = 'button';
-  botao.addEventListener('click', aoAbrirDetalhes);
-  card.append(botao);
+  const acoes = criarElemento('div', 'dashboard-card-acoes');
+  acoes.append(
+    criarBotaoAcao('Cálculos', aoAbrirCalculos),
+    criarBotaoAcao('Detalhes', aoAbrirDetalhes),
+  );
+  card.append(acoes);
   return card;
 }
 
@@ -88,10 +105,13 @@ function abrirModal(modal) {
 function iniciar() {
   const area = document.getElementById('dashboard-cards');
   const modal = document.getElementById('ideia-modal');
-  if (!area || !modal) return;
+  const modalCalculos = document.getElementById('calculos-modal');
+  if (!area || !modal || !modalCalculos) return;
 
   ligarFechamentoModal(modal);
-  area.replaceChildren(criarCardPrevidencia(() => abrirModal(modal)));
+  ligarFechamentoModal(modalCalculos);
+  const abrirCalculos = prepararModalCalculos(modalCalculos);
+  area.replaceChildren(criarCardPrevidencia(() => abrirModal(modal), abrirCalculos));
 }
 
 iniciar();
