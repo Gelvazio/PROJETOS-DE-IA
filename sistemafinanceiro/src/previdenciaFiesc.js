@@ -118,9 +118,9 @@ export const PREVIDENCIA_FIESC = {
 };
 
 // Documentos exibidos em iframe no modal "Documentos". Os PDFs ficam em
-// REGRAS-PROJETOS/FIESC-PREV/ e só existem localmente (não são versionados).
+// public/documentos/fiescprev/ (vão no build, mas fora do pré-cache do PWA).
 export const DOCUMENTOS_PREVIDENCIA = [
-  { titulo: 'Regulamento', arquivo: '/REGRAS-PROJETOS/FIESC-PREV/Regulamento-FIESCPREV.pdf' },
-  { titulo: 'Cartilha', arquivo: '/REGRAS-PROJETOS/FIESC-PREV/CARTILHA-FIESCPREV-2025.pdf' },
-  { titulo: 'Certificado', arquivo: '/REGRAS-PROJETOS/FIESC-PREV/Certificado-FIESCPrev.pdf' },
+  { titulo: 'Regulamento', arquivo: '/documentos/fiescprev/Regulamento-FIESCPREV.pdf' },
+  { titulo: 'Cartilha', arquivo: '/documentos/fiescprev/CARTILHA-FIESCPREV-2025.pdf' },
+  { titulo: 'Certificado', arquivo: '/documentos/fiescprev/Certificado-FIESCPrev.pdf' },
 ];

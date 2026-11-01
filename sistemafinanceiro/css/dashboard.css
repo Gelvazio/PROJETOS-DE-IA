@@ -142,3 +142,5 @@ a.ideia-detalhes {
 @media (max-width: 640px) {
   .documentos-barra { flex-direction: column; align-items: stretch; }
 }
+
+.documentos-aviso { margin: 0; padding: 24px 20px; font-size: 14px; color: var(--txt-dim); }

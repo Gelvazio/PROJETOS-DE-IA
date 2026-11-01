@@ -6,6 +6,9 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
+// Pasta de PDFs grandes: vai no build, mas fica fora do pré-cache do app instalado
+const PASTA_FORA_DO_PRECACHE = 'documentos/';
+
 function listFiles(dir) {
   const out = [];
   for (const name of readdirSync(dir)) {
@@ -32,6 +35,7 @@ export function buildServiceWorker({ template, bundle, publicDir }) {
     for (const file of listFiles(publicDir).sort()) {
       const rel = relative(publicDir, file).split(sep).join('/');
       if (rel.endsWith('.DS_Store') || rel.endsWith('.map')) continue;
+      if (rel.startsWith(PASTA_FORA_DO_PRECACHE)) continue;
       urls.add('/' + rel);
       hash.update(rel);
       hash.update(readFileSync(file));
