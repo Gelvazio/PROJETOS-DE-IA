@@ -461,6 +461,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Critérios de Aceitação:** typecheck e build ok.
 - **Entrega:** commit `feat(CLONE.4.12)` (2026-11-01) · **Verificação:** typecheck e build ok; teste node com ipc/serviço falsos: token não vaza (ServicoLoginCanais sem obterTokenAcesso, copiarEstadoSeguro). Pendência: montar o serviço no principal.ts (servicoLogin opcional em ContextoCanais)
 
+### CLONE.4.13 — Montar o serviço de login no `principal.ts`
+
+**Próximo passo:** classificar pelo Jev e reservar.
+
+- **JEV-AI-SUGGESTION:** NAO
+- **Depende de:** CLONE.4.12, CLONE.5.7 (5.7 mexe nos mesmos arquivos de ligação)
+- **Descrição:** criada pelo líder em 2026-11-01 a partir da pendência da CLONE.4.12. Em `src/main/principal.ts`, montar `criarServicoLogin({ modoSimulado: deveUsarLoginSimulado(process.env), criarDependenciasReais: () => criarDependenciasLoginReal(...), registrarLog })`, passar `servicoLogin` no `montarContextoCanais()`, chamar `servicoLogin.inicializar()` ao abrir o app e tornar `servicoLogin` obrigatório em `ContextoCanais` (`src/main/canais.ts`). Opcional: mover `ApiLogin` para `src/compartilhado/tipos-ipc-login.ts` (receita da CLONE.3.7).
+- **Critérios de Aceitação:** typecheck e build ok; token continua fora do renderer.
 ### CLONE.5 — Cliente da API (servidor próprio)
 - **JEV-AI-SUGGESTION:** NAO
 
