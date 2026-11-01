@@ -11,10 +11,10 @@
 /PROJETO-IMPRESSAO-3D/
 /crm/
 /controlemercadoria/
+/ajax-ai-by-pewdiepie/
 
-# Pastas de projetos parados ou offline (regras C20 e C23)
-/DEMAIS-PROJETOS-NAO-MEXER-AGORA/
-/DEMAIS-PROJETOS-DE-SISTEMAS-MANTER-OFFLINE/
+# Pastas de projetos parados ou offline (regras C20 e C23): nenhuma IA lê nem mexe
+/DEMAIS-PROJETOS-*/
 
 # Registros locais do AutoSwarm (AUTOSWARM_HOME)
 /COORDENACAO-DE-PROJETOS/AutoSwarm/output/
