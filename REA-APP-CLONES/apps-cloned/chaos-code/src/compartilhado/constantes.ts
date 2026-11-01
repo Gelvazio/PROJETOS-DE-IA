@@ -81,6 +81,15 @@ export const CANAIS_IPC = {
   grafoConsultar: 'grafo:consultar',
   grafoBuscarEntidades: 'grafo:buscar-entidades',
   grafoObterDados: 'grafo:obter-dados',
+  // MCP (CLONE.8.10)
+  mcpObterEstado: 'mcp:obter-estado',
+  mcpLigar: 'mcp:ligar',
+  mcpDesligar: 'mcp:desligar',
+  mcpObterTokenSessao: 'mcp:obter-token-sessao',
+  mcpRenovarTokenSessao: 'mcp:renovar-token-sessao',
+  mcpResponderConsentimento: 'mcp:responder-consentimento',
+  /** Evento do main para a interface (`mcp:consent-request` do original). */
+  mcpPedidoConsentimento: 'mcp:consent-request',
 } as const;
 
 /** Prefixo dos canais da API da plataforma (`api:<grupo>:<metodo>`, CLONE.5.7). */

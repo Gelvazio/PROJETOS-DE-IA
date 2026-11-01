@@ -34,8 +34,16 @@ import {
   ServicoIndexacao,
 } from './vetores/indexacao.servico';
 import { criarCompletarLlm } from './grafo/cliente-llm';
+import { criarClienteHttp } from './api/cliente-http';
+import { criarApiImagens } from './api/imagens.api';
+import { criarApiModelosAgente } from './api/modelos-agente.api';
+import { criarProjetosApi } from './api/projetos.api';
+import { criarApiTarefas } from './api/tarefas.api';
+import type { ApisPlataforma } from './api/api.canais';
+import { ServicoMcp } from './mcp/mcp.servico';
+import { criarEmissorConsentimento } from './mcp/mcp.canais';
 import { ServicoConsulta } from './grafo/consulta.servico';
-import { criarRepositorioGrafo } from './grafo/grafo.repositorio';
+import { criarRepositorioGrafo, type RepositorioGrafo } from './grafo/grafo.repositorio';
 
 const PLATAFORMA_MAC = 'darwin';
 
@@ -96,16 +104,74 @@ async function montarContextoCanais(): Promise<ContextoCanais> {
   const servicoProjetos = new ServicoProjetos({ repositorio, pastaDados });
   const servicoIndexacao = await montarServicoIndexacao(pastaDados, repositorio);
   const repositorioGrafo = criarRepositorioGrafo({ pastaDados });
+  const servicoLogin = montarServicoLogin(pastaDados);
+  const apisPlataforma = montarApisPlataforma(servicoLogin);
+  const servicoConsulta = await montarServicoConsulta(
+    pastaDados, servicoIndexacao, repositorioGrafo,
+  );
   return {
     servicoProjetos,
     repositorioProjetos: repositorio,
     servicoImagem: montarServicoImagem(pastaDados),
     servicoAtualizador: montarServicoAtualizador(pastaDados),
-    servicoLogin: montarServicoLogin(pastaDados),
+    servicoLogin,
     servicoIndexacao,
-    servicoConsulta: await montarServicoConsulta(pastaDados, servicoIndexacao, repositorioGrafo),
+    servicoConsulta,
     repositorioGrafo,
+    apisPlataforma,
+    servicoMcp: montarServicoMcp(pastaDados, apisPlataforma, servicoConsulta, repositorioGrafo,
+      repositorio),
   };
+}
+
+/**
+ * Monta as APIs da plataforma sobre o cliente HTTP autenticado pelo login.
+ * @param {ServicoLoginCompleto} servicoLogin - Serviço de login (dá o token ao cliente).
+ * @returns {ApisPlataforma} APIs prontas para os canais `api:*` e as ferramentas MCP.
+ */
+function montarApisPlataforma(servicoLogin: ServicoLoginCompleto): ApisPlataforma {
+  const cliente = criarClienteHttp({
+    buscar: fetch,
+    urlServidor: obterUrlServidor(process.env),
+    login: servicoLogin,
+  });
+  return {
+    projetos: criarProjetosApi(cliente),
+    tarefas: criarApiTarefas(cliente),
+    imagens: criarApiImagens(cliente),
+    modelosAgente: criarApiModelosAgente(cliente),
+  };
+}
+
+/**
+ * Monta o serviço do MCP local.
+ * @param {string} pastaDados - Pasta de dados do app.
+ * @param {ApisPlataforma} apisPlataforma - APIs da plataforma.
+ * @param {ServicoConsulta} servicoConsulta - Consulta grafo+vetores.
+ * @param {RepositorioGrafo} repositorioGrafo - Armazenamento do grafo.
+ * @param {RepositorioProjetos} repositorio - Registro local de projetos.
+ * @returns {ServicoMcp} Serviço usado pelos canais `mcp:*`.
+ */
+function montarServicoMcp(
+  pastaDados: string,
+  apisPlataforma: ApisPlataforma,
+  servicoConsulta: ServicoConsulta,
+  repositorioGrafo: RepositorioGrafo,
+  repositorio: RepositorioProjetos,
+): ServicoMcp {
+  const caminhos = obterCaminhosGlobais(pastaDados);
+  return new ServicoMcp({
+    caminhoConfigMcp: caminhos.configMcp,
+    caminhoOauthMcp: caminhos.oauthMcp,
+    apisPlataforma,
+    servicoConsulta,
+    repositorioGrafo,
+    repositorioProjetos: repositorio,
+    emitirConsentimento: criarEmissorConsentimento((canal, dado) => {
+      BrowserWindow.getAllWindows().forEach((janela) => janela.webContents.send(canal, dado));
+    }),
+    registrarLog: (mensagem) => console.info('[mcp]', mensagem),
+  });
 }
 
 /**

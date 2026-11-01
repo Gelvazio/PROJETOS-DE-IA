@@ -13,11 +13,12 @@ import type { ApiPlataformaIpc } from '../main/api/api.canais';
 import type { ApiLogin } from '../main/login/login.canais';
 import type { ApiVetores } from '../compartilhado/tipos-ipc-vetores';
 import type { ApiGrafo } from '../compartilhado/tipos-ipc-grafo';
+import type { ApiMcp } from '../compartilhado/tipos-ipc-mcp';
 
 // Só funções específicas são expostas: a interface nunca recebe o ipcRenderer inteiro.
 // Cada módulo novo acrescenta aqui o seu bloco e o tipo `Api<Modulo>` em `ApiExposta`.
 type ApiExposta = ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin &
-  ApiPlataformaIpc & ApiVetores & ApiGrafo;
+  ApiPlataformaIpc & ApiVetores & ApiGrafo & ApiMcp;
 
 /**
  * Monta as funções de um grupo da API da plataforma: cada método invoca o canal `api:*`.
@@ -121,6 +122,23 @@ const api: ApiExposta = {
     ipcRenderer.invoke(CANAIS_IPC.grafoBuscarEntidades, idProjeto, nome, tipo),
   obterDadosGrafo: (idProjeto, nomeEntidade, profundidade) =>
     ipcRenderer.invoke(CANAIS_IPC.grafoObterDados, idProjeto, nomeEntidade, profundidade),
+
+  // MCP (CLONE.8.10)
+  obterEstadoMcp: () => ipcRenderer.invoke(CANAIS_IPC.mcpObterEstado),
+  ligarMcp: (porta) => ipcRenderer.invoke(CANAIS_IPC.mcpLigar, porta),
+  desligarMcp: () => ipcRenderer.invoke(CANAIS_IPC.mcpDesligar),
+  obterTokenSessaoMcp: () => ipcRenderer.invoke(CANAIS_IPC.mcpObterTokenSessao),
+  renovarTokenSessaoMcp: () => ipcRenderer.invoke(CANAIS_IPC.mcpRenovarTokenSessao),
+  responderConsentimentoMcp: (requestId, aprovado) =>
+    ipcRenderer.invoke(CANAIS_IPC.mcpResponderConsentimento, requestId, aprovado),
+  aoPedirConsentimentoMcp: (ouvinte) => {
+    const tratador = (_evento: unknown, pedido: Parameters<typeof ouvinte>[0]): void =>
+      ouvinte(pedido);
+    ipcRenderer.on(CANAIS_IPC.mcpPedidoConsentimento, tratador);
+    return () => {
+      ipcRenderer.removeListener(CANAIS_IPC.mcpPedidoConsentimento, tratador);
+    };
+  },
 };
 
 contextBridge.exposeInMainWorld(NOME_API_PRELOAD, api);

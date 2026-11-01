@@ -42,14 +42,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | Tarefa | Título | Prioridade | Modelo | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|---|
 | CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.3 | Token de sessão `X-MCP-Session-Token` | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.4 | Descoberta OAuth (`.well-known`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.2, CLONE.4.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.5 | Ferramenta de busca nos vetores | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.6.11, CLONE.8.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.6 | Ferramenta de consulta ao grafo | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.7.10, CLONE.8.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.7 | Ferramentas de tarefas | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.4, CLONE.8.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.8 | Ferramentas de projeto | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.3, CLONE.8.1 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.9 | Roteador MCP (liga ferramentas ao servidor) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.3, CLONE.8.4, CLONE.8.5, CLONE.8.6, CLONE.8.7, CLONE.8.8 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.8.10 | Canais IPC do MCP (ligar/desligar, porta) | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.8.9 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.9.3 | Configurar o Claude Code (`claude mcp add`) | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.9.4 | Configurar os outros CLIs | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.9.6 | Liberar o localhost para o WSL (`netsh`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.9.5, CLONE.8.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

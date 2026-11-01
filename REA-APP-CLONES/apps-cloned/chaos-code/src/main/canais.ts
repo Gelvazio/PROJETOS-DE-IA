@@ -16,6 +16,8 @@ import type { ServicoIndexacao } from './vetores/indexacao.servico';
 import { registrarCanaisGrafo } from './grafo/grafo.canais';
 import type { ServicoConsulta } from './grafo/consulta.servico';
 import type { RepositorioGrafo } from './grafo/grafo.repositorio';
+import { registrarCanaisMcp } from './mcp/mcp.canais';
+import type { ServicoMcp } from './mcp/mcp.servico';
 
 /** Serviços do main que os canais usam; cada módulo novo acrescenta o seu campo aqui. */
 export interface ContextoCanais {
@@ -29,6 +31,7 @@ export interface ContextoCanais {
   repositorioProjetos: RepositorioProjetos;
   servicoConsulta: ServicoConsulta;
   repositorioGrafo: RepositorioGrafo;
+  servicoMcp: ServicoMcp;
   /** Opcional até o `principal.ts` montar o cliente HTTP; sem ele, `api:*` não existe. */
   apisPlataforma?: ApisPlataforma;
 }
@@ -64,6 +67,7 @@ export function registrarCanais(contexto: ContextoCanais): void {
     servicoConsulta: contexto.servicoConsulta,
     repositorioGrafo: contexto.repositorioGrafo,
   });
+  registrarCanaisMcp(ipcMain, contexto.servicoMcp);
   if (contexto.apisPlataforma) {
     registrarCanaisApi(ipcMain, contexto.apisPlataforma);
   }

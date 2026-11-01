@@ -850,75 +850,91 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.8.3 — Token de sessão `X-MCP-Session-Token`
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** PESADO — segurança · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.8.2
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/token-sessao.ts`: gerar, conferir, renovar.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/token-sessao.ts`: gera (32 bytes hex), confere `X-MCP-Session-Token` e Bearer `mcp_at_` (via OAuth), renova e grava em `mcp_config.json`.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.4 — Descoberta OAuth (`.well-known`)
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** PESADO — segurança · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.8.2, CLONE.4.2
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/descoberta-oauth.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/descoberta-oauth.ts`: `.well-known/oauth-protected-resource` e `oauth-authorization-server`, `/oauth/register` (só loopback), `authorize`+consentimento, `status`, `token` (PKCE S256, `mcp_at_`/`mcp_rt_` só com hash no disco).
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.5 — Ferramenta de busca nos vetores
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — 1 arquivo · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.6.11, CLONE.8.1
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/ferramentas/busca.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/ferramentas/busca.ts`: `search_knowledge` pelo ServicoConsulta (modo local/global/hybrid, top_k 1-100).
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.6 — Ferramenta de consulta ao grafo
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — 1 arquivo · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.7.10, CLONE.8.1
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/ferramentas/grafo.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/ferramentas/grafo.ts`: `list_entities` (nome+tipo) e `get_relations` (entity_name).
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.7 — Ferramentas de tarefas
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — 1 arquivo · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.5.4, CLONE.8.1
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/ferramentas/tarefas.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/ferramentas/tarefas.ts`: list/get/create/update/delete/restore_task sobre ApiTarefas.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.8 — Ferramentas de projeto
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — 1 arquivo · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.5.3, CLONE.8.1
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/ferramentas/projetos.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/ferramentas/projetos.ts`: get_project_info, 8 ferramentas wiki e 5 de imagens.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.9 — Roteador MCP (liga ferramentas ao servidor)
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** PESADO — protocolo MCP · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.8.3, CLONE.8.4, CLONE.8.5, CLONE.8.6, CLONE.8.7, CLONE.8.8
 - **Descrição:** `apps-cloned/chaos-code/src/main/mcp/roteador.ts` (`initialize`, `tools/list`, `tools/call`).
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/roteador.ts`: initialize (protocolo 2024-11-05), ping, tools/list (filtra pelas implementadas), tools/call com erros JSON-RPC; notificações 202.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.8.10 — Canais IPC do MCP (ligar/desligar, porta)
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — liga arquivos existentes · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.8.9
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `mcp/mcp.servico.ts` + `mcp.canais.ts` + canais/tipos/preload/global: estado, ligar(porta), desligar, token e responder-consentimento; evento `mcp:consent-request`; ServicoMcp montado no principal com ApisPlataforma.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 ### CLONE.9 — Configuração MCP nos CLIs e WSL
 - **JEV-AI-SUGGESTION:** NAO
 
