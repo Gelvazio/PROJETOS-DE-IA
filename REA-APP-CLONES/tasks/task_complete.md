@@ -167,3 +167,4 @@
 | CLONE.5.4 | API de tarefas | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.5.5 | API de imagens | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.5.6 | API de modelos de agente | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.5.3 | API de projetos | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

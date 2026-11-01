@@ -488,12 +488,13 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.5.3 — API de projetos
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída.
 
 - **Nível:** MEDIO — 1 arquivo · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.5.2
 - **Descrição:** `apps-cloned/chaos-code/src/main/api/projetos.api.ts` (`/api/oauth/user/projects`, `/api/projects/...`).
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** commit `feat(CLONE.5.3)` (2026-11-01) · **Verificação:** tsc --noEmit sem erros em projetos.api.ts; diff só com o arquivo (conferido pelo líder Opus 5.5); wiki/sync/ack ficou de fora (método HTTP não comprovado)
 
 ### CLONE.5.4 — API de tarefas
 
