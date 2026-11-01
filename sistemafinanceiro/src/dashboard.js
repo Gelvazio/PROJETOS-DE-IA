@@ -8,6 +8,7 @@ import {
   criarSecaoModal,
   ligarFechamentoModal,
 } from './elementosUi.js';
+import { PROJETO_NOMADE, CHAVE_ANALISE_NOMADE } from './projetoNomade.js';
 import { prepararModalCalculos } from './calculosPrevidencia.js';
 import { obterAnaliseFinanceira, criarSeloStatus } from './analisesFinanceiras.js';
 
@@ -66,6 +67,33 @@ function criarCardPrevidencia(aoAbrirDetalhes, aoAbrirCalculos) {
 }
 
 /**
+ * Monta o card do Projeto Nômade (status + link do site).
+ * @returns {HTMLElement} Card pronto.
+ */
+function criarCardNomade() {
+  const card = criarElemento('article', 'dashboard-card');
+  const topo = criarElemento('div', 'ideia-topo');
+  topo.append(
+    criarElemento('h2', 'dashboard-card-titulo', PROJETO_NOMADE.nome),
+    criarSeloStatus(CHAVE_ANALISE_NOMADE),
+  );
+  card.append(topo);
+
+  const dados = criarElemento('dl', 'ideia-dados');
+  PROJETO_NOMADE.resumoCard.forEach(([rotulo, valor]) => dados.append(criarDadoCard(rotulo, valor)));
+  card.append(dados);
+
+  const acoes = criarElemento('div', 'dashboard-card-acoes');
+  const link = criarElemento('a', 'btn ideia-detalhes', 'Abrir site');
+  link.href = PROJETO_NOMADE.site;
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  acoes.append(link);
+  card.append(acoes);
+  return card;
+}
+
+/**
  * Preenche o modal com os dados do plano, a análise (se existir) e as perguntas.
  * @param {HTMLElement} corpo - Elemento que recebe o conteúdo.
  * @returns {void}
@@ -111,7 +139,10 @@ function iniciar() {
   ligarFechamentoModal(modal);
   ligarFechamentoModal(modalCalculos);
   const abrirCalculos = prepararModalCalculos(modalCalculos);
-  area.replaceChildren(criarCardPrevidencia(() => abrirModal(modal), abrirCalculos));
+  area.replaceChildren(
+    criarCardPrevidencia(() => abrirModal(modal), abrirCalculos),
+    criarCardNomade(),
+  );
 }
 
 iniciar();

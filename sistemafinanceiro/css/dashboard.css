@@ -88,3 +88,11 @@
   .calculos-formulario { grid-template-columns: 1fr; }
   .calculos-linha { flex-direction: column; gap: 2px; }
 }
+
+/* Link com aparência de botão (ex.: "Abrir site") */
+a.ideia-detalhes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
