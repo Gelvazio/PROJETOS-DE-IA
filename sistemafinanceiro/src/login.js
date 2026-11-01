@@ -25,7 +25,7 @@ if (session && !emRecuperacao) {
   }
 
   if (sessaoValida) {
-    window.location.replace('/');
+    window.location.replace('/financas-pessoais.html');
   } else {
     // Token salvo inválido: limpa para não redirecionar em loop
     await supabase.auth.signOut({ scope: 'local' }).catch(() => {});
@@ -61,7 +61,7 @@ document.getElementById('form-login').addEventListener('submit', async e => {
   try {
     await loginWithEmail(email, senha);
     limparFiltros(); // novo login recomeça com os filtros no padrão
-    window.location.replace('/');
+    window.location.replace('/financas-pessoais.html');
   } catch (err) {
     // Mensagens de erro mais amigáveis
     if (err.message.includes('Invalid login credentials')) {
@@ -171,7 +171,7 @@ document.getElementById('form-nova-senha').addEventListener('submit', async e =>
 
   try {
     await updatePassword(senha);
-    window.location.replace('/');
+    window.location.replace('/financas-pessoais.html');
   } catch (err) {
     errEl.textContent = err.message || 'Erro ao salvar a senha. Tente novamente.';
     btn.disabled = false;

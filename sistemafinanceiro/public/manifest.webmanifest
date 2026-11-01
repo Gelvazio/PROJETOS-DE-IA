@@ -5,7 +5,7 @@
   "description": "Gestão financeira pessoal: contas a pagar e a receber, com parcelamento.",
   "lang": "pt-BR",
   "dir": "ltr",
-  "start_url": "/",
+  "start_url": "/financas-pessoais.html",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0d0b1f",
@@ -20,13 +20,13 @@
     {
       "name": "Nova conta a pagar",
       "short_name": "A pagar",
-      "url": "/?novo=pagar",
+      "url": "/financas-pessoais.html?novo=pagar",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Nova conta a receber",
       "short_name": "A receber",
-      "url": "/?novo=receber",
+      "url": "/financas-pessoais.html?novo=receber",
       "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
   ]

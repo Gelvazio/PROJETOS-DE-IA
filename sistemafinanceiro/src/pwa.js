@@ -1,6 +1,6 @@
 // ============================================================================
 // PWA — service worker, aviso de offline/atualização e instalação
-// Importado por index.html (main.js) e login.html (login.js).
+// Importado por financas-pessoais.html (main.js) e login.html (login.js).
 // ============================================================================
 
 // ── Ambiente ──────────────────────────────────────────────────────────
