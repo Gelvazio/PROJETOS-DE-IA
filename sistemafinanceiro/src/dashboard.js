@@ -9,6 +9,7 @@ import {
   ligarFechamentoModal,
 } from './elementosUi.js';
 import { PROJETO_NOMADE, CHAVE_ANALISE_NOMADE } from './projetoNomade.js';
+import { BOT_TELEGRAM, CHAVE_ANALISE_BOT_TELEGRAM } from './botTelegram.js';
 import { prepararModalDocumentos } from './documentosPrevidencia.js';
 import { prepararModalCalculos } from './calculosPrevidencia.js';
 import { obterAnaliseFinanceira, criarSeloStatus } from './analisesFinanceiras.js';
@@ -70,30 +71,41 @@ function criarCardPrevidencia(aoAbrirDetalhes, aoAbrirCalculos, aoAbrirDocumento
 }
 
 /**
- * Monta o card do Projeto Nômade (status + link do site).
+ * Monta um card de projeto simples: título, status, dados e (se houver) link do site.
+ * @param {{nome: string, site: string|null, resumoCard: string[][]}} projeto - Dados do card.
+ * @param {string} chave - Chave da análise financeira (define o status).
  * @returns {HTMLElement} Card pronto.
  */
-function criarCardNomade() {
+function criarCardProjeto(projeto, chave) {
   const card = criarElemento('article', 'dashboard-card');
   const topo = criarElemento('div', 'ideia-topo');
   topo.append(
-    criarElemento('h2', 'dashboard-card-titulo', PROJETO_NOMADE.nome),
-    criarSeloStatus(CHAVE_ANALISE_NOMADE),
+    criarElemento('h2', 'dashboard-card-titulo', projeto.nome),
+    criarSeloStatus(chave),
   );
   card.append(topo);
 
   const dados = criarElemento('dl', 'ideia-dados');
-  PROJETO_NOMADE.resumoCard.forEach(([rotulo, valor]) => dados.append(criarDadoCard(rotulo, valor)));
+  projeto.resumoCard.forEach(([rotulo, valor]) => dados.append(criarDadoCard(rotulo, valor)));
   card.append(dados);
 
+  if (projeto.site) card.append(criarLinkSite(projeto.site));
+  return card;
+}
+
+/**
+ * Cria o bloco com o botão "Abrir site".
+ * @param {string} endereco - Endereço do site.
+ * @returns {HTMLElement} Bloco de ações com o link.
+ */
+function criarLinkSite(endereco) {
   const acoes = criarElemento('div', 'dashboard-card-acoes');
   const link = criarElemento('a', 'btn ideia-detalhes', 'Abrir site');
-  link.href = PROJETO_NOMADE.site;
+  link.href = endereco;
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   acoes.append(link);
-  card.append(acoes);
-  return card;
+  return acoes;
 }
 
 /**
@@ -147,7 +159,8 @@ function iniciar() {
   const abrirCalculos = prepararModalCalculos(modalCalculos);
   area.replaceChildren(
     criarCardPrevidencia(() => abrirModal(modal), abrirCalculos, abrirDocumentos),
-    criarCardNomade(),
+    criarCardProjeto(PROJETO_NOMADE, CHAVE_ANALISE_NOMADE),
+    criarCardProjeto(BOT_TELEGRAM, CHAVE_ANALISE_BOT_TELEGRAM),
   );
 }
 
