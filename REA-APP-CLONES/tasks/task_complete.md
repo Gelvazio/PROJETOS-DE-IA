@@ -176,3 +176,4 @@
 | CLONE.8.2 | Servidor HTTP em /mcp/{project_id} | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.3.6 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.4 | Tela de login | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.4.12 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.4.13 | Montar o serviço de login no principal.ts | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · effort medium | CLONE.4.12, CLONE.5.7 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.6.12 | Canais IPC de vetores | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · effort medium | CLONE.6.11 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

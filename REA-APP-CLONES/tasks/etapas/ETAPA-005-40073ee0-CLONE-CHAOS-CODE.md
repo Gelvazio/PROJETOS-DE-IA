@@ -674,12 +674,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.6.12 — Canais IPC de vetores
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — liga arquivos existentes · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.6.11
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `vetores.canais.ts` + canais em `constantes.ts`, tipos em `tipos-ipc-vetores.ts`, preload e `global.d.ts`: `vetores:indexar` (progresso por `vetores:progresso`), `cancelar` (AbortController por projeto), `buscar` (k 1-100), `obter-status-rag` e `alternar-rag` gravando em `projects.json`; `ServicoIndexacao` montado no `principal.ts`.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 ### CLONE.7 — Grafo de conhecimento
 - **JEV-AI-SUGGESTION:** NAO
 

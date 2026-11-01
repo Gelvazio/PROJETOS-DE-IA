@@ -11,11 +11,12 @@ import type { ApiImagem } from '../compartilhado/tipos-ipc-imagem';
 import type { ApiProjetos } from '../compartilhado/tipos-ipc-projetos';
 import type { ApiPlataformaIpc } from '../main/api/api.canais';
 import type { ApiLogin } from '../main/login/login.canais';
+import type { ApiVetores } from '../compartilhado/tipos-ipc-vetores';
 
 // Só funções específicas são expostas: a interface nunca recebe o ipcRenderer inteiro.
 // Cada módulo novo acrescenta aqui o seu bloco e o tipo `Api<Modulo>` em `ApiExposta`.
 type ApiExposta = ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin &
-  ApiPlataformaIpc;
+  ApiPlataformaIpc & ApiVetores;
 
 /**
  * Monta as funções de um grupo da API da plataforma: cada método invoca o canal `api:*`.
@@ -92,6 +93,23 @@ const api: ApiExposta = {
     ipcRenderer.on(CANAIS_IPC.loginEstadoMudou, tratador);
     return () => {
       ipcRenderer.removeListener(CANAIS_IPC.loginEstadoMudou, tratador);
+    };
+  },
+
+  // Vetores / indexação (CLONE.6.12)
+  indexarProjeto: (idProjeto) => ipcRenderer.invoke(CANAIS_IPC.vetoresIndexar, idProjeto),
+  cancelarIndexacao: (idProjeto) => ipcRenderer.invoke(CANAIS_IPC.vetoresCancelar, idProjeto),
+  buscarVetores: (idProjeto, consulta, k) =>
+    ipcRenderer.invoke(CANAIS_IPC.vetoresBuscar, idProjeto, consulta, k),
+  obterStatusRag: (idProjeto) => ipcRenderer.invoke(CANAIS_IPC.vetoresObterStatusRag, idProjeto),
+  alternarRag: (idProjeto, ligado) =>
+    ipcRenderer.invoke(CANAIS_IPC.vetoresAlternarRag, idProjeto, ligado),
+  aoProgredirIndexacao: (ouvinte) => {
+    const tratador = (_evento: unknown, progresso: Parameters<typeof ouvinte>[0]): void =>
+      ouvinte(progresso);
+    ipcRenderer.on(CANAIS_IPC.vetoresProgresso, tratador);
+    return () => {
+      ipcRenderer.removeListener(CANAIS_IPC.vetoresProgresso, tratador);
     };
   },
 };

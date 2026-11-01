@@ -69,6 +69,14 @@ export const CANAIS_IPC = {
   loginRenovar: 'login:renovar',
   /** Evento do main para a interface (não é `handle`). */
   loginEstadoMudou: 'login:estado-mudou',
+  // Vetores / indexação (CLONE.6.12)
+  vetoresIndexar: 'vetores:indexar',
+  vetoresCancelar: 'vetores:cancelar',
+  vetoresBuscar: 'vetores:buscar',
+  vetoresObterStatusRag: 'vetores:obter-status-rag',
+  vetoresAlternarRag: 'vetores:alternar-rag',
+  /** Evento do main para a interface (`sync-progress` do original). */
+  vetoresProgresso: 'vetores:progresso',
 } as const;
 
 /** Prefixo dos canais da API da plataforma (`api:<grupo>:<metodo>`, CLONE.5.7). */
