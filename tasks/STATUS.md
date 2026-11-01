@@ -48,7 +48,7 @@ tarefas e guarda as tarefas globais (que valem para todos os projetos).
   - #REDESENHO-QUADRO-GLOBAL.4 — remover sincronizar.mjs e referências · ⬜ Pendente (depois de .3) · nível a classificar pelo Jev
   - #REDESENHO-QUADRO-GLOBAL.5 — plano B para IAs fora dos projetos · 👀 Aguardando o usuário · nível a classificar pelo Jev
 
-- #UNIFICAR-PROJETOS — [juntar dashboard-plataformas-de-ia e COORDENACAO-DE-PROJETOS em rules-ai/dashboard](etapas/ETAPA-003-b7d3f9a2-UNIFICAR-PROJETOS.md) · 👀 Aguardando o usuário (plano grande: falta o "sim") · — (não reservável)
+- #UNIFICAR-PROJETOS — [juntar dashboard-plataformas-de-ia e COORDENACAO-DE-PROJETOS em rules-ai/dashboard](etapas/ETAPA-003-b7d3f9a2-UNIFICAR-PROJETOS.md) · 👀 Aguardando o usuário (perguntas respondidas; falta o "sim" ao plano) · — (não reservável)
   - #UNIFICAR-PROJETOS.1 — Inventariar arquivos, tamanhos e dependências dos 3 projetos · ⬜ Pendente · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
   - #UNIFICAR-PROJETOS.2 — Mapear URLs, caminhos absolutos e referências cruzadas entre os 3 · ⬜ Pendente (depende da UNIFICAR-PROJETOS.1) · `LEVE · effort low` · só Haiku 5.5 ou DeepSeek V4.1 Flash
   - #UNIFICAR-PROJETOS.3 — Conferir trava de sessão e regras do rules-ai/dashboard (CLAUDE.md, AGENTS.md) · ⬜ Pendente · `PESADO · effort high` · só Opus 5.5+/Fable, Sonnet ou DeepSeek

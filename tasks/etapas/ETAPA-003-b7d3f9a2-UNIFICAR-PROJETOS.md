@@ -58,16 +58,20 @@ subtarefa foi reservada nem executada.
 - **INV-3:** nenhum arquivo novo passa de 1000 linhas nem função de 45. Como conferir: contagem (.42).
 
 ### Perguntas abertas
-- ⬜ **1.** O `rules-ai` é público: os prompts/ideias dos 7 projetos e os documentos de plataformas
-  podem ir para lá, ou ficam só locais (fora do Git)?
-- ⬜ **2.** Ao final, as pastas antigas são **arquivadas** em `_backup\` ou **apagadas**? (padrão
-  proposto: arquivar; nunca apagar sem novo "sim")
-- ⬜ **3.** Os quadros de tarefas (`tasks/`) dos dois projetos migram para o quadro do `rules-ai` ou
-  ficam só como histórico em `docs/`? (padrão proposto: histórico em `docs/`)
+- ✅ **1.** Publicar no `rules-ai` (público)? **Resposta (usuário, 2026-11-01): pode publicar tudo.**
+  A subtarefa .47 (privacidade) continua obrigatória antes do push.
+- ✅ **2.** Pastas antigas ao final? **Resposta: arquivar em `_backup\`** (nada é apagado).
+- ✅ **3.** Quadros `tasks/` dos dois projetos? **Resposta: migrar para o quadro** do `rules-ai`
+  (subtarefa .34). Risco conhecido: o leitor do dashboard (GitHub raw/Supabase) pode quebrar com
+  formatos diferentes; conferir na .46 antes de publicar.
+- ⬜ **Aprovação do plano:** o usuário respondeu **"ainda não"**. Nenhuma subtarefa pode ser
+  reservada ou executada até o "sim" explícito.
 
 ### Decisões
 - 2026-11-01 — Projeto principal e destino: `rules-ai/dashboard` (usuário).
 - 2026-11-01 — Quantidade máxima de subtarefas, uma por arquivo/pasta migrado (usuário).
+- 2026-11-01 — Respostas das perguntas 1 a 3 registradas acima (usuário). Plano **não aprovado**
+  ainda ("ainda não").
 - 2026-11-01 — Níveis, modelos e `effort` ficam **sem preencher**: serão classificados pelo Jev
   (regra C52). Nenhuma IA escolheu nível.
 
