@@ -1,0 +1,120 @@
+/* ============================================================================
+   novos-negocios.css — cards das ideias e modal de detalhes
+   ========================================================================== */
+
+.ideias-cabecalho { margin-bottom: 20px; }
+
+.ideias-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.ideia-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(180, 110, 255, 0.28);
+  box-shadow: var(--shadow-card, none);
+}
+
+.ideia-codigo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--h2);
+}
+
+.ideia-nome {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--txt);
+}
+
+.ideia-dados { display: grid; gap: 10px; margin: 6px 0; }
+.ideia-dado { display: grid; gap: 2px; }
+.ideia-dado-rotulo {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--txt-soft);
+}
+.ideia-dado-valor { margin: 0; font-size: 14px; color: var(--txt); }
+
+.ideia-detalhes {
+  margin-top: auto;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(52, 224, 215, 0.4);
+  background: rgba(52, 224, 215, 0.1);
+  color: var(--h2);
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ideia-detalhes:hover,
+.ideia-detalhes:focus-visible {
+  background: rgba(52, 224, 215, 0.2);
+  outline: none;
+}
+
+/* Modal */
+.ideia-modal {
+  width: min(720px, calc(100vw - 24px));
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  border: 1px solid rgba(180, 110, 255, 0.35);
+  border-radius: 16px;
+  background: var(--bg-1, #120f2b);
+  color: var(--txt);
+}
+.ideia-modal::backdrop { background: rgba(8, 6, 22, 0.75); backdrop-filter: blur(2px); }
+
+.ideia-modal-topo {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--bg-1, #120f2b);
+  border-bottom: 1px solid rgba(180, 110, 255, 0.2);
+}
+.ideia-modal-topo h2 { margin: 0; font-size: 18px; }
+
+.ideia-modal-fechar {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(180, 110, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--txt);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.ideia-modal-corpo { padding: 8px 20px 20px; }
+.ideia-secao h3 { margin: 18px 0 8px; font-size: 14px; color: var(--h2); }
+.ideia-secao p { margin: 0 0 8px; font-size: 14px; line-height: 1.55; color: var(--txt-dim); }
+.ideia-lista { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--txt-dim); }
+.ideia-aviso { margin: 18px 0 0; font-size: 12px; color: var(--txt-soft); }
+
+.ideia-tabela { width: 100%; border-collapse: collapse; font-size: 13px; }
+.ideia-tabela th,
+.ideia-tabela td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(180, 110, 255, 0.15);
+}
+.ideia-tabela th { font-size: 11px; text-transform: uppercase; color: var(--txt-soft); }
+
+@media (max-width: 640px) {
+  .ideias-cards { grid-template-columns: 1fr; }
+  .ideia-tabela { display: block; overflow-x: auto; white-space: nowrap; }
+}

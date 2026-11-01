@@ -1,0 +1,225 @@
+/* ============================================================================
+   visual-futurista.css — estética cyberpunk (C:\fontes\COORDENACAO-DE-PROJETOS\VISUAL-FUTURISTA.md)
+   Vale só nas páginas com <body class="visual-futurista">. Carregar por último.
+   ========================================================================== */
+
+body.visual-futurista {
+  --cor-fundo: #05030d;
+  --cor-texto: #e8f4ff;
+  --cor-texto-suave: #9fb4cc;
+  --neon-ciano: #19f0ff;
+  --neon-magenta: #ff2bd6;
+  --neon-violeta: #8a3dff;
+  --fonte-titulo: 'Orbitron', 'Inter', sans-serif;
+  --fonte-dados: 'Share Tech Mono', 'JetBrains Mono', monospace;
+
+  background:
+    radial-gradient(900px 500px at 12% -8%, rgba(138, 61, 255, 0.35), transparent 60%),
+    radial-gradient(800px 480px at 92% 8%, rgba(255, 43, 214, 0.22), transparent 60%),
+    radial-gradient(700px 500px at 50% 110%, rgba(25, 240, 255, 0.16), transparent 60%),
+    var(--cor-fundo);
+  background-attachment: fixed;
+  color: var(--cor-texto);
+  font-family: var(--fonte-dados);
+}
+
+/* Efeito de grade */
+body.visual-futurista::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(25, 240, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(25, 240, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 85%);
+}
+
+body.visual-futurista .pagina-conteudo { position: relative; z-index: 1; }
+
+/* Barra de menu holográfica */
+body.visual-futurista .menu-bar {
+  background: rgba(5, 3, 13, 0.82);
+  border-bottom: 1px solid rgba(25, 240, 255, 0.4);
+  box-shadow: 0 0 18px rgba(25, 240, 255, 0.18);
+}
+body.visual-futurista .menu-link {
+  font-family: var(--fonte-titulo);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cor-texto-suave);
+}
+body.visual-futurista .menu-link:hover,
+body.visual-futurista .menu-link:focus-visible {
+  color: var(--neon-ciano);
+  background: rgba(25, 240, 255, 0.08);
+}
+body.visual-futurista .menu-link[aria-current="page"] {
+  color: var(--neon-ciano);
+  background: rgba(25, 240, 255, 0.1);
+  border-color: var(--neon-ciano);
+  box-shadow: 0 0 12px rgba(25, 240, 255, 0.35);
+}
+body.visual-futurista .menu-bar-separador { background: rgba(255, 43, 214, 0.5); }
+
+/* Cabeçalho com rede de nós */
+body.visual-futurista .ideias-cabecalho {
+  position: relative;
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(138, 61, 255, 0.45);
+  background: rgba(13, 8, 32, 0.6);
+  backdrop-filter: blur(8px);
+  overflow: hidden;
+}
+body.visual-futurista .pagina-conteudo h1 {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(20px, 3.4vw, 30px);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: none;
+  -webkit-text-fill-color: var(--cor-texto);
+  color: var(--cor-texto);
+  text-shadow: 0 0 14px rgba(25, 240, 255, 0.7), 0 0 32px rgba(255, 43, 214, 0.35);
+}
+body.visual-futurista .pagina-conteudo p { color: var(--cor-texto-suave); }
+
+.rede-nos {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: min(46%, 380px);
+  height: 100%;
+  opacity: 0.75;
+  pointer-events: none;
+}
+.rede-nos line {
+  stroke: var(--neon-ciano);
+  stroke-width: 1;
+  stroke-dasharray: 6 6;
+  animation: rede-fluxo 3s linear infinite;
+}
+.rede-nos circle { fill: var(--neon-magenta); animation: rede-pulso 2.2s ease-in-out infinite; }
+
+@keyframes rede-fluxo { to { stroke-dashoffset: -48; } }
+@keyframes rede-pulso { 50% { opacity: 0.35; r: 5; } }
+
+/* Cards holográficos com barra de varredura */
+body.visual-futurista .ideia-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(13, 8, 32, 0.62);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(25, 240, 255, 0.45);
+  box-shadow: 0 0 22px rgba(138, 61, 255, 0.25), inset 0 0 24px rgba(25, 240, 255, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+body.visual-futurista .ideia-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(255, 43, 214, 0.4), inset 0 0 24px rgba(25, 240, 255, 0.08);
+}
+body.visual-futurista .ideia-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-ciano), var(--neon-magenta));
+  animation: card-varredura 3.2s ease-in-out infinite;
+}
+@keyframes card-varredura {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(260%); }
+}
+
+body.visual-futurista .ideia-codigo {
+  font-family: var(--fonte-titulo);
+  color: var(--neon-magenta);
+  text-shadow: 0 0 8px rgba(255, 43, 214, 0.7);
+}
+body.visual-futurista .ideia-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 17px;
+  letter-spacing: 1px;
+  color: var(--cor-texto);
+}
+body.visual-futurista .ideia-dado-rotulo { color: var(--neon-ciano); }
+body.visual-futurista .ideia-dado-valor { font-size: 15px; color: var(--cor-texto); }
+
+body.visual-futurista .ideia-detalhes {
+  font-family: var(--fonte-titulo);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--neon-ciano);
+  border: 1px solid var(--neon-ciano);
+  background: rgba(25, 240, 255, 0.08);
+  box-shadow: 0 0 14px rgba(25, 240, 255, 0.3);
+}
+body.visual-futurista .ideia-detalhes:hover {
+  background: rgba(25, 240, 255, 0.2);
+  box-shadow: 0 0 22px rgba(25, 240, 255, 0.6);
+}
+body.visual-futurista .ideia-detalhes:focus-visible,
+body.visual-futurista .ideia-modal-fechar:focus-visible,
+body.visual-futurista .menu-link:focus-visible {
+  outline: 2px solid var(--neon-magenta);
+  outline-offset: 2px;
+}
+
+/* Modal holográfico */
+body.visual-futurista .ideia-modal {
+  background: rgba(8, 5, 22, 0.94);
+  color: var(--cor-texto);
+  border: 1px solid var(--neon-ciano);
+  box-shadow: 0 0 40px rgba(25, 240, 255, 0.3), 0 0 80px rgba(138, 61, 255, 0.3);
+}
+body.visual-futurista .ideia-modal::backdrop {
+  background: rgba(5, 3, 13, 0.82);
+}
+body.visual-futurista .ideia-modal-topo {
+  background: rgba(8, 5, 22, 0.96);
+  border-bottom: 1px solid rgba(25, 240, 255, 0.4);
+}
+body.visual-futurista .ideia-modal-topo h2 {
+  font-family: var(--fonte-titulo);
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(25, 240, 255, 0.6);
+}
+body.visual-futurista .ideia-modal-fechar {
+  border-color: var(--neon-magenta);
+  color: var(--neon-magenta);
+  background: rgba(255, 43, 214, 0.08);
+}
+body.visual-futurista .ideia-secao h3 {
+  font-family: var(--fonte-titulo);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--neon-magenta);
+}
+body.visual-futurista .ideia-secao p,
+body.visual-futurista .ideia-lista { color: var(--cor-texto-suave); }
+body.visual-futurista .ideia-tabela th { color: var(--neon-ciano); }
+body.visual-futurista .ideia-tabela td { color: var(--cor-texto); }
+body.visual-futurista .ideia-tabela th,
+body.visual-futurista .ideia-tabela td { border-bottom-color: rgba(25, 240, 255, 0.2); }
+body.visual-futurista .ideia-aviso { color: var(--cor-texto-suave); }
+
+@media (max-width: 720px) {
+  body.visual-futurista .ideias-cards { grid-template-columns: 1fr; }
+  body.visual-futurista .ideias-cabecalho { padding: 16px; }
+  .rede-nos { opacity: 0.3; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rede-nos line,
+  .rede-nos circle,
+  body.visual-futurista .ideia-card::before { animation: none; }
+  body.visual-futurista .ideia-card { transition: none; }
+}
