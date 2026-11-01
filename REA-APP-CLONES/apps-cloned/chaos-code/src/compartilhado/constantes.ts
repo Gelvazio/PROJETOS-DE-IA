@@ -77,6 +77,10 @@ export const CANAIS_IPC = {
   vetoresAlternarRag: 'vetores:alternar-rag',
   /** Evento do main para a interface (`sync-progress` do original). */
   vetoresProgresso: 'vetores:progresso',
+  // Grafo / consulta (CLONE.7.11)
+  grafoConsultar: 'grafo:consultar',
+  grafoBuscarEntidades: 'grafo:buscar-entidades',
+  grafoObterDados: 'grafo:obter-dados',
 } as const;
 
 /** Prefixo dos canais da API da plataforma (`api:<grupo>:<metodo>`, CLONE.5.7). */

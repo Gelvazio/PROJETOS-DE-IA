@@ -33,6 +33,9 @@ import {
   criarObtentorProvedor,
   ServicoIndexacao,
 } from './vetores/indexacao.servico';
+import { criarCompletarLlm } from './grafo/cliente-llm';
+import { ServicoConsulta } from './grafo/consulta.servico';
+import { criarRepositorioGrafo } from './grafo/grafo.repositorio';
 
 const PLATAFORMA_MAC = 'darwin';
 
@@ -91,14 +94,49 @@ async function montarContextoCanais(): Promise<ContextoCanais> {
   const pastaDados = obterPastaDados(process.env.LOCALAPPDATA || app.getPath('appData'));
   const repositorio = new RepositorioProjetos({ pastaDados });
   const servicoProjetos = new ServicoProjetos({ repositorio, pastaDados });
+  const servicoIndexacao = await montarServicoIndexacao(pastaDados, repositorio);
+  const repositorioGrafo = criarRepositorioGrafo({ pastaDados });
   return {
     servicoProjetos,
     repositorioProjetos: repositorio,
     servicoImagem: montarServicoImagem(pastaDados),
     servicoAtualizador: montarServicoAtualizador(pastaDados),
     servicoLogin: montarServicoLogin(pastaDados),
-    servicoIndexacao: await montarServicoIndexacao(pastaDados, repositorio),
+    servicoIndexacao,
+    servicoConsulta: await montarServicoConsulta(pastaDados, servicoIndexacao, repositorioGrafo),
+    repositorioGrafo,
   };
+}
+
+/**
+ * Monta o serviço de consulta: busca vetorial + grafo, com LLM do `embedder_config.json`.
+ * @param {string} pastaDados - Pasta de dados do app.
+ * @param {ServicoIndexacao} servicoIndexacao - Serviço de indexação já montado.
+ * @param {RepositorioGrafo} repositorioGrafo - Repositório do grafo já montado.
+ * @returns {Promise<ServicoConsulta>} Serviço usado pelos canais `grafo:*`.
+ */
+async function montarServicoConsulta(
+  pastaDados: string,
+  servicoIndexacao: ServicoIndexacao,
+  repositorioGrafo: RepositorioGrafo,
+): Promise<ServicoConsulta> {
+  const caminhos = obterCaminhosGlobais(pastaDados);
+  const cofre = criarCofreChavesProvedores({
+    caminhoArquivo: caminhos.chavesProvedores,
+    cifrador: criarCifradorElectron(safeStorage),
+    registrarAviso: (mensagem) => console.warn(mensagem),
+  });
+  const lerConfiguracao = async () =>
+    lerJson<ConfiguracaoEmbedder>(caminhos.configEmbedder, {
+      mode: { type: 'Api', endpoint: '', api_key: '', model: '', dimensions: 0 },
+    });
+  return new ServicoConsulta({
+    buscadorVetores: servicoIndexacao,
+    repositorioGrafo,
+    completarLlm: criarCompletarLlm(lerConfiguracao, { cofre }),
+    configuracaoRag: await lerJson<ConfiguracaoPipelineRag>(caminhos.configRag, {}),
+    registrarLog: (mensagem) => console.info('[grafo]', mensagem),
+  });
 }
 
 /**

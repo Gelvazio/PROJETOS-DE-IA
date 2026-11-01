@@ -5,12 +5,13 @@ import type { ApiProjetos } from '../compartilhado/tipos-ipc-projetos';
 import type { ApiPlataformaIpc } from '../main/api/api.canais';
 import type { ApiLogin } from '../main/login/login.canais';
 import type { ApiVetores } from '../compartilhado/tipos-ipc-vetores';
+import type { ApiGrafo } from '../compartilhado/tipos-ipc-grafo';
 
 // Cada módulo novo soma aqui o seu `Api<Modulo>` (e no `preload.ts`).
 declare global {
   interface Window {
     chaosCode: ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin &
-      ApiPlataformaIpc & ApiVetores;
+      ApiPlataformaIpc & ApiVetores & ApiGrafo;
   }
 }
 

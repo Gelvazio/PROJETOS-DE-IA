@@ -12,11 +12,12 @@ import type { ApiProjetos } from '../compartilhado/tipos-ipc-projetos';
 import type { ApiPlataformaIpc } from '../main/api/api.canais';
 import type { ApiLogin } from '../main/login/login.canais';
 import type { ApiVetores } from '../compartilhado/tipos-ipc-vetores';
+import type { ApiGrafo } from '../compartilhado/tipos-ipc-grafo';
 
 // Só funções específicas são expostas: a interface nunca recebe o ipcRenderer inteiro.
 // Cada módulo novo acrescenta aqui o seu bloco e o tipo `Api<Modulo>` em `ApiExposta`.
 type ApiExposta = ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin &
-  ApiPlataformaIpc & ApiVetores;
+  ApiPlataformaIpc & ApiVetores & ApiGrafo;
 
 /**
  * Monta as funções de um grupo da API da plataforma: cada método invoca o canal `api:*`.
@@ -112,6 +113,14 @@ const api: ApiExposta = {
       ipcRenderer.removeListener(CANAIS_IPC.vetoresProgresso, tratador);
     };
   },
+
+  // Grafo / consulta (CLONE.7.11)
+  consultarConhecimento: (idProjeto, consulta, opcoes) =>
+    ipcRenderer.invoke(CANAIS_IPC.grafoConsultar, idProjeto, consulta, opcoes),
+  buscarEntidades: (idProjeto, nome, tipo) =>
+    ipcRenderer.invoke(CANAIS_IPC.grafoBuscarEntidades, idProjeto, nome, tipo),
+  obterDadosGrafo: (idProjeto, nomeEntidade, profundidade) =>
+    ipcRenderer.invoke(CANAIS_IPC.grafoObterDados, idProjeto, nomeEntidade, profundidade),
 };
 
 contextBridge.exposeInMainWorld(NOME_API_PRELOAD, api);

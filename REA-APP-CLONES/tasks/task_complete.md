@@ -178,3 +178,4 @@
 | CLONE.4.13 | Montar o serviço de login no principal.ts | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · effort medium | CLONE.4.12, CLONE.5.7 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.6.12 | Canais IPC de vetores | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · effort medium | CLONE.6.11 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.10 | Serviço de consulta (grafo + vetores) | 🟠 Alta | PESADO · Devin (SWE-2 High Lightning) · effort high (assumida por autorização do usuário) | CLONE.6.11, CLONE.7.5, CLONE.7.7, CLONE.7.8, CLONE.7.9 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.7.11 | Canais IPC do grafo | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · effort medium | CLONE.7.10 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

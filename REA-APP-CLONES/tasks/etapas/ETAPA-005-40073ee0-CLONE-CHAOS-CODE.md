@@ -801,12 +801,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.7.11 — Canais IPC do grafo
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** MEDIO — liga arquivos existentes · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.7.10
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `grafo/grafo.canais.ts` + canais, `tipos-ipc-grafo.ts`, preload e `global.d.ts`: `grafo:consultar` (query_knowledge), `buscar-entidades` (search_entities, nome+tipo) e `obter-dados` (get_graph_data, vizinhança até 5 níveis); `ServicoConsulta` e `RepositorioGrafo` montados no `principal.ts`.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 ### CLONE.8 — Servidor MCP local
 - **JEV-AI-SUGGESTION:** NAO
 

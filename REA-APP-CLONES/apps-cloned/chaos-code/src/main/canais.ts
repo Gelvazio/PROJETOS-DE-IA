@@ -13,6 +13,9 @@ import type { ServicoProjetos } from './projeto/projeto.servico';
 import type { RepositorioProjetos } from './projeto/projeto.repositorio';
 import { registrarCanaisVetores } from './vetores/vetores.canais';
 import type { ServicoIndexacao } from './vetores/indexacao.servico';
+import { registrarCanaisGrafo } from './grafo/grafo.canais';
+import type { ServicoConsulta } from './grafo/consulta.servico';
+import type { RepositorioGrafo } from './grafo/grafo.repositorio';
 
 /** Serviços do main que os canais usam; cada módulo novo acrescenta o seu campo aqui. */
 export interface ContextoCanais {
@@ -24,6 +27,8 @@ export interface ContextoCanais {
   servicoIndexacao: ServicoIndexacao;
   /** Acesso direto ao `projects.json` para os canais que só leem/gravam campos. */
   repositorioProjetos: RepositorioProjetos;
+  servicoConsulta: ServicoConsulta;
+  repositorioGrafo: RepositorioGrafo;
   /** Opcional até o `principal.ts` montar o cliente HTTP; sem ele, `api:*` não existe. */
   apisPlataforma?: ApisPlataforma;
 }
@@ -54,6 +59,10 @@ export function registrarCanais(contexto: ContextoCanais): void {
     servicoIndexacao: contexto.servicoIndexacao,
     projetos: contexto.repositorioProjetos,
     difundir: difundirParaJanelas,
+  });
+  registrarCanaisGrafo(ipcMain, {
+    servicoConsulta: contexto.servicoConsulta,
+    repositorioGrafo: contexto.repositorioGrafo,
   });
   if (contexto.apisPlataforma) {
     registrarCanaisApi(ipcMain, contexto.apisPlataforma);
