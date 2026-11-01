@@ -165,3 +165,4 @@
 | **JEV-NAO** | **Marcar JEV-AI-SUGGESTION: NAO nas etapas do projeto (C47)** | 🟡 Média | — | Nenhuma | ✅ Concluído | — (não reservável) | [ETAPA-022](etapas/ETAPA-022-0fb7545b-JEV-NAO-MARCAR-SUGESTAO.md) |
 | JEV-NAO.1 | Rodar o script que marca JEV-AI-SUGGESTION: NAO nas subtarefas | 🟡 Média | LEVE · Haiku 5.5 · effort low | Nenhuma | ✅ Concluído | — | [ETAPA-022](etapas/ETAPA-022-0fb7545b-JEV-NAO-MARCAR-SUGESTAO.md) |
 | CLONE.5.4 | API de tarefas | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.5.5 | API de imagens | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

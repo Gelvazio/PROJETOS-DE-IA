@@ -507,12 +507,13 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.5.5 — API de imagens
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída.
 
 - **Nível:** MEDIO — 1 arquivo · **Modelo:** Claude Code Sonnet 5.5 (ou Gemini Pro, Grok principal, DeepSeek de raciocínio, Codex, Cursor)
 - **Depende de:** CLONE.5.2
 - **Descrição:** `apps-cloned/chaos-code/src/main/api/imagens.api.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** commit `feat(CLONE.5.5)` (2026-11-01) · **Verificação:** tsc --noEmit sem erros em src/main/api/; diff só com imagens.api.ts (conferido pelo líder Opus 5.5)
 
 ### CLONE.5.6 — API de modelos de agente
 
