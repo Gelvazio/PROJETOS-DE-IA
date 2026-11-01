@@ -42,7 +42,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | Tarefa | Título | Prioridade | Modelo | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|---|
 | CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.7.10 | Serviço de consulta (grafo + vetores) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.6.11, CLONE.7.5, CLONE.7.7, CLONE.7.8, CLONE.7.9 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.11 | Canais IPC do grafo | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.7.10 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.8.3 | Token de sessão `X-MCP-Session-Token` | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.8.4 | Descoberta OAuth (`.well-known`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.8.2, CLONE.4.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

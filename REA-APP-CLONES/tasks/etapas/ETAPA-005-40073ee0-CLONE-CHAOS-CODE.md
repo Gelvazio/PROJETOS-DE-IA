@@ -790,12 +790,14 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 
 ### CLONE.7.10 — Serviço de consulta (grafo + vetores)
 
-**Próximo passo:** —
+**Próximo passo:** nenhum — concluída (Devin (SWE-2 High Lightning), 2026-11-01).
 
 - **Nível:** PESADO — liga várias peças · **Modelo:** Claude Code Opus 5.5 ou superior, ou Fable (só eles)
 - **Depende de:** CLONE.6.11, CLONE.7.5, CLONE.7.7, CLONE.7.8, CLONE.7.9
 - **Descrição:** `apps-cloned/chaos-code/src/main/grafo/consulta.servico.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+- **Entrega:** `grafo/consulta.servico.ts`: modos local (pedaços + entidades + relações), global (resumos de comunidades) e hybrid; transformação multi_query/HyDE e rerank pelo LLM; adaptativo por gatilhos do binário; prefixos `chunk:`/`entity:`/`relation:`/`community:`.
+- **Verificação:** `npm run typecheck` e `npm run build` ok (Devin).
 
 ### CLONE.7.11 — Canais IPC do grafo
 
