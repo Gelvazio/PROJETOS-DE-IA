@@ -1,14 +1,21 @@
-import { app, BrowserWindow, safeStorage } from 'electron';
+import { app, BrowserWindow, safeStorage, shell } from 'electron';
 import path from 'node:path';
 import { VERSAO_APLICATIVO } from '../compartilhado/constantes';
 import { criarServicoAtualizador } from './atualizador/atualizador.fabrica';
 import type { ServicoAtualizador } from './atualizador/atualizador.servico';
 import { obterCaminhosGlobais, obterPastaDados } from './armazenamento/caminhos';
 import { registrarCanais, type ContextoCanais } from './canais';
+import { obterUrlServidor } from './configuracao';
 import type { BuscadorHttpImagem } from './imagem/gemini-imagem';
 import { ServicoImagem } from './imagem/imagem.servico';
 import { criarJanelaPrincipal } from './janela';
 import { criarCifradorElectron } from './login/cofre-tokens';
+import { criarDependenciasLoginReal } from './login/login.dependencias';
+import {
+  criarServicoLogin,
+  deveUsarLoginSimulado,
+  type ServicoLoginCompleto,
+} from './login/login.servico';
 import { criarCofreChavesProvedores } from './vetores/chaves-provedores';
 import { RepositorioProjetos } from './projeto/projeto.repositorio';
 import { ServicoProjetos } from './projeto/projeto.servico';
@@ -74,7 +81,28 @@ function montarContextoCanais(): ContextoCanais {
     servicoProjetos,
     servicoImagem: montarServicoImagem(pastaDados),
     servicoAtualizador: montarServicoAtualizador(pastaDados),
+    servicoLogin: montarServicoLogin(pastaDados),
   };
+}
+
+/**
+ * Monta o serviço de login: real por padrão; simulado só por opção explícita de desenvolvimento.
+ * @param {string} pastaDados - Pasta de dados do app.
+ * @returns {ServicoLoginCompleto} Serviço usado pelos canais `login:*`.
+ */
+function montarServicoLogin(pastaDados: string): ServicoLoginCompleto {
+  return criarServicoLogin({
+    modoSimulado: deveUsarLoginSimulado(process.env),
+    criarDependenciasReais: () =>
+      criarDependenciasLoginReal({
+        urlServidor: obterUrlServidor(process.env),
+        pastaDados,
+        versaoCliente: VERSAO_APLICATIVO,
+        safeStorage,
+        abrirNavegador: (url) => shell.openExternal(url),
+      }),
+    registrarLog: (mensagem) => console.info(mensagem),
+  });
 }
 
 /**
@@ -93,6 +121,9 @@ async function iniciar(): Promise<void> {
   contexto.servicoAtualizador
     .confirmarNaAbertura()
     .catch((erro: unknown) => console.warn('Histórico de atualização:', erro));
+  contexto.servicoLogin
+    .inicializar()
+    .catch((erro: unknown) => console.warn('Estado inicial do login:', erro));
   criarJanelaPrincipal(PASTA_DIST);
   app.on('activate', tratarAtivacao);
   app.on('window-all-closed', tratarJanelasFechadas);

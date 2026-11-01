@@ -42,7 +42,6 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | Tarefa | Título | Prioridade | Modelo | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|---|
 | CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.4.13 | Montar o serviço de login no `principal.ts` | 🟠 Alta | — (a classificar pelo Jev) | CLONE.4.12, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.6.12 | Canais IPC de vetores | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.6.11 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.10 | Serviço de consulta (grafo + vetores) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.6.11, CLONE.7.5, CLONE.7.7, CLONE.7.8, CLONE.7.9 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.11 | Canais IPC do grafo | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.7.10 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

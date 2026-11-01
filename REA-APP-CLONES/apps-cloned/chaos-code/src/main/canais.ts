@@ -6,7 +6,8 @@ import { registrarCanaisAtualizador } from './atualizador/atualizador.canais';
 import type { ServicoAtualizador } from './atualizador/atualizador.servico';
 import { registrarCanaisImagem } from './imagem/imagem.canais';
 import type { ServicoImagem } from './imagem/imagem.servico';
-import { registrarCanaisLogin, type ServicoLoginCanais } from './login/login.canais';
+import { registrarCanaisLogin } from './login/login.canais';
+import type { ServicoLoginCompleto } from './login/login.servico';
 import { registrarCanaisProjetos } from './projeto/projeto.canais';
 import type { ServicoProjetos } from './projeto/projeto.servico';
 
@@ -15,8 +16,8 @@ export interface ContextoCanais {
   servicoProjetos: ServicoProjetos;
   servicoImagem: ServicoImagem;
   servicoAtualizador: ServicoAtualizador;
-  /** Opcional até o `principal.ts` montar o serviço de login; sem ele, `login:*` não existe. */
-  servicoLogin?: ServicoLoginCanais;
+  /** O `principal.ts` chama `inicializar`; os canais usam só o recorte `ServicoLoginCanais`. */
+  servicoLogin: ServicoLoginCompleto;
   /** Opcional até o `principal.ts` montar o cliente HTTP; sem ele, `api:*` não existe. */
   apisPlataforma?: ApisPlataforma;
 }
@@ -42,9 +43,7 @@ export function registrarCanais(contexto: ContextoCanais): void {
   registrarCanaisProjetos(ipcMain, contexto.servicoProjetos, difundirParaJanelas);
   registrarCanaisImagem(ipcMain, contexto.servicoImagem);
   registrarCanaisAtualizador(ipcMain, contexto.servicoAtualizador, difundirParaJanelas);
-  if (contexto.servicoLogin) {
-    registrarCanaisLogin(ipcMain, contexto.servicoLogin, difundirParaJanelas);
-  }
+  registrarCanaisLogin(ipcMain, contexto.servicoLogin, difundirParaJanelas);
   if (contexto.apisPlataforma) {
     registrarCanaisApi(ipcMain, contexto.apisPlataforma);
   }
