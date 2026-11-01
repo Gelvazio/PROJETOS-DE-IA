@@ -1,0 +1,81 @@
+# Project NOMAD adaptado para Docker Desktop (Windows), SEM a IA local (Ollama).
+# Baseado em project-nomad/install/management_compose.yaml. Diferenças:
+#  - só admin + mysql + redis (sem dozzle, updater e disk-collector, que pedem acesso
+#    ao disco inteiro e ao socket do Docker);
+#  - porta aberta só em 127.0.0.1 (não fica visível na rede);
+#  - dados em volumes nomeados do Docker (não em /opt);
+#  - segredos vêm do arquivo .env (não versionado).
+name: project-nomad
+services:
+  admin:
+    image: ghcr.io/crosstalk-solutions/project-nomad:latest
+    pull_policy: missing
+    container_name: nomad_admin
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8080:8080"
+    volumes:
+      - nomad-storage:/app/storage
+      - /var/run/docker.sock:/var/run/docker.sock   # o admin cria os apps (Kiwix etc.) como containers
+      - nomad-update-shared:/app/update-shared
+    environment:
+      - NODE_ENV=production
+      - NOMAD_STORAGE_PATH=/var/lib/docker/volumes/project-nomad_nomad-storage/_data
+      - PORT=8080
+      - LOG_LEVEL=info
+      - APP_KEY=${NOMAD_APP_KEY}
+      - HOST=0.0.0.0
+      - URL=http://localhost:8080
+      - DB_HOST=mysql
+      - DB_PORT=3306
+      - DB_DATABASE=nomad
+      - DB_USER=nomad_user
+      - DB_PASSWORD=${NOMAD_DB_PASSWORD}
+      - DB_NAME=nomad
+      - DB_SSL=false
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - DISABLE_COMPRESSION=false
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  mysql:
+    image: mysql:8.0
+    container_name: nomad_mysql
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=${NOMAD_DB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=nomad
+      - MYSQL_USER=nomad_user
+      - MYSQL_PASSWORD=${NOMAD_DB_PASSWORD}
+    volumes:
+      - nomad-mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+  redis:
+    image: redis:7-alpine
+    container_name: nomad_redis
+    restart: unless-stopped
+    volumes:
+      - nomad-redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  nomad-storage:
+  nomad-mysql:
+  nomad-redis:
+  nomad-update-shared:
