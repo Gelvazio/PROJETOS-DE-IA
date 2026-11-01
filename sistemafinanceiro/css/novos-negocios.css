@@ -21,6 +21,40 @@
   box-shadow: var(--shadow-card, none);
 }
 
+.ideia-topo { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+
+.ideia-status {
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border: 1px solid;
+}
+.ideia-status[data-estado="analisar"] {
+  color: #ffd28a;
+  border-color: rgba(255, 184, 77, 0.6);
+  background: rgba(255, 184, 77, 0.12);
+}
+.ideia-status[data-estado="analisado"] {
+  color: #7dff9f;
+  border-color: rgba(93, 212, 93, 0.6);
+  background: rgba(93, 212, 93, 0.12);
+}
+
+.ideia-analise {
+  margin: 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: var(--txt-dim);
+}
+
 .ideia-codigo {
   font-size: 11px;
   font-weight: 700;

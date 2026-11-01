@@ -88,6 +88,13 @@ Como consultar:
    `[Chute]` ou `[CONFIRMAR]` (dado ausente). Nunca inventar número nem apresentar projeção sem o
    cenário pessimista.
 4. Fechar com recomendação (seguir, pivotar ou matar), nota de 0 a 10 e 3 próximos passos baratos.
+5. **Gravar a análise em Markdown**, uma por ideia da página Gestão de Novos Negócios, em
+   `docs/analises/ANALISE-FINANCEIRA-IDEIA NN.md` (o `NN` é o código da ideia em
+   `src/ideiasNegocios.js`: `IDEIA 01`, `IDEIA 02`…; o nome tem espaço, exatamente assim).
+
+O status do card (`ANALISAR` ou `ANALISADO`) é calculado pelo código: vira `ANALISADO` **somente**
+quando esse arquivo existe e não está vazio. Nunca criar o arquivo sem a análise do CFO feita, e nunca
+mexer no status à mão.
 
 Não usar o CFO para pergunta operacional do dia a dia (saldo do mês, pendências, atalhos `.`, `,`
 e `1`, código ou tela): isso segue as regras acima, sem simular conselho.

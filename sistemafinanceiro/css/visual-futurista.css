@@ -141,6 +141,19 @@ body.visual-futurista .ideia-codigo {
   color: var(--neon-magenta);
   text-shadow: 0 0 8px rgba(255, 43, 214, 0.7);
 }
+body.visual-futurista .ideia-status {
+  font-family: var(--fonte-titulo);
+  font-size: 10px;
+}
+body.visual-futurista .ideia-status[data-estado="analisar"] {
+  color: #ffd28a;
+  box-shadow: 0 0 10px rgba(255, 184, 77, 0.35);
+}
+body.visual-futurista .ideia-status[data-estado="analisado"] {
+  color: #7dff9f;
+  box-shadow: 0 0 10px rgba(93, 212, 93, 0.45);
+}
+body.visual-futurista .ideia-analise { color: var(--cor-texto-suave); }
 body.visual-futurista .ideia-nome {
   font-family: var(--fonte-titulo);
   font-size: 17px;

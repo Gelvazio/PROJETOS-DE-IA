@@ -3,6 +3,17 @@
 // ============================================================================
 import { IDEIAS_NEGOCIOS, AVISO_ESTIMATIVAS } from './ideiasNegocios.js';
 
+const STATUS_ANALISAR = 'ANALISAR';
+const STATUS_ANALISADO = 'ANALISADO';
+
+// Análises do CFO: docs/analises/ANALISE-FINANCEIRA-<código da ideia>.md (ex.: IDEIA 01).
+// O status só vira ANALISADO quando esse arquivo existe e não está vazio.
+const ANALISES_FINANCEIRAS = import.meta.glob('../docs/analises/ANALISE-FINANCEIRA-*.md', {
+  query: '?raw',
+  import: 'default',
+  eager: true,
+});
+
 const ROTULOS_CARD = [
   ['tempoAGastar', 'Tempo a gastar'],
   ['valorAGastar', 'Valor a gastar'],
@@ -36,6 +47,29 @@ function criarLista(itens) {
 }
 
 /**
+ * Lê o markdown da análise financeira de uma ideia.
+ * @param {{codigo: string}} ideia - Ideia consultada.
+ * @returns {string|null} Texto da análise, ou null se o arquivo não existir ou estiver vazio.
+ */
+function obterAnaliseFinanceira(ideia) {
+  const texto = ANALISES_FINANCEIRAS[`../docs/analises/ANALISE-FINANCEIRA-${ideia.codigo}.md`];
+  const temTexto = typeof texto === 'string' && texto.trim() !== '';
+  return temTexto ? texto : null;
+}
+
+/**
+ * Cria o selo de status da ideia (ANALISAR até existir a análise do CFO).
+ * @param {{codigo: string}} ideia - Ideia exibida.
+ * @returns {HTMLElement} Selo de status.
+ */
+function criarStatusIdeia(ideia) {
+  const analisada = obterAnaliseFinanceira(ideia) !== null;
+  const selo = criarElemento('span', 'ideia-status', analisada ? STATUS_ANALISADO : STATUS_ANALISAR);
+  selo.dataset.estado = analisada ? 'analisado' : 'analisar';
+  return selo;
+}
+
+/**
  * Cria o bloco de um dado do card (rótulo + valor).
  * @param {string} rotulo - Nome do dado.
  * @param {string} valor - Valor do dado.
@@ -56,7 +90,9 @@ function criarDadoCard(rotulo, valor) {
  */
 function criarCardIdeia(ideia, aoAbrirDetalhes) {
   const card = criarElemento('article', 'ideia-card');
-  card.append(criarElemento('span', 'ideia-codigo', ideia.codigo));
+  const topo = criarElemento('div', 'ideia-topo');
+  topo.append(criarElemento('span', 'ideia-codigo', ideia.codigo), criarStatusIdeia(ideia));
+  card.append(topo);
   card.append(criarElemento('h2', 'ideia-nome', ideia.nome));
 
   const dados = criarElemento('dl', 'ideia-dados');
@@ -112,8 +148,13 @@ function criarSecaoModal(titulo, conteudo) {
  */
 function preencherModal(corpo, ideia) {
   const explicacao = ideia.explicacao.map(texto => criarElemento('p', '', texto));
+  const analise = obterAnaliseFinanceira(ideia);
+  const secaoAnalise = analise
+    ? [criarSecaoModal('Análise financeira (CFO)', [criarElemento('pre', 'ideia-analise', analise)])]
+    : [];
   corpo.replaceChildren(
     criarSecaoModal('Sobre a ideia', explicacao),
+    ...secaoAnalise,
     criarSecaoModal('Cenários', [criarTabelaCenarios(ideia.cenarios)]),
     criarSecaoModal('Premissas', [criarLista(ideia.premissas)]),
     criarSecaoModal('Riscos', [criarLista(ideia.riscos)]),
