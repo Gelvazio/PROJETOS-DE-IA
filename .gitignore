@@ -17,7 +17,7 @@
 /DEMAIS-PROJETOS-DE-SISTEMAS-MANTER-OFFLINE/
 
 # Registros locais do AutoSwarm (AUTOSWARM_HOME)
-/autoswarm-dados/
+/COORDENACAO-DE-PROJETOS/AutoSwarm/output/
 
 # Segredos e configuração local
 .env

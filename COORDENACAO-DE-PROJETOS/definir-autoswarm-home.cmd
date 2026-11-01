@@ -1,7 +1,7 @@
 @echo off
 rem Define AUTOSWARM_HOME (pasta de registros do AutoSwarm) para o usuario atual.
 rem Vale para terminais abertos depois de rodar este script.
-set "PASTA_AUTOSWARM=C:\fontes\autoswarm-dados"
+set "PASTA_AUTOSWARM=C:\fontes\COORDENACAO-DE-PROJETOS\AutoSwarm\output"
 
 if not exist "%PASTA_AUTOSWARM%" mkdir "%PASTA_AUTOSWARM%"
 
