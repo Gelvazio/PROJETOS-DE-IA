@@ -41,7 +41,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | Tarefa | Título | Prioridade | Modelo | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|---|
 | CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.5.7 | Canais IPC da API | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.3, CLONE.5.4, CLONE.5.5, CLONE.5.6 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.5.7 | Canais IPC da API | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.3, CLONE.5.4, CLONE.5.5, CLONE.5.6 | 🔄 Em execução | Claude Code (Sonnet 5.5 · executor-medio; líder Opus 5.5) (local · main) (desde 2026-11-01 16:40) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.6.11 | Serviço de indexação do projeto | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.3.6, CLONE.6.3, CLONE.6.7, CLONE.6.8, CLONE.6.9, CLONE.6.10 | 🔄 Em execução | Claude Code (Opus 5.5 · executor-pesado; líder Opus 5.5) (local · main) (desde 2026-11-01 16:20) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.6.12 | Canais IPC de vetores | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.6.11 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.7.5 | Extração de entidades e relações | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.7.2, CLONE.7.3, CLONE.7.4 | 🔄 Em execução | Claude Code (Opus 5.5 · executor-pesado; líder Opus 5.5) (local · main) (desde 2026-11-01 16:20) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
@@ -62,7 +62,7 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | CLONE.9.7 | Canais IPC de CLIs e WSL | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.3, CLONE.9.4, CLONE.9.6 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.10.4 | Serviço de agentes | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.6, CLONE.10.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.10.5 | Canais IPC de agentes | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.10.4 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.13.4 | Tela de login | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.4.12 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.13.4 | Tela de login | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.4.12 | 🔄 Em execução | Claude Code (Sonnet 5.5 · executor-medio; líder Opus 5.5) (local · main) (desde 2026-11-01 16:40) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.5 | Tela de projetos | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.3.7, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.6 | Tela de tarefas | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.7 | Tela de indexação e busca | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.6.12 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
