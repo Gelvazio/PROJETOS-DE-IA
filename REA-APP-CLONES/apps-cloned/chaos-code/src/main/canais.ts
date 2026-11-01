@@ -18,6 +18,9 @@ import type { ServicoConsulta } from './grafo/consulta.servico';
 import type { RepositorioGrafo } from './grafo/grafo.repositorio';
 import { registrarCanaisMcp } from './mcp/mcp.canais';
 import type { ServicoMcp } from './mcp/mcp.servico';
+import { registrarCanaisCli } from './cli/cli.canais';
+import { registrarCanaisAgentes } from './agentes/agentes.canais';
+import type { ServicoAgentes } from './agentes/agentes.servico';
 
 /** Serviços do main que os canais usam; cada módulo novo acrescenta o seu campo aqui. */
 export interface ContextoCanais {
@@ -32,6 +35,9 @@ export interface ContextoCanais {
   servicoConsulta: ServicoConsulta;
   repositorioGrafo: RepositorioGrafo;
   servicoMcp: ServicoMcp;
+  servicoAgentes: ServicoAgentes;
+  /** Caminho de `wsl_config.json`. */
+  caminhoConfigWsl: string;
   /** Opcional até o `principal.ts` montar o cliente HTTP; sem ele, `api:*` não existe. */
   apisPlataforma?: ApisPlataforma;
 }
@@ -68,6 +74,12 @@ export function registrarCanais(contexto: ContextoCanais): void {
     repositorioGrafo: contexto.repositorioGrafo,
   });
   registrarCanaisMcp(ipcMain, contexto.servicoMcp);
+  registrarCanaisCli(ipcMain, {
+    repositorioProjetos: contexto.repositorioProjetos,
+    servicoMcp: contexto.servicoMcp,
+    caminhoConfigWsl: contexto.caminhoConfigWsl,
+  });
+  registrarCanaisAgentes(ipcMain, contexto.servicoAgentes);
   if (contexto.apisPlataforma) {
     registrarCanaisApi(ipcMain, contexto.apisPlataforma);
   }

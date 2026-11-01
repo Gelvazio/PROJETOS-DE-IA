@@ -42,12 +42,12 @@ tarefas **abertas ou em andamento**: linha que vira ✅ é movida para o [`task_
 | Tarefa | Título | Prioridade | Modelo | Depende de | Status | Em uso por | Etapa |
 |---|---|---|---|---|---|---|---|
 | CLONE | **Clonar o Chaos Code v3 em Node/TypeScript + Electron** | 🟠 Alta | — | Nenhuma | 🔄 Em progresso | — (não reservável) | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.9.3 | Configurar o Claude Code (`claude mcp add`) | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.9.4 | Configurar os outros CLIs | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.9.6 | Liberar o localhost para o WSL (`netsh`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.9.5, CLONE.8.2 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.9.7 | Canais IPC de CLIs e WSL | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.9.3, CLONE.9.4, CLONE.9.6 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.10.4 | Serviço de agentes | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.5.6, CLONE.10.3 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
-| CLONE.10.5 | Canais IPC de agentes | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.10.4 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.9.3 | Configurar o Claude Code (`claude mcp add`) | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.9.4 | Configurar os outros CLIs | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.9.2, CLONE.8.3 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.9.6 | Liberar o localhost para o WSL (`netsh`) | 🟠 Alta | PESADO · Opus 5.5 · effort high | CLONE.9.5, CLONE.8.2 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.9.7 | Canais IPC de CLIs e WSL | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.9.3, CLONE.9.4, CLONE.9.6 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.10.4 | Serviço de agentes | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.5.6, CLONE.10.3 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
+| CLONE.10.5 | Canais IPC de agentes | 🟠 Alta | MEDIO · Devin (SWE-2 High Lightning) · sessão assumida (era Sonnet 5.5 · effort medium | CLONE.10.4 | ✅ Concluído | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.5 | Tela de projetos | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.3.7, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.6 | Tela de tarefas | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.5.7 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |
 | CLONE.13.7 | Tela de indexação e busca | 🟠 Alta | MEDIO · Sonnet 5.5 · effort medium | CLONE.13.3, CLONE.6.12 | ⬜ Pendente | — | [ETAPA-005](etapas/ETAPA-005-40073ee0-CLONE-CHAOS-CODE.md) |

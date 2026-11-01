@@ -971,6 +971,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/main/cli/config-claude.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/main/cli/configuracao-cli.ts` (`montarComandosMcp` + `configurarCli`): grava `.mcp.json` com backup `.bak`, arquivo temporário + rename e linha no `.git/info/exclude`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.9.4 — Configurar os outros CLIs
 
 **Próximo passo:** —
@@ -979,6 +983,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.9.2, CLONE.8.3
 - **Descrição:** `apps-cloned/chaos-code/src/main/cli/config-outros-cli.ts` (arquivos de configuração).
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `configurarTodosClis` no mesmo `configuracao-cli.ts`: Gemini (`.gemini/settings.json`) e Codex (`.codex/config.toml`, TOML), com o mesmo backup/atomicidade/exclude.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
 
 ### CLONE.9.5 — Detectar o WSL e o IP
 
@@ -1000,6 +1008,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/main/wsl/liberar-acesso.ts` (pede confirmação ao usuário).
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/main/wsl/encaminhamento.ts`: `aplicarEncaminhamentoLocalhost` (backup `.wslconfig.bak`, `localhostForwarding=true` na `[wsl2]`, `wsl --shutdown` com mensagem de falha parcial) e `dispensarAvisoWsl`/`lerEstadoDispensado` (`wsl_config.json`).
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.9.7 — Canais IPC de CLIs e WSL
 
 **Próximo passo:** —
@@ -1008,6 +1020,11 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.9.3, CLONE.9.4, CLONE.9.6
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/main/cli/cli.canais.ts` + `src/compartilhado/tipos-ipc-cli.ts` + constantes + preload: `check_wsl_status`, `apply_wsl_localhost_forwarding`, `dismiss_wsl_warning`, `cli:listar`, `cli:obter-comandos-mcp` (token sempre oculto) e `cli:configurar`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.10 — Agentes
 - **JEV-AI-SUGGESTION:** NAO
 
@@ -1055,6 +1072,10 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Descrição:** `apps-cloned/chaos-code/src/main/agentes/agentes.servico.ts`: listar modelos e instalar no CLI.
 - **Critérios de Aceitação:** typecheck e build ok.
 
+**Entrega (Devin/SWE-2, sessão assumida):** `src/main/agentes/agentes.servico.ts`: `listar`/`obter`/`gravar` agentes por pasta de CLI (projeto + global) usando `lerAgente`/`gravarAgente`.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.10.5 — Canais IPC de agentes
 
 **Próximo passo:** —
@@ -1063,6 +1084,11 @@ Rust + Tauri) em Node/TypeScript + Electron, na pasta `apps-cloned/chaos-code/`.
 - **Depende de:** CLONE.10.4
 - **Descrição:** canais em `src/compartilhado/constantes.ts` (`CANAIS_IPC`), tratadores em `src/main/canais.ts`, exposição em `src/preload/preload.ts` e tipos em `src/renderer/global.d.ts`.
 - **Critérios de Aceitação:** typecheck e build ok.
+
+**Entrega (Devin/SWE-2, sessão assumida):** `src/main/agentes/agentes.canais.ts` + `src/compartilhado/tipos-ipc-agentes.ts`: `agentes:listar`, `agentes:obter`, `agentes:gravar` + preload.
+
+**Verificação:** `npm run typecheck` e `npm run build` OK.
+
 ### CLONE.11 — Geração de imagem
 - **JEV-AI-SUGGESTION:** NAO
 

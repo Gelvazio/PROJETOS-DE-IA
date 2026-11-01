@@ -41,6 +41,7 @@ import { criarProjetosApi } from './api/projetos.api';
 import { criarApiTarefas } from './api/tarefas.api';
 import type { ApisPlataforma } from './api/api.canais';
 import { ServicoMcp } from './mcp/mcp.servico';
+import { ServicoAgentes } from './agentes/agentes.servico';
 import { criarEmissorConsentimento } from './mcp/mcp.canais';
 import { ServicoConsulta } from './grafo/consulta.servico';
 import { criarRepositorioGrafo, type RepositorioGrafo } from './grafo/grafo.repositorio';
@@ -121,6 +122,8 @@ async function montarContextoCanais(): Promise<ContextoCanais> {
     apisPlataforma,
     servicoMcp: montarServicoMcp(pastaDados, apisPlataforma, servicoConsulta, repositorioGrafo,
       repositorio),
+    servicoAgentes: new ServicoAgentes({ repositorioProjetos: repositorio }),
+    caminhoConfigWsl: path.join(pastaDados, 'wsl_config.json'),
   };
 }
 

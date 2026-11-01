@@ -90,6 +90,17 @@ export const CANAIS_IPC = {
   mcpResponderConsentimento: 'mcp:responder-consentimento',
   /** Evento do main para a interface (`mcp:consent-request` do original). */
   mcpPedidoConsentimento: 'mcp:consent-request',
+  // CLIs e WSL (CLONE.9.7)
+  cliListar: 'cli:listar',
+  cliObterComandosMcp: 'cli:obter-comandos-mcp',
+  cliConfigurar: 'cli:configurar',
+  wslObterStatus: 'wsl:obter-status',
+  wslAplicarEncaminhamento: 'wsl:aplicar-encaminhamento',
+  wslDispensarAviso: 'wsl:dispensar-aviso',
+  // Agentes (CLONE.10.5)
+  agentesListar: 'agentes:listar',
+  agentesObter: 'agentes:obter',
+  agentesGravar: 'agentes:gravar',
 } as const;
 
 /** Prefixo dos canais da API da plataforma (`api:<grupo>:<metodo>`, CLONE.5.7). */

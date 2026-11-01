@@ -14,11 +14,13 @@ import type { ApiLogin } from '../main/login/login.canais';
 import type { ApiVetores } from '../compartilhado/tipos-ipc-vetores';
 import type { ApiGrafo } from '../compartilhado/tipos-ipc-grafo';
 import type { ApiMcp } from '../compartilhado/tipos-ipc-mcp';
+import type { ApiCliWsl } from '../compartilhado/tipos-ipc-cli';
+import type { ApiAgentes } from '../compartilhado/tipos-ipc-agentes';
 
 // Só funções específicas são expostas: a interface nunca recebe o ipcRenderer inteiro.
 // Cada módulo novo acrescenta aqui o seu bloco e o tipo `Api<Modulo>` em `ApiExposta`.
 type ApiExposta = ApiChaosCode & ApiProjetos & ApiImagem & ApiAtualizador & ApiLogin &
-  ApiPlataformaIpc & ApiVetores & ApiGrafo & ApiMcp;
+  ApiPlataformaIpc & ApiVetores & ApiGrafo & ApiMcp & ApiCliWsl & ApiAgentes;
 
 /**
  * Monta as funções de um grupo da API da plataforma: cada método invoca o canal `api:*`.
@@ -131,6 +133,20 @@ const api: ApiExposta = {
   renovarTokenSessaoMcp: () => ipcRenderer.invoke(CANAIS_IPC.mcpRenovarTokenSessao),
   responderConsentimentoMcp: (requestId, aprovado) =>
     ipcRenderer.invoke(CANAIS_IPC.mcpResponderConsentimento, requestId, aprovado),
+
+  // CLIs e WSL
+  obterStatusWsl: () => ipcRenderer.invoke(CANAIS_IPC.wslObterStatus),
+  aplicarEncaminhamentoWsl: () => ipcRenderer.invoke(CANAIS_IPC.wslAplicarEncaminhamento),
+  dispensarAvisoWsl: () => ipcRenderer.invoke(CANAIS_IPC.wslDispensarAviso),
+  listarClis: () => ipcRenderer.invoke(CANAIS_IPC.cliListar),
+  obterComandosMcp: (idProjeto) => ipcRenderer.invoke(CANAIS_IPC.cliObterComandosMcp, idProjeto),
+  configurarClis: (idProjeto) => ipcRenderer.invoke(CANAIS_IPC.cliConfigurar, idProjeto),
+
+  // Agentes
+  listarAgentes: (idProjeto, escopo) =>
+    ipcRenderer.invoke(CANAIS_IPC.agentesListar, idProjeto, escopo),
+  obterAgente: (idProjeto, nome) => ipcRenderer.invoke(CANAIS_IPC.agentesObter, idProjeto, nome),
+  gravarAgente: (pedido) => ipcRenderer.invoke(CANAIS_IPC.agentesGravar, pedido),
   aoPedirConsentimentoMcp: (ouvinte) => {
     const tratador = (_evento: unknown, pedido: Parameters<typeof ouvinte>[0]): void =>
       ouvinte(pedido);
