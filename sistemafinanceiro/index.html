@@ -690,8 +690,22 @@
   </style>
   <!-- Camada celular/PWA: precisa vir depois dos estilos acima -->
   <link rel="stylesheet" href="./css/mobile.css" />
+  <link rel="stylesheet" href="./css/menu.css" />
 </head>
 <body>
+
+  <!-- Barra de menu (links entre as páginas) -->
+  <header class="menu-bar">
+    <nav aria-label="Menu principal">
+      <ul class="menu-bar-lista">
+        <li><a class="menu-link" href="/" aria-current="page">Dashboard</a></li>
+        <li class="menu-bar-separador" role="separator"></li>
+        <li><a class="menu-link" href="/financas-pessoais.html">Finanças Pessoais</a></li>
+        <li><a class="menu-link" href="/gestao-financeira.html">Gestão Financeira</a></li>
+        <li><a class="menu-link" href="/gestao-de-novos-negocios.html">Gestão de Novos Negócios</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <!-- Navbar -->
   <nav class="navbar">

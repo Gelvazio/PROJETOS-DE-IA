@@ -1,0 +1,116 @@
+/* ============================================================================
+   menu.css — barra de menu superior (links entre as páginas do sistema)
+   Carregado DEPOIS de mobile.css: a barra fica acima da navbar do dashboard.
+   ========================================================================== */
+
+:root {
+  --menu-h: 44px;
+}
+
+/* O corpo abre espaço para a barra fixa; a navbar desce o mesmo tanto */
+body { padding-top: calc(var(--menu-h) + var(--sat, 0px)); }
+
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 102;
+  height: calc(var(--menu-h) + var(--sat, 0px));
+  padding-top: var(--sat, 0px);
+  padding-left: max(24px, var(--sal, 0px));
+  padding-right: max(24px, var(--sar, 0px));
+  display: flex;
+  align-items: center;
+  background: rgba(7, 5, 18, 0.98);
+  border-bottom: 1px solid rgba(180, 110, 255, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+.menu-bar nav { flex: 1; min-width: 0; }
+
+.menu-bar-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+.menu-bar-lista::-webkit-scrollbar { display: none; }
+
+.menu-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 14px;
+  border-radius: 8px;
+  color: var(--txt-dim);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid transparent;
+  transition: background 0.15s, color 0.15s;
+}
+.menu-link:hover,
+.menu-link:focus-visible {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--txt);
+  outline: none;
+}
+.menu-link[aria-current="page"] {
+  color: var(--txt);
+  background: rgba(180, 110, 255, 0.16);
+  border-color: rgba(180, 110, 255, 0.35);
+}
+
+.menu-bar-separador {
+  width: 1px;
+  height: 18px;
+  margin: 0 6px;
+  background: rgba(180, 110, 255, 0.25);
+  flex-shrink: 0;
+}
+
+/* Navbar do dashboard e avisos do PWA passam a ficar abaixo da barra de menu */
+.navbar {
+  top: calc(var(--menu-h) + var(--sat, 0px));
+  padding-top: 0;
+  height: var(--navbar-h, 56px);
+}
+.pwa-banners.below-navbar {
+  top: calc(var(--navbar-h, 56px) + var(--menu-h) + var(--sat, 0px));
+}
+
+/* Páginas de conteúdo (Finanças Pessoais, Gestão Financeira, Novos Negócios) */
+.pagina-conteudo {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+}
+.pagina-conteudo h1 {
+  margin: 0 0 12px;
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--h1), var(--h3), var(--h2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pagina-conteudo p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--txt-dim);
+}
+
+@media (max-width: 768px) {
+  .menu-bar {
+    padding-left: max(12px, var(--sal, 0px));
+    padding-right: max(12px, var(--sar, 0px));
+  }
+  .pagina-conteudo { padding: 24px 12px 40px; }
+}

@@ -6,7 +6,13 @@ export default defineConfig({
   build: {
     target: 'esnext',
     rollupOptions: {
-      input: ['index.html', 'login.html']
+      input: [
+        'index.html',
+        'login.html',
+        'financas-pessoais.html',
+        'gestao-financeira.html',
+        'gestao-de-novos-negocios.html'
+      ]
     }
   },
   server: {
