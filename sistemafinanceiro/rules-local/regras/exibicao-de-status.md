@@ -1,5 +1,7 @@
 # 📊 Exibição de status — sempre em quadro
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-17 (C27). Vale para todos os projetos e todas as IAs, no terminal (cmd,
 PowerShell, bash) e no chat do Claude Code no IDE.
 

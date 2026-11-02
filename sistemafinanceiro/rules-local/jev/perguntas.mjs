@@ -31,6 +31,7 @@ const CRITERIOS_EFFORT = Object.freeze({
   low: 'tarefa simples e mecânica, pouco raciocínio',
   medium: 'tarefa com lógica moderada, raciocínio normal',
   high: 'tarefa difícil, exige raciocínio profundo e cuidado com riscos',
+  xhigh: 'tarefa muito difícil (banco, segurança, arquitetura), exige o máximo de raciocínio',
 });
 
 const CRITERIOS_RISCO = Object.freeze([

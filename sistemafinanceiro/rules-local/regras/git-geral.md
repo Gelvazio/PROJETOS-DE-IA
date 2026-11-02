@@ -1,5 +1,9 @@
 # 🔀 Git — regras comuns a todos os projetos
 
+> 🔒 **REGRA INVIOLÁVEL (C59):** cada subtarefa entregue = **1 commit + 1 push na `main`**, na hora, antes
+> de qualquer outra coisa — também com o quadro no banco (commit e push **antes** da RPC `entregar`).
+> **Nunca pode ser quebrada.** Regra completa: `commit-por-subtarefa.md`.
+
 Cada projeto pode ter regras mais específicas (hooks, push automático); elas valem no projeto,
 exceto onde dizem expressamente "sem push".
 Pontos de conflito entre projetos estão em `CONFLITOS.md`.
@@ -15,6 +19,8 @@ Pontos de conflito entre projetos estão em `CONFLITOS.md`.
   entrega sem push para depois, é infração. Histórico já feito não se reescreve (sem `--force`).
 - ✅ `git add <arquivos da tarefa>` pelo caminho; conferir com `git diff --cached --name-only`.
   ⛔ Nunca `git add .`.
+- ✅ Na raiz `C:\fontes` (C57, `raiz-fontes.md`): o `.gitignore` tem as pastas com `.git` próprio
+  e `DEMAIS-PROJETOS-*`; ⛔ nunca `git add` dessas pastas.
 - ⛔ `git merge` e `git pull` sem `--rebase` (usar `git pull --rebase`); sem PR para entregar tarefa.
 - ⛔ `git status` repetido entre comandos ou depois do commit (o git já avisa erros).
 - ✅ **Ao finalizar uma tarefa: commit + `git push`** (na branch principal), sem esperar pedido

@@ -1,5 +1,10 @@
 # 🥇 Regra maior — modelo mais forte NUNCA pega tarefa de modelo mais fraco (C50)
 
+> 🚫 **Também (C60):** o Opus NUNCA pega tarefa, só com pedido explícito do usuário — `opus-so-sob-pedido.md`.
+> 🔒 **Também inviolável (C59):** 1 commit + 1 push na `main` por subtarefa entregue — `commit-por-subtarefa.md`.
+
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. A coluna Modelo conferida antes de reservar é a `modelo` de `quadro_tarefas`, e a RPC `reservar` também confere (C50). Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-23 (C50, tarefa REGRA-MAIS-FORTE-NUNCA). **É a regra mais importante de todas:**
 vale para **todas as IAs e todos os projetos** e vence qualquer outra regra, pedido, atalho ou
 autorização. Detalhe dos níveis e da matriz: `niveis-e-modelos.md`.

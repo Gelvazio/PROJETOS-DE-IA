@@ -7,13 +7,13 @@ export const NIVEIS = Object.freeze({ LEVE: 'LEVE', MEDIO: 'MEDIO', PESADO: 'PES
 export const ORDEM_NIVEIS = Object.freeze([NIVEIS.LEVE, NIVEIS.MEDIO, NIVEIS.PESADO]);
 
 /** Efforts válidos, do menor ao maior. */
-export const EFFORTS = Object.freeze(['low', 'medium', 'high']);
+export const EFFORTS = Object.freeze(['low', 'medium', 'high', 'xhigh']);
 
-/** C21: o effort vem do nível final e nunca é reduzido por sugestão do modelo. */
+/** C21 (com a C61): o effort vem do nível final e nunca é reduzido por sugestão do modelo. */
 export const EFFORT_POR_NIVEL = Object.freeze({
   [NIVEIS.LEVE]: 'low',
   [NIVEIS.MEDIO]: 'medium',
-  [NIVEIS.PESADO]: 'high',
+  [NIVEIS.PESADO]: 'xhigh',
 });
 
 /** `linha` é a 1ª célula da tabela "Quem pega cada nível" (usada na conferência com o .md). */
@@ -28,8 +28,8 @@ const MODELOS_POR_NIVEL = Object.freeze({
     { linha: 'Codex / Cursor', rotulo: 'Codex' },
     { linha: 'Codex / Cursor', rotulo: 'Cursor' },
     { linha: 'Qoder', rotulo: 'Qoder' },
-    { linha: 'Devin / Copilot', rotulo: 'Devin' },
-    { linha: 'Devin / Copilot', rotulo: 'Copilot' },
+    { linha: 'Devin (SWE-2)', rotulo: 'Devin (SWE-2)' },
+    { linha: 'Copilot', rotulo: 'Copilot' },
   ],
   [NIVEIS.MEDIO]: [
     { linha: 'Claude Code', rotulo: 'Claude Code (Sonnet)' },
@@ -40,13 +40,14 @@ const MODELOS_POR_NIVEL = Object.freeze({
     { linha: 'Codex / Cursor', rotulo: 'Codex' },
     { linha: 'Codex / Cursor', rotulo: 'Cursor' },
     { linha: 'Qoder', rotulo: 'Qoder' },
-    { linha: 'Devin / Copilot', rotulo: 'Devin' },
-    { linha: 'Devin / Copilot', rotulo: 'Copilot' },
+    { linha: 'Devin (SWE-2)', rotulo: 'Devin (SWE-2)' },
+    { linha: 'Copilot', rotulo: 'Copilot' },
   ],
+  // C61 + C64: PESADO é só Sonnet (effort xhigh) ou Devin (SWE-2); Opus (C60), Fable, DeepSeek,
+  // OpenCode e Copilot não pegam PESADO.
   [NIVEIS.PESADO]: [
-    { linha: 'Claude Code', rotulo: 'Claude Code (Opus 5.5+ ou Fable)' },
-    { linha: 'DeepSeek', rotulo: 'DeepSeek' },
-    { linha: 'OpenCode', rotulo: 'OpenCode (deepseek-v4-pro)' },
+    { linha: 'Claude Code', rotulo: 'Claude Code (Sonnet · effort xhigh)' },
+    { linha: 'Devin (SWE-2)', rotulo: 'Devin (SWE-2 High Lightning)' },
   ],
 });
 
@@ -76,7 +77,7 @@ export function maisRestritivo(nivelA, nivelB) {
 /**
  * Deriva o effort da C21 pelo nível final.
  * @param {string|null} nivel Nível final.
- * @returns {string|null} `low`, `medium` ou `high`; null para nível inválido.
+ * @returns {string|null} `low`, `medium` ou `xhigh`; null para nível inválido.
  */
 export function derivarEffort(nivel) {
   return EFFORT_POR_NIVEL[nivel] ?? null;

@@ -1,5 +1,7 @@
 # 🧠 Jev — classificador de nível e guardrails (JEV-RULES-AI)
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. O nível vai para a coluna `nivel`/`modelo` de `quadro_tarefas`; enquanto o gravador do Jev não tiver RPC (MIGRAR-TAREFAS-API.19), não se grava nível à mão no banco. Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-18 (etapa 025, JEV-RULES-AI; pedido do usuário registrado na C39); reserva só
 pelos sinais desde 2026-10-19 (C42, etapa 028). Vale para todas as IAs e para todo projeto que use o `rules-ai`. Nível e modelo: `niveis-e-modelos.md`.
 Effort: `esforco.md`. Quadro: `quadro-de-tarefas.md`. Chave e log: só no computador local.
@@ -113,7 +115,8 @@ quem executa. Vale para **todos os projetos e todas as IAs**.
 ## Classificar mensagens (C43)
 
 Decidido em 2026-10-20 (etapa 029, JEV-GLOBAL-AI-FINAL). Pedido do usuário em 2026-10-20 00:06 e
-respostas em 2026-10-20 00:18. Vale para toda mensagem do usuário, em todo projeto de `C:\fontes`.
+respostas em 2026-10-20 00:18. Vale para toda mensagem do usuário, em todo projeto com
+`rules-local/` (inclusive a raiz, C57).
 
 ### Quando roda
 

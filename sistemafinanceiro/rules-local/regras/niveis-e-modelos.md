@@ -1,5 +1,8 @@
 # 🎚️ Níveis de tarefa — quem pega o quê
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. Mudança na tabela de níveis vai para `quadro_decisoes`; a entrega do Haiku é a RPC `entregar`. Nos projetos em `.md`, o texto abaixo vale como está.
+
+> 🚫 **Regra C60:** o Opus NUNCA pega tarefa, em nenhum nível, a não ser que o usuário peça explicitamente (`opus-so-sob-pedido.md`); onde esta matriz cita Opus, vale só com esse pedido.
 > 🥇 **Regra maior (C50):** modelo mais forte NUNCA pega tarefa de modelo mais fraco — `regra-maior.md`.
 > 🧠 **Regra C52:** o nível e o modelo de toda subtarefa são SEMPRE escolhidos pelo Jev AI; NUNCA, JAMAIS
 > pela IA sozinha — `ciclo-da-task.md` (seção do Jev) e `jev.md`.
@@ -21,24 +24,33 @@ forte fique com as difíceis. Vale para **todas as IAs**. Reserva: `frentes-e-re
 
 | Ferramenta | `LEVE` | `MEDIO` | `PESADO` |
 |---|---|---|---|
-| **Claude Code** | Haiku 5.5 | Sonnet | **Sonnet, Opus 5.5 ou superior, ou Fable** |
+| **Claude Code** | Haiku 5.5 | Sonnet | **Sonnet, com `effort xhigh`** (C61) |
 | **Gemini CLI** | Flash | Pro | ⛔ |
 | **Antigravity** | Gemini Flash | ⛔ | ⛔ |
 | **Grok** | rápido | principal | ⛔ |
-| **DeepSeek** | V4.1 Flash | raciocínio | ✅ |
-| **OpenCode** | DeepSeek V4.1 Flash (`deepseek-flash`) | DeepSeek V4.1 Flash com thinking (`deepseek-flash`) | **DeepSeek V4 Pro (`deepseek-v4-pro`)** |
+| **DeepSeek** | V4.1 Flash | raciocínio | ✅ só V4 Flash, com `effort high` (C65) |
+| **OpenCode** | DeepSeek V4.1 Flash (`deepseek-flash`) | DeepSeek V4.1 Flash com thinking (`deepseek-flash`) | ⛔ (C61) |
 | **Codex** / **Cursor** | ✅ | ✅ | ⛔ |
 | **Qoder** | ✅ | ✅ | ⛔ |
-| **Devin** / **Copilot** | ✅ | ✅ | ⛔ |
+| **Devin** (SWE-2) | ✅ | ✅ | ✅ (C64) |
+| **Copilot** | ✅ | ✅ | ⛔ |
 
 - `LEVE` é **Haiku 5.5** (Claude Code) **ou DeepSeek V4.1 Flash** — a coluna `Modelo` do quadro grava
   `só Haiku 5.5 ou DeepSeek V4.1 Flash` (C53, 2026-10-24).
-- `PESADO` exige **Claude Code com Sonnet, Opus 5.5 ou superior, ou Fable, ou DeepSeek** — no **OpenCode**,
+- ⚡ **C61 (2026-11-01, ordem do usuário): TODA tarefa `PESADO` vai para o Sonnet, com `effort xhigh`** — a coluna `Modelo`
+  grava `PESADO · só Sonnet · effort xhigh`; Opus (C60), Fable e DeepSeek **não** pegam `PESADO` — o DeepSeek V4 Flash volta a pegar pela C65, abaixo.
+  **C64 (2026-11-01, ordem do usuário): Devin (SWE-2) também pega `PESADO`** — a coluna `Modelo` pode
+  gravar `PESADO · só Sonnet ou Devin (SWE-2 High Lightning) · effort xhigh`; Copilot segue `⛔`.
+  **C65 (2026-11-01, ordem do usuário): DeepSeek V4 Flash, com `effort high`, também pega `PESADO`**
+  — a coluna `Modelo` pode gravar `PESADO · só Sonnet, Devin (SWE-2 High Lightning) ou DeepSeek V4 Flash · effort xhigh/high`;
+  DeepSeek V4 Pro e DeepSeek raciocínio seguem fora do `PESADO` (C61).
+  O histórico abaixo (C35, C37, C48) fica só como registro:
+- (histórico) `PESADO` exigia **Claude Code com Sonnet, Opus 5.5 ou superior, ou Fable, ou DeepSeek** — no **OpenCode**,
   com `deepseek-v4-pro` (C35 e C37, 2026-10-18; altera a C22: o DeepSeek deixou de ser `⛔` em
   `PESADO`; C48, 2026-10-22: o Sonnet também pega `PESADO`).
 - ⛔ **NUNCA executar subtarefa que não é do seu modelo** (C2, 2026-10-16 22:53): cada IA só pega
   os níveis marcados na **sua** linha — no Claude Code, Haiku **só** `LEVE`, Sonnet `MEDIO` **e** `PESADO`
-  (C48), Opus 5.5+/Fable **só** `PESADO`. Nem acima nem abaixo, e **sem exceção** (nem com autorização).
+  (C48, C61); Opus (C60) e Fable não pegam tarefa. Nem acima nem abaixo, e **sem exceção** (nem com autorização).
 - A tabela é do usuário: mudança nela vai para o "Registro de decisões" do `tasks/STATUS.md`.
 - Regras de banco (quem pode falar com o banco, produção) são do projeto.
 

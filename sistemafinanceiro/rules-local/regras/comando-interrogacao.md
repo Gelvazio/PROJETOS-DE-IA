@@ -10,7 +10,9 @@ Quando o usuário mandar só um ponto de interrogação (`?`) numa conversa, a I
    - commits locais ainda não enviados (`git log origin/<branch>..HEAD`, ou os da branch se ela
      ainda não existir no remoto);
    - subtarefas que esta sessão reservou no `tasks/STATUS.md` e ainda não entregou (linhas com
-     `🔄` cujo "Em uso por" é desta sessão);
+     `🔄` cujo "Em uso por" é desta sessão); **no projeto no banco (C58)**, as linhas de
+     `quadro_tarefas` com `status_codigo = 'em_execucao'` e `em_uso_por` desta frente, lidas com a
+     chave `anon` (sem banco: dizer que o quadro está indisponível, sem arquivo de queda);
    - trava de sessão do projeto (ex.: `tasks/.sessao-ativa`), se existir, e de quem é.
 3. ✅ Responder com a lista do item 2 e dizer o que falta para cada item (ex.: "3 arquivos sem
    commit", "1 commit sem push"). Se não houver nada, dizer "nada pendente". ⛔ Não começar, não

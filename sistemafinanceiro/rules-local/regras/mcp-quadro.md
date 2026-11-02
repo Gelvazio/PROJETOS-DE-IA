@@ -1,5 +1,7 @@
 # 🔌 Fila por MCP — o quadro é a fonte; o MCP só lê e escreve nele (C40)
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. A fonte única do MCP passa a ser o banco; enquanto o `mcp/` não for migrado (MIGRAR-TAREFAS-API.18), as ferramentas de escrita do MCP não gravam no projeto no banco. Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-18 (C40, etapa 026, tarefa MCP-QUADRO). Pedido do usuário em 2026-10-18 16:19
 ("sim" ao plano). Vale para **todas as IAs e todos os projetos**. Esta regra não muda o quadro,
 a reserva, os níveis nem o ciclo da tarefa: quem manda neles são `quadro-de-tarefas.md`,

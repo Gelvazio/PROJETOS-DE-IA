@@ -22,12 +22,14 @@ const ROTULOS_REMOVIDOS = new Set([
   'nível', 'nivel', 'modelo', 'effort', 'depende de', 'estimativa', 'entrega', 'anotação',
   'anotacao', 'verificação (líder)', 'verificacao (lider)',
 ]);
-const ROTULOS_SEPARADOS = new Set(['arquivos', 'critérios de aceitação', 'criterios de aceitacao']);
+const ROTULOS_SEPARADOS = new Set([
+  'arquivos', 'critérios de aceitação', 'criterios de aceitacao',
+]);
 
 /** Textos que denunciam o nível, o modelo ou o effort já decididos (removidos do `state`). */
 const PADROES_ROTULO = [
   /\bnivel_atual\b/gi,
-  /\beffort\s*[:=]?\s*(?:low|medium|high)\b/gi,
+  /\beffort\s*[:=]?\s*(?:low|medium|xhigh|high)\b/gi,
   /\b(?:Haiku|Sonnet|Opus|Fable)\b(?:\s*\d+(?:\.\d+)?\+?)?(?:\s+ou\s+superior)?/gi,
   /\bGemini(?:\s+CLI)?\s+(?:Flash|Pro)\b/gi,
   /\bdeepseek-(?:flash|v4-pro)\b/gi,
@@ -81,7 +83,7 @@ export function removerRotulos(texto) {
  * @param {string} texto Texto a mascarar.
  * @returns {string} Texto sem segredos reconhecíveis.
  */
-export function mascararSegredos(texto) {
+function mascararSegredos(texto) {
   return PADROES_SEGREDO.reduce((atual, padrao) => atual.replace(padrao, MARCA_OCULTA), texto);
 }
 
@@ -100,7 +102,8 @@ export function sanitizarTexto(texto) {
  * @returns {string[]} Células sem espaços nas pontas.
  */
 function dividirCelulas(linha) {
-  return linha.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/).map((c) => c.trim());
+  const semBordas = linha.trim().replace(/^\|/, '').replace(/\|$/, '');
+  return semBordas.split(/(?<!\\)\|/).map((celula) => celula.trim());
 }
 
 /**
@@ -203,7 +206,7 @@ export function ehSubtarefa(item) {
  * @param {string} id ID da subtarefa.
  * @returns {string} Texto da seção (com o título), vazio se não existir.
  */
-export function extrairSecao(textoEtapa, id) {
+function extrairSecao(textoEtapa, id) {
   const escapado = id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const alvo = new RegExp(`^(#{2,4})\\s+#?${escapado}(?![A-Za-z0-9.])`);
   const linhas = textoEtapa.split(/\r?\n/);
@@ -293,12 +296,14 @@ export function lerSecaoDaSubtarefa(item, pastaQuadro) {
 }
 
 /**
- * Monta o `state` cego de um item do quadro lendo a etapa dele.
+ * Monta o `state` cego de um item do quadro lendo a etapa dele. Item vindo da API
+ * (MIGRAR-TAREFAS-API.19) já traz a seção montada em `item.secao` e não lê arquivo.
  * @param {object} item Item do quadro.
  * @param {string} [arquivoQuadro] Quadro de onde o item veio (base dos links de etapa).
  * @returns {object} State cego.
  */
 export function carregarStateCego(item, arquivoQuadro = ARQUIVO_QUADRO) {
+  if (typeof item.secao === 'string') return montarStateCego(item, item.secao);
   return montarStateCego(item, lerSecaoDaSubtarefa(item, dirname(arquivoQuadro)));
 }
 

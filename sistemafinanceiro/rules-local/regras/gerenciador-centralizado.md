@@ -1,5 +1,7 @@
 # 🤖 Gerenciador centralizado de tarefas
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. O gerenciador lê o projeto no banco pelas tabelas `quadro_*`, não pelo `origin/main`. Nos projetos em `.md`, o texto abaixo vale como está.
+
 Vale para todas as IAs (C28). Quem mantém o gerenciador é o `rules-ai`: `scripts/gerenciador.mjs`,
 com a configuração em `scripts/gerenciador.config.json` (tarefa GERENCIADOR-GLOBAL, etapa 009).
 

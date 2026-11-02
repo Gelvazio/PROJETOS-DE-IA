@@ -1,5 +1,7 @@
 # 🧠 Memória de longo prazo (ai-memory)
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. O quadro no banco continua sendo a única fonte de status, nível e reserva; a memória só complementa. Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-23 (C49, etapa 038 AI-MEMORY-INTEGRATION). Vale para todos os projetos de
 `C:\fontes` e todas as IAs. Retomada: `ciclo-da-task.md`. Nível e modelo: `niveis-e-modelos.md`.
 

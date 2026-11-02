@@ -2,7 +2,7 @@
 
 <!-- gerado por scripts/sincronizar.mjs; não editar -->
 
-- **Versão:** 2026-10-31-2155fe5d
+- **Versão:** 2026-11-02-1e29ed87
 - **Algoritmo:** sha256 do texto (sem BOM, fim de linha LF); 16 caracteres por arquivo, 8 na versão
 - **Fonte:** https://github.com/Gelvazio/rules-ai/tree/main/regras
 
@@ -10,38 +10,44 @@
 
 | # | Arquivo | Código |
 |---|---------|--------|
-| 0 | INDEX.md | 64eb071b598cf3f6 |
-| 1 | regra-maior.md | bbf5f654197ffa51 |
-| 2 | ciclo-da-task.md | c33948460b09e32e |
-| 3 | niveis-e-modelos.md | d97fe686f7646747 |
-| 4 | frentes-e-reserva.md | 421670df6006915c |
-| 5 | comando-ponto.md | 25fab5e441b75d40 |
-| 6 | comando-interrogacao.md | e81811ae12199f38 |
-| 7 | quadro-de-tarefas.md | 145f77a3dfd8e21c |
-| 8 | exibicao-de-status.md | c93f3dbedccb1486 |
-| 9 | git-geral.md | 2167c76b4283c32a |
-| 10 | testes-validacao.md | 233579829f757900 |
-| 11 | codigo-limites-nomes.md | ca88cca3360ef918 |
-| 12 | codigo-solid.md | 6f3e1050946d15af |
-| 13 | espec.md | 1cfd3d3f1e4c4742 |
-| 14 | esforco.md | d897c4cb72bd6c76 |
-| 15 | graphify.md | f31357d0386045d2 |
-| 16 | gerenciador-centralizado.md | c6f5535db0d613a4 |
-| 17 | pastas-ignoradas.md | b33814d65cafd940 |
-| 18 | rules-local.md | c324790daa1a3a05 |
-| 19 | herdr.md | 7d5677aa568db2a8 |
-| 20 | jev.md | 8b78c1578c16b6ec |
-| 21 | visualizador-gerado.md | bced4974cd78dc89 |
-| 22 | memoria-ai.md | 19bbb249bd19b203 |
-| 23 | mcp-quadro.md | 005e9e89838e472a |
-| 24 | vercel-sem-deploy-de-controle.md | 9801278fe383e99f |
-| 25 | mods-claude-code.md | 7792a2db01fe37f2 |
-| 26 | lider-coordenador.md | d1d547acf0372f6f |
-| 27 | atividades-e-idioma.md | a37b651279928422 |
+| 0 | INDEX.md | 734abe2a781bce68 |
+| 1 | regra-maior.md | 9033aa87950e10d6 |
+| 2 | opus-so-sob-pedido.md | 9eb713bb15f79d09 |
+| 3 | commit-por-subtarefa.md | 68865d464fd4cbcb |
+| 4 | ia-nao-cria-tarefas.md | 7e7e35046403b7c4 |
+| 5 | ciclo-da-task.md | 14c6a9df8a726c67 |
+| 6 | revisao-previa.md | 5d039afadac62038 |
+| 7 | niveis-e-modelos.md | dcbb84a6205bd690 |
+| 8 | frentes-e-reserva.md | 34df083a9c283404 |
+| 9 | comando-ponto.md | a212758272094f5c |
+| 10 | comando-interrogacao.md | 21e19f07798a97bf |
+| 11 | quadro-de-tarefas.md | 0440cf66df9b39d2 |
+| 12 | exibicao-de-status.md | 8eb3a950d71e3d01 |
+| 13 | git-geral.md | f241ee942d266d1c |
+| 14 | testes-validacao.md | 9b4a969703acff8b |
+| 15 | codigo-limites-nomes.md | ca88cca3360ef918 |
+| 16 | codigo-solid.md | 6f3e1050946d15af |
+| 17 | espec.md | 1cfd3d3f1e4c4742 |
+| 18 | esforco.md | 011bc6e2828ef118 |
+| 19 | graphify.md | efad3d7177e3d33c |
+| 20 | gerenciador-centralizado.md | 79eaaee9d980fcda |
+| 21 | pastas-ignoradas.md | b33814d65cafd940 |
+| 22 | rules-local.md | 354d0418b41213e3 |
+| 23 | herdr.md | 7d5677aa568db2a8 |
+| 24 | jev.md | 28afe069dd720605 |
+| 25 | visualizador-gerado.md | a2cd1d699c892f7d |
+| 26 | memoria-ai.md | 15af93d9f93c4629 |
+| 27 | mcp-quadro.md | cf1b69bf16a88146 |
+| 28 | vercel-sem-deploy-de-controle.md | 9801278fe383e99f |
+| 29 | mods-claude-code.md | b2e3124e47b307b5 |
+| 30 | lider-coordenador.md | d1d547acf0372f6f |
+| 31 | atividades-e-idioma.md | a37b651279928422 |
+| 32 | css-checkbox-on-off.md | 32a789de1a31e0f1 |
+| 33 | sem-backup.md | 03619d42af2ea23d |
 
 ## Pacote do rules-local (scripts e Jev)
 
-- **Código do pacote:** a7fc37dc
+- **Código do pacote:** 3f02a8d1
 
 | # | Arquivo | Código |
 |---|---------|--------|
@@ -50,11 +56,11 @@
 | 2 | conferir.mjs | c82d6e4cb69dbc16 |
 | 3 | pacote.mjs | 792f53e47f7c2cbd |
 | 4 | proxy.mjs | a027d2b70b57a904 |
-| 5 | sessao.mjs | ad9ae0c98e17a4d1 |
+| 5 | sessao.mjs | fdf4d1a67b5254ac |
 | 6 | jev/cliente.mjs | 6b7824f10440578f |
 | 7 | jev/config.mjs | 40c6d99b6227f964 |
 | 8 | jev/decidir.mjs | 0548abe0d9805f84 |
-| 9 | jev/estado.mjs | f05d06ea745f226c |
+| 9 | jev/estado.mjs | f8085b742d5f2927 |
 | 10 | jev/ganchos/claude-prompt.mjs | da652d43e1845614 |
 | 11 | jev/ganchos/codex-prompt.mjs | cbff42b994d5e2f8 |
 | 12 | jev/guardrails/aprovacao.mjs | 960ae110bf3a2f90 |
@@ -72,7 +78,7 @@
 | 24 | jev/mensagem/limite.mjs | 43777eeb103ac62b |
 | 25 | jev/mensagem/perguntas.mjs | b4076242fdb3536e |
 | 26 | jev/mensagem/repetida.mjs | 474b24f73b753f48 |
-| 27 | jev/modelos.mjs | 1263d15bcaecf0ff |
-| 28 | jev/perguntas.mjs | bcec2aa12dcfdb10 |
+| 27 | jev/modelos.mjs | 9d05bf90c0c522f8 |
+| 28 | jev/perguntas.mjs | 5d7b5f7d2b1903ab |
 | 29 | jev/proxy.mjs | a027d2b70b57a904 |
 | 30 | jev/quadro-formato.mjs | 7ae4298bf789c584 |

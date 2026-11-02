@@ -361,7 +361,7 @@ function gravarSincronizacao(pasta, nuvem, estado) {
     + `${adicionado.length} adicionado, ${removido.length} removido).`);
   avisar(`relatório em rules-local/${ARQUIVO_RELATORIO}.`);
   avisar('DISPARAR A SINCRONIZAÇÃO DE TASKS (rules-local/regras/rules-local.md) '
-    + 'antes do primeiro pedido.');
+    + 'antes do primeiro pedido (projeto no banco: a TASK RL- nasce na API, não no STATUS.md).');
 }
 
 /**

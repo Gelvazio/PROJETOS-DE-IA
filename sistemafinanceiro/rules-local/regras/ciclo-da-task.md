@@ -4,6 +4,12 @@ Vale para qualquer projeto e para todas as IAs. Onde fica cada informação: `qu
 "Linha" do quadro = item do índice simplificado do `STATUS.md` (C55) ou linha da tabela
 (legado).
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) criar, reservar e
+> entregar são chamadas RPC no Supabase (`quadro-de-tarefas.md`, "Modelo do quadro no banco"): não
+> há commit de quadro, de reserva nem de mudança de linha para o `task_complete.md`. O Git fica só
+> para os arquivos que a subtarefa muda. Onde abaixo está "commit + push do quadro", no banco vale a
+> RPC indicada.
+
 ## O que vira TASK
 
 - ✅ Todo pedido que **muda** arquivo, banco ou configuração vira TASK **antes** de executar.
@@ -14,9 +20,13 @@ Vale para qualquer projeto e para todas as IAs. Onde fica cada informação: `qu
 1. Sincronizar com o remoto e ler o `tasks/STATUS.md`.
 2. **Criar:** a etapa, a linha da mãe e **no mínimo 1 subtarefa**, e a linha em "🗂️ Etapas". ⛔ **Sem
    escrever nível, modelo nem `effort`: quem classifica é sempre o Jev** (seção abaixo, C52).
-3. **Publicar:** commit + push do quadro com a tarefa nova.
-4. **Assumir:** reservar a subtarefa que vai executar (`frentes-e-reserva.md`), commit + push.
-5. **Pedir confirmação só se for necessário:** se faltar detalhe crítico, perguntar numa mensagem
+3. **Publicar:** commit + push do quadro com a tarefa nova. No banco: a subtarefa é criada por
+   `criar_subtarefa` (já publicada); **mãe nova ainda não tem RPC**: não se grava à mão, avisa o
+   usuário.
+4. **Revisar (C62):** cada subtarefa passa pela revisão prévia (1 Haiku com `effort xhigh`, ou o modelo rápido da ferramenta) e precisa ter o campo Leitura permitida antes de ser reservada — `revisao-previa.md`.
+5. **Assumir:** reservar a subtarefa que vai executar (`frentes-e-reserva.md`): em `.md`, commit +
+   push; no banco, `reservar` (sem commit).
+6. **Pedir confirmação só se for necessário:** se faltar detalhe crítico, perguntar numa mensagem
    só (objetivo e resultado esperado, escopo, arquivos, critério de pronto). Não perguntar o que
    já está no pedido, no quadro ou no código; pedido completo → confirmar o entendimento em 1 frase
    e seguir. ❌ Não assumir detalhe crítico em silêncio.
@@ -80,7 +90,9 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
 ## Encerrar
 
 1. **Subtarefa:** seção com entrega (commit) e verificação; linha com `✅` e "Em uso por" = `—`,
-   **movida** do `STATUS.md` para o `tasks/task_complete.md`; linha da frente atualizada.
+   **movida** do `STATUS.md` para o `tasks/task_complete.md`; linha da frente atualizada. No banco:
+   commit + push dos arquivos da subtarefa e depois `entregar(p_id, p_frente, p_entrega,
+   p_verificacao)` com o hash do commit; nada se move.
 2. **Tarefa-mãe:** quando todas as subtarefas estiverem ✅, a linha da mãe vira `✅` e também vai
    para o `task_complete.md`.
    - ⛔ **Sem aceite do usuário** (C32, 2026-10-17): a IA **sempre aceita** e **nunca pergunta**.
@@ -91,7 +103,7 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
      produção, aprovação do plano de tarefa grande, resposta a uma dúvida). Isso não é aceite.
 3. Pendências que ficaram para depois → "Pendências" do `STATUS.md`, com motivo.
 4. Lição aprendida que vira regra → "Lições aprendidas" do `STATUS.md` (e a regra no lugar certo).
-5. **Um commit por subtarefa entregue**, com o quadro no mesmo commit (e push, conforme a regra
+5. 🔒 **REGRA INVIOLÁVEL (C59, `commit-por-subtarefa.md`): 1 commit + 1 push por subtarefa entregue, antes de marcá-la entregue (no banco: antes da RPC `entregar`; sem arquivo mudado, `git commit --allow-empty`).** **Um commit por subtarefa entregue**, com o quadro no mesmo commit (e push, conforme a regra
    do projeto). Na **equipe de agentes** do Claude Code (C41), quem confere, commita e dá o push da
    entrega é o **Haiku**; problema na conferência não vira commit, vira a subtarefa
    `Verificação: <problema>` da mesma mãe (`MEDIO · só Sonnet`). Detalhe em
@@ -102,7 +114,8 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
 
 ## Retomar (sessão nova ou que caiu)
 
-1. Ler o `STATUS.md`: linha da sua frente e a subtarefa com o seu nome em "Em uso por".
+1. Ler o `STATUS.md` (no banco, `quadro_frentes` e `quadro_tarefas`): linha da sua frente e a
+   subtarefa com o seu nome em "Em uso por".
 2. Ler o **Próximo passo** da seção da subtarefa; conferir o que já foi feito (arquivos e commits)
    e **continuar de onde parou**.
 3. ❌ Não recomeçar do zero, não refazer o que está ✅, não pular etapas.

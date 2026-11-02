@@ -1,11 +1,16 @@
 # 🕸️ graphify — grafo de conhecimento do projeto
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. A entrega é a RPC `entregar` (nada se move para o `task_complete.md`). Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-16 (C11) e mudado em 2026-10-17 (C25). Vale para todos os projetos e todas
 as IAs; a regra do projeto só pode **acrescentar** (ex.: onde fica o comando), não contradizer.
 
 **Comando:** o do `AGENTS.md`/`CLAUDE.md` do projeto; sem ele,
 `C:\Python314\python.exe -m graphify update .` na raiz do projeto (na nuvem, `python3 -m graphify
 update .`). Sem perguntar.
+
+⛔ **Raiz `C:\fontes`:** não roda graphify (C57, `raiz-fontes.md`): varreria os outros
+repositórios e as pastas `DEMAIS-PROJETOS-*`, que ninguém lê.
 
 ## Quando ler o `graphify-out/GRAPH_REPORT.md`
 

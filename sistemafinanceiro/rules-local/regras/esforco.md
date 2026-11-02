@@ -11,11 +11,11 @@ IAs.** Conferência por modelo: tarefa `CONFEFFORT-GLOBAL`; resultados nas etapa
 |---|---|
 | `classificador-tarefas` e `executor-leve` (`LEVE`) | `low` |
 | `executor-medio` (`MEDIO`) | `medium` |
-| `executor-pesado` (`PESADO`) | `high` (ajustável; `xhigh` só com pedido do usuário) |
+| `executor-pesado` (`PESADO`) | `xhigh` (C61/C64: Sonnet e Devin); DeepSeek V4 Flash usa `high` (C65) |
 
 - Editar só a **fonte** dos agentes (no REA e nos dashboards, `.agents/agents/*.md`); as cópias por IA
   são regeradas pelo script do projeto (`npm run sync:agentes`).
 - ⚠️ O agente **não enxerga** o próprio esforço: conferir por fora (tokens, tempo, tamanho da
   resposta), como manda a `CONFEFFORT-GLOBAL`. Nem toda IA tem `effort` (Gemini, DeepSeek): usar a
   configuração equivalente de raciocínio da ferramenta.
-- ✅ **Toda tarefa e subtarefa declara o `effort`** junto do nível no quadro (`LEVE · effort low`, `MEDIO · effort medium`, `PESADO · effort high`), em **todas as IAs**: quem não tem `effort` (Gemini, DeepSeek, Copilot…) simplesmente ignora o campo (decisão do usuário, 2026-10-16 20:40).
+- ✅ **Toda tarefa e subtarefa declara o `effort`** junto do nível no quadro (`LEVE · effort low`, `MEDIO · effort medium`, `PESADO · effort xhigh`), em **todas as IAs**: quem não tem `effort` (Gemini, DeepSeek, Copilot…) simplesmente ignora o campo (decisão do usuário, 2026-10-16 20:40).

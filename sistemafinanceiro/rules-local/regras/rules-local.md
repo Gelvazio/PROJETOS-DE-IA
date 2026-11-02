@@ -1,8 +1,11 @@
 # 🔄 Regras locais (`rules-local/`) — início da sessão e sincronização de tasks (C36)
 
+> **Projeto no banco (C58):** no `rules-ai` (e no `aulasenai`, depois do corte) não existe `tasks/STATUS.md`, `task_complete.md`, `RECADOS.md` nem etapa em `.md`: onde esta regra os cita, vale a tabela `quadro_*` equivalente do Supabase (`quadro-de-tarefas.md`, "Cada informação em um lugar só"), lida com a chave `anon` e gravada só pelas RPC. As TASKs de ajuste do projeto no banco nascem por `criar_subtarefa`; procurar repetição em `quadro_tarefas`. Nos projetos em `.md`, o texto abaixo vale como está.
+
 Decidido em 2026-10-18 (C36; etapa 019 do `rules-ai`, RULES-LOCAL-GLOBAL). Vale para **todas as
 IAs** e para todo projeto que tem a pasta `rules-local/` (repositórios com GitHub de `C:\fontes`,
-fora `DEMAIS-PROJETOS-*`, `scripts` e o próprio `rules-ai`, que é a fonte).
+fora `DEMAIS-PROJETOS-*`, `scripts` e o próprio `rules-ai`, que é a fonte), inclusive a
+própria raiz `C:\fontes` (C57, `raiz-fontes.md`).
 
 ## O que é o `rules-local/`
 
@@ -124,8 +127,18 @@ TASK (pergunta 1-b da etapa 019).
      👀 até o "sim" do usuário.
    - ⛔ A sincronização **só cria** a TASK: não reserva nem executa. Quem pega segue o `;` e o
      modelo da coluna Modelo.
+   - **Projeto no banco (C58)** (`rules-ai`; `aulasenai` depois do corte, MIGRAR-TAREFAS-API.64): a
+     TASK `RL-…` nasce **na API do `rules-ai`**, com `projeto = '<projeto>'`, e **não** no
+     `STATUS.md` nem em etapa `.md` (que deixam de existir). Os mesmos campos (ID, título, Pedido,
+     nível, modelo, `effort`, prioridade 🟡) vão para `quadro_etapas` e `quadro_tarefas`. A
+     subtarefa se cria por `criar_subtarefa` (`scripts/quadro_cliente.mjs`, `criarSubtarefa`); a
+     **mãe nova ainda não tem RPC**: a sessão não grava à mão e **avisa o usuário** com o ID e o
+     título que faltam criar. "Sem repetir" procura o ID em `quadro_tarefas` (aberta ou
+     concluída). Sem banco alcançável: não cria e avisa em 1 linha (sem arquivo de queda).
+     Projeto ainda em `.md` segue o caminho acima, no `STATUS.md`.
 5. **Publicar num commit só:** `git add rules-local/` + os arquivos do quadro mudados (o
-   `STATUS.md` e as etapas novas), pelo caminho; mensagem
+   `STATUS.md` e as etapas novas, **só em projeto em `.md`**; no banco, só `rules-local/`),
+   pelo caminho; mensagem
    `chore(rules-local): versão <anterior> -> <nova> (<n> TASK nova) por <frente>`; depois
    `git push` (se o push for recusado, `git pull --rebase` e push de novo).
 6. **Seguir para o pedido do usuário.** A resposta da sincronização é o quadro do passo 2, mais o
@@ -135,7 +148,8 @@ TASK (pergunta 1-b da etapa 019).
 
 - ⛔ Não editar regra dentro do `rules-local/`, nem a `VERSAO.md` (o script e a conferência
   desfazem).
-- ⛔ Não criar TASK no quadro de outro projeto nem no `rules-ai`: cada projeto sincroniza o seu.
+- ⛔ Não criar TASK no quadro de outro projeto nem no `rules-ai`: cada projeto sincroniza o seu
+  (no banco, o `projeto` da TASK é sempre o do projeto que sincroniza).
 - ⛔ Não criar TASK por item `sem ajuste`, nem por aviso que não seja o da frase-gatilho.
 - ⛔ Não rodar o script em pasta sem `rules-local/` (fora do escopo da C36): quem instala é o
   `scripts/instalar-rules-local.mjs` do `rules-ai`.
