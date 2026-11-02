@@ -2,7 +2,7 @@
 
 <!-- gerado por scripts/sincronizar.mjs; não editar -->
 
-- **Versão:** 2026-11-02-1e29ed87
+- **Versão:** 2026-11-02-c949f631
 - **Algoritmo:** sha256 do texto (sem BOM, fim de linha LF); 16 caracteres por arquivo, 8 na versão
 - **Fonte:** https://github.com/Gelvazio/rules-ai/tree/main/regras
 
@@ -10,40 +10,39 @@
 
 | # | Arquivo | Código |
 |---|---------|--------|
-| 0 | INDEX.md | 734abe2a781bce68 |
+| 0 | INDEX.md | f3a2d0fcfaca9ca6 |
 | 1 | regra-maior.md | 9033aa87950e10d6 |
 | 2 | opus-so-sob-pedido.md | 9eb713bb15f79d09 |
 | 3 | commit-por-subtarefa.md | 68865d464fd4cbcb |
-| 4 | ia-nao-cria-tarefas.md | 7e7e35046403b7c4 |
-| 5 | ciclo-da-task.md | 14c6a9df8a726c67 |
-| 6 | revisao-previa.md | 5d039afadac62038 |
-| 7 | niveis-e-modelos.md | dcbb84a6205bd690 |
-| 8 | frentes-e-reserva.md | 34df083a9c283404 |
-| 9 | comando-ponto.md | a212758272094f5c |
-| 10 | comando-interrogacao.md | 21e19f07798a97bf |
-| 11 | quadro-de-tarefas.md | 0440cf66df9b39d2 |
-| 12 | exibicao-de-status.md | 8eb3a950d71e3d01 |
-| 13 | git-geral.md | f241ee942d266d1c |
-| 14 | testes-validacao.md | 9b4a969703acff8b |
-| 15 | codigo-limites-nomes.md | ca88cca3360ef918 |
-| 16 | codigo-solid.md | 6f3e1050946d15af |
-| 17 | espec.md | 1cfd3d3f1e4c4742 |
-| 18 | esforco.md | 011bc6e2828ef118 |
-| 19 | graphify.md | efad3d7177e3d33c |
-| 20 | gerenciador-centralizado.md | 79eaaee9d980fcda |
-| 21 | pastas-ignoradas.md | b33814d65cafd940 |
-| 22 | rules-local.md | 354d0418b41213e3 |
-| 23 | herdr.md | 7d5677aa568db2a8 |
-| 24 | jev.md | 28afe069dd720605 |
-| 25 | visualizador-gerado.md | a2cd1d699c892f7d |
-| 26 | memoria-ai.md | 15af93d9f93c4629 |
-| 27 | mcp-quadro.md | cf1b69bf16a88146 |
-| 28 | vercel-sem-deploy-de-controle.md | 9801278fe383e99f |
-| 29 | mods-claude-code.md | b2e3124e47b307b5 |
-| 30 | lider-coordenador.md | d1d547acf0372f6f |
-| 31 | atividades-e-idioma.md | a37b651279928422 |
-| 32 | css-checkbox-on-off.md | 32a789de1a31e0f1 |
-| 33 | sem-backup.md | 03619d42af2ea23d |
+| 4 | ciclo-da-task.md | 14c6a9df8a726c67 |
+| 5 | revisao-previa.md | 5d039afadac62038 |
+| 6 | niveis-e-modelos.md | dcbb84a6205bd690 |
+| 7 | frentes-e-reserva.md | 34df083a9c283404 |
+| 8 | comando-ponto.md | a212758272094f5c |
+| 9 | comando-interrogacao.md | 21e19f07798a97bf |
+| 10 | quadro-de-tarefas.md | 0440cf66df9b39d2 |
+| 11 | exibicao-de-status.md | 8eb3a950d71e3d01 |
+| 12 | git-geral.md | f241ee942d266d1c |
+| 13 | testes-validacao.md | 9b4a969703acff8b |
+| 14 | codigo-limites-nomes.md | ca88cca3360ef918 |
+| 15 | codigo-solid.md | 6f3e1050946d15af |
+| 16 | espec.md | 1cfd3d3f1e4c4742 |
+| 17 | esforco.md | 011bc6e2828ef118 |
+| 18 | graphify.md | efad3d7177e3d33c |
+| 19 | gerenciador-centralizado.md | 79eaaee9d980fcda |
+| 20 | pastas-ignoradas.md | b33814d65cafd940 |
+| 21 | rules-local.md | 354d0418b41213e3 |
+| 22 | herdr.md | 7d5677aa568db2a8 |
+| 23 | jev.md | 28afe069dd720605 |
+| 24 | visualizador-gerado.md | a2cd1d699c892f7d |
+| 25 | memoria-ai.md | 15af93d9f93c4629 |
+| 26 | mcp-quadro.md | cf1b69bf16a88146 |
+| 27 | vercel-sem-deploy-de-controle.md | 9801278fe383e99f |
+| 28 | mods-claude-code.md | b2e3124e47b307b5 |
+| 29 | lider-coordenador.md | d1d547acf0372f6f |
+| 30 | atividades-e-idioma.md | a37b651279928422 |
+| 31 | css-checkbox-on-off.md | 32a789de1a31e0f1 |
+| 32 | sem-backup.md | 03619d42af2ea23d |
 
 ## Pacote do rules-local (scripts e Jev)
 
