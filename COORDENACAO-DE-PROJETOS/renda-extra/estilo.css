@@ -1,0 +1,22 @@
+:root {
+  --cor-fundo: #0f1419;
+  --cor-texto: #e6edf3;
+  --cor-texto-suave: #9aa3b5;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: system-ui, sans-serif;
+}
+
+.conteudo {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.cabecalho__texto {
+  color: var(--cor-texto-suave);
+}
