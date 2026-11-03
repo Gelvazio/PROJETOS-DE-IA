@@ -5,8 +5,7 @@
 /** JSON gerado pelo extrair_site.py, lido direto do repositório no GitHub. */
 const URL_POSTS =
   'https://raw.githubusercontent.com/Gelvazio/PROJETOS-DE-IA/main/COORDENACAO-DE-PROJETOS/25-PROJETOS-DE-IA/posts-produtividade.json';
-/** Quantidade de caracteres do resumo exibido em cada cartão. */
-const TAMANHO_RESUMO = 220;
+/** Texto mostrado quando o post não tem conteúdo. */
 const TEXTO_SEM_CONTEUDO = 'Conteúdo indisponível.';
 
 /**
@@ -23,14 +22,24 @@ async function buscarPosts() {
 }
 
 /**
- * Corta o conteúdo do post para um resumo curto.
+ * Cria o bloco recolhível com o texto completo do post, um parágrafo por linha.
  * @param {string|null} conteudo - Texto extraído do post.
- * @returns {string} Resumo pronto para exibir.
+ * @returns {HTMLElement} Elemento details pronto para anexar.
  */
-function montarResumo(conteudo) {
-  if (!conteudo) return TEXTO_SEM_CONTEUDO;
-  if (conteudo.length <= TAMANHO_RESUMO) return conteudo;
-  return `${conteudo.slice(0, TAMANHO_RESUMO).trimEnd()}…`;
+function criarDetalhes(conteudo) {
+  const detalhes = document.createElement('details');
+  const rotulo = document.createElement('summary');
+  rotulo.textContent = 'Ler o texto completo';
+  detalhes.append(rotulo);
+
+  const linhas = conteudo ? conteudo.split('\n').filter(Boolean) : [TEXTO_SEM_CONTEUDO];
+  for (const linha of linhas) {
+    const paragrafo = document.createElement('p');
+    paragrafo.className = 'cartao__texto';
+    paragrafo.textContent = linha;
+    detalhes.append(paragrafo);
+  }
+  return detalhes;
 }
 
 /**
@@ -46,9 +55,7 @@ function criarCartao(post) {
   titulo.className = 'cartao__titulo';
   titulo.textContent = post.titulo;
 
-  const resumo = document.createElement('p');
-  resumo.className = 'cartao__texto';
-  resumo.textContent = montarResumo(post.conteudo);
+  const detalhes = criarDetalhes(post.conteudo);
 
   const acao = document.createElement('a');
   acao.className = 'cartao__acao';
@@ -57,7 +64,7 @@ function criarCartao(post) {
   acao.rel = 'noopener';
   acao.textContent = 'Ler post →';
 
-  cartao.append(titulo, resumo, acao);
+  cartao.append(titulo, detalhes, acao);
   return cartao;
 }
 
