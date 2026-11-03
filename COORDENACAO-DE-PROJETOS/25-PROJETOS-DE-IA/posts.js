@@ -2,8 +2,9 @@
  * Lê o JSON gerado pelo extrair_site.py e mostra um cartão por post.
  */
 
-/** Arquivo gerado pelo extrair_site.py, relativo a esta página. */
-const CAMINHO_POSTS = 'posts-produtividade.json';
+/** JSON gerado pelo extrair_site.py, lido direto do repositório no GitHub. */
+const URL_POSTS =
+  'https://raw.githubusercontent.com/Gelvazio/PROJETOS-DE-IA/main/COORDENACAO-DE-PROJETOS/25-PROJETOS-DE-IA/posts-produtividade.json';
 /** Quantidade de caracteres do resumo exibido em cada cartão. */
 const TAMANHO_RESUMO = 220;
 const TEXTO_SEM_CONTEUDO = 'Conteúdo indisponível.';
@@ -14,9 +15,9 @@ const TEXTO_SEM_CONTEUDO = 'Conteúdo indisponível.';
  * @throws {Error} Quando o arquivo não pode ser lido.
  */
 async function buscarPosts() {
-  const resposta = await fetch(CAMINHO_POSTS);
+  const resposta = await fetch(URL_POSTS);
   if (!resposta.ok) {
-    throw new Error(`arquivo ${CAMINHO_POSTS} não encontrado (${resposta.status})`);
+    throw new Error(`GitHub respondeu ${resposta.status} para o JSON dos posts`);
   }
   return resposta.json();
 }
@@ -91,10 +92,7 @@ async function iniciar() {
     const posts = await buscarPosts();
     renderizarPosts(posts);
   } catch (erro) {
-    mostrarAviso(
-      `Não foi possível carregar os posts: ${erro.message}. ` +
-        'Abra esta pasta por um servidor local (ex.: Live Server), não pelo arquivo direto.',
-    );
+    mostrarAviso(`Não foi possível carregar os posts: ${erro.message}.`);
   }
 }
 
