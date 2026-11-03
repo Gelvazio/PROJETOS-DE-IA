@@ -20,3 +20,44 @@ body {
 .cabecalho__texto {
   color: var(--cor-texto-suave);
 }
+
+.lista-cartoes {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cartao {
+  display: block;
+  padding: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.cartao:hover,
+.cartao:focus-visible {
+  border-color: var(--cor-ciano, #4fc3f7);
+}
+
+.cartao__numero {
+  color: var(--cor-texto-suave);
+  font-size: 0.8rem;
+}
+
+.cartao__titulo {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.cartao__texto {
+  margin: 0 0 0.75rem;
+  color: var(--cor-texto-suave);
+}
+
+.cartao__acao {
+  color: var(--cor-ciano, #4fc3f7);
+  font-weight: 600;
+}
