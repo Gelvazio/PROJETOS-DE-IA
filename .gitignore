@@ -51,5 +51,9 @@ dist/
 # Backup do Git removido dos projetos (etapa 001-18aa4eac)
 /_backup-git/
 
+# Saída do analises.py: contém conteúdo de pastas excluídas acima (DEMAIS-*)
+/ANALISES/
+/analises.json
+
 # rules-ai tem Git próprio (Gelvazio/rules-ai); a raiz não o rastreia
 /rules-ai/

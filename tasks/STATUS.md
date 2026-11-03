@@ -52,3 +52,4 @@ tarefas e guarda as tarefas globais (que valem para todos os projetos).
 
 - #ANALISES-JSON — [script que lê a raiz e gera analises.json para análise por IA](etapas/ETAPA-004-ANALISES-JSON.md) · ✅ Concluído
   - #ANALISES-JSON.1 — criar analises.py, rodar e validar analises.json · ✅ Concluído · Devin (SWE-2 Max) · nível PESADO · effort xhigh
+  - #ANALISES-JSON.2 — incluir DEMAIS-PROJETOS-NAO-MEXER-AGORA (ai-memory segue fora) e dividir a saída em `ANALISES/` (vários JSON + índice; pasta fora do Git) · ✅ Concluído · Devin (SWE-2 Max) · nível PESADO · effort xhigh

@@ -29,3 +29,21 @@ texto — material para uma IA analisar tudo e planejar uma organização melhor
   `rules-ai`, `aulasenai` ou `DEMAIS-PROJETOS-*` no JSON; nenhum conteúdo de segredo; binários só
   com metadados.
 - **Verificação:** rodar o script e conferir o JSON (contagens, exclusões, campos).
+
+### ANALISES-JSON.2 — Incluir ai-memory e DEMAIS-PROJETOS-NAO-MEXER-AGORA; saída em ANALISES/
+**Próximo passo:** executando (Devin, SWE-2 Max).
+- **Nível:** PESADO — classificado (matriz; Jev LEVE 0,72, sinal "massa")
+- **Modelo:** Devin (SWE-2 High Lightning) — executando
+- **Descrição:** pedidos de 2026-11-03: (a) "AI-MEMORY, EXCLUA DA ANALISE TAMBEM" — depois
+  corrigido para **incluir** `DEMAIS-PROJETOS-NAO-MEXER-AGORA` (a regra C23 permite quando o
+  usuário nomeia a pasta); `ai-memory` permanece fora. (b) "CRIE MAIS ARQUIVOS DE ANALISE.JSON,
+  PRA CABER OS DADOS, COLOQUE NUM PASTA DE NOME ANALISES": a saída vira `ANALISES/<grupo>/parte-NN.json`
+  (um grupo por pasta-raiz, partes de ~20 MB) + `ANALISES/_indice.json` (árvore, resumo,
+  exclusões, manifesto das partes). Como `DEMAIS-*` está no `.gitignore` da raiz de propósito,
+  `ANALISES/` sai do Git (`analises.json` antigo removido do índice): o conteúdo dela não pode
+  ser publicado. `DEMAIS-PROJETOS-DE-SISTEMAS-MANTER-OFFLINE` (C20) segue excluída se voltar.
+- **Critérios de Aceitação:** `python analises.py` gera `ANALISES/` com `_indice.json` válido e
+  partes por grupo; caminhos `DEMAIS-PROJETOS-NAO-MEXER-AGORA/...` presentes; `rules-ai`,
+  `aulasenai` e `ai-memory` fora; nenhum conteúdo de segredo; `ANALISES/` no `.gitignore` e
+  `analises.json` fora do índice do Git.
+- **Verificação:** rodar o script; conferir manifesto, exclusões e `git status`.
