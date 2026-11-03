@@ -18,6 +18,10 @@ TAGS_TITULO = {"h1", "h2", "h3", "h4"}
 TAGS_CONTEUDO = {"article", "main"}
 TAGS_IGNORADAS = {"script", "style", "noscript", "nav", "header", "footer"}
 PREFIXOS_IGNORADOS = ("/categoria", "/tag", "/autor")
+NOME_PARAMETRO_PAGINA = "pagina"
+MAXIMO_PAGINAS = 50
+MARCAS_NEWSLETTER = ("Receba os próximos por e-mail", "sem spam, cancele quando quiser")
+TEXTOS_EXATOS_NEWSLETTER = {"Assinar"}
 
 
 class ExtratorPosts(HTMLParser):
@@ -135,15 +139,27 @@ def extrair_posts(html, url_base):
     return posts
 
 
+def e_trecho_newsletter(trecho):
+    """Diz se o trecho faz parte do bloco de inscrição na newsletter.
+
+    Parâmetros: trecho (str) texto extraído da página.
+    Retorno: bool.
+    """
+    if trecho in TEXTOS_EXATOS_NEWSLETTER:
+        return True
+    return any(marca in trecho for marca in MARCAS_NEWSLETTER)
+
+
 def extrair_texto(html):
-    """Devolve o texto principal de uma página de post.
+    """Devolve o texto principal de uma página de post, sem a newsletter.
 
     Parâmetros: html (str) página do post.
     Retorno: str com os trechos de texto unidos por quebra de linha.
     """
     extrator = ExtratorTexto()
     extrator.feed(html)
-    return "\n".join(extrator.partes)
+    trechos = [trecho for trecho in extrator.partes if not e_trecho_newsletter(trecho)]
+    return "\n".join(trechos)
 
 
 def coletar_conteudo(post):
@@ -169,13 +185,48 @@ def salvar_json(registros, caminho):
         json.dump(registros, arquivo, ensure_ascii=False, indent=2)
 
 
+def montar_url_pagina(numero):
+    """Monta o endereço de uma página da listagem da categoria.
+
+    Parâmetros: numero (int) número da página, a partir de 1.
+    Retorno: str com a URL; a página 1 é a própria categoria.
+    """
+    if numero == 1:
+        return URL_CATEGORIA
+    return f"{URL_CATEGORIA}?{NOME_PARAMETRO_PAGINA}={numero}"
+
+
+def coletar_listagem():
+    """Percorre as páginas da categoria até não aparecer post novo.
+
+    Para quando uma página não traz nenhum post que ainda não foi visto, o que
+    evita repetir a listagem caso o site ignore o parâmetro de página.
+    Retorno: lista de posts (titulo e link), sem repetição entre páginas.
+    """
+    posts = []
+    vistos = set()
+    for numero in range(1, MAXIMO_PAGINAS + 1):
+        try:
+            html = baixar_html(montar_url_pagina(numero))
+        except OSError as erro:
+            print(f"Página {numero} não baixou: {erro}")
+            break
+        novos = [
+            post for post in extrair_posts(html, URL_CATEGORIA) if post["link"] not in vistos
+        ]
+        if not novos:
+            break
+        vistos.update(post["link"] for post in novos)
+        posts.extend(novos)
+    return posts
+
+
 def executar():
     """Faz a extração completa e mostra o resumo no terminal.
 
     Retorno: None.
     """
-    html = baixar_html(URL_CATEGORIA)
-    posts = extrair_posts(html, URL_CATEGORIA)
+    posts = coletar_listagem()
     print(f"{len(posts)} posts encontrados na listagem.")
     registros = [coletar_conteudo(post) for post in posts]
     salvar_json(registros, ARQUIVO_SAIDA)
