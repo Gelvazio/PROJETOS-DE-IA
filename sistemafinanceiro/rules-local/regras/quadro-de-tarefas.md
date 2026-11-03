@@ -113,7 +113,7 @@ serviço (`SUPABASE_SERVICE_KEY`) lida da variável de ambiente. Cliente em Node
 | Criar tarefa-mãe (com a etapa) | `criar_tarefa_mae(p_projeto, p_codigo, p_titulo, p_criada_por, p_pedido, p_objetivo, p_prioridade, p_eh_grande)` | Cria a mãe e a etapa dela numa transação só (cliente: `criarTarefaMae` em `scripts/quadro_cliente.mjs`); a mãe nasce `pendente`, não reservável e sem nível; precisa de ao menos 1 subtarefa |
 | Criar só a tarefa-mãe | `criar_mae(p_projeto, p_codigo, p_titulo, p_prioridade, p_pedido)` | Só a linha da mãe, sem etapa; código sem ponto, em MAIÚSCULAS com hífens; projeto existente em `quadro_projetos` |
 | Liberar reserva | `liberar(p_id, p_frente, p_motivo)` | Reserva da própria frente (ou o usuário) |
-| Bloquear, pedir ação do usuário, cancelar | `mudar_status(p_id, p_frente, p_para, …)` | Transições da seção 3 do `api/SCHEMA.md`; cancelar e sair de 👀 só o usuário |
+| Bloquear, pedir ação do usuário, cancelar | `mudar_status(p_id, p_frente, p_para, …)` | **Qualquer autor muda qualquer subtarefa para qualquer status** (concluir, cancelar, sair do 👀, reabrir…; regra do usuário de 2026-11-02, migração 19); mãe nunca (status derivado); mudança de IA grava `quadro_decisoes` |
 
 - O **dashboard** usa as funções `ui_*` (`ui_criar_tarefa`, `ui_editar_tarefa`, `ui_cancelar_tarefa`,
   `ui_mudar_modelo`, `ui_mudar_projeto`), com o usuário logado: cada uma confere se o e-mail dele

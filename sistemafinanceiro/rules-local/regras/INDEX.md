@@ -19,7 +19,7 @@ ordem, só para leitura. Regra nova (arquivo novo em `regras/`) entra neste índ
 5. [revisao-previa.md](revisao-previa.md) — Revisão prévia: toda subtarefa revisada por 1 Haiku (effort xhigh), com Leitura permitida (C62)
 6. [niveis-e-modelos.md](niveis-e-modelos.md) — Níveis LEVE, MEDIO e PESADO e o modelo de cada um
 7. [frentes-e-reserva.md](frentes-e-reserva.md) — Frentes de trabalho e reserva de subtarefas
-8. [comando-ponto.md](comando-ponto.md) — Comando ".": atualizar e listar pendências
+8. [comando-ponto.md](comando-ponto.md) — Comando ".": atualizar e listar as tarefas-mãe pendentes
 9. [comando-interrogacao.md](comando-interrogacao.md) — Comando "?": sincronizar e ver o pendente
 10. [quadro-de-tarefas.md](quadro-de-tarefas.md) — Quadro: fonte única e modelos de arquivo
 11. [exibicao-de-status.md](exibicao-de-status.md) — Status sempre em tabela, com ID (C27)

@@ -2,7 +2,7 @@
 
 <!-- gerado por scripts/sincronizar.mjs; não editar -->
 
-- **Versão:** 2026-11-02-c949f631
+- **Versão:** 2026-11-02-143bf515
 - **Algoritmo:** sha256 do texto (sem BOM, fim de linha LF); 16 caracteres por arquivo, 8 na versão
 - **Fonte:** https://github.com/Gelvazio/rules-ai/tree/main/regras
 
@@ -10,17 +10,17 @@
 
 | # | Arquivo | Código |
 |---|---------|--------|
-| 0 | INDEX.md | f3a2d0fcfaca9ca6 |
+| 0 | INDEX.md | de6359256d8b323e |
 | 1 | regra-maior.md | 9033aa87950e10d6 |
 | 2 | opus-so-sob-pedido.md | 9eb713bb15f79d09 |
 | 3 | commit-por-subtarefa.md | 68865d464fd4cbcb |
-| 4 | ciclo-da-task.md | 14c6a9df8a726c67 |
+| 4 | ciclo-da-task.md | 59492a24d9f24b6b |
 | 5 | revisao-previa.md | 5d039afadac62038 |
 | 6 | niveis-e-modelos.md | dcbb84a6205bd690 |
-| 7 | frentes-e-reserva.md | 34df083a9c283404 |
-| 8 | comando-ponto.md | a212758272094f5c |
+| 7 | frentes-e-reserva.md | f0fd483a3dfbebfb |
+| 8 | comando-ponto.md | d7d0fe5a92113aa1 |
 | 9 | comando-interrogacao.md | 21e19f07798a97bf |
-| 10 | quadro-de-tarefas.md | 0440cf66df9b39d2 |
+| 10 | quadro-de-tarefas.md | 8f7207dbe9f5ff33 |
 | 11 | exibicao-de-status.md | 8eb3a950d71e3d01 |
 | 12 | git-geral.md | f241ee942d266d1c |
 | 13 | testes-validacao.md | 9b4a969703acff8b |

@@ -91,14 +91,15 @@ mesmo repositório e só se falam pelos arquivos. Quadro: `quadro-de-tarefas.md`
 - Tarefa grande sem o "sim" do usuário ao plano **não** é pega pelo `;` (fica 👀 até o "sim").
 - É **uma** subtarefa por mensagem `;`; para a seguinte, o usuário manda `;` de novo.
 
-## Gatilho `.` — liste as tarefas pendentes
+## Gatilho `.` — liste as tarefas-mãe pendentes
 
-- Mensagem do usuário **só com `.`** = "Liste as tarefas pendentes do quadro" (C30, 2026-10-17).
-  Vale para todos os projetos e todas as IAs.
+- Mensagem do usuário **só com `.`** = "Liste as tarefas-mãe pendentes do quadro" (C30,
+  2026-10-17; só as mães pendentes desde a C68, 2026-11-02). Vale para todos os projetos e todas
+  as IAs.
 - A IA faz, nesta ordem: **1)** sincronizar com o remoto; **2)** ler o `STATUS.md` (no banco, as
   tabelas `quadro_*`, como em `comando-ponto.md`); **3)** mostrar
-  em quadro (`exibicao-de-status.md`) as tarefas abertas: cada mãe primeiro, em negrito, e as
-  subtarefas ⬜ 🔄 ⛔ 👀, com Tarefa, Título, Modelo, Depende de, Status e Em uso por; **4)** dizer
-  qual é a próxima subtarefa livre do **seu** modelo, se houver.
+  em quadro (`exibicao-de-status.md`) **só as tarefas-mãe com status ⬜ Pendente**, com Tarefa,
+  Título, Status e Subtarefas abertas. ⛔ Sem subtarefas, sem mãe 🔄 👀 ⛔ ✅ ❌ e sem a "próxima
+  subtarefa livre" (para pegar uma, o usuário manda `;`).
 - ⛔ O `.` **não** reserva, não executa e não muda nada (nem o quadro). Para pegar a próxima, o
   usuário manda `;`.

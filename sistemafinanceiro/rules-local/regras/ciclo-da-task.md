@@ -101,6 +101,10 @@ Na dúvida, é grande. O projeto pode definir exceções (rotinas já autorizada
      pela própria IA ao aplicar esta regra.
    - O 👀 fica só para o que **só o usuário pode fazer** (ação no computador dele, autorização de
      produção, aprovação do plano de tarefa grande, resposta a uma dúvida). Isso não é aceite.
+   - ✅ **C67 (2026-11-02, ordem do usuário):** a IA **pode mudar qualquer subtarefa para qualquer
+     status** pela RPC `mudar_status` — concluir, cancelar (é também "remover/excluir": nenhuma
+     linha se apaga), sair do 👀, reabrir —, informando `p_autor` e `p_motivo`; a mudança fica em
+     `quadro_decisoes`. Isso não dispensa a verificação da entrega nem o commit + push (C59).
 3. Pendências que ficaram para depois → "Pendências" do `STATUS.md`, com motivo.
 4. Lição aprendida que vira regra → "Lições aprendidas" do `STATUS.md` (e a regra no lugar certo).
 5. 🔒 **REGRA INVIOLÁVEL (C59, `commit-por-subtarefa.md`): 1 commit + 1 push por subtarefa entregue, antes de marcá-la entregue (no banco: antes da RPC `entregar`; sem arquivo mudado, `git commit --allow-empty`).** **Um commit por subtarefa entregue**, com o quadro no mesmo commit (e push, conforme a regra
